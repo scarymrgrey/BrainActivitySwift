@@ -13,6 +13,9 @@
 		A36814E31CF7872E00CEC6A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A36814E21CF7872E00CEC6A2 /* Assets.xcassets */; };
 		A36814E61CF7872E00CEC6A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A36814E41CF7872E00CEC6A2 /* LaunchScreen.storyboard */; };
 		A36814F21CF788F500CEC6A2 /* CBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A36814F01CF788F500CEC6A2 /* CBManager.m */; };
+		A36814F61CF78C0600CEC6A2 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36814F51CF78C0600CEC6A2 /* CoreBluetooth.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		A36814F81CF78C1300CEC6A2 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36814F71CF78C1300CEC6A2 /* Accelerate.framework */; };
+		A36814FA1CF78DFA00CEC6A2 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814F91CF78DFA00CEC6A2 /* MainVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,9 @@
 		A36814EF1CF788F500CEC6A2 /* CBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBManager.h; sourceTree = "<group>"; };
 		A36814F01CF788F500CEC6A2 /* CBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBManager.m; sourceTree = "<group>"; };
 		A36814F11CF788F500CEC6A2 /* SERVICES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SERVICES.h; sourceTree = "<group>"; };
+		A36814F51CF78C0600CEC6A2 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
+		A36814F71CF78C1300CEC6A2 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		A36814F91CF78DFA00CEC6A2 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +40,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A36814F81CF78C1300CEC6A2 /* Accelerate.framework in Frameworks */,
+				A36814F61CF78C0600CEC6A2 /* CoreBluetooth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -45,6 +53,7 @@
 			children = (
 				A36814DA1CF7872E00CEC6A2 /* BrainActivitySwift */,
 				A36814D91CF7872E00CEC6A2 /* Products */,
+				A36814F41CF78BE200CEC6A2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -84,9 +93,19 @@
 			isa = PBXGroup;
 			children = (
 				A36814DB1CF7872E00CEC6A2 /* AppDelegate.swift */,
+				A36814F91CF78DFA00CEC6A2 /* MainVC.swift */,
 				A36814DD1CF7872E00CEC6A2 /* ViewController.swift */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		A36814F41CF78BE200CEC6A2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A36814F71CF78C1300CEC6A2 /* Accelerate.framework */,
+				A36814F51CF78C0600CEC6A2 /* CoreBluetooth.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A36814F21CF788F500CEC6A2 /* CBManager.m in Sources */,
+				A36814FA1CF78DFA00CEC6A2 /* MainVC.swift in Sources */,
 				A36814DE1CF7872E00CEC6A2 /* ViewController.swift in Sources */,
 				A36814DC1CF7872E00CEC6A2 /* AppDelegate.swift in Sources */,
 			);
