@@ -12,6 +12,7 @@
 		A36814E11CF7872E00CEC6A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A36814DF1CF7872E00CEC6A2 /* Main.storyboard */; };
 		A36814E31CF7872E00CEC6A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A36814E21CF7872E00CEC6A2 /* Assets.xcassets */; };
 		A36814E61CF7872E00CEC6A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A36814E41CF7872E00CEC6A2 /* LaunchScreen.storyboard */; };
+		A36814F21CF788F500CEC6A2 /* CBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A36814F01CF788F500CEC6A2 /* CBManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,10 @@
 		A36814E21CF7872E00CEC6A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A36814E51CF7872E00CEC6A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A36814E71CF7872E00CEC6A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A36814EE1CF788F400CEC6A2 /* BrainActivitySwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BrainActivitySwift-Bridging-Header.h"; sourceTree = "<group>"; };
+		A36814EF1CF788F500CEC6A2 /* CBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBManager.h; sourceTree = "<group>"; };
+		A36814F01CF788F500CEC6A2 /* CBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBManager.m; sourceTree = "<group>"; };
+		A36814F11CF788F500CEC6A2 /* SERVICES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SERVICES.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +59,34 @@
 		A36814DA1CF7872E00CEC6A2 /* BrainActivitySwift */ = {
 			isa = PBXGroup;
 			children = (
-				A36814DB1CF7872E00CEC6A2 /* AppDelegate.swift */,
-				A36814DD1CF7872E00CEC6A2 /* ViewController.swift */,
+				A36814EE1CF788F400CEC6A2 /* BrainActivitySwift-Bridging-Header.h */,
 				A36814DF1CF7872E00CEC6A2 /* Main.storyboard */,
 				A36814E21CF7872E00CEC6A2 /* Assets.xcassets */,
 				A36814E41CF7872E00CEC6A2 /* LaunchScreen.storyboard */,
 				A36814E71CF7872E00CEC6A2 /* Info.plist */,
+				A36814F31CF78A6D00CEC6A2 /* ViewControllers */,
+				A36814ED1CF788CD00CEC6A2 /* CBManager */,
 			);
 			path = BrainActivitySwift;
+			sourceTree = "<group>";
+		};
+		A36814ED1CF788CD00CEC6A2 /* CBManager */ = {
+			isa = PBXGroup;
+			children = (
+				A36814EF1CF788F500CEC6A2 /* CBManager.h */,
+				A36814F01CF788F500CEC6A2 /* CBManager.m */,
+				A36814F11CF788F500CEC6A2 /* SERVICES.h */,
+			);
+			name = CBManager;
+			sourceTree = "<group>";
+		};
+		A36814F31CF78A6D00CEC6A2 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				A36814DB1CF7872E00CEC6A2 /* AppDelegate.swift */,
+				A36814DD1CF7872E00CEC6A2 /* ViewController.swift */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A36814F21CF788F500CEC6A2 /* CBManager.m in Sources */,
 				A36814DE1CF7872E00CEC6A2 /* ViewController.swift in Sources */,
 				A36814DC1CF7872E00CEC6A2 /* AppDelegate.swift in Sources */,
 			);
@@ -250,10 +276,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = BrainActivitySwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = IncSoft.BrainActivitySwift;
+				PRODUCT_BUNDLE_IDENTIFIER = imbamrgrey;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BrainActivitySwift/BrainActivitySwift-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -261,10 +290,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = BrainActivitySwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = IncSoft.BrainActivitySwift;
+				PRODUCT_BUNDLE_IDENTIFIER = imbamrgrey;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "BrainActivitySwift/BrainActivitySwift-Bridging-Header.h";
 			};
 			name = Release;
 		};
