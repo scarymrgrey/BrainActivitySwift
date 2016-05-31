@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileVC: UIViewController {
+class ProfileVC: UIPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.navigationController?.navigationBarHidden = true
