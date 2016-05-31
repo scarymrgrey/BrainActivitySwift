@@ -21,9 +21,10 @@ class MainVC : UIViewController, CBManagerDelegate {
     }
     
     func CB_dataUpdatedWithDictionary(data: [NSObject : AnyObject]!) {
-        print("CBManager update")
+        print("CBManager update")                            
     }
     
     
 
 }
+   

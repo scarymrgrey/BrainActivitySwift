@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A36814DC1CF7872E00CEC6A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814DB1CF7872E00CEC6A2 /* AppDelegate.swift */; };
-		A36814DE1CF7872E00CEC6A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814DD1CF7872E00CEC6A2 /* ViewController.swift */; };
+		A36814DE1CF7872E00CEC6A2 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814DD1CF7872E00CEC6A2 /* SignInVC.swift */; };
 		A36814E11CF7872E00CEC6A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A36814DF1CF7872E00CEC6A2 /* Main.storyboard */; };
 		A36814E31CF7872E00CEC6A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A36814E21CF7872E00CEC6A2 /* Assets.xcassets */; };
 		A36814E61CF7872E00CEC6A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A36814E41CF7872E00CEC6A2 /* LaunchScreen.storyboard */; };
@@ -16,12 +16,13 @@
 		A36814F61CF78C0600CEC6A2 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36814F51CF78C0600CEC6A2 /* CoreBluetooth.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		A36814F81CF78C1300CEC6A2 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36814F71CF78C1300CEC6A2 /* Accelerate.framework */; };
 		A36814FA1CF78DFA00CEC6A2 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814F91CF78DFA00CEC6A2 /* MainVC.swift */; };
+		A3EF5C9B1CFE3057009E296D /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5C9A1CFE3057009E296D /* ProfileVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A36814D81CF7872E00CEC6A2 /* BrainActivitySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrainActivitySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A36814DB1CF7872E00CEC6A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A36814DD1CF7872E00CEC6A2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A36814DD1CF7872E00CEC6A2 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		A36814E01CF7872E00CEC6A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A36814E21CF7872E00CEC6A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A36814E51CF7872E00CEC6A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -33,6 +34,7 @@
 		A36814F51CF78C0600CEC6A2 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		A36814F71CF78C1300CEC6A2 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		A36814F91CF78DFA00CEC6A2 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		A3EF5C9A1CFE3057009E296D /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,7 +96,8 @@
 			children = (
 				A36814DB1CF7872E00CEC6A2 /* AppDelegate.swift */,
 				A36814F91CF78DFA00CEC6A2 /* MainVC.swift */,
-				A36814DD1CF7872E00CEC6A2 /* ViewController.swift */,
+				A36814DD1CF7872E00CEC6A2 /* SignInVC.swift */,
+				A3EF5C9A1CFE3057009E296D /* ProfileVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -180,9 +183,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3EF5C9B1CFE3057009E296D /* ProfileVC.swift in Sources */,
 				A36814F21CF788F500CEC6A2 /* CBManager.m in Sources */,
 				A36814FA1CF78DFA00CEC6A2 /* MainVC.swift in Sources */,
-				A36814DE1CF7872E00CEC6A2 /* ViewController.swift in Sources */,
+				A36814DE1CF7872E00CEC6A2 /* SignInVC.swift in Sources */,
 				A36814DC1CF7872E00CEC6A2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,6 +342,7 @@
 				A36814EC1CF7872E00CEC6A2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
