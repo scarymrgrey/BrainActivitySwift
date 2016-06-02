@@ -1,24 +1,24 @@
 //
-//  ProfileVC.swift
+//  ContentViewController.swift
 //  BrainActivitySwift
 //
-//  Created by Victor Gelmutdinov on 31/05/16.
+//  Created by Victor Gelmutdinov on 02/06/16.
 //  Copyright © 2016 Kirill Polunin. All rights reserved.
 //
 
 import UIKit
 
-class ProfileVC: UIViewController {
-    
-    // MARK: - Variables
 
+class FirstVC: UIViewController ,ProfilePages {
+    // MARK: - Variables
+    var pageIndex : Int! = 0
+
+    
     // MARK: - VC Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-   
-    // MARK: - Actions
     
-    // MARK: - Tab bar delegate
-   
+    // MARK: - Actions
+
 }
