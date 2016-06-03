@@ -1,7 +1,7 @@
 import UIKit
 
 
-class SecondVC: UIViewController ,ProfilePages {
+class MetricsVC: UIViewController ,ProfilePages {
     // MARK: - Variables
     var pageIndex : Int! = 1
     

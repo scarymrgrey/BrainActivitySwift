@@ -15,6 +15,7 @@ protocol ProfilePages {
 class NewSessionContentVC: UIViewController , UIPageViewControllerDataSource {
     // MARK: - Outlets
     @IBOutlet weak var pageContainer: UIView!
+
     
     // MARK: - Variables
     var pageViewController : UIPageViewController!

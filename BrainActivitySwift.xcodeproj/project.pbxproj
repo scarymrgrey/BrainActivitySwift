@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		A3273B061D00B4FD00F1F4A6 /* NewSessionContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3273B051D00B4FD00F1F4A6 /* NewSessionContentVC.swift */; };
 		A3273B081D00BF3300F1F4A6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3273B071D00BF3300F1F4A6 /* TabBarController.swift */; };
+		A3273B0B1D01F43900F1F4A6 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3273B0A1D01F43900F1F4A6 /* ActivityCell.swift */; };
+		A3273B0D1D01FD4600F1F4A6 /* CustomSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3273B0C1D01FD4600F1F4A6 /* CustomSegmentControl.swift */; };
 		A36814DC1CF7872E00CEC6A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814DB1CF7872E00CEC6A2 /* AppDelegate.swift */; };
 		A36814DE1CF7872E00CEC6A2 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814DD1CF7872E00CEC6A2 /* SignInVC.swift */; };
 		A36814E11CF7872E00CEC6A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A36814DF1CF7872E00CEC6A2 /* Main.storyboard */; };
@@ -19,13 +21,15 @@
 		A36814F81CF78C1300CEC6A2 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36814F71CF78C1300CEC6A2 /* Accelerate.framework */; };
 		A36814FA1CF78DFA00CEC6A2 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814F91CF78DFA00CEC6A2 /* MainVC.swift */; };
 		A3EF5C9B1CFE3057009E296D /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5C9A1CFE3057009E296D /* ProfileVC.swift */; };
-		A3EF5C9D1D008435009E296D /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5C9C1D008435009E296D /* FirstVC.swift */; };
-		A3EF5CA11D009C98009E296D /* SecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5CA01D009C98009E296D /* SecondVC.swift */; };
+		A3EF5C9D1D008435009E296D /* ActivityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5C9C1D008435009E296D /* ActivityVC.swift */; };
+		A3EF5CA11D009C98009E296D /* MetricsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5CA01D009C98009E296D /* MetricsVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A3273B051D00B4FD00F1F4A6 /* NewSessionContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSessionContentVC.swift; sourceTree = "<group>"; };
 		A3273B071D00BF3300F1F4A6 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		A3273B0A1D01F43900F1F4A6 /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
+		A3273B0C1D01FD4600F1F4A6 /* CustomSegmentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomSegmentControl.swift; sourceTree = "<group>"; };
 		A36814D81CF7872E00CEC6A2 /* BrainActivitySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrainActivitySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A36814DB1CF7872E00CEC6A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A36814DD1CF7872E00CEC6A2 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -41,8 +45,8 @@
 		A36814F71CF78C1300CEC6A2 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		A36814F91CF78DFA00CEC6A2 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		A3EF5C9A1CFE3057009E296D /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
-		A3EF5C9C1D008435009E296D /* FirstVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstVC.swift; sourceTree = "<group>"; };
-		A3EF5CA01D009C98009E296D /* SecondVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondVC.swift; sourceTree = "<group>"; };
+		A3EF5C9C1D008435009E296D /* ActivityVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityVC.swift; sourceTree = "<group>"; };
+		A3EF5CA01D009C98009E296D /* MetricsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricsVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,8 +66,10 @@
 			isa = PBXGroup;
 			children = (
 				A3273B051D00B4FD00F1F4A6 /* NewSessionContentVC.swift */,
-				A3EF5CA01D009C98009E296D /* SecondVC.swift */,
-				A3EF5C9C1D008435009E296D /* FirstVC.swift */,
+				A3EF5CA01D009C98009E296D /* MetricsVC.swift */,
+				A3EF5C9C1D008435009E296D /* ActivityVC.swift */,
+				A3273B0A1D01F43900F1F4A6 /* ActivityCell.swift */,
+				A3273B0C1D01FD4600F1F4A6 /* CustomSegmentControl.swift */,
 			);
 			name = NewSession;
 			sourceTree = "<group>";
@@ -205,12 +211,14 @@
 			files = (
 				A3EF5C9B1CFE3057009E296D /* ProfileVC.swift in Sources */,
 				A36814F21CF788F500CEC6A2 /* CBManager.m in Sources */,
-				A3EF5CA11D009C98009E296D /* SecondVC.swift in Sources */,
+				A3273B0B1D01F43900F1F4A6 /* ActivityCell.swift in Sources */,
+				A3EF5CA11D009C98009E296D /* MetricsVC.swift in Sources */,
 				A3273B081D00BF3300F1F4A6 /* TabBarController.swift in Sources */,
+				A3273B0D1D01FD4600F1F4A6 /* CustomSegmentControl.swift in Sources */,
 				A3273B061D00B4FD00F1F4A6 /* NewSessionContentVC.swift in Sources */,
 				A36814FA1CF78DFA00CEC6A2 /* MainVC.swift in Sources */,
 				A36814DE1CF7872E00CEC6A2 /* SignInVC.swift in Sources */,
-				A3EF5C9D1D008435009E296D /* FirstVC.swift in Sources */,
+				A3EF5C9D1D008435009E296D /* ActivityVC.swift in Sources */,
 				A36814DC1CF7872E00CEC6A2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
