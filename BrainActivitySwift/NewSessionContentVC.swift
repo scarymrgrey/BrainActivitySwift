@@ -13,12 +13,14 @@ protocol ProfilePages {
     }
 }
 class NewSessionContentVC: UIViewController , UIPageViewControllerDataSource {
+    // MARK: - Outlets
+    @IBOutlet weak var pageContainer: UIView!
     
     // MARK: - Variables
     var pageViewController : UIPageViewController!
     var pageAtIndex : [Int : UIViewController!]! = [:]
     var pageIdAtIndex = ["FirstVCId","SecondVCId"]
-    
+
     // MARK: - VC Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +29,11 @@ class NewSessionContentVC: UIViewController , UIPageViewControllerDataSource {
         let startVC = self.viewControllerAtIndex(0)
         let viewControllers :[UIViewController]? = [startVC!]
         pageViewController.setViewControllers(viewControllers, direction: .Forward, animated: true, completion: nil)
-        //let tabbarheigth = self.tabBarController?.tabBar.frame.height
-        pageViewController.view.frame = CGRectMake(0, 30, self.view.frame.width, self.view.frame.height - 80)
+        //let topbarheight = self.navigationController?.navigationBar.frame.height
+       // let tabbarheigth = self.tabBarController?.tabBar.frame.height
+        pageViewController.view.frame = CGRectMake(0, 0, pageContainer.frame.width, pageContainer.frame.height)
         self.addChildViewController(pageViewController)
-        self.view.addSubview(pageViewController.view)
+        self.pageContainer.addSubview(pageViewController.view)
         pageViewController.didMoveToParentViewController(self)
     }
     

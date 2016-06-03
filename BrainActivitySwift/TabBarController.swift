@@ -19,10 +19,11 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
     // UITabBarControllerDelegate
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
        print(String(viewController))
-        if viewController is ProfileVC {
-            let vc = self.storyboard?.instantiateViewControllerWithIdentifier("NewSessionContentVCId")
+        //if viewController is ProfileVC {
+            //let vc = self.storyboard?.instantiateViewControllerWithIdentifier("NewSessionContentVCId")
             //self.performSegueWithIdentifier("ModalyAddNewSession", sender: nil)
-            self.tabBarController?.performSegueWithIdentifier("ModalyAddNewSession", sender: nil)
-        }
+            viewController.performSegueWithIdentifier("showAddNewSession", sender: nil)
+           // viewController.performSegueWithIdentifier("showAddNewSession", sender: nil)
+        //}
     }
 }
