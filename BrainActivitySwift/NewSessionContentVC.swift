@@ -20,7 +20,7 @@ class NewSessionContentVC: UIViewController , UIPageViewControllerDataSource {
     // MARK: - Variables
     var pageViewController : UIPageViewController!
     var pageAtIndex : [Int : UIViewController!]! = [:]
-    var pageIdAtIndex = ["FirstVCId","SecondVCId"]
+    var pageIdAtIndex = ["FirstVCId","SecondVCId","ThirdVCId"]
 
     // MARK: - VC Life Cycle
     override func viewDidLoad() {

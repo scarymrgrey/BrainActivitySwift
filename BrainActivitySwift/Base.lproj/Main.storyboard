@@ -477,10 +477,15 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="selectedIndex">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
-                        <segue destination="s1C-f2-lwb" kind="relationship" relationship="viewControllers" id="lSC-bR-Mah"/>
                         <segue destination="X7O-tA-UTe" kind="relationship" relationship="viewControllers" id="pes-U9-NxW"/>
                         <segue destination="cbE-z2-liT" kind="relationship" relationship="viewControllers" id="5Dr-yb-ble"/>
+                        <segue destination="s1C-f2-lwb" kind="relationship" relationship="viewControllers" id="lSC-bR-Mah"/>
                         <segue destination="QxQ-We-zFm" kind="relationship" relationship="viewControllers" id="gt8-hx-PD3"/>
                         <segue destination="HSP-LA-G5L" kind="relationship" relationship="viewControllers" id="Gfw-bh-Xo0"/>
                     </connections>
@@ -742,6 +747,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xig-di-57z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7183.5" y="342"/>
+        </scene>
+        <!--MoodVC-->
+        <scene sceneID="255-yT-IVe">
+            <objects>
+                <viewController storyboardIdentifier="ThirdVCId" id="poL-lH-lA8" customClass="MoodVC" customModule="BrainActivitySwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GUv-At-Xpd"/>
+                        <viewControllerLayoutGuide type="bottom" id="f3z-65-jec"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="L5b-Xs-jlj">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k3k-3f-iz9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7867.5" y="342"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="88V-XS-KTr">
