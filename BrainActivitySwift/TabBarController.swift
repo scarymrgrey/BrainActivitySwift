@@ -1,3 +1,4 @@
+
 //
 //  TabBarController.swift
 //  BrainActivitySwift
@@ -17,28 +18,28 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
         case SessionResults
     }
     var completedScene = Scenes.Profile
+    var itemTag : Int!
     override func viewDidLoad() {
         self.delegate = self
-        for item in self.tabBar.items!{
-            print(item)
-        }
+        self.tabBar.items![2].image = UIImage(named: "Add2")
+        //self.tabBar.items![2].selectedImage = UIImage(named: "playbutton")
     }
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
-        
+        itemTag = item.tag
         
     }
     
-    // UITabBarControllerDelegate
+    // MARK: - UITabBarControllerDelegate
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-        
-        if completedScene == .Profile {
-            let img = UIImage(named: "playbutton")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal)
-            self.tabBarItem.image = img
-            viewController.performSegueWithIdentifier("showAddNewSession", sender: nil)
-        }else if completedScene == .NewSession{
-            viewController.performSegueWithIdentifier("showCurrentSession", sender: nil)
-        }else if completedScene == .CurrentSession{
-            viewController.performSegueWithIdentifier("showCurrentSession", sender: nil)
+        if (itemTag == 2){
+            if completedScene == .Profile {
+                viewController.performSegueWithIdentifier("showAddNewSession", sender: nil)
+            }else if completedScene == .NewSession{
+                viewController.performSegueWithIdentifier("showCurrentSession", sender: nil)
+            }else if completedScene == .CurrentSession{
+                viewController.performSegueWithIdentifier("showCurrentSession", sender: nil)
+            }
         }
+       
     }
 }
