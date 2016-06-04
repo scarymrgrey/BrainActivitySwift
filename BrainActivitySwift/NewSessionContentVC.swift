@@ -36,6 +36,10 @@ class NewSessionContentVC: UIViewController , UIPageViewControllerDataSource {
         self.addChildViewController(pageViewController)
         self.pageContainer.addSubview(pageViewController.view)
         pageViewController.didMoveToParentViewController(self)
+        
+        // The following statement is what you need
+        //let customTabBarItem:UITabBarItem = UITabBarItem(title: nil, image: UIImage(named: "playbutton")?.imageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), selectedImage: UIImage(named: "playbutton"))
+      
     }
     
     // MARK: - Actions

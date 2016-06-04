@@ -10,4 +10,8 @@ import UIKit
 
 class MoodVC: UIViewController ,ProfilePages {
 var pageIndex: Int! = 2
+    override func viewWillAppear(animated: Bool) {
+        let rootTabBar = self.tabBarController as! TabBarController
+        rootTabBar.completedScene = .NewSession
+    }
 }

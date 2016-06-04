@@ -162,7 +162,7 @@
             </objects>
             <point key="canvasLocation" x="3700.5" y="-311.25"/>
         </scene>
-        <!--ProfileVC-->
+        <!--Profile-->
         <scene sceneID="TBq-wq-B8X">
             <objects>
                 <viewController id="mkR-i3-0iw" customClass="ProfileVC" customModule="BrainActivitySwift" customModuleProvider="target" sceneMemberID="viewController">
@@ -175,14 +175,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="LF9-cS-Yod"/>
+                    <navigationItem key="navigationItem" title="Profile" id="LF9-cS-Yod"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1yM-nS-VWs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4618.5" y="342"/>
+            <point key="canvasLocation" x="3700.5" y="394.5"/>
         </scene>
-        <!--New Session ContentVC-->
+        <!--New Session-->
         <scene sceneID="bQr-71-ESt">
             <objects>
                 <viewController storyboardIdentifier="NewSessionContentVCId" id="Nyp-4h-SKb" customClass="NewSessionContentVC" customModule="BrainActivitySwift" customModuleProvider="target" sceneMemberID="viewController">
@@ -262,14 +262,14 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="j4l-fV-T7C"/>
+                    <navigationItem key="navigationItem" title="New Session" id="j4l-fV-T7C"/>
                     <connections>
                         <outlet property="pageContainer" destination="wrL-BQ-xpQ" id="ooF-UA-9Ao"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h80-o1-yfu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5788.5" y="342"/>
+            <point key="canvasLocation" x="4369.5" y="394.5"/>
         </scene>
         <!--ActivityVC-->
         <scene sceneID="TaZ-1X-GW8">
@@ -389,12 +389,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qbJ-DQ-gIx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6486" y="342"/>
+            <point key="canvasLocation" x="5067" y="394.5"/>
         </scene>
-        <!--View Controller-->
+        <!--Sessions-->
         <scene sceneID="oii-uO-8Ag">
             <objects>
-                <viewController id="qWE-7z-LwI" sceneMemberID="viewController">
+                <viewController id="qWE-7z-LwI" customClass="SessionsVC" customModule="BrainActivitySwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="I9f-4p-2Qm"/>
                         <viewControllerLayoutGuide type="bottom" id="KwG-8P-m71"/>
@@ -404,11 +404,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ICD-wg-Zxa"/>
+                    <navigationItem key="navigationItem" title="Sessions" id="kvH-Kj-PEP"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nyb-wm-usM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3828" y="1707.75"/>
+            <point key="canvasLocation" x="3700.5" y="1707.75"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="AVZ-tN-0aK">
@@ -446,7 +446,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NSy-6k-oKe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3828" y="2356.5"/>
+            <point key="canvasLocation" x="3700.5" y="2356.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="S9Q-iS-ZqO">
@@ -513,11 +513,11 @@
             </objects>
             <point key="canvasLocation" x="2910" y="1068"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Sessions-->
         <scene sceneID="L80-aj-Pbz">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cbE-z2-liT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="gye-HP-d2B"/>
+                    <tabBarItem key="tabBarItem" title="Sessions" id="gye-HP-d2B"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="LoI-ZE-VBX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -746,7 +746,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xig-di-57z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7183.5" y="342"/>
+            <point key="canvasLocation" x="5766" y="388.5"/>
         </scene>
         <!--MoodVC-->
         <scene sceneID="255-yT-IVe">
@@ -763,13 +763,31 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k3k-3f-iz9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7867.5" y="342"/>
+            <point key="canvasLocation" x="6469.5" y="388.5"/>
+        </scene>
+        <!--Current Session-->
+        <scene sceneID="zTO-C9-0ys">
+            <objects>
+                <viewController id="922-Ss-aDV" customClass="CurrentSessioVC" customModule="BrainActivitySwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mzD-4m-KTB"/>
+                        <viewControllerLayoutGuide type="bottom" id="idw-73-ore"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iZN-Of-7tE">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Current Session" id="M7m-UU-8t1"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ebr-Up-hLr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6469.5" y="1043.25"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="88V-XS-KTr">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="s1C-f2-lwb" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="iqX-fZ-1Gk"/>
+                    <tabBarItem key="tabBarItem" id="iqX-fZ-1Gk"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OVK-vM-Z6B">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -779,11 +797,12 @@
                     <connections>
                         <segue destination="mkR-i3-0iw" kind="relationship" relationship="rootViewController" id="ZBg-Kq-0K7"/>
                         <segue destination="Nyp-4h-SKb" kind="show" identifier="showAddNewSession" id="zDZ-TT-o8c"/>
+                        <segue destination="922-Ss-aDV" kind="show" identifier="showCurrentSession" id="omX-97-lkP"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FCz-6y-a4K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3604.5" y="342"/>
+            <point key="canvasLocation" x="2910" y="388.5"/>
         </scene>
     </scenes>
     <resources>

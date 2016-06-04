@@ -11,6 +11,8 @@
 		A3273B081D00BF3300F1F4A6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3273B071D00BF3300F1F4A6 /* TabBarController.swift */; };
 		A3273B0B1D01F43900F1F4A6 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3273B0A1D01F43900F1F4A6 /* ActivityCell.swift */; };
 		A3273B0F1D02039000F1F4A6 /* MoodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3273B0E1D02039000F1F4A6 /* MoodVC.swift */; };
+		A3273B131D02D02400F1F4A6 /* CurrentSessionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3273B121D02D02400F1F4A6 /* CurrentSessionVC.swift */; };
+		A3273B151D02D2AE00F1F4A6 /* SessionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3273B141D02D2AE00F1F4A6 /* SessionsVC.swift */; };
 		A36814DC1CF7872E00CEC6A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814DB1CF7872E00CEC6A2 /* AppDelegate.swift */; };
 		A36814DE1CF7872E00CEC6A2 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814DD1CF7872E00CEC6A2 /* SignInVC.swift */; };
 		A36814E11CF7872E00CEC6A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A36814DF1CF7872E00CEC6A2 /* Main.storyboard */; };
@@ -30,6 +32,8 @@
 		A3273B071D00BF3300F1F4A6 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A3273B0A1D01F43900F1F4A6 /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
 		A3273B0E1D02039000F1F4A6 /* MoodVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodVC.swift; sourceTree = "<group>"; };
+		A3273B121D02D02400F1F4A6 /* CurrentSessionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentSessionVC.swift; sourceTree = "<group>"; };
+		A3273B141D02D2AE00F1F4A6 /* SessionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsVC.swift; sourceTree = "<group>"; };
 		A36814D81CF7872E00CEC6A2 /* BrainActivitySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrainActivitySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A36814DB1CF7872E00CEC6A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A36814DD1CF7872E00CEC6A2 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -72,6 +76,15 @@
 				A3273B0A1D01F43900F1F4A6 /* ActivityCell.swift */,
 			);
 			name = NewSession;
+			sourceTree = "<group>";
+		};
+		A3273B111D02CFE000F1F4A6 /* CurrentSession */ = {
+			isa = PBXGroup;
+			children = (
+				A3273B121D02D02400F1F4A6 /* CurrentSessionVC.swift */,
+				A3273B141D02D2AE00F1F4A6 /* SessionsVC.swift */,
+			);
+			name = CurrentSession;
 			sourceTree = "<group>";
 		};
 		A36814CF1CF7872E00CEC6A2 = {
@@ -119,6 +132,7 @@
 		A36814F31CF78A6D00CEC6A2 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				A3273B111D02CFE000F1F4A6 /* CurrentSession */,
 				A3273B091D00C04F00F1F4A6 /* NewSession */,
 				A36814F91CF78DFA00CEC6A2 /* MainVC.swift */,
 				A36814DD1CF7872E00CEC6A2 /* SignInVC.swift */,
@@ -210,6 +224,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3EF5C9B1CFE3057009E296D /* ProfileVC.swift in Sources */,
+				A3273B131D02D02400F1F4A6 /* CurrentSessionVC.swift in Sources */,
 				A36814F21CF788F500CEC6A2 /* CBManager.m in Sources */,
 				A3273B0B1D01F43900F1F4A6 /* ActivityCell.swift in Sources */,
 				A3EF5CA11D009C98009E296D /* MetricsVC.swift in Sources */,
@@ -217,6 +232,7 @@
 				A3273B061D00B4FD00F1F4A6 /* NewSessionContentVC.swift in Sources */,
 				A36814FA1CF78DFA00CEC6A2 /* MainVC.swift in Sources */,
 				A36814DE1CF7872E00CEC6A2 /* SignInVC.swift in Sources */,
+				A3273B151D02D2AE00F1F4A6 /* SessionsVC.swift in Sources */,
 				A3EF5C9D1D008435009E296D /* ActivityVC.swift in Sources */,
 				A36814DC1CF7872E00CEC6A2 /* AppDelegate.swift in Sources */,
 				A3273B0F1D02039000F1F4A6 /* MoodVC.swift in Sources */,
