@@ -180,7 +180,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1yM-nS-VWs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3700.5" y="394.5"/>
+            <point key="canvasLocation" x="3700.5" y="388.5"/>
         </scene>
         <!--New Session-->
         <scene sceneID="bQr-71-ESt">
@@ -269,7 +269,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h80-o1-yfu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4369.5" y="394.5"/>
+            <point key="canvasLocation" x="4369.5" y="388.5"/>
         </scene>
         <!--ActivityVC-->
         <scene sceneID="TaZ-1X-GW8">
@@ -389,7 +389,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qbJ-DQ-gIx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5067" y="394.5"/>
+            <point key="canvasLocation" x="5067" y="388.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="AVZ-tN-0aK">
@@ -506,41 +506,30 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="3g2-9N-SnX" kind="relationship" relationship="rootViewController" id="aMd-gk-XDM"/>
+                        <segue destination="JQq-XC-jJf" kind="relationship" relationship="rootViewController" id="pK7-bG-god"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ifF-qa-bfO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2910" y="1707.75"/>
         </scene>
-        <!--Sessions-->
-        <scene sceneID="YOE-HW-gbP">
+        <!--SessionsVC-->
+        <scene sceneID="cXp-Ns-tC3">
             <objects>
-                <tableViewController id="3g2-9N-SnX" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="SFn-Fn-jm6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <viewController id="JQq-XC-jJf" customClass="SessionsVC" customModule="BrainActivitySwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="624-PZ-t77"/>
+                        <viewControllerLayoutGuide type="bottom" id="b4F-O8-1jh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="mba-fB-hzk">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="oeH-yh-fh1">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oeH-yh-fh1" id="RYV-S9-3vY">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="3g2-9N-SnX" id="8IM-1K-7AR"/>
-                            <outlet property="delegate" destination="3g2-9N-SnX" id="7Jd-Cp-ZEt"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Sessions" id="mGR-VV-SPB"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hff-kt-wJB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="QXn-wV-nXS"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7YH-gp-DUY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3712.5" y="1707.75"/>
+            <point key="canvasLocation" x="3703.5" y="1705.5"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="JZW-Hl-wmK">
@@ -756,7 +745,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xig-di-57z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5766" y="388.5"/>
+            <point key="canvasLocation" x="5769" y="388.5"/>
         </scene>
         <!--MoodVC-->
         <scene sceneID="255-yT-IVe">
@@ -774,7 +763,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k3k-3f-iz9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6469.5" y="388.5"/>
+            <point key="canvasLocation" x="6472.5" y="388.5"/>
         </scene>
         <!--Current Session-->
         <scene sceneID="zTO-C9-0ys">
@@ -793,7 +782,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ebr-Up-hLr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6469.5" y="1043.25"/>
+            <point key="canvasLocation" x="6472.5" y="1037.25"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="88V-XS-KTr">

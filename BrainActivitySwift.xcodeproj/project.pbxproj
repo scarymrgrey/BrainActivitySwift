@@ -22,6 +22,7 @@
 		A36814F61CF78C0600CEC6A2 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36814F51CF78C0600CEC6A2 /* CoreBluetooth.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		A36814F81CF78C1300CEC6A2 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36814F71CF78C1300CEC6A2 /* Accelerate.framework */; };
 		A36814FA1CF78DFA00CEC6A2 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814F91CF78DFA00CEC6A2 /* MainVC.swift */; };
+		A3E05A2D1D0429D100ADC6F5 /* AccordionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3E05A2C1D0429D100ADC6F5 /* AccordionView.m */; };
 		A3EF5C9B1CFE3057009E296D /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5C9A1CFE3057009E296D /* ProfileVC.swift */; };
 		A3EF5C9D1D008435009E296D /* ActivityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5C9C1D008435009E296D /* ActivityVC.swift */; };
 		A3EF5CA11D009C98009E296D /* MetricsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5CA01D009C98009E296D /* MetricsVC.swift */; };
@@ -48,6 +49,8 @@
 		A36814F51CF78C0600CEC6A2 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		A36814F71CF78C1300CEC6A2 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		A36814F91CF78DFA00CEC6A2 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		A3E05A2B1D0429D100ADC6F5 /* AccordionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccordionView.h; path = "../../../Downloads/AccordionView-master/AccordionView.h"; sourceTree = "<group>"; };
+		A3E05A2C1D0429D100ADC6F5 /* AccordionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccordionView.m; path = "../../../Downloads/AccordionView-master/AccordionView.m"; sourceTree = "<group>"; };
 		A3EF5C9A1CFE3057009E296D /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		A3EF5C9C1D008435009E296D /* ActivityVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityVC.swift; sourceTree = "<group>"; };
 		A3EF5CA01D009C98009E296D /* MetricsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricsVC.swift; sourceTree = "<group>"; };
@@ -114,6 +117,8 @@
 				A36814E41CF7872E00CEC6A2 /* LaunchScreen.storyboard */,
 				A36814E71CF7872E00CEC6A2 /* Info.plist */,
 				A36814F31CF78A6D00CEC6A2 /* ViewControllers */,
+				A3E05A291D0429A700ADC6F5 /* Plugins */,
+				A3E05A2E1D042DF300ADC6F5 /* UIComponents */,
 				A36814ED1CF788CD00CEC6A2 /* CBManager */,
 			);
 			path = BrainActivitySwift;
@@ -149,6 +154,31 @@
 				A36814F51CF78C0600CEC6A2 /* CoreBluetooth.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A3E05A291D0429A700ADC6F5 /* Plugins */ = {
+			isa = PBXGroup;
+			children = (
+				A3E05A2A1D0429B500ADC6F5 /* UI */,
+			);
+			name = Plugins;
+			sourceTree = "<group>";
+		};
+		A3E05A2A1D0429B500ADC6F5 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				A3E05A2B1D0429D100ADC6F5 /* AccordionView.h */,
+				A3E05A2C1D0429D100ADC6F5 /* AccordionView.m */,
+			);
+			name = UI;
+			sourceTree = "<group>";
+		};
+		A3E05A2E1D042DF300ADC6F5 /* UIComponents */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = UIComponents;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +254,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3EF5C9B1CFE3057009E296D /* ProfileVC.swift in Sources */,
+				A3E05A2D1D0429D100ADC6F5 /* AccordionView.m in Sources */,
 				A3273B131D02D02400F1F4A6 /* CurrentSessionVC.swift in Sources */,
 				A36814F21CF788F500CEC6A2 /* CBManager.m in Sources */,
 				A3273B0B1D01F43900F1F4A6 /* ActivityCell.swift in Sources */,

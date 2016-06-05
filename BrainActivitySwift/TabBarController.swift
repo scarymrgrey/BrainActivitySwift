@@ -26,7 +26,6 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
     }
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
         itemTag = item.tag
-        
     }
     
     // MARK: - UITabBarControllerDelegate
@@ -40,6 +39,5 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
                 viewController.performSegueWithIdentifier("showCurrentSession", sender: nil)
             }
         }
-       
     }
 }
