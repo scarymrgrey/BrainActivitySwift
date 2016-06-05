@@ -23,6 +23,8 @@
 		A36814F81CF78C1300CEC6A2 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36814F71CF78C1300CEC6A2 /* Accelerate.framework */; };
 		A36814FA1CF78DFA00CEC6A2 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814F91CF78DFA00CEC6A2 /* MainVC.swift */; };
 		A3E05A2D1D0429D100ADC6F5 /* AccordionView.m in Sources */ = {isa = PBXBuildFile; fileRef = A3E05A2C1D0429D100ADC6F5 /* AccordionView.m */; };
+		A3E05A301D04A33100ADC6F5 /* SessionsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E05A2F1D04A33100ADC6F5 /* SessionsContainerView.swift */; };
+		A3E05A321D04B8BA00ADC6F5 /* SessionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E05A311D04B8BA00ADC6F5 /* SessionHeaderView.swift */; };
 		A3EF5C9B1CFE3057009E296D /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5C9A1CFE3057009E296D /* ProfileVC.swift */; };
 		A3EF5C9D1D008435009E296D /* ActivityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5C9C1D008435009E296D /* ActivityVC.swift */; };
 		A3EF5CA11D009C98009E296D /* MetricsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5CA01D009C98009E296D /* MetricsVC.swift */; };
@@ -51,6 +53,8 @@
 		A36814F91CF78DFA00CEC6A2 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		A3E05A2B1D0429D100ADC6F5 /* AccordionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AccordionView.h; path = "../../../Downloads/AccordionView-master/AccordionView.h"; sourceTree = "<group>"; };
 		A3E05A2C1D0429D100ADC6F5 /* AccordionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AccordionView.m; path = "../../../Downloads/AccordionView-master/AccordionView.m"; sourceTree = "<group>"; };
+		A3E05A2F1D04A33100ADC6F5 /* SessionsContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsContainerView.swift; sourceTree = "<group>"; };
+		A3E05A311D04B8BA00ADC6F5 /* SessionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionHeaderView.swift; sourceTree = "<group>"; };
 		A3EF5C9A1CFE3057009E296D /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		A3EF5C9C1D008435009E296D /* ActivityVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityVC.swift; sourceTree = "<group>"; };
 		A3EF5CA01D009C98009E296D /* MetricsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricsVC.swift; sourceTree = "<group>"; };
@@ -176,6 +180,8 @@
 		A3E05A2E1D042DF300ADC6F5 /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				A3E05A311D04B8BA00ADC6F5 /* SessionHeaderView.swift */,
+				A3E05A2F1D04A33100ADC6F5 /* SessionsContainerView.swift */,
 			);
 			name = UIComponents;
 			path = ..;
@@ -263,6 +269,8 @@
 				A3273B061D00B4FD00F1F4A6 /* NewSessionContentVC.swift in Sources */,
 				A36814FA1CF78DFA00CEC6A2 /* MainVC.swift in Sources */,
 				A36814DE1CF7872E00CEC6A2 /* SignInVC.swift in Sources */,
+				A3E05A321D04B8BA00ADC6F5 /* SessionHeaderView.swift in Sources */,
+				A3E05A301D04A33100ADC6F5 /* SessionsContainerView.swift in Sources */,
 				A3273B151D02D2AE00F1F4A6 /* SessionsVC.swift in Sources */,
 				A3EF5C9D1D008435009E296D /* ActivityVC.swift in Sources */,
 				A36814DC1CF7872E00CEC6A2 /* AppDelegate.swift in Sources */,
