@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A31BFC0C1D05E85B0025D878 /* EZConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31BFC0B1D05E85B0025D878 /* EZConstraint.swift */; };
 		A3273B061D00B4FD00F1F4A6 /* NewSessionContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3273B051D00B4FD00F1F4A6 /* NewSessionContentVC.swift */; };
 		A3273B081D00BF3300F1F4A6 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3273B071D00BF3300F1F4A6 /* TabBarController.swift */; };
 		A3273B0B1D01F43900F1F4A6 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3273B0A1D01F43900F1F4A6 /* ActivityCell.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A31BFC0B1D05E85B0025D878 /* EZConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZConstraint.swift; sourceTree = "<group>"; };
 		A3273B051D00B4FD00F1F4A6 /* NewSessionContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewSessionContentVC.swift; sourceTree = "<group>"; };
 		A3273B071D00BF3300F1F4A6 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		A3273B0A1D01F43900F1F4A6 /* ActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
@@ -73,6 +75,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A31BFC0A1D05E8300025D878 /* HelpersAndExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				A31BFC0B1D05E85B0025D878 /* EZConstraint.swift */,
+			);
+			name = HelpersAndExtensions;
+			sourceTree = "<group>";
+		};
 		A3273B091D00C04F00F1F4A6 /* NewSession */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +130,7 @@
 				A36814E21CF7872E00CEC6A2 /* Assets.xcassets */,
 				A36814E41CF7872E00CEC6A2 /* LaunchScreen.storyboard */,
 				A36814E71CF7872E00CEC6A2 /* Info.plist */,
+				A31BFC0A1D05E8300025D878 /* HelpersAndExtensions */,
 				A36814F31CF78A6D00CEC6A2 /* ViewControllers */,
 				A3E05A291D0429A700ADC6F5 /* Plugins */,
 				A3E05A2E1D042DF300ADC6F5 /* UIComponents */,
@@ -263,6 +274,7 @@
 				A3E05A2D1D0429D100ADC6F5 /* AccordionView.m in Sources */,
 				A3273B131D02D02400F1F4A6 /* CurrentSessionVC.swift in Sources */,
 				A36814F21CF788F500CEC6A2 /* CBManager.m in Sources */,
+				A31BFC0C1D05E85B0025D878 /* EZConstraint.swift in Sources */,
 				A3273B0B1D01F43900F1F4A6 /* ActivityCell.swift in Sources */,
 				A3EF5CA11D009C98009E296D /* MetricsVC.swift in Sources */,
 				A3273B081D00BF3300F1F4A6 /* TabBarController.swift in Sources */,

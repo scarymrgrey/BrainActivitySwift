@@ -10,29 +10,40 @@ import UIKit
 
 class SessionsContainerView: UIView {
     var resultsButton : UIView!
+    var upperContainer : UIView!
     var collectionView : UICollectionView!
-    var clockImage : UIImage!
-    var clockTimeLabel : UILabel!
-    var resultLabel : UILabel!
+    var clockImageView = UIImageView(image: UIImage(named: "clock-128"))
+    var clockTimeLabel  = UILabel()
+    var resultLabel  = UILabel()
     override func updateConstraints() {
         super.updateConstraints()
-//        addConstraint(NSLayoutConstraint(item: self, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 50.0))
-//        addConstraint(NSLayoutConstraint(item: self, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 200.0))
-//        
-//        addConstraint(NSLayoutConstraint(item: view, attribute: .Top, relatedBy: .Equal, toItem: self, attribute: .Top, multiplier: 1.0, constant: 0.0))
-//        addConstraint(NSLayoutConstraint(item: view, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: 0.0))
-//        addConstraint(NSLayoutConstraint(item: view, attribute: .Trailing, relatedBy: .Equal, toItem: self, attribute: .Trailing, multiplier: 1.0, constant: 0.0))
-//        addConstraint(NSLayoutConstraint(item: view, attribute: .Leading, relatedBy: .Equal, toItem: self, attr
+        //upperContainer.translatesAutoresizingMaskIntoConstraints = false
+        clockImageView.translatesAutoresizingMaskIntoConstraints = false
+        clockTimeLabel.translatesAutoresizingMaskIntoConstraints = false
+        //clock image
+        self.addConstraint(NSLayoutConstraint(item: clockImageView, attribute: .CenterY, relatedBy: .Equal, toItem: upperContainer, attribute: .CenterY, multiplier: 1.0, constant: 0.0))
+        self.addConstraint(NSLayoutConstraint(item: clockImageView, attribute: .LeadingMargin, relatedBy: .Equal, toItem: upperContainer, attribute: .LeadingMargin, multiplier: 1.0, constant: 0.0))
+        self.addConstraint(NSLayoutConstraint(item: clockImageView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 30))
+        self.addConstraint(NSLayoutConstraint(item: clockImageView, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 30))
+        
+        self.Constraints(forTarget: clockTimeLabel).Related(to: clockImageView).CenterY(0).AddComplex(from: .Leading, to: .Trailing, value: 10).Height(20)
+        
     }
-    init() {
+    init(containerWidth : CGFloat) {
         super.init(frame: CGRectMake(0, 0, 0, 100))
+        //section
         self.backgroundColor = UIColor.whiteColor()
         self.layer.borderWidth = 2
         self.layer.borderColor = UIColor.grayColor().CGColor
-        resultLabel = UILabel(frame: CGRectMake(0,0,50,25))
-        resultLabel.text = "hello"
-        resultLabel.textColor = UIColor.greenColor()
-        self.addSubview(resultLabel)
+        //uppercontainer
+        upperContainer = UIView(frame: CGRectMake(0, 0, containerWidth,30))
+        upperContainer.layer.borderWidth = 1
+        upperContainer.layer.borderColor = UIColor.grayColor().CGColor
+        upperContainer.addSubview(clockImageView)
+        clockTimeLabel.text = "18:34:19"
+        //self.addSubview(resultLabel)
+        self.addSubview(upperContainer)
+        self.addSubview(clockTimeLabel)
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -13,10 +13,10 @@ class SessionsVC : UIViewController {
         super.viewDidLoad()
         let width = self.view.bounds.width
         let height = self.view.bounds.height
-        let accordion = AccordionView(frame: CGRectMake(0,60,width,height))
+        let accordion = AccordionView(frame: CGRectMake(0,70,width,height))
         self.view.addSubview(accordion)
         let header = SessionHeaderView(dateLabel: "Tuesday",moodLabel: "zxczcx")
-        let section = SessionsContainerView()
+        let section = SessionsContainerView(containerWidth: width)
         accordion.addHeader(header, withView: section)
         accordion.setNeedsLayout()
         accordion.allowsMultipleSelection = true
