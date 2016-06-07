@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 class SessionsContainerView: UIView ,UICollectionViewDataSource{
     var resultsButton = UIButton()
     var upperContainer : UIView!
@@ -18,11 +17,11 @@ class SessionsContainerView: UIView ,UICollectionViewDataSource{
     override func updateConstraints() {
         super.updateConstraints()
         //upperContainer.translatesAutoresizingMaskIntoConstraints = false
-        clockImageView.translatesAutoresizingMaskIntoConstraints = false
-        clockTimeLabel.translatesAutoresizingMaskIntoConstraints = false
-        resultsButton.translatesAutoresizingMaskIntoConstraints = false
-        resultLabel.translatesAutoresizingMaskIntoConstraints = false
-        activityCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        for item in [clockImageView,clockTimeLabel,
+                     resultsButton,resultLabel,
+                     activityCollectionView]{
+            item.translatesAutoresizingMaskIntoConstraints = false
+        }
         //clock image
         self.addConstraint(NSLayoutConstraint(item: clockImageView, attribute: .CenterY, relatedBy: .Equal, toItem: upperContainer, attribute: .CenterY, multiplier: 1.0, constant: 0.0))
         self.addConstraint(NSLayoutConstraint(item: clockImageView, attribute: .LeadingMargin, relatedBy: .Equal, toItem: upperContainer, attribute: .LeadingMargin, multiplier: 1.0, constant: 0.0))
@@ -49,11 +48,10 @@ class SessionsContainerView: UIView ,UICollectionViewDataSource{
 
         clockTimeLabel.text = "18:34:19"
         resultsButton.setImage(UIImage(named: "diagram-icon"), forState: .Normal)
+        //resultsButton.addTarget(self, action: self.ResultsButtonAction, forControlEvents: UIControlEvents.TouchUpInside)
         resultLabel.text = "results"
         
-        upperContainer.addSubview(clockImageView)
-        upperContainer.addSubview(resultsButton)
-        upperContainer.addSubview(resultLabel)
+        upperContainer.addSubViews([clockImageView,resultsButton,resultLabel])
         //bottomcontainer
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 5, left: 5, bottom: 5, right: 5)
@@ -63,16 +61,14 @@ class SessionsContainerView: UIView ,UICollectionViewDataSource{
         activityCollectionView.dataSource = self
         activityCollectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "reusableCellId")
         activityCollectionView.backgroundColor = UIColor.whiteColor()
-        self.addSubview(upperContainer)
-        self.addSubview(clockTimeLabel)
-        self.addSubview(activityCollectionView)
+        self.addSubViews([upperContainer,clockTimeLabel,activityCollectionView])
+  
         
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     // MARK: - Collection View
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 3

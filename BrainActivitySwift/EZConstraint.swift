@@ -63,5 +63,10 @@ extension UIView {
         container.targetItem = target
         return container
     }
+    func addSubViews(items : [UIView])  {
+        for item in items{
+            item.addSubview(item)
+        }
+    }
 }
 
