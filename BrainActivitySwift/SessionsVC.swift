@@ -9,7 +9,7 @@
 import UIKit
 
 class SessionsVC : UIViewController {
-    @IBOutlet weak var Scroll: UIScrollView!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         addAccordionSections()
@@ -20,7 +20,7 @@ class SessionsVC : UIViewController {
         let width = self.view.bounds.width
         let height = self.view.bounds.height
         let accordion = AccordionView(frame: CGRectMake(0,70,width,height))
-        Scroll.addSubview(accordion)
+        view.addSubview(accordion)
         for day in ["Tuesday","Wednesday","Sunday","Tuesday","Wednesday","Sunday","Tuesday","Wednesday","Sunday","Tuesday","Wednesday","Sunday","Tuesday","Wednesday","Sunday","Tuesday","Wednesday","Sunday"]{
             let header = SessionHeaderView(dateLabel: day,moodLabel: day)
             let section = SessionsContainerView(containerWidth: width)

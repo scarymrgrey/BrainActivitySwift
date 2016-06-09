@@ -524,45 +524,9 @@
                     <view key="view" contentMode="scaleToFill" id="mba-fB-hzk">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YaA-J6-xyB">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                            </scrollView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="YaA-J6-xyB" firstAttribute="leading" secondItem="mba-fB-hzk" secondAttribute="leading" id="AvF-rU-I5t"/>
-                            <constraint firstItem="b4F-O8-1jh" firstAttribute="top" secondItem="YaA-J6-xyB" secondAttribute="bottom" id="JWF-Ya-Kid"/>
-                            <constraint firstItem="YaA-J6-xyB" firstAttribute="top" secondItem="624-PZ-t77" secondAttribute="bottom" id="Qcv-8a-Xnm"/>
-                            <constraint firstAttribute="trailing" secondItem="YaA-J6-xyB" secondAttribute="trailing" id="gVS-F0-tBj"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="YaA-J6-xyB"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="AvF-rU-I5t"/>
-                                <exclude reference="Qcv-8a-Xnm"/>
-                                <exclude reference="gVS-F0-tBj"/>
-                                <exclude reference="JWF-Ya-Kid"/>
-                            </mask>
-                        </variation>
-                        <variation key="heightClass=regular-widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="YaA-J6-xyB"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="AvF-rU-I5t"/>
-                                <include reference="Qcv-8a-Xnm"/>
-                                <include reference="gVS-F0-tBj"/>
-                                <include reference="JWF-Ya-Kid"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="QXn-wV-nXS"/>
-                    <connections>
-                        <outlet property="Scroll" destination="YaA-J6-xyB" id="sGB-Yu-uXN"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7YH-gp-DUY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
