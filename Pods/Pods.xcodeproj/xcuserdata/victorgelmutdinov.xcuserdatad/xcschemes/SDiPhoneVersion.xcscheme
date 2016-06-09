@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'DABD24B720BAF6E7ED33D515'
+               BlueprintIdentifier = 'CC46AA658F48CC047ADA432B'
                BlueprintName = 'SDiPhoneVersion'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libSDiPhoneVersion.a'>

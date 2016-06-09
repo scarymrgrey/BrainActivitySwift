@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '8C23885A76B6B75D8DE28DDA'
+               BlueprintIdentifier = 'E69141F7B883002C10201FCC'
                BlueprintName = 'Pods-BrainActivitySwift'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libPods-BrainActivitySwift.a'>
