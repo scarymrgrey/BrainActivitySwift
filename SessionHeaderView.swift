@@ -15,7 +15,7 @@ class SessionHeaderView: UIView {
     var moodLabel : UILabel!
     override func updateConstraints() {
         super.updateConstraints()
-        //self.translatesAutoresizingMaskIntoConstraints = false
+
         trashButton.translatesAutoresizingMaskIntoConstraints = false
         image.translatesAutoresizingMaskIntoConstraints = false
         moodLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -34,17 +34,14 @@ class SessionHeaderView: UIView {
     init(dateText : String,moodText : String,frame : CGRect){
         super.init(frame: frame)
         backgroundColor = UIColor.whiteColor()
-        layer.borderWidth = 2
-        layer.borderColor = UIColor.grayColor().CGColor
-        //self.setTitle(dateLabel, forState: .Normal)
-        // self.setTitleColor(UIColor.blackColor(), forState: .Normal)
         trashButton.setImage(UIImage(named: "icontrash"), forState: .Normal)
         moodLabel = UILabel(frame: frame)
 
         moodLabel.text = moodText
         image = UIImageView(image: pic)
-        image.frame.size = CGSize(width: 40,height: 40)
+
         self.addSubViews([trashButton,moodLabel,image])
+        self.updateConstraints()
         
     }
     

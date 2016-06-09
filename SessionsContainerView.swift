@@ -34,21 +34,19 @@ class SessionsContainerView: UIView ,UICollectionViewDataSource{
         self.Constraints(forTarget: activityCollectionView).Related(to: self).Trailing(0).Leading(0).Bottom(0)
         self.Constraints(forTarget: activityCollectionView).Related(to: upperContainer).AddComplex(from: .Top, to: .Bottom, value: 0)
     }
-    init(containerWidth : CGFloat) {
-        let sectionHeight : CGFloat = 100.0
-        super.init(frame: CGRectMake(0, 0, 0, sectionHeight))
+    init(containerFrame : CGRect) {
+        super.init(frame: containerFrame)
+        let sectionHeight = containerFrame.height
         //section
         self.backgroundColor = UIColor.whiteColor()
-        self.layer.borderWidth = 2
+        self.layer.borderWidth = 1
         self.layer.borderColor = UIColor.grayColor().CGColor
         //uppercontainer
-        upperContainer = UIView(frame: CGRectMake(0, 0, containerWidth,30))
-        upperContainer.layer.borderWidth = 1
-        upperContainer.layer.borderColor = UIColor.grayColor().CGColor
+        upperContainer = UIView(frame: CGRectMake(0, 0, containerFrame.width,containerFrame.height/3))
 
         clockTimeLabel.text = "18:34:19"
         resultsButton.setImage(UIImage(named: "diagram-icon"), forState: .Normal)
-        //resultsButton.addTarget(self, action: self.ResultsButtonAction, forControlEvents: UIControlEvents.TouchUpInside)
+
         resultLabel.text = "results"
         
         upperContainer.addSubViews([clockImageView,resultsButton,resultLabel])
@@ -62,8 +60,7 @@ class SessionsContainerView: UIView ,UICollectionViewDataSource{
         activityCollectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: "reusableCellId")
         activityCollectionView.backgroundColor = UIColor.whiteColor()
         self.addSubViews([upperContainer,clockTimeLabel,activityCollectionView])
-  
-        
+        updateConstraints()
     }
     
     required init?(coder aDecoder: NSCoder) {
