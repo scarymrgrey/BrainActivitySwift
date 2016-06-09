@@ -65,7 +65,7 @@ extension UIView {
     }
     func addSubViews(items : [UIView])  {
         for item in items{
-            item.addSubview(item)
+            self.addSubview(item)
         }
     }
 }

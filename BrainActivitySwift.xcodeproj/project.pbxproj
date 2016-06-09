@@ -84,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				A31BFC0B1D05E85B0025D878 /* EZConstraint.swift */,
+				A36814E71CF7872E00CEC6A2 /* Info.plist */,
 			);
 			name = HelpersAndExtensions;
 			sourceTree = "<group>";
@@ -135,7 +136,6 @@
 				A36814DF1CF7872E00CEC6A2 /* Main.storyboard */,
 				A36814E21CF7872E00CEC6A2 /* Assets.xcassets */,
 				A36814E41CF7872E00CEC6A2 /* LaunchScreen.storyboard */,
-				A36814E71CF7872E00CEC6A2 /* Info.plist */,
 				A31BFC0A1D05E8300025D878 /* HelpersAndExtensions */,
 				A36814F31CF78A6D00CEC6A2 /* ViewControllers */,
 				A3E05A291D0429A700ADC6F5 /* Plugins */,
