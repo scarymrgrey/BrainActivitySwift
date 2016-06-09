@@ -8,41 +8,44 @@
 
 import UIKit
 
-class SessionHeaderView: UIButton {
+class SessionHeaderView: UIView {
     private let trashButton = UIButton()
     let pic = UIImage(named: "unnamed")!
     internal var image : UIImageView!
+    var moodLabel : UILabel!
     override func updateConstraints() {
         super.updateConstraints()
+        //self.translatesAutoresizingMaskIntoConstraints = false
         trashButton.translatesAutoresizingMaskIntoConstraints = false
         image.translatesAutoresizingMaskIntoConstraints = false
+        moodLabel.translatesAutoresizingMaskIntoConstraints = false
         
         //trash button
-
         self.addConstraint(NSLayoutConstraint(item: trashButton, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0))
         self.addConstraint(NSLayoutConstraint(item: trashButton, attribute: .TrailingMargin, relatedBy: .Equal, toItem: self, attribute: .TrailingMargin, multiplier: 1.0, constant: 0.0))
-        self.addConstraint(NSLayoutConstraint(item: trashButton, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 40))
-        self.addConstraint(NSLayoutConstraint(item: trashButton, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 40))
+        self.addConstraint(NSLayoutConstraint(item: trashButton, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: self.frame.height))
+        self.addConstraint(NSLayoutConstraint(item: trashButton, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: self.frame.height))
+        
         //image
+        Constraints(forTarget: image).CenterY(0).Height(self.frame.height).Width(self.frame.height).Leading(0)
         
-        self.addConstraint(NSLayoutConstraint(item: image, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0))
-        self.addConstraint(NSLayoutConstraint(item: image, attribute: .LeadingMargin, relatedBy: .Equal, toItem: self, attribute: .LeadingMargin, multiplier: 1.0, constant: 0.0))
-        self.addConstraint(NSLayoutConstraint(item: image, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 40))
-        self.addConstraint(NSLayoutConstraint(item: image, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: 40))
+        Constraints(forTarget: moodLabel).CenterY(0).CenterX(0).Height(40).Width(100)
     }
-    init(dateLabel : String,moodLabel : String){
-        super.init(frame: CGRectMake(0, 0, 50,50))
-        self.backgroundColor = UIColor.whiteColor()
-        self.layer.borderWidth = 2
-        self.layer.borderColor = UIColor.grayColor().CGColor
-        self.setTitle(dateLabel, forState: .Normal)
-        self.setTitleColor(UIColor.blackColor(), forState: .Normal)
+    init(dateText : String,moodText : String,frame : CGRect){
+        super.init(frame: frame)
+        backgroundColor = UIColor.whiteColor()
+        layer.borderWidth = 2
+        layer.borderColor = UIColor.grayColor().CGColor
+        //self.setTitle(dateLabel, forState: .Normal)
+        // self.setTitleColor(UIColor.blackColor(), forState: .Normal)
         trashButton.setImage(UIImage(named: "icontrash"), forState: .Normal)
-        self.addSubview(trashButton)
-        
-        image = UIImageView(image: pic)
-        self.addSubview(image)
+        moodLabel = UILabel(frame: frame)
 
+        moodLabel.text = moodText
+        image = UIImageView(image: pic)
+        image.frame.size = CGSize(width: 40,height: 40)
+        self.addSubViews([trashButton,moodLabel,image])
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
