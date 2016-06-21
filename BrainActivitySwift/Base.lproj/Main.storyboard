@@ -200,12 +200,21 @@
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="liN-v1-M7B">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <connections>
+                                    <action selector="activityButtonAction:" destination="Nyp-4h-SKb" eventType="touchUpInside" id="iwv-se-LSq"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0c-nY-vum">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <connections>
+                                    <action selector="metricsButtonAction:" destination="Nyp-4h-SKb" eventType="touchUpInside" id="Cfn-m8-gWS"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zbV-Jo-QTe">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <connections>
+                                    <action selector="moodButtonAction:" destination="Nyp-4h-SKb" eventType="touchUpInside" id="96k-4w-Pzu"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -264,7 +273,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="New Session" id="j4l-fV-T7C"/>
                     <connections>
-                        <outlet property="pageContainer" destination="wrL-BQ-xpQ" id="ooF-UA-9Ao"/>
+                        <outlet property="Container" destination="wrL-BQ-xpQ" id="rbG-V5-h4J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h80-o1-yfu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -471,10 +480,10 @@
                                 <exclude reference="jii-NI-uHS"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="v8p-h8-Q8L"/>
                                 <exclude reference="HiH-Yc-64a"/>
                                 <exclude reference="prR-76-sC0"/>
                                 <exclude reference="oQZ-nn-ofo"/>
-                                <exclude reference="v8p-h8-Q8L"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -483,10 +492,10 @@
                                 <include reference="jii-NI-uHS"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="v8p-h8-Q8L"/>
                                 <include reference="HiH-Yc-64a"/>
                                 <include reference="prR-76-sC0"/>
                                 <include reference="oQZ-nn-ofo"/>
-                                <include reference="v8p-h8-Q8L"/>
                             </mask>
                         </variation>
                     </view>
@@ -496,22 +505,149 @@
             </objects>
             <point key="canvasLocation" x="2919" y="3051.75"/>
         </scene>
-        <!--View Controller-->
+        <!--PlotsVC-->
         <scene sceneID="beT-cE-Rj3">
             <objects>
-                <viewController id="gvy-6Q-XxH" sceneMemberID="viewController">
+                <viewController id="gvy-6Q-XxH" customClass="PlotsVC" customModule="BrainActivitySwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="REv-VL-KiL"/>
                         <viewControllerLayoutGuide type="bottom" id="MR4-yR-yiK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="wxa-Ja-eBI">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PJU-Vc-Mcy">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="E3D-sI-FlS">
+                                <rect key="frame" x="-60" y="-14" width="121" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="Ke2-qM-yKk"/>
+                                    <constraint firstAttribute="width" constant="224" id="fUk-ZJ-x0a"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="Raw"/>
+                                    <segment title="Spectrum"/>
+                                    <segment title="Indicators"/>
+                                </segments>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Ke2-qM-yKk"/>
+                                        <exclude reference="fUk-ZJ-x0a"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Ke2-qM-yKk"/>
+                                        <include reference="fUk-ZJ-x0a"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="segmentControlValueChanged:" destination="gvy-6Q-XxH" eventType="valueChanged" id="sHT-Wz-MVW"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MR4-yR-yiK" firstAttribute="top" secondItem="PJU-Vc-Mcy" secondAttribute="bottom" id="4e5-m6-qzh"/>
+                            <constraint firstAttribute="trailing" secondItem="PJU-Vc-Mcy" secondAttribute="trailing" id="6S9-i2-Tli"/>
+                            <constraint firstItem="E3D-sI-FlS" firstAttribute="centerX" secondItem="wxa-Ja-eBI" secondAttribute="centerX" id="gA5-td-dO2"/>
+                            <constraint firstItem="PJU-Vc-Mcy" firstAttribute="leading" secondItem="wxa-Ja-eBI" secondAttribute="leading" id="hYc-68-Rzd"/>
+                            <constraint firstItem="E3D-sI-FlS" firstAttribute="top" secondItem="REv-VL-KiL" secondAttribute="bottom" id="loV-Au-a8O"/>
+                            <constraint firstItem="PJU-Vc-Mcy" firstAttribute="top" secondItem="E3D-sI-FlS" secondAttribute="bottom" constant="20" id="wKt-Ch-ah4"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="PJU-Vc-Mcy"/>
+                                <exclude reference="E3D-sI-FlS"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="4e5-m6-qzh"/>
+                                <exclude reference="gA5-td-dO2"/>
+                                <exclude reference="loV-Au-a8O"/>
+                                <exclude reference="6S9-i2-Tli"/>
+                                <exclude reference="hYc-68-Rzd"/>
+                                <exclude reference="wKt-Ch-ah4"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="PJU-Vc-Mcy"/>
+                                <include reference="E3D-sI-FlS"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="4e5-m6-qzh"/>
+                                <include reference="gA5-td-dO2"/>
+                                <include reference="loV-Au-a8O"/>
+                                <include reference="6S9-i2-Tli"/>
+                                <include reference="hYc-68-Rzd"/>
+                                <include reference="wKt-Ch-ah4"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="Container" destination="PJU-Vc-Mcy" id="mHU-p0-mPD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WYq-bk-OCD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3700.5" y="3051.75"/>
+        </scene>
+        <!--RawVC-->
+        <scene sceneID="1ft-Yd-cOr">
+            <objects>
+                <viewController storyboardIdentifier="RawVCId" id="dGR-2b-eSR" customClass="RawVC" customModule="BrainActivitySwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kzu-N5-wdK"/>
+                        <viewControllerLayoutGuide type="bottom" id="Qgi-GQ-AvH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XJw-xh-fpl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.13725490200000001" green="0.56862745100000001" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="529-Lg-yuf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4468.5" y="3051.75"/>
+        </scene>
+        <!--SpectrumVC-->
+        <scene sceneID="p0H-Em-HUF">
+            <objects>
+                <viewController storyboardIdentifier="SpectrumVCId" id="WQg-iy-e0L" customClass="SpectrumVC" customModule="BrainActivitySwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vIJ-RW-8Fv"/>
+                        <viewControllerLayoutGuide type="bottom" id="BY0-Is-dhw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="IBM-8O-SLR">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.99829119443893433" green="0.1190621629357338" blue="0.0020824775565415621" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fdw-5t-1A3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5191.5" y="3051.75"/>
+        </scene>
+        <!--IndicatorsVC-->
+        <scene sceneID="VDi-LP-TPD">
+            <objects>
+                <viewController storyboardIdentifier="IndicatorsVCId" id="jhG-eI-pTu" customClass="IndicatorsVC" customModule="BrainActivitySwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gNR-We-C9c"/>
+                        <viewControllerLayoutGuide type="bottom" id="gyX-Ry-jP7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OQJ-Ly-hao">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.41348075866699219" green="0.91012901067733765" blue="0.58851367235183716" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sin-oz-ldG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5905.5" y="3051.75"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="9pV-nh-fIt">
