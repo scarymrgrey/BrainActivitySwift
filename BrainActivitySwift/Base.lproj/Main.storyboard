@@ -429,10 +429,10 @@
             </objects>
             <point key="canvasLocation" x="3700.5" y="2356.5"/>
         </scene>
-        <!--View Controller-->
+        <!--MainVC-->
         <scene sceneID="S9Q-iS-ZqO">
             <objects>
-                <viewController id="HSP-LA-G5L" sceneMemberID="viewController">
+                <viewController id="HSP-LA-G5L" customClass="MainVC" customModule="BrainActivitySwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ehd-9Q-afK"/>
                         <viewControllerLayoutGuide type="bottom" id="VZ1-w0-g6J"/>
@@ -440,13 +440,78 @@
                     <view key="view" contentMode="scaleToFill" id="k5a-3h-uf4">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qrS-2d-jYh">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Show plot with data"/>
+                                <connections>
+                                    <segue destination="gvy-6Q-XxH" kind="show" identifier="ShowPlotSegue" id="csv-B1-LmE"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jii-NI-uHS">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" title="Start Test"/>
+                                <connections>
+                                    <action selector="startTestAction:" destination="HSP-LA-G5L" eventType="touchUpInside" id="6Yh-aG-4TE"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jii-NI-uHS" firstAttribute="centerX" secondItem="k5a-3h-uf4" secondAttribute="centerX" id="HiH-Yc-64a"/>
+                            <constraint firstItem="qrS-2d-jYh" firstAttribute="centerX" secondItem="k5a-3h-uf4" secondAttribute="centerX" id="oQZ-nn-ofo"/>
+                            <constraint firstItem="jii-NI-uHS" firstAttribute="top" secondItem="ehd-9Q-afK" secondAttribute="bottom" constant="130" id="prR-76-sC0"/>
+                            <constraint firstItem="VZ1-w0-g6J" firstAttribute="top" secondItem="qrS-2d-jYh" secondAttribute="bottom" constant="100" id="v8p-h8-Q8L">
+                                <variation key="heightClass=regular-widthClass=compact" constant="78"/>
+                            </constraint>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="qrS-2d-jYh"/>
+                                <exclude reference="jii-NI-uHS"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="HiH-Yc-64a"/>
+                                <exclude reference="prR-76-sC0"/>
+                                <exclude reference="oQZ-nn-ofo"/>
+                                <exclude reference="v8p-h8-Q8L"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="qrS-2d-jYh"/>
+                                <include reference="jii-NI-uHS"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="HiH-Yc-64a"/>
+                                <include reference="prR-76-sC0"/>
+                                <include reference="oQZ-nn-ofo"/>
+                                <include reference="v8p-h8-Q8L"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" tag="4" systemItem="more" id="MZk-2M-SLK"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FHl-bk-cUf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2919" y="3051.75"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="beT-cE-Rj3">
+            <objects>
+                <viewController id="gvy-6Q-XxH" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="REv-VL-KiL"/>
+                        <viewControllerLayoutGuide type="bottom" id="MR4-yR-yiK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wxa-Ja-eBI">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WYq-bk-OCD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3700.5" y="3051.75"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="9pV-nh-fIt">
@@ -518,12 +583,15 @@
             <objects>
                 <tableViewController id="Os3-gE-TZh" customClass="SessionsVC" customModule="BrainActivitySwift" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="Qsg-Tz-nBN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="ogB-OR-jzM">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ogB-OR-jzM" id="36g-p4-VkP">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
