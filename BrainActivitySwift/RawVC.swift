@@ -19,14 +19,18 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     
     var data : [NSMutableArray]!
     var dataFFT : [NSMutableArray]!
-    var plot : [UIView : CPTXYGraph]!
+    var graphDict : [UIView : CPTXYGraph]!
+    var graphIndexDict : [CPTXYGraph : Int]!
     var currentRange : Int!
     var scopeRaw : Int!
     var currentView : Int!
+    var viewIndexes = [UIView:Int]()
+    
     // MARK: VC LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewIndexes = [View1:0 , View2:1 , View3:2,View4:3]
         data = [NSMutableArray](count: 4, repeatedValue: NSMutableArray())
         dataFFT = [NSMutableArray](count: 4, repeatedValue: NSMutableArray())
     }
@@ -72,7 +76,7 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         }
         if currentView == 2 {
             checkAndRemovePlotsViews()
-  
+            
             
             self.create3CorePlot(View1, withColor: UIColor.darkGrayColor())
             self.create3CorePlot(View2, withColor: UIColor.darkGrayColor())
@@ -82,15 +86,15 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         if currentView == 3 {
             checkAndRemovePlotsViews()
         }
-
+        
     }
     func create3CorePlot(view2addGraph : UIView,withColor color: UIColor){
         // Create graph from theme
         let newGraph = CPTXYGraph(frame:CGRectZero)
         let theme      = CPTTheme(named:kCPTPlainWhiteTheme)
         newGraph.applyTheme(theme)
-        plot[view2addGraph] = newGraph
-        
+        graphDict[view2addGraph] = newGraph
+        graphIndexDict[graphDict[view2addGraph]!] = viewIndexes[view2addGraph]
         let hostingView = view2addGraph as! CPTGraphHostingView;
         hostingView.collapsesLayers = false // Setting to YES reduces GPU memory usage, but can slow drawing/scrolling
         hostingView.hostedGraph     = newGraph;
@@ -128,44 +132,23 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         y.labelTextStyle = textStyle
         y.labelFormatter = axisFormatter
         
-        
-        
         // Create a blue plot area
-        let boundLinePlot  = CPTScatterPlot()
-        let lineStyle = CPTMutableLineStyle(style: CPTLineStyle())
-        lineStyle.miterLimit        = 1.0
-        lineStyle.lineWidth         = 2.0
-        lineStyle.lineColor         = CPTColor(CGColor:UIColor.greenColor().CGColor)
-        boundLinePlot.dataLineStyle = lineStyle
-        boundLinePlot.identifier    = "Blue Plot"
-        boundLinePlot.dataSource    = self
-        boundLinePlot.delegate = self
-        newGraph.addPlot(boundLinePlot)
+        let textColorsDict = ["Blue Plot":UIColor.greenColor().CGColor,
+                              "Yellow Plot":UIColor.orangeColor().CGColor,
+                              "Grey Plot":UIColor.darkGrayColor().CGColor]
         
-        
-        // Create a yellow plot area
-        let boundLinePlot2  = CPTScatterPlot()
-        let lineStyle2 = CPTMutableLineStyle(style: lineStyle)
-        lineStyle2.miterLimit        = 1.0;
-        lineStyle2.lineWidth         = 2.0;
-        lineStyle2.lineColor         = CPTColor(CGColor:UIColor.orangeColor().CGColor)
-        boundLinePlot2.dataLineStyle = lineStyle2;
-        boundLinePlot2.identifier    = "Yellow Plot";
-        boundLinePlot2.delegate = self
-        boundLinePlot2.dataSource    = self
-        newGraph.addPlot(boundLinePlot2)
-        
-        // Create a grey plot area
-        let boundLinePlot3  = CPTScatterPlot()
-        let lineStyle3 = CPTMutableLineStyle(style: lineStyle)
-        lineStyle3.miterLimit        = 1.0
-        lineStyle3.lineWidth         = 2.0
-        lineStyle3.lineColor         = CPTColor(CGColor:UIColor.darkGrayColor().CGColor)
-        boundLinePlot3.dataLineStyle = lineStyle3
-        boundLinePlot3.identifier    = "Grey Plot"
-        boundLinePlot3.dataSource    = self
-        boundLinePlot3.delegate = self
-        newGraph.addPlot(boundLinePlot3)
+        for key in textColorsDict.keys {
+            let boundLinePlot  = CPTScatterPlot()
+            let lineStyle = CPTMutableLineStyle(style: CPTLineStyle())
+            lineStyle.miterLimit        = 1.0
+            lineStyle.lineWidth         = 2.0
+            lineStyle.lineColor         = CPTColor(CGColor:textColorsDict[key]!)
+            boundLinePlot.dataLineStyle = lineStyle
+            boundLinePlot.identifier    = key
+            boundLinePlot.delegate = self
+            boundLinePlot.dataSource    = self
+            newGraph.addPlot(boundLinePlot)
+        }
         
         newGraph.plotAreaFrame!.borderLineStyle = nil
         
@@ -179,8 +162,8 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         let newGraph = CPTXYGraph(frame: CGRectZero)
         let theme = CPTTheme(named: kCPTPlainWhiteTheme)
         newGraph.applyTheme(theme)
-        plot[view2addGraph] = newGraph
-        
+        graphDict[view2addGraph] = newGraph
+        graphIndexDict[graphDict[view2addGraph]!] = viewIndexes[view2addGraph]
         let hostingView = view2addGraph as! CPTGraphHostingView
         hostingView.collapsesLayers = false // Setting to true reduces GPU memory usage,but can slow drawing/scrolling hostingView.hostedGraph = newGraph
         // Setup plot space
@@ -215,5 +198,59 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         newGraph.paddingTop = 0.0
         newGraph.paddingRight = 0.0
         newGraph.paddingBottom = 0.0
+    }
+    
+    
+    // MARK: Plot Data Source Methods
+    
+    func numberOfRecordsForPlot(plot : CPTPlot) -> UInt{
+        if self.currentView == 2 {
+            return UInt(dataFFT[0].count)
+        }
+        if currentView == 1 {
+            return UInt(data[0].count)
+        }
+        return 0
+        
+    }
+    func numberForPlot(plot: CPTPlot, field fieldEnum: UInt, recordIndex idx: UInt) -> AnyObject? {
+        
+        let k = plot.graph as! CPTXYGraph
+        let indexForData = graphIndexDict[k]
+        let isX = fieldEnum == UInt(CPTScatterPlotField.X.rawValue)
+        let key = isX ? "index" : "data"
+        if currentView == 1 {
+            
+            let num = data[indexForData!][Int(idx)][key]
+            return num
+        }
+        if currentView == 2 {
+            let data = dataFFT[indexForData!][Int(idx)][key]!
+            if plot.identifier!.isEqual("Blue Plot") {
+                
+                if key == "data" && data!["signal"] != nil {
+                    return 0
+                }
+                let num = isX ? data : data!["data1"]
+                return num
+            }
+            if plot.identifier!.isEqual("Yellow Plot") {
+                
+                if key == "data" && data!["signal"] != nil {
+                    return 0
+                }
+                let num = isX ? data : data!["data2"]
+                return num
+            }
+            if plot.identifier!.isEqual("Grey Plot") {
+                
+                if key == "data" && data!["signal"] != nil {
+                    return 0
+                }
+                let num = isX ? data : data!["data3"]
+                return num
+            }
+        }
+        return NSNumber(double: 0.0)
     }
 }
