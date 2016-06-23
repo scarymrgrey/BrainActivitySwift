@@ -24,39 +24,54 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     var currentRange : Int!
     var scopeRaw : Int!
     var currentView : Int!
+    var currentIndex : Int!
     var viewIndexes = [UIView:Int]()
-    
+    var  plotH : NSLayoutConstraint!
+    var limit : Int = 100
     // MARK: VC LifeCycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if (SDiPhoneVersion.deviceVersion() == .iPhone6 || SDiPhoneVersion.deviceVersion() == .iPhone6Plus){
+            limit = 8;
+        }
         viewIndexes = [View1:0 , View2:1 , View3:2,View4:3]
         data = [NSMutableArray](count: 4, repeatedValue: NSMutableArray())
         dataFFT = [NSMutableArray](count: 4, repeatedValue: NSMutableArray())
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.plotH.constant = (UIScreen.mainScreen().bounds.size.height-160)/4
+        self.view.layoutSubviews()
+    }
+    
     // MARK: Plot Helpers
-    func reloadPlots() -> Bool {
-        if self.view.viewWithTag(101) != nil
-        {
+    
+    func checkAndRemovePlotsViews() -> Bool {
+        if self.view.viewWithTag(101) != nil{
             for i in 1...4 {
                 self.view.viewWithTag(100 + i)!.removeFromSuperview()
             }
             return true
-        }else {
-            return false
+        }
+        return false
+    }
+    
+    func addPlots(){
+        for vw in [View1,View2,View3,View4]{
+            self.createCorePlot(vw, color: UIColor.lightGrayColor())
         }
     }
-    func createPlots(){
-        let checkAndRemovePlotsViews : Void -> Bool = {
-            if self.view.viewWithTag(101) != nil {
-                for i in 1...4 {
-                    self.view.viewWithTag(100 + i)!.removeFromSuperview()
-                }
-                return true
-            }
-            return false
+    
+    func add3Plots(){
+        for vw in [View1,View2,View3,View4]{
+            self.create3CorePlot(vw, withColor: UIColor.darkGrayColor())
         }
+    }
+    
+    func createPlots(){
+     
         if currentView == 1 {
             
             for vw in [View1,View2,View3,View4]{
@@ -70,24 +85,18 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
                     viewLine.backgroundColor = UIColor.lightGrayColor()
                     viewLine.tag = 100 + i
                     view.addSubview(viewLine)
-                    
                 }
             }
         }
         if currentView == 2 {
             checkAndRemovePlotsViews()
-            
-            
-            self.create3CorePlot(View1, withColor: UIColor.darkGrayColor())
-            self.create3CorePlot(View2, withColor: UIColor.darkGrayColor())
-            self.create3CorePlot(View3, withColor: UIColor.darkGrayColor())
-            self.create3CorePlot(View4, withColor: UIColor.darkGrayColor())
+            add3Plots()
         }
         if currentView == 3 {
             checkAndRemovePlotsViews()
         }
-        
     }
+    
     func create3CorePlot(view2addGraph : UIView,withColor color: UIColor){
         // Create graph from theme
         let newGraph = CPTXYGraph(frame:CGRectZero)
@@ -115,13 +124,11 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         newGraph.plotAreaFrame?.paddingLeft = 30.0
         
         let y = axisSet.yAxis!
-        
         y.delegate = self
         
         let axisFormatter = NSNumberFormatter()
         axisFormatter.minimumIntegerDigits = 2
         axisFormatter.maximumFractionDigits = 0
-        
         
         let textStyle = CPTMutableTextStyle(style: CPTTextStyle())
         textStyle.fontSize = 12
@@ -151,8 +158,6 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         }
         
         newGraph.plotAreaFrame!.borderLineStyle = nil
-        
-        
         newGraph.paddingLeft = 0.0;
         newGraph.paddingTop = 2.0;
         newGraph.paddingRight = 0.0;
@@ -199,7 +204,41 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         newGraph.paddingRight = 0.0
         newGraph.paddingBottom = 0.0
     }
+    // MARK: Notifications
+    func dataRecieved(notification : NSNotification){
+        let notificationData = notification.userInfo
+        //currentIndex = [data[@"counter"] integerValue];
+        for i in 0...3 {
+
+            data![i].addObject([ "index" : currentIndex , "data" : (notificationData!["ch\(i+1)"] as! String) ])
+            if currentIndex > currentRange {
+                data[i].removeObjectAtIndex(0)
+            }
+        }
+
+        if currentView == 1 {
+            if currentIndex % limit == 0 {
+                if currentIndex > currentRange {
+                    for graph in graphDict.values{
+                        var plotSpaceXRange = graph.defaultPlotSpace!.mutableCopy().xRange.mutableCopy()
+                        var plotSpaceYRange = graph.defaultPlotSpace!.mutableCopy().yRange.mutableCopy()
+                        plotSpaceXRange = CPTPlotRange(location : NSNumber(integer: (currentIndex-currentRange)), length:currentRange)
+                        plotSpaceYRange = CPTPlotRange(location : NSNumber(integer: (-(scopeRaw/2))), length: scopeRaw)
+                        graph.reloadData()
+                    }
+                }
+                
+            }
+        }
+        currentIndex = currentIndex + 1
+    }
     
+    func indiDataReceived(notification : NSNotification){
+        
+    }
+    func fftDataReceived(notification : NSNotification){
+        
+    }
     
     // MARK: Plot Data Source Methods
     
@@ -252,5 +291,45 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
             }
         }
         return NSNumber(double: 0.0)
+    }
+    // MARK: Axis Delegate Methods
+    func axis(axis: CPTAxis, shouldUpdateAxisLabelsAtLocations locations: Set<NSNumber>) -> Bool {
+        var positiveStyle : CPTTextStyle!
+        var negativeStyle : CPTTextStyle!
+        var  positiveOnce : dispatch_once_t = 0
+        var  negativeOnce : dispatch_once_t = 0
+
+        let formatter = axis.labelFormatter
+        let labelOffset = axis.labelOffset
+        let zero = NSDecimalNumber.zero()
+        var newLabels = Set<CPTAxisLabel>()
+        for tickLocation in locations {
+            let theLabelTextStyle : CPTTextStyle
+            if currentView == 2 {
+                if tickLocation.isGreaterThanOrEqualTo(zero) {
+                    dispatch_once(&positiveOnce) {
+                        let newStyle = axis.labelTextStyle!.mutableCopy() as! CPTMutableTextStyle
+                        newStyle.color = CPTColor.lightGrayColor()
+                        positiveStyle = newStyle as CPTTextStyle
+                    }
+                    theLabelTextStyle = positiveStyle
+                } else {
+                    dispatch_once(&negativeOnce, {
+                        let newStyle = axis.labelTextStyle!.mutableCopy() as! CPTMutableTextStyle
+                        newStyle.color = CPTColor.lightGrayColor()
+                        negativeStyle = newStyle as CPTTextStyle
+                    })
+                    theLabelTextStyle = negativeStyle
+                }
+                let labelString = formatter!.stringForObjectValue(tickLocation)
+                let newLabelLayer = CPTTextLayer(text:labelString, style:theLabelTextStyle)
+                let newLabel = CPTAxisLabel(contentLayer : newLabelLayer)
+                newLabel.tickLocation = tickLocation
+                newLabel.offset = labelOffset
+                newLabels.insert(newLabel)
+            }
+        }
+        axis.axisLabels = newLabels
+        return false
     }
 }

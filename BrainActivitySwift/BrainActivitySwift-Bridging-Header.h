@@ -3,3 +3,4 @@
 //
 #import "CBManager.h"
 #import "CorePlot/ios/CorePlot.h"
+#import "SDiPhoneVersion.h"
