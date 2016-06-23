@@ -606,8 +606,141 @@
                     <view key="view" contentMode="scaleToFill" id="XJw-xh-fpl">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.13725490200000001" green="0.56862745100000001" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTD-gK-NA0" customClass="CPTGraphHostingView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="inV-TL-ec2"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="inV-TL-ec2"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="inV-TL-ec2"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aa3-XS-07a" customClass="CPTGraphHostingView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="y5W-8a-7oO"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="y5W-8a-7oO"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="y5W-8a-7oO"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ATb-O4-u0f" customClass="CPTGraphHostingView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="H2s-xv-epQ"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="H2s-xv-epQ"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="H2s-xv-epQ"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3P6-Af-3Jn" customClass="CPTGraphHostingView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="Tyf-WY-eeB"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Tyf-WY-eeB"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Tyf-WY-eeB"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="eTD-gK-NA0" secondAttribute="trailing" id="6oX-rb-jLL"/>
+                            <constraint firstItem="eTD-gK-NA0" firstAttribute="top" secondItem="kzu-N5-wdK" secondAttribute="bottom" id="Brd-xu-7zJ"/>
+                            <constraint firstAttribute="trailing" secondItem="ATb-O4-u0f" secondAttribute="trailing" id="Fj0-8m-KAb"/>
+                            <constraint firstItem="3P6-Af-3Jn" firstAttribute="leading" secondItem="XJw-xh-fpl" secondAttribute="leading" id="Th8-fn-sBL"/>
+                            <constraint firstItem="aa3-XS-07a" firstAttribute="top" secondItem="eTD-gK-NA0" secondAttribute="bottom" constant="18" id="c4E-gu-8Rd"/>
+                            <constraint firstItem="eTD-gK-NA0" firstAttribute="leading" secondItem="XJw-xh-fpl" secondAttribute="leading" id="dmF-2Z-VVW"/>
+                            <constraint firstItem="3P6-Af-3Jn" firstAttribute="top" secondItem="ATb-O4-u0f" secondAttribute="bottom" constant="18" id="fqf-Cb-shp"/>
+                            <constraint firstItem="ATb-O4-u0f" firstAttribute="leading" secondItem="XJw-xh-fpl" secondAttribute="leading" id="gkn-yQ-kc6"/>
+                            <constraint firstItem="ATb-O4-u0f" firstAttribute="top" secondItem="aa3-XS-07a" secondAttribute="bottom" constant="16" id="l2y-v6-DPQ"/>
+                            <constraint firstItem="aa3-XS-07a" firstAttribute="leading" secondItem="XJw-xh-fpl" secondAttribute="leading" id="mCe-s0-Hz3"/>
+                            <constraint firstAttribute="trailing" secondItem="3P6-Af-3Jn" secondAttribute="trailing" id="siC-YO-6X6"/>
+                            <constraint firstAttribute="trailing" secondItem="aa3-XS-07a" secondAttribute="trailing" id="w32-QB-Tff"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="eTD-gK-NA0"/>
+                                <exclude reference="aa3-XS-07a"/>
+                                <exclude reference="ATb-O4-u0f"/>
+                                <exclude reference="3P6-Af-3Jn"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="6oX-rb-jLL"/>
+                                <exclude reference="Brd-xu-7zJ"/>
+                                <exclude reference="dmF-2Z-VVW"/>
+                                <exclude reference="c4E-gu-8Rd"/>
+                                <exclude reference="mCe-s0-Hz3"/>
+                                <exclude reference="w32-QB-Tff"/>
+                                <exclude reference="Fj0-8m-KAb"/>
+                                <exclude reference="gkn-yQ-kc6"/>
+                                <exclude reference="l2y-v6-DPQ"/>
+                                <exclude reference="Th8-fn-sBL"/>
+                                <exclude reference="fqf-Cb-shp"/>
+                                <exclude reference="siC-YO-6X6"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="eTD-gK-NA0"/>
+                                <include reference="aa3-XS-07a"/>
+                                <include reference="ATb-O4-u0f"/>
+                                <include reference="3P6-Af-3Jn"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="6oX-rb-jLL"/>
+                                <include reference="Brd-xu-7zJ"/>
+                                <include reference="dmF-2Z-VVW"/>
+                                <include reference="c4E-gu-8Rd"/>
+                                <include reference="mCe-s0-Hz3"/>
+                                <include reference="w32-QB-Tff"/>
+                                <include reference="Fj0-8m-KAb"/>
+                                <include reference="gkn-yQ-kc6"/>
+                                <include reference="l2y-v6-DPQ"/>
+                                <include reference="Th8-fn-sBL"/>
+                                <include reference="fqf-Cb-shp"/>
+                                <include reference="siC-YO-6X6"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="View1" destination="eTD-gK-NA0" id="WAP-rP-r6b"/>
+                        <outlet property="View2" destination="aa3-XS-07a" id="2LM-6s-eSN"/>
+                        <outlet property="View3" destination="ATb-O4-u0f" id="BoB-64-1WT"/>
+                        <outlet property="View4" destination="3P6-Af-3Jn" id="iGJ-yv-KLe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="529-Lg-yuf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -624,7 +757,6 @@
                     <view key="view" contentMode="scaleToFill" id="IBM-8O-SLR">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.99829119443893433" green="0.1190621629357338" blue="0.0020824775565415621" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fdw-5t-1A3" userLabel="First Responder" sceneMemberID="firstResponder"/>
