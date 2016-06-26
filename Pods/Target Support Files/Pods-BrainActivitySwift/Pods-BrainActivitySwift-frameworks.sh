@@ -82,14 +82,3 @@ strip_invalid_archs() {
   fi
 }
 
-
-if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-BrainActivitySwift/AFNetworking.framework"
-  install_framework "Pods-BrainActivitySwift/CorePlot.framework"
-  install_framework "Pods-BrainActivitySwift/SDiPhoneVersion.framework"
-fi
-if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-BrainActivitySwift/AFNetworking.framework"
-  install_framework "Pods-BrainActivitySwift/CorePlot.framework"
-  install_framework "Pods-BrainActivitySwift/SDiPhoneVersion.framework"
-fi

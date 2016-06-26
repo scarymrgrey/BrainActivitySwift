@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "A3ACA6F91D20723A003F040F"
+               BuildableName = "BrainActivitySwiftTests.xctest"
+               BlueprintName = "BrainActivitySwiftTests"
+               ReferencedContainer = "container:BrainActivitySwift.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
