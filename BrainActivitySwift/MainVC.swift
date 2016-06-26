@@ -14,6 +14,7 @@ class MainVC : UIViewController, CBManagerDelegate {
     var battTimer : NSTimer!
     var plotsVC : PlotsVC?
     var selectedFreq : Float!
+    var currentTime = NSDate.timeIntervalSinceReferenceDate()
     //  MARK: VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,8 @@ class MainVC : UIViewController, CBManagerDelegate {
         cBManager.delegate = self
         UIApplication.sharedApplication().idleTimerDisabled = true
         //cBManager.start()
+      
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -29,13 +32,19 @@ class MainVC : UIViewController, CBManagerDelegate {
     }
     // MARK: = CB Manager Delegate
     func CB_fftDataUpdatedWithDictionary(data: [NSObject : AnyObject]!) {
-        notificationCenter.postNotificationName(Notifications.fft_data_received, object: data)
+        notificationCenter.postNotificationName(Notifications.fft_data_received,object : nil, userInfo: data)
+       
     }
     func CB_indicatorsStateWithDictionary(data: [NSObject : AnyObject]!) {
-        notificationCenter.postNotificationName(Notifications.indicators_data_received, object: data)
+        notificationCenter.postNotificationName(Notifications.indicators_data_received,object : nil, userInfo: data)
     }
     func CB_dataUpdatedWithDictionary(data: [NSObject : AnyObject]!) {
-         notificationCenter.postNotificationName(Notifications.data_received, object: data)
+        notificationCenter.postNotificationName(Notifications.data_received,object : nil, userInfo: data)
+//                let lastTime = currentTime
+//                currentTime = NSDate.timeIntervalSinceReferenceDate()
+//                let diff = currentTime - lastTime
+//                print(diff)
+
     }
     func CB_changedStatus(status: CBManagerMessage, message statusMessage: String!) {
         

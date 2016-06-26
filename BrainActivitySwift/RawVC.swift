@@ -5,6 +5,7 @@
 //  Created by Victor Gelmutdinov on 21/06/16.
 //  Copyright © 2016 Kirill Polunin. All rights reserved.
 //
+
 import UIKit
 class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     
@@ -16,18 +17,22 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     @IBOutlet weak var View4: CPTGraphHostingView!
     
     // MARK: Local Variables
-    
-    var data : [NSMutableArray]!
-    var dataFFT : [NSMutableArray]!
-    var graphDict : [UIView : CPTXYGraph]!
-    var graphIndexDict : [CPTXYGraph : Int]!
+    let RAW_SCOPE = 200000
+    var data = [NSMutableArray]()
+    var dataFFT = [NSMutableArray]()
+    var graphDict = [UIView : CPTXYGraph]()
+    var graphIndexDict = [CPTXYGraph : Int]()
     var currentRange : Int!
     var scopeRaw : Int!
     var currentView : Int!
     var currentIndex : Int!
     var viewIndexes = [UIView:Int]()
-    var  plotH : NSLayoutConstraint!
-    var limit : Int = 100
+    var plotH = NSLayoutConstraint()
+    var limit : Int = 10
+    var currentFFTIndex = 0
+    var currentChannel = 1
+    var graphs = [CPTXYGraph]()
+    var currentTime = NSDate.timeIntervalSinceReferenceDate()
     // MARK: VC LifeCycle
     
     override func viewDidLoad() {
@@ -35,9 +40,15 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         if (SDiPhoneVersion.deviceVersion() == .iPhone6 || SDiPhoneVersion.deviceVersion() == .iPhone6Plus){
             limit = 8;
         }
+        setDefaultValues()
         viewIndexes = [View1:0 , View2:1 , View3:2,View4:3]
         data = [NSMutableArray](count: 4, repeatedValue: NSMutableArray())
         dataFFT = [NSMutableArray](count: 4, repeatedValue: NSMutableArray())
+        createPlots()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(dataReceived), name: Notifications.data_received, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(fftDataReceived), name: Notifications.fft_data_received, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(indiDataReceived), name: Notifications.indicators_data_received, object: nil)
+
     }
     
     override func viewDidLayoutSubviews() {
@@ -47,7 +58,28 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     }
     
     // MARK: Plot Helpers
-    
+    func setDefaultValues(){
+        scopeRaw = RAW_SCOPE
+        currentView = 1
+        currentRange = 5*250
+        currentIndex = 0
+        currentFFTIndex = 0
+        currentChannel = 1
+        //_chooseCannelSegment.selectedSegmentIndex = currentChannel-1
+//        self.fillLabels()
+//        _chnlTitle1.layer.borderWidth = 2
+//        _chnlTitle1.layer.borderColor = UIColor.darkGrayColor().CGColor
+//        _chnlTitle1.layer.cornerRadius = 9
+//        _chnlTitle2.layer.borderWidth = 2
+//        _chnlTitle2.layer.borderColor = UIColor.darkGrayColor().CGColor
+//        _chnlTitle2.layer.cornerRadius = 9
+//        _chnlTitle3.layer.borderWidth = 2
+//        _chnlTitle3.layer.borderColor = UIColor.darkGrayColor().CGColor
+//        _chnlTitle3.layer.cornerRadius = 9
+//        _chnlTitle4.layer.borderWidth = 2
+//        _chnlTitle4.layer.borderColor = UIColor.darkGrayColor().CGColor
+//        _chnlTitle4.layer.cornerRadius = 9
+    }
     func checkAndRemovePlotsViews() -> Bool {
         if self.view.viewWithTag(101) != nil{
             for i in 1...4 {
@@ -71,13 +103,10 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     }
     
     func createPlots(){
-     
         if currentView == 1 {
-            
             for vw in [View1,View2,View3,View4]{
                 self.createCorePlot(vw, color: UIColor.lightGrayColor())
             }
-            
             
             if !checkAndRemovePlotsViews() {
                 for i in 1...4 {
@@ -168,9 +197,11 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         let theme = CPTTheme(named: kCPTPlainWhiteTheme)
         newGraph.applyTheme(theme)
         graphDict[view2addGraph] = newGraph
+        graphs.append(newGraph)
         graphIndexDict[graphDict[view2addGraph]!] = viewIndexes[view2addGraph]
         let hostingView = view2addGraph as! CPTGraphHostingView
         hostingView.collapsesLayers = false // Setting to true reduces GPU memory usage,but can slow drawing/scrolling hostingView.hostedGraph = newGraph
+        hostingView.hostedGraph = newGraph
         // Setup plot space
         let plotSpace = newGraph.defaultPlotSpace as! CPTXYPlotSpace
         plotSpace.allowsUserInteraction = true
@@ -205,32 +236,37 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         newGraph.paddingBottom = 0.0
     }
     // MARK: Notifications
-    func dataRecieved(notification : NSNotification){
+    func dataReceived(notification : NSNotification){
         let notificationData = notification.userInfo
-        //currentIndex = [data[@"counter"] integerValue];
         for i in 0...3 {
-
-            data![i].addObject([ "index" : currentIndex , "data" : (notificationData!["ch\(i+1)"] as! String) ])
+            data[i].addObject([ "index" : currentIndex , "data" : notificationData!["ch\(i+1)"]!])
             if currentIndex > currentRange {
                 data[i].removeObjectAtIndex(0)
             }
         }
-
+        
         if currentView == 1 {
             if currentIndex % limit == 0 {
                 if currentIndex > currentRange {
-                    for graph in graphDict.values{
-                        var plotSpaceXRange = graph.defaultPlotSpace!.mutableCopy().xRange.mutableCopy()
-                        var plotSpaceYRange = graph.defaultPlotSpace!.mutableCopy().yRange.mutableCopy()
-                        plotSpaceXRange = CPTPlotRange(location : NSNumber(integer: (currentIndex-currentRange)), length:currentRange)
-                        plotSpaceYRange = CPTPlotRange(location : NSNumber(integer: (-(scopeRaw/2))), length: scopeRaw)
+                    for graph in graphs{
+                        let plotSpace = graph.defaultPlotSpace as! CPTXYPlotSpace
+                        
+                        plotSpace.xRange = CPTPlotRange(location : NSNumber(integer: (currentIndex-currentRange)), length:currentRange)
+                        plotSpace.yRange = CPTPlotRange(location : NSNumber(integer: (-(scopeRaw/2))), length: scopeRaw)
+       
                         graph.reloadData()
                     }
                 }
-                
             }
         }
         currentIndex = currentIndex + 1
+        let lastTime = currentTime
+        currentTime = NSDate.timeIntervalSinceReferenceDate()
+        let diff = currentTime - lastTime
+        if diff > 0.1 {
+            print(diff)
+            print(currentIndex)
+        }
     }
     
     func indiDataReceived(notification : NSNotification){

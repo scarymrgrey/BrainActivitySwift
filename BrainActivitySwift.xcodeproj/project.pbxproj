@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A26D978BFDF16EE14DADAFB6 /* libPods-BrainActivitySwift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 643368D14318AAD19E16AF7C /* libPods-BrainActivitySwift.a */; };
 		A30B2DA81D1946110048CBDC /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30B2DA71D1946110048CBDC /* Notifications.swift */; };
 		A30B2DAA1D19516D0048CBDC /* PlotsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30B2DA91D19516D0048CBDC /* PlotsVC.swift */; };
 		A30B2DAD1D19BD800048CBDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A30B2DAB1D19BD800048CBDC /* Main.storyboard */; };
@@ -35,12 +34,13 @@
 		A3EF5C9B1CFE3057009E296D /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5C9A1CFE3057009E296D /* ProfileVC.swift */; };
 		A3EF5C9D1D008435009E296D /* ActivityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5C9C1D008435009E296D /* ActivityVC.swift */; };
 		A3EF5CA11D009C98009E296D /* MetricsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5CA01D009C98009E296D /* MetricsVC.swift */; };
+		F016B64434787455C98C3BD4 /* Pods_BrainActivitySwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4157E8F073756F61275290B4 /* Pods_BrainActivitySwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		14C0E2BA438A3DEC3309789C /* Pods-BrainActivitySwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainActivitySwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-BrainActivitySwift/Pods-BrainActivitySwift.release.xcconfig"; sourceTree = "<group>"; };
 		38E241066820F7196998CBE1 /* Pods-BrainActivitySwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainActivitySwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BrainActivitySwift/Pods-BrainActivitySwift.debug.xcconfig"; sourceTree = "<group>"; };
-		643368D14318AAD19E16AF7C /* libPods-BrainActivitySwift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BrainActivitySwift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4157E8F073756F61275290B4 /* Pods_BrainActivitySwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BrainActivitySwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A30B2DA71D1946110048CBDC /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		A30B2DA91D19516D0048CBDC /* PlotsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotsVC.swift; sourceTree = "<group>"; };
 		A30B2DAC1D19BD800048CBDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -82,7 +82,7 @@
 			files = (
 				A36814F81CF78C1300CEC6A2 /* Accelerate.framework in Frameworks */,
 				A36814F61CF78C0600CEC6A2 /* CoreBluetooth.framework in Frameworks */,
-				A26D978BFDF16EE14DADAFB6 /* libPods-BrainActivitySwift.a in Frameworks */,
+				F016B64434787455C98C3BD4 /* Pods_BrainActivitySwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,7 +195,7 @@
 			children = (
 				A36814F71CF78C1300CEC6A2 /* Accelerate.framework */,
 				A36814F51CF78C0600CEC6A2 /* CoreBluetooth.framework */,
-				643368D14318AAD19E16AF7C /* libPods-BrainActivitySwift.a */,
+				4157E8F073756F61275290B4 /* Pods_BrainActivitySwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -232,6 +232,7 @@
 				A36814D61CF7872E00CEC6A2 /* Resources */,
 				77FD2AB275A5AA63F021CB75 /* Embed Pods Frameworks */,
 				ABEDCD3258854F95A0460673 /* Copy Pods Resources */,
+				A3FD47751D1EF09600BCE3D6 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -319,6 +320,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BrainActivitySwift/Pods-BrainActivitySwift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		A3FD47751D1EF09600BCE3D6 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 044c36da6af7e984357d9cd7f0d73c8b859704e7 6e5a77ff0131269c705ddbfe16c1348aee93304fd7b6128f81b59a1adf3f6e57\n";
 		};
 		ABEDCD3258854F95A0460673 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;

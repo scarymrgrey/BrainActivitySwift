@@ -7,6 +7,9 @@ target 'BrainActivitySwift' do
 pod 'CorePlot'
 pod 'AFNetworking'
 pod 'SDiPhoneVersion'
+use_frameworks!
+pod 'Fabric'
+pod 'Crashlytics'
 end
 
 

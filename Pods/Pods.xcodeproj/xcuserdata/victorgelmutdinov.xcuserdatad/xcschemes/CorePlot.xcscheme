@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '01CB26EC592FB92B6CA06FCB'
+               BlueprintIdentifier = '657DC1AEF7F75563CC2EDF5A'
                BlueprintName = 'CorePlot'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libCorePlot.a'>
+               BuildableName = 'CorePlot.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

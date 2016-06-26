@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let pageControl = UIPageControl.appearance()
         pageControl.hidden = true
+        Fabric.with([Crashlytics.self()])
         //pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
         //pageControl.currentPageIndicatorTintColor = UIColor.blackColor()
         //pageControl.backgroundColor = UIColor.whiteColor()
