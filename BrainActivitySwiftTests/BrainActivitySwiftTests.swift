@@ -22,6 +22,9 @@ class BrainActivitySwiftTests: XCTestCase {
             "ch2" : "123.40",
             "ch3" : "-223.40",
             "ch4" : "444.40"])
+        for _ in 0...10{
+            self.rawVC.dataReceived(self.not)
+        }
         //let _ = rawVC.view
     }
     
@@ -32,7 +35,7 @@ class BrainActivitySwiftTests: XCTestCase {
     
     func testPerformance_dataReceived() {
         self.measureBlock {
-        self.rawVC.dataReceived(self.not)
+            self.rawVC.dataReceived(self.not)
         }
     }
     
@@ -41,19 +44,33 @@ class BrainActivitySwiftTests: XCTestCase {
             self.rawVC.createPlots()
         }
     }
-    func testPerfomance_numberForPlot(){
+    func testPerfomance_numberForPlot_index(){
+        let plot = CPTPlot()
+        plot.graph = self.rawVC.graphDict.values.first
+        self.rawVC.dataReceived(self.not)
+        self.measureBlock {
+            self.rawVC.numberForPlot(plot, field: 0, recordIndex: 0)
+        }
+    }
+    func testPerfomance_numberForPlot_data(){
+        let plot = CPTPlot()
+        plot.graph = self.rawVC.graphDict.values.first
+        self.measureBlock {
+            self.rawVC.numberForPlot(plot, field: 1, recordIndex: 0)
+        }
+    }
+    func testPerfomance_numberForPlot_dataFor4Ch(){
         var plots = [CPTPlot]()
         for graph in self.rawVC.graphDict.values {
             let plot = CPTPlot()
             plot.graph = graph
             plots.append(plot)
         }
-        self.rawVC.dataReceived(self.not)
+        
         self.measureBlock {
             for plot in plots {
                 self.rawVC.numberForPlot(plot, field: 1, recordIndex: 0)
             }
-            
         }
     }
 }

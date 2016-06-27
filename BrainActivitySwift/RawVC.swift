@@ -18,8 +18,8 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     
     // MARK: Local Variables
     let RAW_SCOPE = 200000
-    var data = [NSMutableArray]()
-    var dataFFT = [NSMutableArray]()
+    var data : [[Dictionary<String,AnyObject>]]!
+    var dataFFT : [[Dictionary<String,AnyObject>]]!
     var graphDict = [UIView : CPTXYGraph]()
     var graphIndexDict = [CPTXYGraph : Int]()
     var currentRange : Int!
@@ -41,8 +41,8 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         }
         setDefaultValues()
         viewIndexes = [View1:0 , View2:1 , View3:2,View4:3]
-        data = [NSMutableArray](count: 4, repeatedValue: NSMutableArray())
-        dataFFT = [NSMutableArray](count: 4, repeatedValue: NSMutableArray())
+        data = [[Dictionary<String,AnyObject>]](count: 4, repeatedValue: [Dictionary<String,AnyObject>]())
+        dataFFT = [[Dictionary<String,AnyObject>]](count: 4, repeatedValue: [Dictionary<String,AnyObject>]())
         createPlots()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(dataReceived), name: Notifications.data_received, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(fftDataReceived), name: Notifications.fft_data_received, object: nil)
@@ -60,7 +60,7 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     func setDefaultValues(){
         scopeRaw = RAW_SCOPE
         currentView = 1
-        currentRange = 5*250
+        currentRange = 2*250
         currentIndex = 0
         currentFFTIndex = 0
         currentChannel = 1
@@ -237,16 +237,17 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     func dataReceived(notification : NSNotification){
         let notificationData = notification.userInfo
         for i in 0...3 {
-            data[i].addObject([ "index" : currentIndex , "data" : notificationData!["ch\(i+1)"]!])
+            data[i].append([ "index" : currentIndex , "data" : notificationData!["ch\(i+1)"]!])
             if currentIndex > currentRange {
-                data[i].removeObjectAtIndex(0)
+                data[i].removeFirst()
             }
+            //print("data[\(i)].count = \(data[i].count) ; currentIndex = \(currentIndex) ; currentRange = \(currentRange)")
         }
         
         if currentView == 1 {
             if currentIndex % limit == 0 {
                 if currentIndex > currentRange {
-                    for graph in graphs{
+                    for graph in self.graphDict.values{
                         let plotSpace = graph.defaultPlotSpace as! CPTXYPlotSpace
                         
                         plotSpace.xRange = CPTPlotRange(location : NSNumber(integer: (currentIndex-currentRange)), length:currentRange)
@@ -286,7 +287,6 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         let isX = fieldEnum == UInt(CPTScatterPlotField.X.rawValue)
         let key = isX ? "index" : "data"
         if currentView == 1 {
-            
             let num = data[indexForData!][Int(idx)][key]
             return num
         }
@@ -294,26 +294,26 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
             let data = dataFFT[indexForData!][Int(idx)][key]!
             if plot.identifier!.isEqual("Blue Plot") {
                 
-                if key == "data" && data!["signal"] != nil {
+                if key == "data" && data["signal"] != nil {
                     return 0
                 }
-                let num = isX ? data : data!["data1"]
+                let num = isX ? data : data["data1"]
                 return num
             }
             if plot.identifier!.isEqual("Yellow Plot") {
                 
-                if key == "data" && data!["signal"] != nil {
+                if key == "data" && data["signal"] != nil {
                     return 0
                 }
-                let num = isX ? data : data!["data2"]
+                let num = isX ? data : data["data2"]
                 return num
             }
             if plot.identifier!.isEqual("Grey Plot") {
                 
-                if key == "data" && data!["signal"] != nil {
+                if key == "data" && data["signal"] != nil {
                     return 0
                 }
-                let num = isX ? data : data!["data3"]
+                let num = isX ? data : data["data3"]
                 return num
             }
         }
