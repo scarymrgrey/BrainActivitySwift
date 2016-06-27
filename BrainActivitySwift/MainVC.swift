@@ -66,6 +66,8 @@ class MainVC : UIViewController, CBManagerDelegate {
             cBManager.startTestSequenceWithDominantFrequence(selectedFreq)
         }
     }
+    
+    
     // MARK: = NAvigation = 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowPlotSegue"{
