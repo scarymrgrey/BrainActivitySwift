@@ -32,7 +32,6 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     var currentFFTIndex = 0
     var currentChannel = 1
     var graphs = [CPTXYGraph]()
-    var currentTime = NSDate.timeIntervalSinceReferenceDate()
     // MARK: VC LifeCycle
     
     override func viewDidLoad() {
@@ -197,7 +196,6 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         let theme = CPTTheme(named: kCPTPlainWhiteTheme)
         newGraph.applyTheme(theme)
         graphDict[view2addGraph] = newGraph
-        graphs.append(newGraph)
         graphIndexDict[graphDict[view2addGraph]!] = viewIndexes[view2addGraph]
         let hostingView = view2addGraph as! CPTGraphHostingView
         hostingView.collapsesLayers = false // Setting to true reduces GPU memory usage,but can slow drawing/scrolling hostingView.hostedGraph = newGraph
@@ -260,13 +258,6 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
             }
         }
         currentIndex = currentIndex + 1
-        let lastTime = currentTime
-        currentTime = NSDate.timeIntervalSinceReferenceDate()
-        let diff = currentTime - lastTime
-        if diff > 0.1 {
-            print(diff)
-            print(currentIndex)
-        }
     }
     
     func indiDataReceived(notification : NSNotification){
