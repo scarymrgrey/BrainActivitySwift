@@ -27,8 +27,7 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     var currentIndex : Int!
     var viewIndexes = [UIView:Int]()
     var plotH = NSLayoutConstraint()
-    var limit : Int = 10
-    var currentFFTIndex = 0
+    var limit : Int = 4
     var currentChannel = 1
     var graphs = [CPTXYGraph]()
     // MARK: VC LifeCycle
@@ -36,7 +35,7 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         if (SDiPhoneVersion.deviceVersion() == .iPhone6 || SDiPhoneVersion.deviceVersion() == .iPhone6Plus){
-            limit = 8;
+            limit = 2;
         }
         setDefaultValues()
         viewIndexes = [View1:0 , View2:1 , View3:2,View4:3]
@@ -45,8 +44,7 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         createPlots()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(dataReceived), name: Notifications.data_received, object: nil)
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(fftDataReceived), name: Notifications.fft_data_received, object: nil)
-       // NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(indiDataReceived), name: Notifications.indicators_data_received, object: nil)
-
+        //NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(indiDataReceived), name: Notifications.indicators_data_received, object: nil)
     }
     
     override func viewDidLayoutSubviews() {
@@ -54,22 +52,21 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         self.plotH.constant = (UIScreen.mainScreen().bounds.size.height-160)/4
         self.view.layoutSubviews()
     }
-    
+   
     // MARK: Plot Helpers
     func setDefaultValues(){
         scopeRaw = RAW_SCOPE
         currentRange = 5*250
         currentIndex = 0
-        currentFFTIndex = 0
         currentChannel = 1
     }
-
+    
     func createPlots(){
         for vw in [View1,View2,View3,View4]{
             self.createCorePlot(vw, color: UIColor.lightGrayColor())
         }
     }
-
+    
     func createCorePlot( view2addGraph : UIView, color : UIColor ) { // Create graph from theme
         let newGraph = CPTXYGraph(frame: CGRectZero)
         let theme = CPTTheme(named: kCPTPlainWhiteTheme)
@@ -114,6 +111,7 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     }
     // MARK: Notifications
     func dataReceived(notification : NSNotification){
+        
         let notificationData = notification.userInfo
         for i in 0...3 {
             data[i].append([ "index" : currentIndex , "data" : notificationData!["ch\(i+1)"]!])
@@ -122,13 +120,18 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
             }
             //print("data[\(i)].count = \(data[i].count) ; currentIndex = \(currentIndex) ; currentRange = \(currentRange)")
         }
-        if currentIndex % limit == 0 && currentIndex > currentRange{
+        if !(self.isViewLoaded() && self.view.window != nil){
+            return
+        }
+    
+        if currentIndex % limit == 0 {
+            let r = currentIndex > currentRange
             for graph in self.graphDict.values{
-                let plotSpace = graph.defaultPlotSpace as! CPTXYPlotSpace
-                
-                plotSpace.xRange = CPTPlotRange(location : NSNumber(integer: (currentIndex-currentRange)), length:currentRange)
-                plotSpace.yRange = CPTPlotRange(location : NSNumber(integer: (-(scopeRaw/2))), length: scopeRaw)
-                
+                if r {
+                    let plotSpace = graph.defaultPlotSpace as! CPTXYPlotSpace
+                    plotSpace.xRange = CPTPlotRange(location : currentIndex-currentRange, length:currentRange)
+                    plotSpace.yRange = CPTPlotRange(location : -(scopeRaw/2), length: scopeRaw)
+                }
                 graph.reloadData()
             }
         }
@@ -151,7 +154,7 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     }
     // MARK: Axis Delegate Methods
     func axis(axis: CPTAxis, shouldUpdateAxisLabelsAtLocations locations: Set<NSNumber>) -> Bool {
-
+        
         return false
     }
 }

@@ -12,10 +12,9 @@ class PlotsVC: BaseContentVC {
     
     // MARK: = Outlets =
 
-    
     @IBOutlet weak var Container: UIView!
     // MARK: = Local Variables =
-    var Manager : CBManager!
+    var cBManager : CBManager!
     let VCIds = ["RawVCId","SpectrumVCId","IndicatorsVCId"]
     // MARK: VC LifeCycle
     override func viewDidLoad() {

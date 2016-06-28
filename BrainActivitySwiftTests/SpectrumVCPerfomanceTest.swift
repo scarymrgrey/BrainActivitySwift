@@ -9,12 +9,44 @@
 import XCTest
 @testable import BrainActivitySwift
 class SpectrumVCPerfomanceTest: XCTestCase {
-    var specVC : SpectrumVC!
+    class FakeSpectrumVC: SpectrumVC {
+        internal override func isViewLoaded() -> Bool{
+            return true
+        }
+        class  FakeView: UIView {
+            override var window: UIWindow? {
+                get {
+                    return UIWindow()
+                }
+            }
+        }
+        override var view: UIView! {
+            get {
+                return FakeView()
+            }
+            set {
+                
+            }
+        }
+    }
+    var specVC : FakeSpectrumVC!
     var not : NSNotification!
     override func setUp() {
         super.setUp()
-        let storyboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        specVC = storyboard.instantiateViewControllerWithIdentifier("SpectrumVCId") as! SpectrumVC
+
+        specVC = FakeSpectrumVC()
+
+        let fv1 = CPTGraphHostingView(frame: UIView().frame)
+        let fv2 = CPTGraphHostingView(frame: UIView().frame)
+        let fv3 = CPTGraphHostingView(frame: UIView().frame)
+        let fv4 = CPTGraphHostingView(frame: UIView().frame)
+        specVC.View1 = fv1
+        specVC.View2 = fv2
+        specVC.View3 = fv3
+        specVC.View4 = fv4
+        
+        specVC.view = UIView()
+        
         specVC.loadView()
         specVC.viewDidLoad()
         not = NSNotification(name: "notifi", object: nil, userInfo: ["ch2" : [
@@ -59,7 +91,9 @@ class SpectrumVCPerfomanceTest: XCTestCase {
     
     func testPerformance_dataReceived() {
         self.measureBlock {
-            self.specVC.fftDataReceived(self.not)
+            for _ in 0...100 {
+                self.specVC.fftDataReceived(self.not)
+            }
         }
     }
     
@@ -71,7 +105,7 @@ class SpectrumVCPerfomanceTest: XCTestCase {
     func testPerfomance_numberForPlot_index(){
         let plot = CPTPlot()
         plot.graph = self.specVC.graphDict.values.first
-        self.specVC.fftDataReceived(self.not)
+        plot.identifier = "Yellow Plot"
         self.measureBlock {
             self.specVC.numberForPlot(plot, field: 0, recordIndex: 0)
         }
@@ -79,6 +113,7 @@ class SpectrumVCPerfomanceTest: XCTestCase {
     func testPerfomance_numberForPlot_data(){
         let plot = CPTPlot()
         plot.graph = self.specVC.graphDict.values.first
+        plot.identifier = "Yellow Plot"
         self.measureBlock {
             self.specVC.numberForPlot(plot, field: 1, recordIndex: 0)
         }
@@ -88,13 +123,15 @@ class SpectrumVCPerfomanceTest: XCTestCase {
         for graph in self.specVC.graphDict.values {
             let plot = CPTPlot()
             plot.graph = graph
+            plot.identifier = "Yellow Plot"
             plots.append(plot)
         }
-        
         self.measureBlock {
-//            for plot in plots {
-//                self.specVC.numberForPlot(plot, field: 1, recordIndex: 0)
-//            }
+            for _ in 0...10000{
+                for plot in plots {
+                    self.specVC.numberForPlot(plot, field: 1, recordIndex: 1)
+                }
+            }
         }
     }
 

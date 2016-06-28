@@ -13,12 +13,11 @@ class MainVC : UIViewController, CBManagerDelegate {
     var cBManager : CBManager!
     var battTimer : NSTimer!
     var plotsVC : PlotsVC?
-    var selectedFreq : Float!
+    var selectedFreq : Float = 10
     var currentTime = NSDate.timeIntervalSinceReferenceDate()
     //  MARK: VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        selectedFreq = 3
         cBManager = CBManager()
         cBManager.delegate = self
         UIApplication.sharedApplication().idleTimerDisabled = true
@@ -33,7 +32,7 @@ class MainVC : UIViewController, CBManagerDelegate {
     // MARK: = CB Manager Delegate
     func CB_fftDataUpdatedWithDictionary(data: [NSObject : AnyObject]!) {
         notificationCenter.postNotificationName(Notifications.fft_data_received,object : nil, userInfo: data)
-       
+        StopWatch.getInfo()
     }
     func CB_indicatorsStateWithDictionary(data: [NSObject : AnyObject]!) {
         notificationCenter.postNotificationName(Notifications.indicators_data_received,object : nil, userInfo: data)
@@ -72,7 +71,7 @@ class MainVC : UIViewController, CBManagerDelegate {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowPlotSegue"{
             plotsVC = (segue.destinationViewController as! PlotsVC)
-            plotsVC!.Manager = cBManager
+            plotsVC!.cBManager = cBManager
         }
     }
 

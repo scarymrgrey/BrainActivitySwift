@@ -28,6 +28,7 @@ class SpectrumVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     var currentFFTIndex = 0
     var currentChannel = 1
     var graphs = [CPTXYGraph]()
+    var currentTime = NSDate.timeIntervalSinceReferenceDate()
     // MARK: VC LifeCycle
     
     override func viewDidLoad() {
@@ -136,6 +137,7 @@ class SpectrumVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     // MARK: Notifications
     func fftDataReceived(notification : NSNotification){
         let notificationData = notification.userInfo
+      
         for i in 0...3 {
             dataFFT[i].append([ "index" : currentFFTIndex , "data" : notificationData!["ch\(i+1)"]!])
             if currentFFTIndex > 119 {
@@ -143,7 +145,10 @@ class SpectrumVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
             }
             //print("data[\(i)].count = \(dataFFT[i].count) ; currentIndex = \(currentFFTIndex) ; currentRange = \(currentRange) ; notificationData[ch\(i+1)] = \(notificationData!["ch\(i+1)"]!)")
         }
-        
+        if !(self.isViewLoaded() && self.view.window != nil){
+            print(self.view.window)
+            return
+        }
        
         for graph in self.graphDict.values{
             if(currentFFTIndex > 119){
@@ -153,12 +158,13 @@ class SpectrumVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
             graph.reloadData()
         }
         currentFFTIndex += 1
+
     }
     
     // MARK: Plot Data Source Methods
     
     func numberOfRecordsForPlot(plot : CPTPlot) -> UInt{
-        return UInt(dataFFT.first!.count)
+        return UInt(dataFFT[0].count)
     }
     func numberForPlot(plot: CPTPlot, field fieldEnum: UInt, recordIndex idx: UInt) -> AnyObject? {
         

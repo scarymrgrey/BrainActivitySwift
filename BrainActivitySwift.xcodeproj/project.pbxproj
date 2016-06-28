@@ -22,6 +22,7 @@
 		A3273B131D02D02400F1F4A6 /* CurrentSessionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3273B121D02D02400F1F4A6 /* CurrentSessionVC.swift */; };
 		A3273B151D02D2AE00F1F4A6 /* SessionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3273B141D02D2AE00F1F4A6 /* SessionsVC.swift */; };
 		A328A4581D21DDE500921D75 /* SpectrumVCPerfomanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328A4571D21DDE500921D75 /* SpectrumVCPerfomanceTest.swift */; };
+		A328A45A1D2315F900921D75 /* StopWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328A4591D2315F900921D75 /* StopWatch.swift */; };
 		A36814DC1CF7872E00CEC6A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814DB1CF7872E00CEC6A2 /* AppDelegate.swift */; };
 		A36814DE1CF7872E00CEC6A2 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814DD1CF7872E00CEC6A2 /* SignInVC.swift */; };
 		A36814E31CF7872E00CEC6A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A36814E21CF7872E00CEC6A2 /* Assets.xcassets */; };
@@ -68,6 +69,7 @@
 		A3273B121D02D02400F1F4A6 /* CurrentSessionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentSessionVC.swift; sourceTree = "<group>"; };
 		A3273B141D02D2AE00F1F4A6 /* SessionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsVC.swift; sourceTree = "<group>"; };
 		A328A4571D21DDE500921D75 /* SpectrumVCPerfomanceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumVCPerfomanceTest.swift; sourceTree = "<group>"; };
+		A328A4591D2315F900921D75 /* StopWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopWatch.swift; sourceTree = "<group>"; };
 		A36814D81CF7872E00CEC6A2 /* BrainActivitySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrainActivitySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A36814DB1CF7872E00CEC6A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A36814DD1CF7872E00CEC6A2 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			children = (
 				A31BFC0B1D05E85B0025D878 /* EZConstraint.swift */,
 				A30B2DA71D1946110048CBDC /* Notifications.swift */,
+				A328A4591D2315F900921D75 /* StopWatch.swift */,
 			);
 			name = HelpersAndExtensions;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				A31BFC0C1D05E85B0025D878 /* EZConstraint.swift in Sources */,
 				A3273B0B1D01F43900F1F4A6 /* ActivityCell.swift in Sources */,
 				A3EF5CA11D009C98009E296D /* MetricsVC.swift in Sources */,
+				A328A45A1D2315F900921D75 /* StopWatch.swift in Sources */,
 				A3273B081D00BF3300F1F4A6 /* TabBarController.swift in Sources */,
 				A3273B061D00B4FD00F1F4A6 /* BaseContentVC.swift in Sources */,
 				A30B2DB61D19D9D90048CBDC /* IndicatorsVC.swift in Sources */,
