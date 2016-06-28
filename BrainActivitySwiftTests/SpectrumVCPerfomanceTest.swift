@@ -17,10 +17,35 @@ class SpectrumVCPerfomanceTest: XCTestCase {
         specVC = storyboard.instantiateViewControllerWithIdentifier("SpectrumVCId") as! SpectrumVC
         specVC.loadView()
         specVC.viewDidLoad()
-        not = NSNotification(name: "notifi", object: nil, userInfo: [  "ch1" : "-123.40",
-            "ch2" : "123.40",
-            "ch3" : "-223.40",
-            "ch4" : "444.40"])
+        not = NSNotification(name: "notifi", object: nil, userInfo: ["ch2" : [
+            "data1" : 5,
+            "data1_" : "4074748.076242105",
+            "data2" : 10,
+            "data2_" : "2918449.095536458",
+            "data3" : 19,
+            "data3_" : "1106198.598135648"],
+            "ch1" : [
+                "data1" : 5,
+                "data1_" : "4074748.076242105",
+                "data2" : 10,
+                "data2_" : "2918449.095536458",
+                "data3" : 19,
+                "data3_" : "1106198.598135648"],
+            "ch3" : [
+                "data1" : 5,
+                "data1_" : "4074748.076242105",
+                "data2" : 10,
+                "data2_" : "2918449.095536458",
+                "data3" : 19,
+                "data3_" : "1106198.598135648"],
+            "ch4" : [
+                "data1" : 5,
+                "data1_" : "4074748.076242105",
+                "data2" : 10,
+                "data2_" : "2918449.095536458",
+                "data3" : 19,
+                "data3_" : "1106198.598135648"]])
+        
         for _ in 0...200{
             self.specVC.fftDataReceived(self.not)
         }
@@ -67,9 +92,9 @@ class SpectrumVCPerfomanceTest: XCTestCase {
         }
         
         self.measureBlock {
-            for plot in plots {
-                self.specVC.numberForPlot(plot, field: 1, recordIndex: 0)
-            }
+//            for plot in plots {
+//                self.specVC.numberForPlot(plot, field: 1, recordIndex: 0)
+//            }
         }
     }
 

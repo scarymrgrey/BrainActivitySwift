@@ -135,10 +135,7 @@ class SpectrumVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     }
     // MARK: Notifications
     func fftDataReceived(notification : NSNotification){
-  
-        
         let notificationData = notification.userInfo
-        
         for i in 0...3 {
             dataFFT[i].append([ "index" : currentFFTIndex , "data" : notificationData!["ch\(i+1)"]!])
             if currentFFTIndex > 119 {
@@ -176,9 +173,6 @@ class SpectrumVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         let d = data["signal"] as? UInt
         if (key == "data") && (d != nil) {
             return 0
-        }
-        if !isX{
-            print("data[data\(value)]= \(data["data\(value)"] as? UInt)")
         }
         let num = isX ? data : data["data\(value)"] as! UInt
         return num
