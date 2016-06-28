@@ -172,12 +172,15 @@ class SpectrumVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         
         let data = dataFFT[indexForData!][Int(idx)][key]!
         let dict = ["Blue Plot" : "1","Yellow Plot" : "2","Grey Plot" : "3"]
-        let value = dict[plot.identifier as! String]
-        
-        if key == "data" && data["signal"] != nil {
+        let value = dict[plot.identifier as! String]!
+        let d = data["signal"] as? UInt
+        if (key == "data") && (d != nil) {
             return 0
         }
-        let num = isX ? data : data[ "data\(value)"]
+        if !isX{
+            print("data[data\(value)]= \(data["data\(value)"] as? UInt)")
+        }
+        let num = isX ? data : data["data\(value)"] as! UInt
         return num
     }
     // MARK: Axis Delegate Methods
