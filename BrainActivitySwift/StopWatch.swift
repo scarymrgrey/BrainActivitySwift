@@ -13,10 +13,10 @@ class StopWatch {
     static func setNow(){
         currentTime = NSDate.timeIntervalSinceReferenceDate()
     }
-    static func getInfo(){
+    static func getInfo(desc : String){
         let time = NSDate.timeIntervalSinceReferenceDate()
         let past = time - currentTime
-        print("\(1/past) Hz : delay \(past)")
+        print("\(1/past) Hz : delay \(past) - \(desc)")
         currentTime = time
     }
 }

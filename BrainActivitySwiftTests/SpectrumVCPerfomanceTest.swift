@@ -78,7 +78,7 @@ class SpectrumVCPerfomanceTest: XCTestCase {
                 "data3" : 19,
                 "data3_" : "1106198.598135648"]])
         
-        for _ in 0...200{
+        for _ in 0...10{
             self.specVC.fftDataReceived(self.not)
         }
         //let _ = rawVC.view
@@ -91,8 +91,10 @@ class SpectrumVCPerfomanceTest: XCTestCase {
     
     func testPerformance_dataReceived() {
         self.measureBlock {
-            for _ in 0...100 {
+            for i in 0...400 {
+
                 self.specVC.fftDataReceived(self.not)
+                StopWatch.getInfo("spectrumVC \(i)")
             }
         }
     }

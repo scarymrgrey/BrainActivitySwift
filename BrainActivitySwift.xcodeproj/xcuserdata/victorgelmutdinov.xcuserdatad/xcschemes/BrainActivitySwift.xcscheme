@@ -37,6 +37,14 @@
                BlueprintName = "BrainActivitySwiftTests"
                ReferencedContainer = "container:BrainActivitySwift.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "SpectrumVCPerfomanceTest">
+               </Test>
+               <Test
+                  Identifier = "SpectrumVCPerfomanceTest/testPerfomance_numberForPlot_data()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

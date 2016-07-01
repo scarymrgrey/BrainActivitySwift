@@ -158,7 +158,6 @@ class SpectrumVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
             graph.reloadData()
         }
         currentFFTIndex += 1
-
     }
     
     // MARK: Plot Data Source Methods
