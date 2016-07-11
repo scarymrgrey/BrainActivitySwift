@@ -536,11 +536,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489097245.069145"
+            timestampString = "489956536.658327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204">
+            startingLineNumber = "215"
+            endingLineNumber = "215">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -550,11 +550,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489097245.069145"
+            timestampString = "489956536.658327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188">
+            startingLineNumber = "199"
+            endingLineNumber = "199">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -564,11 +564,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489090073.930579"
+            timestampString = "489955332.56015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "dataReceived(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -580,11 +580,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489093340.866152"
+            timestampString = "489955332.56015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "dataReceived(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -596,13 +596,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489097245.069145"
+            timestampString = "489956536.658327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "178"
-            endingLineNumber = "178"
-            landmarkName = "RawVC"
-            landmarkType = "3">
+            startingLineNumber = "189"
+            endingLineNumber = "189"
+            landmarkName = "axis(_:shouldUpdateAxisLabelsAtLocations:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -612,13 +612,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489097245.069145"
+            timestampString = "489956536.658327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "173"
-            endingLineNumber = "173"
-            landmarkName = "RawVC"
-            landmarkType = "3">
+            startingLineNumber = "184"
+            endingLineNumber = "184"
+            landmarkName = "numbersForPlot(_:field:recordIndexRange:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -628,11 +628,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489090073.930579"
+            timestampString = "489955332.56015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
             landmarkName = "dataReceived(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -660,11 +660,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489097245.069145"
+            timestampString = "489956536.658327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180">
+            startingLineNumber = "191"
+            endingLineNumber = "191"
+            landmarkName = "axis(_:shouldUpdateAxisLabelsAtLocations:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -674,11 +676,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489097245.069145"
+            timestampString = "489956536.658327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183">
+            startingLineNumber = "194"
+            endingLineNumber = "194">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -688,11 +690,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489097245.069145"
+            timestampString = "489956536.658327"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "184"
-            endingLineNumber = "184">
+            startingLineNumber = "195"
+            endingLineNumber = "195">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -702,7 +704,69 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489090073.930579"
+            timestampString = "489955332.56015"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "dataReceived(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BrainActivitySwift/RawVC.swift"
+            timestampString = "489956536.658327"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
+            landmarkName = "RawVC"
+            landmarkType = "3">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BrainActivitySwift/RawVC.swift"
+            timestampString = "489956536.658327"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "196"
+            endingLineNumber = "196">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BrainActivitySwift/RawVC.swift"
+            timestampString = "489955332.56015"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "dataReceived(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BrainActivitySwift/RawVC.swift"
+            timestampString = "489955332.56015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "119"
@@ -718,11 +782,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489097245.069145"
+            timestampString = "489955332.56015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "181"
-            endingLineNumber = "181">
+            startingLineNumber = "164"
+            endingLineNumber = "164"
+            landmarkName = "numbersForPlot(_:field:recordIndexRange:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -732,11 +798,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489097245.069145"
+            timestampString = "489955332.56015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185">
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "numbersForPlot(_:field:recordIndexRange:)"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -746,11 +814,123 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489093340.866152"
+            timestampString = "489955332.56015"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "numbersForPlot(_:field:recordIndexRange:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BrainActivitySwift/RawVC.swift"
+            timestampString = "489955332.56015"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
+            landmarkName = "numbersForPlot(_:field:recordIndexRange:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BrainActivitySwift/RawVC.swift"
+            timestampString = "489956536.658327"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "178"
+            endingLineNumber = "178"
+            landmarkName = "numbersForPlot(_:field:recordIndexRange:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BrainActivitySwift/RawVC.swift"
+            timestampString = "489955332.56015"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "163"
+            endingLineNumber = "163"
+            landmarkName = "numbersForPlot(_:field:recordIndexRange:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BrainActivitySwift/RawVC.swift"
+            timestampString = "489956536.658327"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "numbersForPlot(_:field:recordIndexRange:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BrainActivitySwift/RawVC.swift"
+            timestampString = "489955332.56015"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "numbersForPlot(_:field:recordIndexRange:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BrainActivitySwift/RawVC.swift"
+            timestampString = "489955332.56015"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "numberOfRecordsForPlot(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BrainActivitySwift/RawVC.swift"
+            timestampString = "489955332.56015"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "147"
+            endingLineNumber = "147"
             landmarkName = "RawVC"
             landmarkType = "3">
          </BreakpointContent>
@@ -762,11 +942,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489090073.930579"
+            timestampString = "489956230.072493"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
             landmarkName = "dataReceived(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -778,12 +958,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489093340.866152"
+            timestampString = "489956335.28361"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
-            landmarkName = "numbersForPlot(_:field:recordIndexRange:)"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
+            landmarkName = "dataReceived(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -794,12 +974,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489093340.866152"
+            timestampString = "489956562.091865"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "154"
-            endingLineNumber = "154"
-            landmarkName = "numbersForPlot(_:field:recordIndexRange:)"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "dataReceived(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -810,124 +990,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489097167.394489"
+            timestampString = "489956573.61252"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "numbersForPlot(_:field:recordIndexRange:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489097167.394489"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
-            landmarkName = "numbersForPlot(_:field:recordIndexRange:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489097167.394489"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "169"
-            endingLineNumber = "169"
-            landmarkName = "numbersForPlot(_:field:recordIndexRange:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489093340.866152"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "155"
-            endingLineNumber = "155"
-            landmarkName = "numbersForPlot(_:field:recordIndexRange:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489097167.394489"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
-            landmarkName = "numbersForPlot(_:field:recordIndexRange:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489093340.866152"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
-            landmarkName = "numbersForPlot(_:field:recordIndexRange:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489093340.866152"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "146"
-            endingLineNumber = "146"
-            landmarkName = "numbersForPlot(_:field:recordIndexRange:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BrainActivitySwift/RawVC.swift"
-            timestampString = "489093340.866152"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "143"
-            endingLineNumber = "143"
-            landmarkName = "numberOfRecordsForPlot(_:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

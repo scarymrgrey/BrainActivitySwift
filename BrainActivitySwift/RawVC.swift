@@ -27,8 +27,9 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     var currentIndex : Int!
     var viewIndexes = [UIView:Int]()
     var plotH = NSLayoutConstraint()
-    var limit : Int = 8
+    var limit : Int = 16
     var currentChannel = 1
+    var lastUpdatedIndexFor = [CPTPlot : NSNumber]()
     var graphs = [CPTXYGraph]()
     var dataForIndexKeyWasRead = [Bool](count : 4,repeatedValue : false)
     var dataForDataKeyWasRead = [Bool](count : 4,repeatedValue : false)
@@ -104,6 +105,7 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         boundLinePlot.dataLineStyle = lineStyle
         boundLinePlot.identifier = "Blue Plot"
         boundLinePlot.dataSource = self
+        lastUpdatedIndexFor[boundLinePlot] = 0
         newGraph.plotAreaFrame!.borderLineStyle = nil
         newGraph.addPlot(boundLinePlot)
         newGraph.paddingLeft = 0.0
@@ -124,7 +126,7 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
             return
         }
         currentIndex = currentIndex + 1
-        if currentIndex % limit == 0{
+        if (currentIndex % limit == 0) {
             let r = currentIndex > currentRange
             for graph in self.graphDict.values{
                 if r {
@@ -132,7 +134,12 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
                     plotSpace.xRange = CPTPlotRange(location : currentIndex-currentRange, length:currentRange)
                     plotSpace.yRange = CPTPlotRange(location : -(scopeRaw/2), length: scopeRaw)
                 }
-                  graph.plotWithIdentifier("Blue Plot")?.reloadPlotDataInIndexRange(NSMakeRange(currentIndex-limit,limit))
+                //let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH,0)
+                //dispatch_sync(queue){
+                let plot = graph.plotWithIdentifier("Blue Plot")!
+                    plot.reloadPlotDataInIndexRange(NSMakeRange(Int(lastUpdatedIndexFor[plot]!),self.limit))
+               // }
+                //print("call for :(\(currentIndex-limit):\(limit))")
             }
         }
     }
@@ -146,33 +153,39 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         if currentIndex == 0{
             return nil
         }
+        
         let k = plot.graph as! CPTXYGraph
         let plotIndex = graphIndexDict[k]!
+        
         let isIndex = fieldEnum == UInt(CPTScatterPlotField.X.rawValue)
         let key = isIndex ? "index" : "data"
+        //print("data for: \(indexRange) - index: \(plotIndex) - key:\(key)")
         var res = [NSNumber](count:limit,repeatedValue : NSNumber())
         for i in 0..<limit {
+            
             let num = data[plotIndex][i][key]!.copy() as! NSNumber
             res[i] = (num)
+            
         }
         if isIndex {
             dataForIndexKeyWasRead[plotIndex] = true
         }else {
             dataForDataKeyWasRead[plotIndex] = true
         }
-     
         if dataForIndexKeyWasRead[plotIndex]
             && dataForDataKeyWasRead[plotIndex] {
             data[plotIndex].removeFirst(limit)
+            
             //print("Data for plot \(plotIndex) was DELETED at currentIndex = \(currentIndex).")
             dataForIndexKeyWasRead[plotIndex] = false
             dataForDataKeyWasRead[plotIndex] = false
+            lastUpdatedIndexFor[plot] = indexRange.location + indexRange.length
+        
         }
         return res
     }
     // MARK: Axis Delegate Methods
     func axis(axis: CPTAxis, shouldUpdateAxisLabelsAtLocations locations: Set<NSNumber>) -> Bool {
-        
         return false
     }
 }
