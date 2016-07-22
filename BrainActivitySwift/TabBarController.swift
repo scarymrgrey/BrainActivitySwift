@@ -1,4 +1,4 @@
-
+                            
 //
 //  TabBarController.swift
 //  BrainActivitySwift
@@ -8,7 +8,7 @@
 //
 
 import UIKit
-
+import Lock
 class TabBarController:  UITabBarController, UITabBarControllerDelegate {
     enum Scenes {
         case Profile
@@ -17,12 +17,48 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
         case Sessions
         case SessionResults
     }
+    var IDToken : String!
+    var AccessToken : String!
+    var A0Controller :  A0LockViewController!
     var completedScene = Scenes.Profile
     var itemTag : Int!
     override func viewDidLoad() {
+        let customTheme = A0Theme()
+        customTheme.registerImageWithName("logo",bundle: NSBundle.mainBundle(), forKey: A0ThemeIconImageName)
+        customTheme.registerColor(UIColor.whiteColor(), forKey: A0ThemeIconBackgroundColor)
+        customTheme.registerColor(color_range_selected, forKey: A0ThemeTitleTextColor)
+        customTheme.registerColor(color_range_selected, forKey: A0ThemePrimaryButtonNormalColor)
+        customTheme.registerColor(color_range_selected, forKey: A0ThemeSecondaryButtonTextColor)
+        A0Theme.sharedInstance().registerTheme(customTheme)
+        A0Controller = A0Lock.sharedLock().newLockViewController()
+        A0Controller.closable = false
+        //userDefaults.setValue(nil, forKey: UserDefaultsKeys.idToken)
+        A0Controller.onAuthenticationBlock = { profile, token in
+            //userDefaults.setValue(token?.accessToken, forKey: UserDefaultsKeys.accessToken)
+            //userDefaults.setValue(token?.idToken, forKey: UserDefaultsKeys.idToken)
+            self.A0Controller.dismissViewControllerAnimated(true, completion: nil)
+            self.IDToken = token?.idToken
+            self.AccessToken = token?.accessToken
+            //self.context = Context(idToken: userDefaults.valueForKey(UserDefaultsKeys.idToken)! as! String, accessToken: userDefaults.valueForKey(UserDefaultsKeys.accessToken)! as!  String,URL : "http://cloudin.incoding.biz/Dispatcher/Push")
+        }
         self.delegate = self
-        self.tabBar.items![2].image = UIImage(named: "Add2")
+        for item in self.tabBar.items! {
+            var image = item.image!.imageWithRenderingMode(.AlwaysOriginal)
+            item.image = image
+            image = item.selectedImage!.imageWithRenderingMode(.AlwaysOriginal)
+            item.selectedImage = image
+            
+            item.setTitleTextAttributes([NSForegroundColorAttributeName: color_range_selected], forState: .Selected)
+        }
+        //self.tabBar.items![2].image = UIImage(named: "create-session")
         //self.tabBar.items![2].selectedImage = UIImage(named: "playbutton")
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if IDToken == nil {
+            A0Lock.sharedLock().presentLockController(A0Controller, fromController: self)
+        }
+        
     }
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
         itemTag = item.tag
@@ -30,14 +66,14 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
     
     // MARK: - UITabBarControllerDelegate
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-        if (itemTag == 2){
-            if completedScene == .Profile {
-                viewController.performSegueWithIdentifier("showAddNewSession", sender: nil)
-            }else if completedScene == .NewSession{
-                viewController.performSegueWithIdentifier("showCurrentSession", sender: nil)
-            }else if completedScene == .CurrentSession{
-                viewController.performSegueWithIdentifier("showCurrentSession", sender: nil)
-            }
-        }
+//        if (itemTag == 2){
+//            if completedScene == .Profile {
+//                viewController.performSegueWithIdentifier("showAddNewSession", sender: nil)
+//            }else if completedScene == .NewSession{
+//                viewController.performSegueWithIdentifier("showCurrentSession", sender: nil)
+//            }else if completedScene == .CurrentSession{
+//                viewController.performSegueWithIdentifier("showCurrentSession", sender: nil)
+//            }
+//        }
     }
 }

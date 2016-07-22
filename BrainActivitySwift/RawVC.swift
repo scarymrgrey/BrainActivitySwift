@@ -137,7 +137,7 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
                 //let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH,0)
                 //dispatch_sync(queue){
                 let plot = graph.plotWithIdentifier("Blue Plot")!
-                    plot.reloadPlotDataInIndexRange(NSMakeRange(Int(lastUpdatedIndexFor[plot]!),self.limit))
+                    plot.insertDataAtIndex(UInt(currentIndex-limit), numberOfRecords: UInt(limit))
                // }
                 //print("call for :(\(currentIndex-limit):\(limit))")
             }

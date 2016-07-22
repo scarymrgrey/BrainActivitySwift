@@ -1,0 +1,6 @@
+framework module SDiPhoneVersion {
+  umbrella header "SDiPhoneVersion-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -8,6 +8,7 @@
 
 import UIKit
 
+let color_range_selected = UIColor(red: 242.0/255.0, green: 101.0/255.0 , blue: 34.0/255.0, alpha: 1)
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

@@ -9,7 +9,6 @@
 import UIKit
 
 class NewSessionContentVC : BaseContentVC {
-    
     // MARK: = Outlets =
     @IBOutlet weak var Container: UIView!
     // MARK: = Local Variables =
@@ -21,7 +20,7 @@ class NewSessionContentVC : BaseContentVC {
             controllers.append(getVCById(id))
         }
     }
-    
+
     // MARK: = Actions =
     @IBAction func activityButtonAction(sender: AnyObject) {
         showVC(controllers[0])

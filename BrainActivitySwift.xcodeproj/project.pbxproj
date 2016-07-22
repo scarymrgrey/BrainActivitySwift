@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A9DA3014031F0A0925803A9 /* Pods_BrainActivitySwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74CFCD35605C85CF10135764 /* Pods_BrainActivitySwift.framework */; };
 		A30B2DA81D1946110048CBDC /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30B2DA71D1946110048CBDC /* Notifications.swift */; };
 		A30B2DAA1D19516D0048CBDC /* PlotsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30B2DA91D19516D0048CBDC /* PlotsVC.swift */; };
 		A30B2DAD1D19BD800048CBDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A30B2DAB1D19BD800048CBDC /* Main.storyboard */; };
@@ -24,7 +25,6 @@
 		A328A4581D21DDE500921D75 /* SpectrumVCPerfomanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328A4571D21DDE500921D75 /* SpectrumVCPerfomanceTest.swift */; };
 		A328A45A1D2315F900921D75 /* StopWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328A4591D2315F900921D75 /* StopWatch.swift */; };
 		A36814DC1CF7872E00CEC6A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814DB1CF7872E00CEC6A2 /* AppDelegate.swift */; };
-		A36814DE1CF7872E00CEC6A2 /* SignInVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814DD1CF7872E00CEC6A2 /* SignInVC.swift */; };
 		A36814E31CF7872E00CEC6A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A36814E21CF7872E00CEC6A2 /* Assets.xcassets */; };
 		A36814E61CF7872E00CEC6A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A36814E41CF7872E00CEC6A2 /* LaunchScreen.storyboard */; };
 		A36814F21CF788F500CEC6A2 /* CBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A36814F01CF788F500CEC6A2 /* CBManager.m */; };
@@ -37,7 +37,6 @@
 		A3EF5C9B1CFE3057009E296D /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5C9A1CFE3057009E296D /* ProfileVC.swift */; };
 		A3EF5C9D1D008435009E296D /* ActivityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5C9C1D008435009E296D /* ActivityVC.swift */; };
 		A3EF5CA11D009C98009E296D /* MetricsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5CA01D009C98009E296D /* MetricsVC.swift */; };
-		C105990E16A99243EE73B07D /* libPods-BrainActivitySwift.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 558D66038E27759B3E13CA1D /* libPods-BrainActivitySwift.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,7 +52,7 @@
 /* Begin PBXFileReference section */
 		14C0E2BA438A3DEC3309789C /* Pods-BrainActivitySwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainActivitySwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-BrainActivitySwift/Pods-BrainActivitySwift.release.xcconfig"; sourceTree = "<group>"; };
 		38E241066820F7196998CBE1 /* Pods-BrainActivitySwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainActivitySwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BrainActivitySwift/Pods-BrainActivitySwift.debug.xcconfig"; sourceTree = "<group>"; };
-		558D66038E27759B3E13CA1D /* libPods-BrainActivitySwift.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BrainActivitySwift.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		74CFCD35605C85CF10135764 /* Pods_BrainActivitySwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BrainActivitySwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A30B2DA71D1946110048CBDC /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		A30B2DA91D19516D0048CBDC /* PlotsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotsVC.swift; sourceTree = "<group>"; };
 		A30B2DAC1D19BD800048CBDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -72,7 +71,6 @@
 		A328A4591D2315F900921D75 /* StopWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopWatch.swift; sourceTree = "<group>"; };
 		A36814D81CF7872E00CEC6A2 /* BrainActivitySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrainActivitySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A36814DB1CF7872E00CEC6A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A36814DD1CF7872E00CEC6A2 /* SignInVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInVC.swift; sourceTree = "<group>"; };
 		A36814E21CF7872E00CEC6A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A36814E51CF7872E00CEC6A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A36814E71CF7872E00CEC6A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -100,7 +98,7 @@
 			files = (
 				A36814F81CF78C1300CEC6A2 /* Accelerate.framework in Frameworks */,
 				A36814F61CF78C0600CEC6A2 /* CoreBluetooth.framework in Frameworks */,
-				C105990E16A99243EE73B07D /* libPods-BrainActivitySwift.a in Frameworks */,
+				5A9DA3014031F0A0925803A9 /* Pods_BrainActivitySwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,7 +209,6 @@
 				A3273B111D02CFE000F1F4A6 /* CurrentSession */,
 				A3273B091D00C04F00F1F4A6 /* NewSession */,
 				A30B2DB01D19D9970048CBDC /* Plots */,
-				A36814DD1CF7872E00CEC6A2 /* SignInVC.swift */,
 				A3EF5C9A1CFE3057009E296D /* ProfileVC.swift */,
 				A3273B071D00BF3300F1F4A6 /* TabBarController.swift */,
 			);
@@ -223,7 +220,7 @@
 			children = (
 				A36814F71CF78C1300CEC6A2 /* Accelerate.framework */,
 				A36814F51CF78C0600CEC6A2 /* CoreBluetooth.framework */,
-				558D66038E27759B3E13CA1D /* libPods-BrainActivitySwift.a */,
+				74CFCD35605C85CF10135764 /* Pods_BrainActivitySwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -437,7 +434,6 @@
 				A30B2DB61D19D9D90048CBDC /* IndicatorsVC.swift in Sources */,
 				A36814FA1CF78DFA00CEC6A2 /* MainVC.swift in Sources */,
 				A30B2DB21D19D9C10048CBDC /* RawVC.swift in Sources */,
-				A36814DE1CF7872E00CEC6A2 /* SignInVC.swift in Sources */,
 				A3E05A321D04B8BA00ADC6F5 /* SessionHeaderView.swift in Sources */,
 				A30B2DA81D1946110048CBDC /* Notifications.swift in Sources */,
 				A30B2DB41D19D9CD0048CBDC /* SpectrumVC.swift in Sources */,
