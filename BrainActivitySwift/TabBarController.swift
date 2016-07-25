@@ -22,6 +22,7 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
     var A0Controller :  A0LockViewController!
     var completedScene = Scenes.Profile
     var itemTag : Int!
+    var selectedActivityIndex : Int!
     override func viewDidLoad() {
         let customTheme = A0Theme()
         customTheme.registerImageWithName("logo",bundle: NSBundle.mainBundle(), forKey: A0ThemeIconImageName)
@@ -34,8 +35,8 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
         A0Controller.closable = false
         //userDefaults.setValue(nil, forKey: UserDefaultsKeys.idToken)
         A0Controller.onAuthenticationBlock = { profile, token in
-            //userDefaults.setValue(token?.accessToken, forKey: UserDefaultsKeys.accessToken)
-            //userDefaults.setValue(token?.idToken, forKey: UserDefaultsKeys.idToken)
+            userDefaults.setValue(token?.accessToken, forKey: UserDefaultsKeys.accessToken)
+            userDefaults.setValue(token?.idToken, forKey: UserDefaultsKeys.idToken)
             self.A0Controller.dismissViewControllerAnimated(true, completion: nil)
             self.IDToken = token?.idToken
             self.AccessToken = token?.accessToken
@@ -66,14 +67,10 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
     
     // MARK: - UITabBarControllerDelegate
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-//        if (itemTag == 2){
-//            if completedScene == .Profile {
-//                viewController.performSegueWithIdentifier("showAddNewSession", sender: nil)
-//            }else if completedScene == .NewSession{
-//                viewController.performSegueWithIdentifier("showCurrentSession", sender: nil)
-//            }else if completedScene == .CurrentSession{
-//                viewController.performSegueWithIdentifier("showCurrentSession", sender: nil)
-//            }
-//        }
+        if (itemTag == 2){
+            if let activity = selectedActivityIndex{
+                
+            }
+        }
     }
 }

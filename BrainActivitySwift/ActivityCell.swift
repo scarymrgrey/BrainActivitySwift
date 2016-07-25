@@ -10,4 +10,7 @@ import UIKit
 
 class ActivityCell: UICollectionViewCell {
 
+    @IBOutlet weak var imgCircle: UIImageView!
+    @IBOutlet weak var img: UIImageView!
+
 }

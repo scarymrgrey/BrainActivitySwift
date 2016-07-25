@@ -34,13 +34,13 @@ class ConstraintsContainer {
         return self
     }
     func Leading(value : CGFloat)-> ConstraintsContainer{
-        return AddComplex(from: .LeadingMargin, to: .LeadingMargin, value: value)
+        return AddComplex(from: .Leading, to: .Leading, value: value)
     }
     func Top(value : CGFloat)-> ConstraintsContainer{
         return  AddComplex(from: .Top, to: .Top, value: value)
     }
     func Trailing(value : CGFloat)-> ConstraintsContainer{
-        return AddComplex(from: .TrailingMargin, to: .TrailingMargin, value: value)
+        return AddComplex(from: .Trailing, to: .Trailing, value: value)
     }
     func Bottom(value : CGFloat)-> ConstraintsContainer{
         return AddComplex(from: .Bottom, to: .Bottom, value: value)
@@ -52,7 +52,8 @@ class ConstraintsContainer {
         return AddComplex(from: .CenterY, to: .CenterY, value: value)
     }
     func AddComplex (from from: NSLayoutAttribute ,to : NSLayoutAttribute ,value : CGFloat) -> ConstraintsContainer{
-        mainview.addConstraint(NSLayoutConstraint(item: targetItem, attribute: from, relatedBy: .Equal, toItem: relatedItem, attribute: to, multiplier: 1.0, constant: value))
+        //mainview.addConstraint(NSLayoutConstraint(item: targetItem, attribute: from, relatedBy: .Equal, toItem: relatedItem, attribute: to, multiplier: 1.0, constant: value))
+        NSLayoutConstraint(item: targetItem, attribute: from, relatedBy: .Equal, toItem: relatedItem, attribute: to, multiplier: 1.0, constant: value).active = true
         return self
     }
 }

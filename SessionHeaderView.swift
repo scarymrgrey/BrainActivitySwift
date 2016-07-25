@@ -10,7 +10,7 @@ import UIKit
 
 class SessionHeaderView: UIView {
     private let trashButton = UIButton()
-    let pic = UIImage(named: "unnamed")!
+    let pic = UIImage(named: "plus")!
     internal var image : UIImageView!
     var moodLabel : UILabel!
     override func updateConstraints() {
@@ -21,20 +21,17 @@ class SessionHeaderView: UIView {
         moodLabel.translatesAutoresizingMaskIntoConstraints = false
         
         //trash button
-        self.addConstraint(NSLayoutConstraint(item: trashButton, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: 0.0))
-        self.addConstraint(NSLayoutConstraint(item: trashButton, attribute: .TrailingMargin, relatedBy: .Equal, toItem: self, attribute: .TrailingMargin, multiplier: 1.0, constant: 0.0))
-        self.addConstraint(NSLayoutConstraint(item: trashButton, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: self.frame.height))
-        self.addConstraint(NSLayoutConstraint(item: trashButton, attribute: .Width, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: self.frame.height))
+        Constraints(forTarget: trashButton).CenterY(0).Trailing(-5).Height(self.frame.height/2).Width(self.frame.height/2)
         
         //image
-        Constraints(forTarget: image).CenterY(0).Height(self.frame.height).Width(self.frame.height).Leading(0)
+        Constraints(forTarget: image).CenterY(0).Height(self.frame.height/2).Width(self.frame.height/2).Leading(5)
         
         Constraints(forTarget: moodLabel).CenterY(0).CenterX(0).Height(40).Width(100)
     }
     init(dateText : String,moodText : String,frame : CGRect){
         super.init(frame: frame)
         backgroundColor = UIColor.whiteColor()
-        trashButton.setImage(UIImage(named: "icontrash"), forState: .Normal)
+        trashButton.setImage(UIImage(named: "trashcan"), forState: .Normal)
         moodLabel = UILabel(frame: frame)
 
         moodLabel.text = moodText

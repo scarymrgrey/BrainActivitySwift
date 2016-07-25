@@ -9,24 +9,52 @@
 import UIKit
 
 
-class ActivityVC: UIViewController ,ProfilePages ,UICollectionViewDataSource,UICollectionViewDelegate{
+class ActivityVC: BatteryBarVC ,ProfilePages ,UICollectionViewDataSource,UICollectionViewDelegate{
     // MARK: - Variables
     var pageIndex : Int! = 0
-
+    
+    var selectedCell: Int!
+    var activities = ["activity-biking",
+                      "activity-cooking",
+                      "activity-dating",
+                      "activity-driving",
+                      "activity-gaming",
+                      "activity-meditation",
+                      "activity-movies",
+                      "activity-reading",
+                      "activity-working",
+                      "activity-other"
+    ]
     
     // MARK: - VC Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        //super.addBattBar()
     }
     
     // MARK: - Actions
     
     // MARK: - Collection View
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ActivityCell
+        for cl in collectionView.visibleCells() {
+            let c = cl as! ActivityCell
+            c.img.tintColor = UIColor.blackColor()
+            c.imgCircle.image = UIImage(named: "circle")
+        }
+        cell.img.tintColor = UIColor.whiteColor()
+        cell.imgCircle.image = UIImage(named: "circle-selected")
+        let tabbar = self.tabBarController as! TabBarController
+        tabbar.selectedActivityIndex = indexPath.row
+    }
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return activities.count
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("activityCellId", forIndexPath: indexPath)
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("activityCellId", forIndexPath: indexPath) as! ActivityCell
+        cell.img.image = UIImage(named: activities[indexPath.row])!.imageWithRenderingMode(.AlwaysTemplate)
+        cell.imgCircle.image = UIImage(named: "circle")
+        cell.img.tintColor = UIColor.blackColor()
         return cell
     }
 }

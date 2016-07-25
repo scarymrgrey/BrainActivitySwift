@@ -8,17 +8,40 @@
 
 import UIKit
 
-class SessionsVC : UITableViewController {
-    var arrayForBool : [Bool]! = []
+class SessionsVC : BatteryBarVC ,UITableViewDataSource,UITableViewDelegate {
+var arrayForBool : [Bool]! = []
     let sectionHeight : CGFloat = 100.0
+    var sessionList = [String]()
+    var context : Context!
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+     
+        arrayForBool = [Bool](count :4,repeatedValue : false)
         
-        arrayForBool = [false,false,false,false]
 
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.delegate = self
+        tableView.dataSource = self
+        context = Context(idToken: userDefaults.valueForKey(UserDefaultsKeys.idToken)! as! String, accessToken: userDefaults.valueForKey(UserDefaultsKeys.accessToken)! as!  String,URL : "http://cloudin.incoding.biz/Dispatcher/Query")
+    
         
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        let req = GetSessionsQuery<GetSessionsQueryResponse>(context: context)
+        req.On(success: { (resp : Array<GetSessionsQueryResponse>) in
+            for r in resp {
+                self.sessionList.append(r.StartDate)
+            }
+            self.arrayForBool = [Bool](count :resp.count,repeatedValue : false)
+            self.tableView.reloadData()
+            }, error: {})
         
     }
     
@@ -27,30 +50,30 @@ class SessionsVC : UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 4
+     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return sessionList.count
     }
     
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if(arrayForBool[section])
         {
-            return 1
+            return 5
         }
         return 0
     }
     
     
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         return 50
     }
     
-    override func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 1
     }
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if arrayForBool[indexPath.section]{
             return sectionHeight
         }
@@ -58,9 +81,9 @@ class SessionsVC : UITableViewController {
         return 0
     }
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let headerView = SessionHeaderView(dateText: "asd",moodText: "Tuesday",frame: CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height))
+        let headerView = SessionHeaderView(dateText: sessionList[section],moodText: sessionList[section],frame: CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height))
         print(tableView.frame.size.width)
         headerView.tag = section
         headerView.layer.borderWidth = 1
@@ -72,29 +95,24 @@ class SessionsVC : UITableViewController {
     }
     
     func sectionHeaderTapped(recognizer: UITapGestureRecognizer) {
-        print("Tapping working")
-        print(recognizer.view?.tag)
-        
         let indexPath  = NSIndexPath(forRow: 0, inSection:(recognizer.view?.tag as Int!)!)
         if (indexPath.row == 0) {
-            
             var collapsed = arrayForBool[indexPath.section]
             collapsed       = !collapsed
-            
             arrayForBool[indexPath.section] = collapsed
             //reload specific section animated
             let range = NSMakeRange(indexPath.section, 1)
             let sectionToReload = NSIndexSet(indexesInRange: range)
-            self.tableView .reloadSections(sectionToReload, withRowAnimation:UITableViewRowAnimation.Fade)
+            self.tableView.reloadSections(sectionToReload, withRowAnimation:UITableViewRowAnimation.Fade)
             
         }
         
     }
     
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let CellIdentifier = "Cell"
         let cell = self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier)!
-        cell.addSubview(SessionsContainerView(containerFrame: CGRectMake(0, 0, tableView.frame.width ,sectionHeight )))
+        cell.addSubview(SessionsContainerView(containerFrame: CGRectMake(0, 0, tableView.frame.width ,sectionHeight ),timeString : String(indexPath.section)))
         cell.layer.borderColor = UIColor.grayColor().CGColor
         cell.layer.borderWidth = 1
         return cell

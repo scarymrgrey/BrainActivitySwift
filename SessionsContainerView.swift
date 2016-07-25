@@ -34,7 +34,7 @@ class SessionsContainerView: UIView ,UICollectionViewDataSource{
         self.Constraints(forTarget: activityCollectionView).Related(to: self).Trailing(0).Leading(0).Bottom(0)
         self.Constraints(forTarget: activityCollectionView).Related(to: upperContainer).AddComplex(from: .Top, to: .Bottom, value: 0)
     }
-    init(containerFrame : CGRect) {
+    init(containerFrame : CGRect,timeString : String) {
         super.init(frame: containerFrame)
         let sectionHeight = containerFrame.height
         //section
@@ -44,7 +44,7 @@ class SessionsContainerView: UIView ,UICollectionViewDataSource{
         //uppercontainer
         upperContainer = UIView(frame: CGRectMake(0, 0, containerFrame.width,containerFrame.height/3))
 
-        clockTimeLabel.text = "18:34:19"
+        clockTimeLabel.text = timeString
         resultsButton.setImage(UIImage(named: "diagram-icon"), forState: .Normal)
 
         resultLabel.text = "results"
@@ -72,7 +72,7 @@ class SessionsContainerView: UIView ,UICollectionViewDataSource{
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("reusableCellId", forIndexPath: indexPath)
-        cell.backgroundView = UIImageView(image: UIImage(named: "unnamed"))
+        //cell.backgroundView = UIImageView(image: UIImage(named: "unnamed"))
         return cell
     }
 }
