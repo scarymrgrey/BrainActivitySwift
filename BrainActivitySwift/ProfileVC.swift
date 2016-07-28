@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileVC: UIViewController {
+class ProfileVC: BatteryBarVC{
     
     // MARK: - Variables
 

@@ -86,20 +86,26 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-BrainActivitySwift/AFNetworking.framework"
   install_framework "Pods-BrainActivitySwift/Alamofire.framework"
+  install_framework "Pods-BrainActivitySwift/Charts.framework"
   install_framework "Pods-BrainActivitySwift/CocoaLumberjack.framework"
   install_framework "Pods-BrainActivitySwift/CorePlot.framework"
   install_framework "Pods-BrainActivitySwift/EVReflection.framework"
   install_framework "Pods-BrainActivitySwift/Lock.framework"
   install_framework "Pods-BrainActivitySwift/Masonry.framework"
+  install_framework "Pods-BrainActivitySwift/Realm.framework"
+  install_framework "Pods-BrainActivitySwift/RealmSwift.framework"
   install_framework "Pods-BrainActivitySwift/SDiPhoneVersion.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-BrainActivitySwift/AFNetworking.framework"
   install_framework "Pods-BrainActivitySwift/Alamofire.framework"
+  install_framework "Pods-BrainActivitySwift/Charts.framework"
   install_framework "Pods-BrainActivitySwift/CocoaLumberjack.framework"
   install_framework "Pods-BrainActivitySwift/CorePlot.framework"
   install_framework "Pods-BrainActivitySwift/EVReflection.framework"
   install_framework "Pods-BrainActivitySwift/Lock.framework"
   install_framework "Pods-BrainActivitySwift/Masonry.framework"
+  install_framework "Pods-BrainActivitySwift/Realm.framework"
+  install_framework "Pods-BrainActivitySwift/RealmSwift.framework"
   install_framework "Pods-BrainActivitySwift/SDiPhoneVersion.framework"
 fi

@@ -24,6 +24,7 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
     var itemTag : Int!
     var selectedActivityIndex : Int!
     override func viewDidLoad() {
+        userDefaults.setInteger(0, forKey: UserDefaultsKeys.currentTab)
         let customTheme = A0Theme()
         customTheme.registerImageWithName("logo",bundle: NSBundle.mainBundle(), forKey: A0ThemeIconImageName)
         customTheme.registerColor(UIColor.whiteColor(), forKey: A0ThemeIconBackgroundColor)
@@ -63,14 +64,19 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
     }
     override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
         itemTag = item.tag
+        if (item.tag == 2) && (userDefaults.valueForKey(UserDefaultsKeys.currentTab) as! Int == 2){
+            if let activity = selectedActivityIndex{
+                let req = CreateSessionCommand<String>()
+                req.On(success: { (resp : String) in
+                    print(resp)
+                    }, error: {})
+            }
+        }
+        userDefaults.setInteger(item.tag, forKey: UserDefaultsKeys.currentTab)
     }
     
     // MARK: - UITabBarControllerDelegate
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-        if (itemTag == 2){
-            if let activity = selectedActivityIndex{
-                
-            }
-        }
+        
     }
 }

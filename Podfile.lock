@@ -15,6 +15,10 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - Alamofire (3.4.1)
+  - Charts/Core (2.2.5)
+  - Charts/Realm (2.2.5):
+    - Charts/Core
+    - RealmSwift (~> 0.97)
   - CocoaLumberjack (2.3.0):
     - CocoaLumberjack/Default (= 2.3.0)
     - CocoaLumberjack/Extensions (= 2.3.0)
@@ -47,11 +51,17 @@ PODS:
     - CocoaLumberjack (~> 2.0)
     - Lock/CoreUI
   - Masonry (0.6.4)
+  - Realm (0.103.2):
+    - Realm/Headers (= 0.103.2)
+  - Realm/Headers (0.103.2)
+  - RealmSwift (0.103.2):
+    - Realm (= 0.103.2)
   - SDiPhoneVersion (1.1.2)
 
 DEPENDENCIES:
   - AFNetworking
   - Alamofire (~> 3.4)
+  - Charts/Realm
   - CorePlot
   - Crashlytics
   - EVReflection
@@ -62,6 +72,7 @@ DEPENDENCIES:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  Charts: b48fcc8d7190de910ff9e9748f5360c8ea7856e5
   CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15
   CorePlot: ab9898c79b94999018e9634ab0aa4c21480c8552
   Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
@@ -69,6 +80,8 @@ SPEC CHECKSUMS:
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   Lock: d981a23c9ea7d2a77d7637ea83826b751df4e2f2
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
+  Realm: 448f0416079fe5b0ed947e7d86f3c4e1c75826cb
+  RealmSwift: 8a45cc8f02dfac093b72a3b5a01d567e27e15891
   SDiPhoneVersion: c52245ccaab8142701e2e7fb8f0391ba3f255b76
 
 COCOAPODS: 0.39.0

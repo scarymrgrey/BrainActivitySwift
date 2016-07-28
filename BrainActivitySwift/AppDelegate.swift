@@ -13,6 +13,7 @@ let userDefaults = NSUserDefaults.standardUserDefaults()
 class UserDefaultsKeys {
     static let accessToken = "accessToken"
     static let idToken = "idToken"
+    static let currentTab = "currentTab"
     
 }
 @UIApplicationMain

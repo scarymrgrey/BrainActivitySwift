@@ -12,6 +12,9 @@ import EVReflection
 protocol Initializable {
     init()
 }
+extension String : Initializable{
+    
+}
 class RequestBase <TResponse : Initializable> {
     // MARK: Locals
     private var _success : (TResponse -> Void)!

@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Charts.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>CocoaLumberjack.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -49,6 +54,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Realm.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>RealmSwift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SDiPhoneVersion.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -62,17 +77,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>1FBFC66B6791A4D84CD9E2E22BECBA17</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>25C4DCE9DCEA16C6D470F1BFAA90EDD7</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>3B1DE933E9368FF0418C66A999A18AA7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -83,6 +88,16 @@
 			<true/>
 		</dict>
 		<key>7E057F39F15BAE9D27EFC5AB5C39AC31</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>841FAAA398AEDF5D17F05338C292058C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>86FCAFBE3ACE0BF6FEB45151E8D15D55</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -103,6 +118,21 @@
 			<true/>
 		</dict>
 		<key>DD8D88E11F267207CF0EBFCDF88353B2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>E78BF9CAD32FE5D2EA044FA33DFD028A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F831852D7F125168B1EF17FC76AB893C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FA073A2B6A40241050D91303EE6DF561</key>
 		<dict>
 			<key>primary</key>
 			<true/>
