@@ -44,8 +44,7 @@
 		A3EF5C9B1CFE3057009E296D /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5C9A1CFE3057009E296D /* ProfileVC.swift */; };
 		A3EF5C9D1D008435009E296D /* ActivityVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5C9C1D008435009E296D /* ActivityVC.swift */; };
 		A3EF5CA11D009C98009E296D /* MetricsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF5CA01D009C98009E296D /* MetricsVC.swift */; };
-		A3F2813D1D4AA85F00D9AC79 /* StatOverallController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F2813C1D4AA85F00D9AC79 /* StatOverallController.swift */; };
-		A3F2813F1D4AAB2E00D9AC79 /* CategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F2813E1D4AAB2E00D9AC79 /* CategoryController.swift */; };
+		A3F281411D4CEFE800D9AC79 /* StatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F281401D4CEFE800D9AC79 /* StatTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,8 +104,7 @@
 		A3EF5C9A1CFE3057009E296D /* ProfileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		A3EF5C9C1D008435009E296D /* ActivityVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityVC.swift; sourceTree = "<group>"; };
 		A3EF5CA01D009C98009E296D /* MetricsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricsVC.swift; sourceTree = "<group>"; };
-		A3F2813C1D4AA85F00D9AC79 /* StatOverallController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatOverallController.swift; sourceTree = "<group>"; };
-		A3F2813E1D4AAB2E00D9AC79 /* CategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryController.swift; sourceTree = "<group>"; };
+		A3F281401D4CEFE800D9AC79 /* StatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,8 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				A3B520331D467C33000E762A /* StatisticsVC.swift */,
-				A3F2813C1D4AA85F00D9AC79 /* StatOverallController.swift */,
-				A3F2813E1D4AAB2E00D9AC79 /* CategoryController.swift */,
+				A3F281401D4CEFE800D9AC79 /* StatTableViewCell.swift */,
 			);
 			name = Statistics;
 			sourceTree = "<group>";
@@ -507,9 +504,9 @@
 				A3E05A321D04B8BA00ADC6F5 /* SessionHeaderView.swift in Sources */,
 				A30B2DA81D1946110048CBDC /* Notifications.swift in Sources */,
 				A30B2DB41D19D9CD0048CBDC /* SpectrumVC.swift in Sources */,
+				A3F281411D4CEFE800D9AC79 /* StatTableViewCell.swift in Sources */,
 				A3E05A301D04A33100ADC6F5 /* SessionsContainerView.swift in Sources */,
 				A3273B151D02D2AE00F1F4A6 /* SessionsVC.swift in Sources */,
-				A3F2813D1D4AA85F00D9AC79 /* StatOverallController.swift in Sources */,
 				A3EF5C9D1D008435009E296D /* ActivityVC.swift in Sources */,
 				A3166AE81D4AA089004934EE /* Colors.swift in Sources */,
 				A30B2DAA1D19516D0048CBDC /* PlotsVC.swift in Sources */,
@@ -518,7 +515,6 @@
 				A3EB94781D427D5E00C1426A /* GetSessionsQuery.swift in Sources */,
 				A3B520301D46763F000E762A /* CreateSessionCommand.swift in Sources */,
 				A3B520341D467C33000E762A /* StatisticsVC.swift in Sources */,
-				A3F2813F1D4AAB2E00D9AC79 /* CategoryController.swift in Sources */,
 				A36814DC1CF7872E00CEC6A2 /* AppDelegate.swift in Sources */,
 				A3273B0F1D02039000F1F4A6 /* MoodVC.swift in Sources */,
 			);

@@ -9,28 +9,25 @@
 import UIKit
 
 class SessionsVC : BatteryBarVC ,UITableViewDataSource,UITableViewDelegate {
-var arrayForBool : [Bool]! = []
+    var arrayForBool : [Bool]! = []
     let sectionHeight : CGFloat = 100.0
     var sessionList = [String]()
     var context : Context!
     
     
     @IBOutlet weak var tableView: UITableView!
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-     
+        
         arrayForBool = [Bool](count :4,repeatedValue : false)
         
-
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.delegate = self
         tableView.dataSource = self
         context = Context(idToken: userDefaults.valueForKey(UserDefaultsKeys.idToken)! as! String, accessToken: userDefaults.valueForKey(UserDefaultsKeys.accessToken)! as!  String,URL : "http://cloudin.incoding.biz/Dispatcher/Query")
-    
-        
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -50,12 +47,12 @@ var arrayForBool : [Bool]! = []
         // Dispose of any resources that can be recreated.
     }
     
-     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return sessionList.count
     }
     
     
-     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if(arrayForBool[section])
         {
             return 5
@@ -64,16 +61,16 @@ var arrayForBool : [Bool]! = []
     }
     
     
-     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         
         return 50
     }
     
-     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 1
     }
     
-     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if arrayForBool[indexPath.section]{
             return sectionHeight
         }
@@ -81,10 +78,10 @@ var arrayForBool : [Bool]! = []
         return 0
     }
     
-     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerView = SessionHeaderView(dateText: sessionList[section],moodText: sessionList[section],frame: CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height))
-        print(tableView.frame.size.width)
+        //print(tableView.frame.size.width)
         headerView.tag = section
         headerView.layer.borderWidth = 1
         headerView.layer.borderColor = UIColor.grayColor().CGColor
@@ -109,7 +106,7 @@ var arrayForBool : [Bool]! = []
         
     }
     
-     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let CellIdentifier = "Cell"
         let cell = self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier)!
         cell.addSubview(SessionsContainerView(containerFrame: CGRectMake(0, 0, tableView.frame.width ,sectionHeight ),timeString : String(indexPath.section)))

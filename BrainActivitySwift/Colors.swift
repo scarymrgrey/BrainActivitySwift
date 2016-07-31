@@ -15,4 +15,5 @@ class Colors {
     static let orange = UIColor(red : 252.0 / 255.0,green: 114.0 / 255.0,blue : 25.0/255.0,alpha : 1)
     static let violet = UIColor(red : 176.0 / 255.0,green: 0.0 / 255.0,blue : 106.0/255.0,alpha : 1)
     static let gray = UIColor(red : 72.0 / 255.0,green: 73.0 / 255.0,blue : 78.0/255.0,alpha : 1)
+    static let dgray = UIColor(red : 28.0 / 255.0,green: 28.0 / 255.0,blue : 30.0/255.0,alpha : 1)
 }
