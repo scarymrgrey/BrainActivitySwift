@@ -14,6 +14,8 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
     @IBOutlet weak var TableView: UITableView!
     var options : NSArray!
     var parties : [String]!
+    var arrayForBool : [Bool]! = []
+    var activityCellCount = 3
     override func viewDidLoad() {
         super.viewDidLoad()
         options = [
@@ -41,8 +43,8 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         
         TableView.delegate = self
         TableView.dataSource = self
-        
-        
+        TableView.contentInset = UIEdgeInsetsZero
+        arrayForBool = [Bool](count:3,repeatedValue : false)
         // setupPieChartView()
         //chartView.delegate = self
         //setDataForChart()
@@ -52,14 +54,14 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         chartView.usePercentValuesEnabled = true
         chartView.drawSlicesUnderHoleEnabled = false
         chartView.holeRadiusPercent = 0.58
-        chartView.transparentCircleRadiusPercent = 0.61
+        chartView.transparentCircleRadiusPercent = 0
         chartView.descriptionText = ""
         chartView.setExtraOffsets(left: 0.0, top: 0.0, right: 0.0, bottom: 0.0)
         chartView.drawCenterTextEnabled = true
         let paragraphStyle = NSParagraphStyle.defaultParagraphStyle().mutableCopy() as! NSMutableParagraphStyle
         paragraphStyle.lineBreakMode = NSLineBreakMode.ByTruncatingTail
         paragraphStyle.alignment = NSTextAlignment.Center
-        let centerText = NSMutableAttributedString(string: "1067:38:58\nSessions Time")
+        let centerText = NSMutableAttributedString(string: "1067:38:58\n Sessions Time")
         centerText.setAttributes([NSFontAttributeName: UIFont(name: "HelveticaNeue-Light",size: 10.0)!,
             NSForegroundColorAttributeName : UIColor.whiteColor(),
             NSParagraphStyleAttributeName : paragraphStyle], range: NSMakeRange(0, centerText.length))
@@ -114,10 +116,19 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
     // MARK : TableView
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 5
+        return 7
     }
     @objc func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        if indexPath.section <= activityCellCount {
+            return UITableViewCell()
+        }
+        let cell = UITableViewCell()
+        let innerView = UIView()
+        
+        innerView.backgroundColor = UIColor.blueColor()
+        cell.addSubview(innerView)
+        cell.Constraints(forTarget: innerView).AspectFill()
+        return cell
     }
     @objc func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return 1
@@ -138,38 +149,57 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
             chartViewContainer.addConstraint(NSLayoutConstraint(item: chartView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: chartView, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 0.0))
             chartViewContainer.backgroundColor = Colors.gray
             return chartViewContainer
-        case 1...3:
+        case 1...activityCellCount:
             let overallCellView = UIView()
             let colorView = UIView()
             let imageView = UIImageView()
-            imageView.image = UIImage(named: "activity-working")
+            let timeLabel = UILabel()
+            // add left border to UILabel
+            let leftLine = CALayer()
+            leftLine.frame = CGRectMake(0, 0, 2,40)
+            leftLine.backgroundColor = Colors.gray.CGColor
+            timeLabel.layer.addSublayer(leftLine)
+            timeLabel.text = "302:20:20"
+            timeLabel.textAlignment = .Center
+            timeLabel.textColor = UIColor.whiteColor()
+            imageView.image = UIImage(named: "activity-working")?.imageWithRenderingMode(.AlwaysTemplate)
+            imageView.tintColor = UIColor.whiteColor()
             let label = UILabel()
-            label.text = "test"
+            label.text = "Working"
             label.textColor = UIColor.whiteColor()
-            overallCellView.addSubViews([colorView,label,imageView])
+            overallCellView.addSubViews([colorView,label,imageView,timeLabel])
             colorView.backgroundColor = Colors.violet
             colorView.translatesAutoresizingMaskIntoConstraints = false
             imageView.translatesAutoresizingMaskIntoConstraints = false
+            timeLabel.translatesAutoresizingMaskIntoConstraints = false
             label.translatesAutoresizingMaskIntoConstraints = false
             overallCellView.Constraints(forTarget: colorView).Top(0).Bottom(0).Leading(0).Width(10)
             overallCellView.Constraints(forTarget: label).CenterY(0)
             overallCellView.Constraints(forTarget: imageView).CenterY(0).Top(5).Bottom(-5)
+            overallCellView.Constraints(forTarget: timeLabel).Top(0).Bottom(0).Trailing(0)
             overallCellView.addConstraint(NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: imageView, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 0.0))
             overallCellView.addConstraint(NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: label, attribute: NSLayoutAttribute.Leading, multiplier: 1.0, constant: -5.0))
             overallCellView.addConstraint(NSLayoutConstraint(item: colorView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: imageView, attribute: NSLayoutAttribute.Leading, multiplier: 1.0, constant: -5.0))
+            overallCellView.addConstraint(NSLayoutConstraint(item: timeLabel, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: overallCellView, attribute: NSLayoutAttribute.Width, multiplier: 2.0/5.0, constant: 0.0))
             overallCellView.layer.borderWidth = 1
             overallCellView.layer.borderColor = Colors.gray.CGColor
             overallCellView.backgroundColor = Colors.dgray
             return overallCellView
         default:
-            let headerView = UILabel(frame: CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height))
-            headerView.text = "Concentration/Attention"
+            let headerView = UIView()
+            let label = UILabel(frame: CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height))
+            label.text = "Concentration/Attention"
+            label.textAlignment = .Center
+            label.textColor = Colors.gray
             //print(tableView.frame.size.width)
-            headerView.tag = section
-            headerView.layer.borderWidth = 1
-            
-            //let headerTapped = UITapGestureRecognizer (target: self, action:#selector(SessionsVC.sectionHeaderTapped(_:)))
-            // headerView.addGestureRecognizer(headerTapped)
+            label.tag = section
+            label.layer.borderWidth = 1
+            label.layer.borderColor = Colors.gray.CGColor
+            headerView.addSubview(label)
+            label.translatesAutoresizingMaskIntoConstraints = false
+            headerView.Constraints(forTarget: label).Top(0).Bottom(0).Trailing(0).Leading(0)
+            let headerTapped = UITapGestureRecognizer (target: self, action:#selector(StatisticsVC.sectionHeaderTapped(_:)))
+            headerView.addGestureRecognizer(headerTapped)
             
             return headerView
         }
@@ -183,11 +213,31 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
     }
     
     @objc func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 1
+        return 0
     }
     
     @objc func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        return 1
+        if indexPath.section <= activityCellCount {
+            return 0
+        }
+        if arrayForBool[indexPath.section-activityCellCount - 1]{
+            return 100
+        }
+        return 0
+    }
+    // MARK : gesture Recognizers
+    
+    func sectionHeaderTapped(recognizer: UITapGestureRecognizer) {
+        let indexPath  = NSIndexPath(forRow: 0, inSection:(recognizer.view?.tag as Int!)!)
+        if (indexPath.row == 0) {
+            var collapsed = arrayForBool[indexPath.section]
+            collapsed       = !collapsed
+            arrayForBool[indexPath.section] = collapsed
+            //reload specific section animated
+            let range = NSMakeRange(indexPath.section, 1)
+            let sectionToReload = NSIndexSet(indexesInRange: range)
+            TableView.reloadSections(sectionToReload, withRowAnimation:UITableViewRowAnimation.Fade)
+        }
     }
     
     

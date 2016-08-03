@@ -56,6 +56,10 @@ class ConstraintsContainer {
         NSLayoutConstraint(item: targetItem, attribute: from, relatedBy: .Equal, toItem: relatedItem, attribute: to, multiplier: 1.0, constant: value).active = true
         return self
     }
+    func AspectFill()  {
+        targetItem.translatesAutoresizingMaskIntoConstraints = false
+        targetItem.Constraints(forTarget: relatedItem).Trailing(0).Bottom(0).Top(0).Leading(0)
+    }
 }
 extension UIView {
     func Constraints(forTarget target: UIView) -> ConstraintsContainer {
