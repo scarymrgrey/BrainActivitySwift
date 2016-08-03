@@ -194,11 +194,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SessionsContainerView.swift"
-            timestampString = "487186975.217433"
+            timestampString = "491948521.450877"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
+            startingLineNumber = "39"
+            endingLineNumber = "39"
             landmarkName = "init(containerFrame:timeString:)"
             landmarkType = "5">
          </BreakpointContent>
