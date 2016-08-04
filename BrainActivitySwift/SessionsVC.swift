@@ -98,6 +98,7 @@ class SessionsVC : BatteryBarVC ,UITableViewDataSource,UITableViewDelegate {
         cell.Constraints(forTarget: view).AspectFill()
         cell.layer.borderColor = Colors.orange.CGColor
         cell.layer.borderWidth = 1
+    
         return cell
     }
     
