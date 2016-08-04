@@ -23,7 +23,8 @@ class SessionsVC : BatteryBarVC ,UITableViewDataSource,UITableViewDelegate {
         
         arrayForBool = [Bool](count :4,repeatedValue : false)
         
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        //self.tableView.registerClass(SessionCellContainer.self, forCellReuseIdentifier: "Cell")
+        //self.tableView.registerClass(SessionHeadCell.self, forCellReuseIdentifier: "Session")
         tableView.delegate = self
         tableView.dataSource = self
         context = Context(idToken: userDefaults.valueForKey(UserDefaultsKeys.idToken)! as! String, accessToken: userDefaults.valueForKey(UserDefaultsKeys.accessToken)! as!  String,URL : "http://cloudin.incoding.biz/Dispatcher/Query")
@@ -49,7 +50,7 @@ class SessionsVC : BatteryBarVC ,UITableViewDataSource,UITableViewDelegate {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return sessionList.count
     }
-
+    
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let headerView = SessionHeaderView(dateText: sessionList[section],moodText: sessionList[section],frame: CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height))
@@ -83,23 +84,36 @@ class SessionsVC : BatteryBarVC ,UITableViewDataSource,UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        let CellIdentifier = "Cell"
-        let cell = self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier)!
-        let view = SessionsContainerView(containerFrame: CGRectMake(0, 0, tableView.frame.width, sectionHeight),timeString : String(indexPath.section))
-        view.activityImageView.image = UIImage(named: "activity-working")?.imageWithRenderingMode(.AlwaysTemplate)
-       //let view = UIView()
-    
-        if indexPath.row % 2 == 0 {
-            view.backgroundColor = Colors.orange
+        let Cell : UITableViewCell
+        
+        if indexPath.row == 0 {
+             Cell = self.tableView.dequeueReusableCellWithIdentifier("SessionCellHeadId")!
+            let cell : SessionHeadCell = Cell as! SessionHeadCell
+            cell.TimeLabel.text = "04:44:13"
         }else {
-            view.backgroundColor = Colors.dorange
+            Cell = self.tableView.dequeueReusableCellWithIdentifier("SessionCellContainerId")!
+            let cell : SessionCellContainer = Cell as! SessionCellContainer
+            let crcl = cell.CircleImg.image
+            cell.CircleImg.image = crcl?.imageWithRenderingMode(.AlwaysTemplate)
+            cell.CircleImg.tintColor = UIColor.whiteColor()
+            cell.ActivityImage.image = UIImage(named: "activiti-working")?.imageWithRenderingMode(.AlwaysTemplate)
+            cell.ActivityImage.tintColor = UIColor.whiteColor()
         }
-        cell.addSubview(view)
-        cell.Constraints(forTarget: view).AspectFill()
-        cell.layer.borderColor = Colors.orange.CGColor
-        cell.layer.borderWidth = 1
-    
-        return cell
+        
+        
+        //        view.activityImageView.image = UIImage(named: "activity-working")?.imageWithRenderingMode(.AlwaysTemplate)
+        //let view = UIView()
+        
+        if indexPath.row % 2 == 0 {
+            Cell.contentView.backgroundColor = Colors.orange
+        }else {
+            Cell.contentView.backgroundColor = Colors.dorange
+        }
+
+        Cell.layer.borderColor = Colors.orange.CGColor
+        Cell.layer.borderWidth = 1
+        
+        return Cell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
