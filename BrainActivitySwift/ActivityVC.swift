@@ -30,10 +30,14 @@ class ActivityVC: BatteryBarVC ,ProfilePages ,UICollectionViewDataSource,UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         //super.addBattBar()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(showStartCurrentSession), name: Notifications.show_start_current_session, object: nil)
     }
     
     // MARK: - Actions
-    
+    // MARK : Notifications
+    func showStartCurrentSession(){
+        self.navigationController?.performSegueWithIdentifier("showCurrentSession", sender: nil)
+    }
     // MARK: - Collection View
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ActivityCell

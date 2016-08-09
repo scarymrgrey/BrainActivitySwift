@@ -174,13 +174,20 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         }
         if dataForIndexKeyWasRead[plotIndex]
             && dataForDataKeyWasRead[plotIndex] {
+            var dataToWrite = [Float]()
+            for i in 0..<limit {
+                dataToWrite.append(data[plotIndex][i]["data"] as! Float)
+            }
+            dispatch_async(dispatch_get_main_queue()){
+                binaryFileHelper.writeArrayToPlist("2.0",array: dataToWrite)
+                print(binaryFileHelper.readArrayFromPlist("2.0")!)
+            }
             data[plotIndex].removeFirst(limit)
             
             //print("Data for plot \(plotIndex) was DELETED at currentIndex = \(currentIndex).")
             dataForIndexKeyWasRead[plotIndex] = false
             dataForDataKeyWasRead[plotIndex] = false
             lastUpdatedIndexFor[plot] = indexRange.location + indexRange.length
-        
         }
         return res
     }
@@ -188,4 +195,6 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     func axis(axis: CPTAxis, shouldUpdateAxisLabelsAtLocations locations: Set<NSNumber>) -> Bool {
         return false
     }
+    
+
 }

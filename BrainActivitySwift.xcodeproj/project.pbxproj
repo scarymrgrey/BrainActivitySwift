@@ -26,6 +26,7 @@
 		A3273B151D02D2AE00F1F4A6 /* SessionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3273B141D02D2AE00F1F4A6 /* SessionsVC.swift */; };
 		A328A4581D21DDE500921D75 /* SpectrumVCPerfomanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328A4571D21DDE500921D75 /* SpectrumVCPerfomanceTest.swift */; };
 		A328A45A1D2315F900921D75 /* StopWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328A4591D2315F900921D75 /* StopWatch.swift */; };
+		A36699D21D561D2600A160E9 /* BinaryFileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36699D11D561D2600A160E9 /* BinaryFileHelper.swift */; };
 		A36814DC1CF7872E00CEC6A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814DB1CF7872E00CEC6A2 /* AppDelegate.swift */; };
 		A36814E31CF7872E00CEC6A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A36814E21CF7872E00CEC6A2 /* Assets.xcassets */; };
 		A36814E61CF7872E00CEC6A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A36814E41CF7872E00CEC6A2 /* LaunchScreen.storyboard */; };
@@ -80,6 +81,7 @@
 		A3273B141D02D2AE00F1F4A6 /* SessionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsVC.swift; sourceTree = "<group>"; };
 		A328A4571D21DDE500921D75 /* SpectrumVCPerfomanceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumVCPerfomanceTest.swift; sourceTree = "<group>"; };
 		A328A4591D2315F900921D75 /* StopWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopWatch.swift; sourceTree = "<group>"; };
+		A36699D11D561D2600A160E9 /* BinaryFileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryFileHelper.swift; sourceTree = "<group>"; };
 		A36814D81CF7872E00CEC6A2 /* BrainActivitySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrainActivitySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A36814DB1CF7872E00CEC6A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A36814E21CF7872E00CEC6A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				A30B2DA71D1946110048CBDC /* Notifications.swift */,
 				A328A4591D2315F900921D75 /* StopWatch.swift */,
 				A3166AE71D4AA089004934EE /* Colors.swift */,
+				A36699D11D561D2600A160E9 /* BinaryFileHelper.swift */,
 			);
 			name = HelpersAndExtensions;
 			sourceTree = "<group>";
@@ -512,6 +515,7 @@
 				A3E05A301D04A33100ADC6F5 /* SessionCellContainer.swift in Sources */,
 				A3273B151D02D2AE00F1F4A6 /* SessionsVC.swift in Sources */,
 				A3EF5C9D1D008435009E296D /* ActivityVC.swift in Sources */,
+				A36699D21D561D2600A160E9 /* BinaryFileHelper.swift in Sources */,
 				A3166AE81D4AA089004934EE /* Colors.swift in Sources */,
 				A30B2DAA1D19516D0048CBDC /* PlotsVC.swift in Sources */,
 				A30B2DAF1D19C4890048CBDC /* NewSessionContentVC.swift in Sources */,

@@ -22,8 +22,7 @@ class MainVC : UIViewController, CBManagerDelegate {
         cBManager.delegate = self
         UIApplication.sharedApplication().idleTimerDisabled = true
         //cBManager.start()
-      
-        
+        self.navigationItem.hidesBackButton = true
     }
     
     override func didReceiveMemoryWarning() {
