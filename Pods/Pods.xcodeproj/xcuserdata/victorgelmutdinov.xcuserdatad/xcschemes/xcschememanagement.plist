@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>AlamofireObjectMapper.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Charts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -45,6 +50,11 @@
 			<false/>
 		</dict>
 		<key>Masonry.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>ObjectMapper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -92,11 +102,6 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>841FAAA398AEDF5D17F05338C292058C</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>86FCAFBE3ACE0BF6FEB45151E8D15D55</key>
 		<dict>
 			<key>primary</key>
@@ -107,7 +112,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>8F2934F90890FFA5209B9809616CA95A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>AD5DB500BEE2B353EC0F86888D976DBB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C3C2090211A29BD5E3D9489627F6F807</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C5CBCAA97E951CC882334464FBDF983D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,17 +142,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E78BF9CAD32FE5D2EA044FA33DFD028A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>F831852D7F125168B1EF17FC76AB893C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>FA073A2B6A40241050D91303EE6DF561</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FBD082A0D35F7917EAB9DD9D3CCA9976</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -15,25 +15,34 @@ class BinaryFileHelper {
             if !NSFileManager.defaultManager().fileExistsAtPath(fileUrl.path!) {
                 NSFileManager.defaultManager().createFileAtPath(fileUrl.path!, contents: nil, attributes: nil)
             }
-                var err:NSError?
                 if let fileHandle = NSFileHandle(forWritingAtPath: fileUrl.path!) {
                     fileHandle.seekToEndOfFile()
+                    let nData = NSMutableData(capacity: 0)
+                    nData?.appendBytes(array, length: array.count * sizeof(Float))
                     
-                    let data =  NSKeyedArchiver.archivedDataWithRootObject(array)
-                    fileHandle.writeData(data)
+                    fileHandle.writeData(nData!)
                     fileHandle.closeFile()
                 }
                 else {
-                    print("Can't open fileHandle \(err)")
+                    print("Can't open fileHandle")
                 }
-            
         }
     }
     
     func readArrayFromPlist(filename : String) -> [Float]? {
         if let arrayPath = createArrayPath(filename) {
-            if let nsdataFromFile = NSFileManager.defaultManager().contentsAtPath(arrayPath.path!)  {
-                return NSKeyedUnarchiver.unarchiveObjectWithData(nsdataFromFile) as? [Float]
+            let file: NSFileHandle? = NSFileHandle(forReadingAtPath: arrayPath.path!)
+            
+            if file == nil {
+                print("File open failed")
+            } else {
+                
+                let databuffer = file!.readDataToEndOfFile()
+                var res = [Float](count: databuffer.length / sizeof(Float),repeatedValue : 0.0)
+                databuffer.length
+                file!.closeFile()
+                databuffer.getBytes(&res)
+                return res
             }
         }
         return nil

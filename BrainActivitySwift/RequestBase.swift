@@ -9,6 +9,7 @@
 import Foundation
 import Alamofire
 import EVReflection
+import AlamofireObjectMapper
 protocol Initializable {
     init()
 }
@@ -68,6 +69,9 @@ class RequestBase <TResponse : Initializable> {
             encodingCompletion: { encodingResult in
                 switch encodingResult {
                 case .Success(let upload , _ ,_):
+                    upload.responseObject(completionHandler: { (response : Response<GetSessionsQueryResponse2, NSError>) in
+                        print(response.response)
+                    })
                     upload.responseJSON(completionHandler: { (response) in
                         switch response.result{
                         case .Success(let rawData):
@@ -85,7 +89,6 @@ class RequestBase <TResponse : Initializable> {
                                         self._successWithCollection(response)
                                     }else {
                                         let response = TResponse()
-                                        print(rawData)
                                         EVReflection.setPropertiesfromDictionary(rawData["data"]! as! NSDictionary, anyObject: response as! EVObject, conversionOptions: .DefaultDeserialize)
                                         self._success(response)
                                     }

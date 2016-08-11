@@ -16,6 +16,7 @@
 		A30B2DB41D19D9CD0048CBDC /* SpectrumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30B2DB31D19D9CD0048CBDC /* SpectrumVC.swift */; };
 		A30B2DB61D19D9D90048CBDC /* IndicatorsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30B2DB51D19D9D90048CBDC /* IndicatorsVC.swift */; };
 		A3150FA51D4530A50023DD9F /* BatteryBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3150FA41D4530A50023DD9F /* BatteryBarVC.swift */; };
+		A315A8961D5D1F4100396767 /* SessionFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A315A8951D5D1F4100396767 /* SessionFile.swift */; };
 		A3166AE81D4AA089004934EE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3166AE71D4AA089004934EE /* Colors.swift */; };
 		A31BFC0C1D05E85B0025D878 /* EZConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31BFC0B1D05E85B0025D878 /* EZConstraint.swift */; };
 		A3273B061D00B4FD00F1F4A6 /* BaseContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3273B051D00B4FD00F1F4A6 /* BaseContentVC.swift */; };
@@ -27,6 +28,7 @@
 		A328A4581D21DDE500921D75 /* SpectrumVCPerfomanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328A4571D21DDE500921D75 /* SpectrumVCPerfomanceTest.swift */; };
 		A328A45A1D2315F900921D75 /* StopWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328A4591D2315F900921D75 /* StopWatch.swift */; };
 		A36699D21D561D2600A160E9 /* BinaryFileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36699D11D561D2600A160E9 /* BinaryFileHelper.swift */; };
+		A36699D81D5B5D2F00A160E9 /* GetSessionsQueryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36699D71D5B5D2F00A160E9 /* GetSessionsQueryResponse.swift */; };
 		A36814DC1CF7872E00CEC6A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814DB1CF7872E00CEC6A2 /* AppDelegate.swift */; };
 		A36814E31CF7872E00CEC6A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A36814E21CF7872E00CEC6A2 /* Assets.xcassets */; };
 		A36814E61CF7872E00CEC6A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A36814E41CF7872E00CEC6A2 /* LaunchScreen.storyboard */; };
@@ -71,6 +73,7 @@
 		A30B2DB31D19D9CD0048CBDC /* SpectrumVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumVC.swift; sourceTree = "<group>"; };
 		A30B2DB51D19D9D90048CBDC /* IndicatorsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorsVC.swift; sourceTree = "<group>"; };
 		A3150FA41D4530A50023DD9F /* BatteryBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BatteryBarVC.swift; path = BrainActivitySwift/BatteryBarVC.swift; sourceTree = "<group>"; };
+		A315A8951D5D1F4100396767 /* SessionFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionFile.swift; sourceTree = "<group>"; };
 		A3166AE71D4AA089004934EE /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A31BFC0B1D05E85B0025D878 /* EZConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZConstraint.swift; sourceTree = "<group>"; };
 		A3273B051D00B4FD00F1F4A6 /* BaseContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseContentVC.swift; sourceTree = "<group>"; };
@@ -82,6 +85,7 @@
 		A328A4571D21DDE500921D75 /* SpectrumVCPerfomanceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumVCPerfomanceTest.swift; sourceTree = "<group>"; };
 		A328A4591D2315F900921D75 /* StopWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopWatch.swift; sourceTree = "<group>"; };
 		A36699D11D561D2600A160E9 /* BinaryFileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryFileHelper.swift; sourceTree = "<group>"; };
+		A36699D71D5B5D2F00A160E9 /* GetSessionsQueryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetSessionsQueryResponse.swift; sourceTree = "<group>"; };
 		A36814D81CF7872E00CEC6A2 /* BrainActivitySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrainActivitySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A36814DB1CF7872E00CEC6A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A36814E21CF7872E00CEC6A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -190,6 +194,15 @@
 			name = CurrentSession;
 			sourceTree = "<group>";
 		};
+		A36699D61D5B5CF100A160E9 /* ModelsAndEntities */ = {
+			isa = PBXGroup;
+			children = (
+				A36699D71D5B5D2F00A160E9 /* GetSessionsQueryResponse.swift */,
+				A315A8951D5D1F4100396767 /* SessionFile.swift */,
+			);
+			name = ModelsAndEntities;
+			sourceTree = "<group>";
+		};
 		A36814CF1CF7872E00CEC6A2 = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +233,7 @@
 				A36814E41CF7872E00CEC6A2 /* LaunchScreen.storyboard */,
 				A36814E71CF7872E00CEC6A2 /* Info.plist */,
 				A3EB94761D427D2000C1426A /* CQRS */,
+				A36699D61D5B5CF100A160E9 /* ModelsAndEntities */,
 				A3EB94711D427C3D00C1426A /* Core */,
 				A31BFC0A1D05E8300025D878 /* HelpersAndExtensions */,
 				A36814F31CF78A6D00CEC6A2 /* ViewControllers */,
@@ -510,6 +524,8 @@
 				A30B2DB21D19D9C10048CBDC /* RawVC.swift in Sources */,
 				A3E05A321D04B8BA00ADC6F5 /* SessionHeaderView.swift in Sources */,
 				A30B2DA81D1946110048CBDC /* Notifications.swift in Sources */,
+				A36699D81D5B5D2F00A160E9 /* GetSessionsQueryResponse.swift in Sources */,
+				A315A8961D5D1F4100396767 /* SessionFile.swift in Sources */,
 				A30B2DB41D19D9CD0048CBDC /* SpectrumVC.swift in Sources */,
 				A3F281411D4CEFE800D9AC79 /* StatTableViewCell.swift in Sources */,
 				A3E05A301D04A33100ADC6F5 /* SessionCellContainer.swift in Sources */,

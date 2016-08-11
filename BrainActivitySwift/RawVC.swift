@@ -33,6 +33,8 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     var graphs = [CPTXYGraph]()
     var dataForIndexKeyWasRead = [Bool](count : 4,repeatedValue : false)
     var dataForDataKeyWasRead = [Bool](count : 4,repeatedValue : false)
+    var newSessionId : String!
+    var sessionInfo : SessionCreated!
     // MARK: VC LifeCycle
     
     override func viewDidLoad() {
@@ -46,6 +48,7 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         dataFFT = [[Dictionary<String,AnyObject>]](count: 4, repeatedValue: [Dictionary<String,AnyObject>]())
         createPlots()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(dataReceived), name: Notifications.data_received, object: nil)
+        sessionInfo = userDefaults.objectForKey(UserDefaultsKeys.sessionInfo) as! SessionCreated
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(fftDataReceived), name: Notifications.fft_data_received, object: nil)
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(indiDataReceived), name: Notifications.indicators_data_received, object: nil)
     }
@@ -179,8 +182,9 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
                 dataToWrite.append(data[plotIndex][i]["data"] as! Float)
             }
             dispatch_async(dispatch_get_main_queue()){
-                binaryFileHelper.writeArrayToPlist("2.0",array: dataToWrite)
-                print(binaryFileHelper.readArrayFromPlist("2.0")!)
+                let fileNameToWrite = "\(self.sessionInfo.SessionId)_data"
+                binaryFileHelper.writeArrayToPlist(fileNameToWrite,array: dataToWrite)
+                print(binaryFileHelper.readArrayFromPlist(fileNameToWrite))
             }
             data[plotIndex].removeFirst(limit)
             

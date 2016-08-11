@@ -13,6 +13,8 @@ pod 'Alamofire', '~> 3.4'
 pod 'Lock', '~> 1.24'
 pod 'EVReflection'
 pod 'Charts/Realm'
+pod 'RealmSwift'
+pod 'AlamofireObjectMapper', '~> 3.0'
 end
 
 

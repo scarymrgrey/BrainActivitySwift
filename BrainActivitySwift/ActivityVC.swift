@@ -12,7 +12,7 @@ import UIKit
 class ActivityVC: BatteryBarVC ,ProfilePages ,UICollectionViewDataSource,UICollectionViewDelegate{
     // MARK: - Variables
     var pageIndex : Int! = 0
-    
+    var sessionInfo : SessionCreated!
     var selectedCell: Int!
     var activities = ["activity-biking",
                       "activity-cooking",
@@ -35,7 +35,9 @@ class ActivityVC: BatteryBarVC ,ProfilePages ,UICollectionViewDataSource,UIColle
     
     // MARK: - Actions
     // MARK : Notifications
-    func showStartCurrentSession(){
+   func showStartCurrentSession(notification : NSNotification){
+        sessionInfo = (notification.object as! SessionCreated)
+    
         self.navigationController?.performSegueWithIdentifier("showCurrentSession", sender: nil)
     }
     // MARK: - Collection View

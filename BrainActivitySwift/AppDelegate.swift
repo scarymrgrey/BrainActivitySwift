@@ -7,19 +7,22 @@
 //
 
 import UIKit
-
+import RealmSwift
+import ObjectMapper
 let color_range_selected = UIColor(red: 242.0/255.0, green: 101.0/255.0 , blue: 34.0/255.0, alpha: 1)
 let userDefaults = NSUserDefaults.standardUserDefaults()
+let realm = try! Realm()
 class UserDefaultsKeys {
     static let accessToken = "accessToken"
     static let idToken = "idToken"
     static let currentTab = "currentTab"
-    
+    static let sessionInfo = "sessionInfo"
 }
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+ 
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
@@ -53,7 +56,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 

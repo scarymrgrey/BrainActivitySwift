@@ -10,6 +10,10 @@
                             import UIKit
                             import Lock
                             let binaryFileHelper = BinaryFileHelper()
+                            class SessionCreated {
+                                var SessionId : String!
+                                var CategoryType : Int!
+                            }
                             class TabBarController:  UITabBarController, UITabBarControllerDelegate {
                                 enum Scenes {
                                     case Profile
@@ -61,7 +65,7 @@
                                     if IDToken == nil {
                                         A0Lock.sharedLock().presentLockController(A0Controller, fromController: self)
                                     }
-                                    
+                            				        
                                 }
                                 override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
                                     itemTag = item.tag
@@ -71,7 +75,11 @@
                                             req.On(success: { (resp : String) in
                                                 print(resp)
                                                 dispatch_async(dispatch_get_main_queue()){
-                                                    NSNotificationCenter.defaultCenter().postNotificationName(Notifications.show_start_current_session,object : nil, userInfo: nil)
+                                                    let obj = SessionCreated()
+                                                    obj.SessionId = resp
+                                                    obj.CategoryType = activity
+                                                    NSNotificationCenter.defaultCenter().postNotificationName(Notifications.show_start_current_session,object : obj, userInfo: nil)
+                                                    userDefaults.setObject(obj, forKey: UserDefaultsKeys.sessionInfo)
                                                     self.tabBar.items![2].selectedImage = UIImage(named: "stop-session-selected")?.imageWithRenderingMode(.AlwaysOriginal)
                                                     
                                                 }
