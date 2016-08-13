@@ -16,7 +16,8 @@ class UserDefaultsKeys {
     static let accessToken = "accessToken"
     static let idToken = "idToken"
     static let currentTab = "currentTab"
-    static let sessionInfo = "sessionInfo"
+    static let sessionInfoId = "sessionInfoId"
+    static let sessionInfoCategory = "sessionInfoCategory"
 }
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

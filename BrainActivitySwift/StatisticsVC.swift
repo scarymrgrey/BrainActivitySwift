@@ -80,7 +80,7 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         
     }
     func setDataForChart(chartView: PieChartView){
-        var mult = 10.0
+        let mult = 10.0
         let count = 8
         var yVals1 = [BarChartDataEntry]()
         

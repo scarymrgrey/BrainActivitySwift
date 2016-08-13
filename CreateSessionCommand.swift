@@ -2,7 +2,7 @@ import Foundation
 import Alamofire
 import EVReflection
 
-class CreateSessionCommand<TResponse : Initializable> : RequestBase<TResponse> {
+class CreateSessionCommand: RequestBase {
     
     // MARK: Request Fields
     var PatientId : String?

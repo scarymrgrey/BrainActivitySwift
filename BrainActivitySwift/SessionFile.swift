@@ -11,9 +11,9 @@ import RealmSwift
 
 class SessionFile : Object {
     
-    dynamic var SessionId : GetSessionsQueryResponse!
+    dynamic var SessionId = ""
     dynamic var FileName = ""
-    
+    dynamic var Postfix = 0
     
 // Specify properties to ignore (Realm won't persist these)
     

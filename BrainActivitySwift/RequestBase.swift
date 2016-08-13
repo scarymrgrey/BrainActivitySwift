@@ -10,17 +10,11 @@ import Foundation
 import Alamofire
 import EVReflection
 import AlamofireObjectMapper
-protocol Initializable {
-    init()
-}
-extension String : Initializable{
-    
-}
-class RequestBase <TResponse : Initializable> {
+import ObjectMapper
+
+class RequestBase {
     // MARK: Locals
-    private var _success : (TResponse -> Void)!
-    private var _successWithCollection : (Array<TResponse> -> Void)!
-    private var _error : (Void -> Void)!
+
     private var _context : Context
     private var headers = [String:String]()
     init(context : Context){
@@ -32,28 +26,19 @@ class RequestBase <TResponse : Initializable> {
         ]
     }
     
-    
     // MARK: Public Methods
     
-    func On(success success : TResponse -> Void,error :Void -> Void){
-        _success = success
-        _error = error
-        self.Execute()
-    }
-    func On(success success : Array<TResponse> -> Void,error :Void -> Void){
-        _successWithCollection = success
-        _error = error
-        self.Execute()
-    }
     func GetParameters() -> [String:AnyObject?]{
         return [:]
     }
-    func Execute(){
+    
+
+    func makeRequest(mapper : Request -> Void ){
         Alamofire.upload(
             .POST,
             _context.URL,
             headers:  headers,
-            multipartFormData: { multipartFormData in
+            multipartFormData: {multipartFormData in
                 let propsDict = self.GetParameters()
                 for key in propsDict.keys {
                     if let value = propsDict[key]!
@@ -69,33 +54,21 @@ class RequestBase <TResponse : Initializable> {
             encodingCompletion: { encodingResult in
                 switch encodingResult {
                 case .Success(let upload , _ ,_):
-                    upload.responseObject(completionHandler: { (response : Response<GetSessionsQueryResponse2, NSError>) in
-                        print(response.response)
-                    })
+                    mapper(upload)
+                    break
+                case .Failure(let error):
+                    print(error)
+                }
+        })
+
+    }
+    func On(success success : String -> Void,error :Void -> Void){
+        makeRequest{ (upload) in
                     upload.responseJSON(completionHandler: { (response) in
                         switch response.result{
                         case .Success(let rawData):
-                            
                             if (rawData["success"] as! Bool){
-                                if TResponse() is EVObject{
-                                    if rawData["data"]! is NSArray {
-                                        var response = Array<TResponse>()
-                                        for elem in (rawData["data"]! as! NSArray){
-                                            let responseData = TResponse()
-                                            let dict = elem as! NSDictionary
-                                            EVReflection.setPropertiesfromDictionary(dict , anyObject: responseData as! EVObject, conversionOptions: .DefaultDeserialize)
-                                            response.append(responseData)
-                                        }
-                                        self._successWithCollection(response)
-                                    }else {
-                                        let response = TResponse()
-                                        EVReflection.setPropertiesfromDictionary(rawData["data"]! as! NSDictionary, anyObject: response as! EVObject, conversionOptions: .DefaultDeserialize)
-                                        self._success(response)
-                                    }
-                                }else {
-                                    self._success(rawData["data"]! as! TResponse)
-                                }
-                                
+                                    success(rawData["data"]! as! String)
                             }else {
                                 print(rawData)
                             }
@@ -105,10 +78,38 @@ class RequestBase <TResponse : Initializable> {
                             break
                         }
                     })
+        }
+    }
+    func On<T : Mappable>(success success : T -> Void,error :Void -> Void){
+        makeRequest{ (upload) in
+            upload.responseObject(keyPath: "data",completionHandler: { (response : Response<T, NSError>) in
+                switch response.result{
+                case .Success(let rawData):
+                        success(rawData)
                     break
                 case .Failure(let error):
                     print(error)
+                    break
                 }
-        })
+            })
+        }
     }
+   
+
+    func On<T : SequenceType where T.Generator.Element : Mappable>(success success : T -> Void,error :Void -> Void){
+        makeRequest{ (upload) in
+            upload.responseArray(keyPath: "data",completionHandler: { (response : Response<[T.Generator.Element], NSError>) in
+                switch response.result{
+                case .Success(let rawData):
+                    print(rawData as! T)
+                    success(rawData as! T)
+                    break
+                case .Failure(let error):
+                    print(error)
+                    break
+                }
+            })
+        }
+    }
+
 }

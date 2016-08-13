@@ -17,6 +17,7 @@
 		A30B2DB61D19D9D90048CBDC /* IndicatorsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30B2DB51D19D9D90048CBDC /* IndicatorsVC.swift */; };
 		A3150FA51D4530A50023DD9F /* BatteryBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3150FA41D4530A50023DD9F /* BatteryBarVC.swift */; };
 		A315A8961D5D1F4100396767 /* SessionFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A315A8951D5D1F4100396767 /* SessionFile.swift */; };
+		A315A8981D5F78C100396767 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A315A8971D5F78C100396767 /* StringExtensions.swift */; };
 		A3166AE81D4AA089004934EE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3166AE71D4AA089004934EE /* Colors.swift */; };
 		A31BFC0C1D05E85B0025D878 /* EZConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31BFC0B1D05E85B0025D878 /* EZConstraint.swift */; };
 		A3273B061D00B4FD00F1F4A6 /* BaseContentVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3273B051D00B4FD00F1F4A6 /* BaseContentVC.swift */; };
@@ -74,6 +75,7 @@
 		A30B2DB51D19D9D90048CBDC /* IndicatorsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorsVC.swift; sourceTree = "<group>"; };
 		A3150FA41D4530A50023DD9F /* BatteryBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BatteryBarVC.swift; path = BrainActivitySwift/BatteryBarVC.swift; sourceTree = "<group>"; };
 		A315A8951D5D1F4100396767 /* SessionFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionFile.swift; sourceTree = "<group>"; };
+		A315A8971D5F78C100396767 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		A3166AE71D4AA089004934EE /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A31BFC0B1D05E85B0025D878 /* EZConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZConstraint.swift; sourceTree = "<group>"; };
 		A3273B051D00B4FD00F1F4A6 /* BaseContentVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseContentVC.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				A328A4591D2315F900921D75 /* StopWatch.swift */,
 				A3166AE71D4AA089004934EE /* Colors.swift */,
 				A36699D11D561D2600A160E9 /* BinaryFileHelper.swift */,
+				A315A8971D5F78C100396767 /* StringExtensions.swift */,
 			);
 			name = HelpersAndExtensions;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				A30B2DB21D19D9C10048CBDC /* RawVC.swift in Sources */,
 				A3E05A321D04B8BA00ADC6F5 /* SessionHeaderView.swift in Sources */,
 				A30B2DA81D1946110048CBDC /* Notifications.swift in Sources */,
+				A315A8981D5F78C100396767 /* StringExtensions.swift in Sources */,
 				A36699D81D5B5D2F00A160E9 /* GetSessionsQueryResponse.swift in Sources */,
 				A315A8961D5D1F4100396767 /* SessionFile.swift in Sources */,
 				A30B2DB41D19D9CD0048CBDC /* SpectrumVC.swift in Sources */,

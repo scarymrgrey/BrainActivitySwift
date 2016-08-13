@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 import EVReflection
 
-class GetSessionsQuery<TResponse : Initializable>  :  RequestBase <TResponse > {
+class GetSessionsQuery  :  RequestBase {
     // MARK: Request Fields
     
     var Mime : String?

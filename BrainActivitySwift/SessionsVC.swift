@@ -31,15 +31,14 @@ class SessionsVC : BatteryBarVC ,UITableViewDataSource,UITableViewDelegate {
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        let req = GetSessionsQuery<GetSessionsQueryResponse>(context: context)
-        req.On(success: { (resp : Array<GetSessionsQueryResponse>) in
+        let req = GetSessionsQuery(context: context)
+        req.On(success: { (resp : [GetSessionsQueryResponse]) in
             for r in resp {
                 self.sessionList.append(r.StartDate)
             }
             self.arrayForBool = [Bool](count :resp.count,repeatedValue : false)
             self.tableView.reloadData()
             }, error: {})
-        
     }
     
     override func didReceiveMemoryWarning() {

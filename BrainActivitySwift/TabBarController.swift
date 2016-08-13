@@ -10,10 +10,7 @@
                             import UIKit
                             import Lock
                             let binaryFileHelper = BinaryFileHelper()
-                            class SessionCreated {
-                                var SessionId : String!
-                                var CategoryType : Int!
-                            }
+                            
                             class TabBarController:  UITabBarController, UITabBarControllerDelegate {
                                 enum Scenes {
                                     case Profile
@@ -65,21 +62,34 @@
                                     if IDToken == nil {
                                         A0Lock.sharedLock().presentLockController(A0Controller, fromController: self)
                                     }
-                            				        
+                                    
                                 }
                                 override func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
                                     itemTag = item.tag
                                     if (item.tag == 2) && (userDefaults.valueForKey(UserDefaultsKeys.currentTab) as! Int == 2){
                                         if let activity = selectedActivityIndex {
-                                            let req = CreateSessionCommand<String>()
-                                            req.On(success: { (resp : String) in
+                                            let req = CreateSessionCommand()
+                                            req.On(success: { (resp : String)  in
                                                 print(resp)
                                                 dispatch_async(dispatch_get_main_queue()){
-                                                    let obj = SessionCreated()
-                                                    obj.SessionId = resp
-                                                    obj.CategoryType = activity
-                                                    NSNotificationCenter.defaultCenter().postNotificationName(Notifications.show_start_current_session,object : obj, userInfo: nil)
-                                                    userDefaults.setObject(obj, forKey: UserDefaultsKeys.sessionInfo)
+                                                    do {
+                                                        try realm.write{
+                                                            for i in 0...3 {
+                                                                let entity = SessionFile()
+                                                                entity.SessionId = resp
+                                                                entity.FileName = resp.fileNameForSessionFile(.Data, postfix: String(i))
+                                                                realm.add(entity)
+                                                            }
+                                                            
+                                                        }
+                                                    }catch {}
+                       
+                                                    userDefaults.setObject(resp, forKey: UserDefaultsKeys.sessionInfoId)
+                                                    userDefaults.setInteger(activity, forKey: UserDefaultsKeys.sessionInfoCategory)
+                                                    //userDefaults.synchronize()
+                                                    
+                                                    NSNotificationCenter.defaultCenter().postNotificationName(Notifications.show_start_current_session,object : nil, userInfo: nil)
+                                                    
                                                     self.tabBar.items![2].selectedImage = UIImage(named: "stop-session-selected")?.imageWithRenderingMode(.AlwaysOriginal)
                                                     
                                                 }
