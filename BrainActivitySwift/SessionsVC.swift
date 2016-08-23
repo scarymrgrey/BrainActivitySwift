@@ -11,10 +11,10 @@ import UIKit
 class SessionsVC : BatteryBarVC ,UITableViewDataSource,UITableViewDelegate {
     var arrayForBool : [Bool]! = []
     let sectionHeight : CGFloat = 60.0
-    var sessionList = [String]()
+    var sessionList = [GetSessionsQueryResponse]()
     var context : Context!
     var sectionList = [Int:SessionHeaderView]()
-    
+    var selectedSession : String!
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
@@ -34,7 +34,7 @@ class SessionsVC : BatteryBarVC ,UITableViewDataSource,UITableViewDelegate {
         let req = GetSessionsQuery(context: context)
         req.On(success: { (resp : [GetSessionsQueryResponse]) in
             for r in resp {
-                self.sessionList.append(r.StartDate)
+                self.sessionList.append(r)
             }
             self.arrayForBool = [Bool](count :resp.count,repeatedValue : false)
             self.tableView.reloadData()
@@ -52,7 +52,7 @@ class SessionsVC : BatteryBarVC ,UITableViewDataSource,UITableViewDelegate {
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let headerView = SessionHeaderView(dateText: sessionList[section],moodText: sessionList[section],frame: CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height))
+        let headerView = SessionHeaderView(dateText: sessionList[section].StartDate,moodText: "MoodText Here",frame: CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height))
         let collapsed = arrayForBool[section]
         if collapsed {
             headerView.image.image = UIImage(named: "minus")
@@ -70,12 +70,20 @@ class SessionsVC : BatteryBarVC ,UITableViewDataSource,UITableViewDelegate {
         sectionList[section] = headerView
         return headerView
     }
+    // MARK: Segue
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "showSessionStat"){
+            let vc = segue.destinationViewController as! StatisticsVC
+            vc.sessionId = selectedSession
+        }
+    }
     
     func sectionHeaderTapped(recognizer: UITapGestureRecognizer) {
         let indexPath  = NSIndexPath(forRow: 0, inSection:(recognizer.view?.tag as Int!)!)
+        selectedSession = sessionList[indexPath.row].Id
         if (indexPath.row == 0) {
             var collapsed = arrayForBool[indexPath.section]
-            collapsed       = !collapsed
+            collapsed     = !collapsed
             arrayForBool[indexPath.section] = collapsed
             //reload specific section animated
             self.tableView.reloadSections(NSIndexSet(index: indexPath.section), withRowAnimation:UITableViewRowAnimation.Fade)
@@ -98,7 +106,6 @@ class SessionsVC : BatteryBarVC ,UITableViewDataSource,UITableViewDelegate {
             cell.ActivityImage.image = UIImage(named: "activiti-working")?.imageWithRenderingMode(.AlwaysTemplate)
             cell.ActivityImage.tintColor = UIColor.whiteColor()
         }
-        
         
         //        view.activityImageView.image = UIImage(named: "activity-working")?.imageWithRenderingMode(.AlwaysTemplate)
         //let view = UIView()

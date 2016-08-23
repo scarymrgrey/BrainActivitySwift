@@ -35,7 +35,7 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     var dataForDataKeyWasRead = [Bool](count : 4,repeatedValue : false)
     var newSessionId : String!
     var sessionInfoId : String!
-    var sessionInfoCategory : Int!
+    //var sessionInfoCategory : Int!
     // MARK: VC LifeCycle
     
     override func viewDidLoad() {
@@ -50,8 +50,8 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         createPlots()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(dataReceived), name: Notifications.data_received, object: nil)
         
-        self.sessionInfoId = userDefaults.objectForKey(UserDefaultsKeys.sessionInfoId) as! String
-        self.sessionInfoCategory = userDefaults.integerForKey(UserDefaultsKeys.sessionInfoCategory)
+        self.sessionInfoId = userDefaults.objectForKey(UserDefaultsKeys.currentSessionId) as! String
+        //self.sessionInfoCategory = userDefaults.integerForKey(UserDefaultsKeys.sessionInfoCategory)
         
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(fftDataReceived), name: Notifications.fft_data_received, object: nil)
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(indiDataReceived), name: Notifications.indicators_data_received, object: nil)
@@ -187,7 +187,9 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
             }
             dispatch_async(dispatch_get_main_queue()){
                 let fileNameToWrite = self.sessionInfoId.fileNameForSessionFile(.Data, postfix: String(plotIndex))
+                let fileNameToWriteStress = self.sessionInfoId.fileNameForSessionFile(.StressLevel, postfix: "")
                 binaryFileHelper.writeArrayToPlist(fileNameToWrite,array: dataToWrite)
+                binaryFileHelper.writeArrayToPlist(fileNameToWriteStress, array: [5.0])
                 //print(binaryFileHelper.readArrayFromPlist(fileNameToWrite))
             }
             data[plotIndex].removeFirst(limit)
@@ -203,6 +205,4 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     func axis(axis: CPTAxis, shouldUpdateAxisLabelsAtLocations locations: Set<NSNumber>) -> Bool {
         return false
     }
-    
-
 }

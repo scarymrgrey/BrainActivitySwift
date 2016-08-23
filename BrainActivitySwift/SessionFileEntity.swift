@@ -9,15 +9,8 @@
 import Foundation
 import RealmSwift
 
-class SessionFile : Object {
-    
-    dynamic var SessionId = ""
+class SessionFileEntity : Object {
+    dynamic var Session : SessionEntity?
     dynamic var FileName = ""
     dynamic var Postfix = 0
-    
-// Specify properties to ignore (Realm won't persist these)
-    
-  //override static func ignoredProperties() -> [String] {
- //   return []
-  //}
 }

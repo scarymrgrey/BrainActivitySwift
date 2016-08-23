@@ -16,7 +16,7 @@
 		A30B2DB41D19D9CD0048CBDC /* SpectrumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30B2DB31D19D9CD0048CBDC /* SpectrumVC.swift */; };
 		A30B2DB61D19D9D90048CBDC /* IndicatorsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30B2DB51D19D9D90048CBDC /* IndicatorsVC.swift */; };
 		A3150FA51D4530A50023DD9F /* BatteryBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3150FA41D4530A50023DD9F /* BatteryBarVC.swift */; };
-		A315A8961D5D1F4100396767 /* SessionFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A315A8951D5D1F4100396767 /* SessionFile.swift */; };
+		A315A8961D5D1F4100396767 /* SessionFileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A315A8951D5D1F4100396767 /* SessionFileEntity.swift */; };
 		A315A8981D5F78C100396767 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A315A8971D5F78C100396767 /* StringExtensions.swift */; };
 		A3166AE81D4AA089004934EE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3166AE71D4AA089004934EE /* Colors.swift */; };
 		A31BFC0C1D05E85B0025D878 /* EZConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = A31BFC0B1D05E85B0025D878 /* EZConstraint.swift */; };
@@ -28,6 +28,9 @@
 		A3273B151D02D2AE00F1F4A6 /* SessionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3273B141D02D2AE00F1F4A6 /* SessionsVC.swift */; };
 		A328A4581D21DDE500921D75 /* SpectrumVCPerfomanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328A4571D21DDE500921D75 /* SpectrumVCPerfomanceTest.swift */; };
 		A328A45A1D2315F900921D75 /* StopWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = A328A4591D2315F900921D75 /* StopWatch.swift */; };
+		A32A5C2D1D6C6F6A003B304F /* SessionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A5C2C1D6C6F6A003B304F /* SessionEntity.swift */; };
+		A32A5C2F1D6C7DE5003B304F /* ActivityEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A5C2E1D6C7DE5003B304F /* ActivityEntity.swift */; };
+		A32A5C311D6C86AC003B304F /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A5C301D6C86AC003B304F /* Entity.swift */; };
 		A36699D21D561D2600A160E9 /* BinaryFileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36699D11D561D2600A160E9 /* BinaryFileHelper.swift */; };
 		A36699D81D5B5D2F00A160E9 /* GetSessionsQueryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36699D71D5B5D2F00A160E9 /* GetSessionsQueryResponse.swift */; };
 		A36814DC1CF7872E00CEC6A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814DB1CF7872E00CEC6A2 /* AppDelegate.swift */; };
@@ -74,7 +77,7 @@
 		A30B2DB31D19D9CD0048CBDC /* SpectrumVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumVC.swift; sourceTree = "<group>"; };
 		A30B2DB51D19D9D90048CBDC /* IndicatorsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IndicatorsVC.swift; sourceTree = "<group>"; };
 		A3150FA41D4530A50023DD9F /* BatteryBarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BatteryBarVC.swift; path = BrainActivitySwift/BatteryBarVC.swift; sourceTree = "<group>"; };
-		A315A8951D5D1F4100396767 /* SessionFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionFile.swift; sourceTree = "<group>"; };
+		A315A8951D5D1F4100396767 /* SessionFileEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionFileEntity.swift; sourceTree = "<group>"; };
 		A315A8971D5F78C100396767 /* StringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
 		A3166AE71D4AA089004934EE /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		A31BFC0B1D05E85B0025D878 /* EZConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZConstraint.swift; sourceTree = "<group>"; };
@@ -86,6 +89,9 @@
 		A3273B141D02D2AE00F1F4A6 /* SessionsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionsVC.swift; sourceTree = "<group>"; };
 		A328A4571D21DDE500921D75 /* SpectrumVCPerfomanceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumVCPerfomanceTest.swift; sourceTree = "<group>"; };
 		A328A4591D2315F900921D75 /* StopWatch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopWatch.swift; sourceTree = "<group>"; };
+		A32A5C2C1D6C6F6A003B304F /* SessionEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionEntity.swift; sourceTree = "<group>"; };
+		A32A5C2E1D6C7DE5003B304F /* ActivityEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityEntity.swift; sourceTree = "<group>"; };
+		A32A5C301D6C86AC003B304F /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
 		A36699D11D561D2600A160E9 /* BinaryFileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryFileHelper.swift; sourceTree = "<group>"; };
 		A36699D71D5B5D2F00A160E9 /* GetSessionsQueryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetSessionsQueryResponse.swift; sourceTree = "<group>"; };
 		A36814D81CF7872E00CEC6A2 /* BrainActivitySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrainActivitySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -201,7 +207,10 @@
 			isa = PBXGroup;
 			children = (
 				A36699D71D5B5D2F00A160E9 /* GetSessionsQueryResponse.swift */,
-				A315A8951D5D1F4100396767 /* SessionFile.swift */,
+				A315A8951D5D1F4100396767 /* SessionFileEntity.swift */,
+				A32A5C2C1D6C6F6A003B304F /* SessionEntity.swift */,
+				A32A5C2E1D6C7DE5003B304F /* ActivityEntity.swift */,
+				A32A5C301D6C86AC003B304F /* Entity.swift */,
 			);
 			name = ModelsAndEntities;
 			sourceTree = "<group>";
@@ -518,6 +527,7 @@
 				A31BFC0C1D05E85B0025D878 /* EZConstraint.swift in Sources */,
 				A3273B0B1D01F43900F1F4A6 /* ActivityCell.swift in Sources */,
 				A3EF5CA11D009C98009E296D /* MetricsVC.swift in Sources */,
+				A32A5C2D1D6C6F6A003B304F /* SessionEntity.swift in Sources */,
 				A328A45A1D2315F900921D75 /* StopWatch.swift in Sources */,
 				A3273B081D00BF3300F1F4A6 /* TabBarController.swift in Sources */,
 				A3273B061D00B4FD00F1F4A6 /* BaseContentVC.swift in Sources */,
@@ -525,11 +535,13 @@
 				A3EB94731D427C5500C1426A /* RequestBase.swift in Sources */,
 				A36814FA1CF78DFA00CEC6A2 /* MainVC.swift in Sources */,
 				A30B2DB21D19D9C10048CBDC /* RawVC.swift in Sources */,
+				A32A5C311D6C86AC003B304F /* Entity.swift in Sources */,
 				A3E05A321D04B8BA00ADC6F5 /* SessionHeaderView.swift in Sources */,
 				A30B2DA81D1946110048CBDC /* Notifications.swift in Sources */,
 				A315A8981D5F78C100396767 /* StringExtensions.swift in Sources */,
+				A32A5C2F1D6C7DE5003B304F /* ActivityEntity.swift in Sources */,
 				A36699D81D5B5D2F00A160E9 /* GetSessionsQueryResponse.swift in Sources */,
-				A315A8961D5D1F4100396767 /* SessionFile.swift in Sources */,
+				A315A8961D5D1F4100396767 /* SessionFileEntity.swift in Sources */,
 				A30B2DB41D19D9CD0048CBDC /* SpectrumVC.swift in Sources */,
 				A3F281411D4CEFE800D9AC79 /* StatTableViewCell.swift in Sources */,
 				A3E05A301D04A33100ADC6F5 /* SessionCellContainer.swift in Sources */,

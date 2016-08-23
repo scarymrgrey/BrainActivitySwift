@@ -308,7 +308,7 @@
                         <viewControllerLayoutGuide type="bottom" id="cCs-Is-HfY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="g4c-GK-Bqa">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="951"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="887"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZc-kO-seN">
@@ -491,7 +491,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NSy-6k-oKe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3700.5" y="2356.5"/>
+            <point key="canvasLocation" x="3700.5" y="2431.5"/>
         </scene>
         <!--MainVC-->
         <scene sceneID="S9Q-iS-ZqO">
@@ -1041,6 +1041,7 @@
         <!--Sessions-->
         <scene sceneID="E1s-Ud-mcP">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kUC-rL-Jeq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="Fck-hc-c4s" customClass="SessionsVC" customModule="BrainActivitySwift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hsz-ox-5DG"/>
@@ -1053,6 +1054,9 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="tPF-eq-qhh">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="400" id="reE-lk-zfm"/>
+                                </constraints>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SessionCellHeadId" rowHeight="50" id="NXX-vI-8zh" customClass="SessionHeadCell" customModule="BrainActivitySwift" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1123,12 +1127,14 @@
                                                             <exclude reference="1o7-Wj-UMc"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="84" y="10" width="148" height="30"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="1o7-Wj-UMc"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <segue destination="jVL-W5-33a" kind="show" identifier="showSessionStat" id="Kdf-Qe-Or0"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" red="0.98823529409999999" green="0.44705882349999998" blue="0.098039215690000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -1318,8 +1324,7 @@
                                                             <exclude reference="rif-jZ-fre"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="190" y="16" width="40" height="33"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="constraints">
                                                             <include reference="rif-jZ-fre"/>
                                                         </mask>
@@ -1383,6 +1388,16 @@
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="reE-lk-zfm"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="reE-lk-zfm"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="Fck-hc-c4s" id="1c0-6n-7DC"/>
                                     <outlet property="delegate" destination="Fck-hc-c4s" id="5Sf-D2-BGo"/>
@@ -1426,7 +1441,6 @@
                         <outlet property="tableView" destination="tPF-eq-qhh" id="xOd-JY-juO"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kUC-rL-Jeq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3700.5" y="1707.75"/>
         </scene>
@@ -1447,7 +1461,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FP2-LZ-fIZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2910" y="2356.5"/>
+            <point key="canvasLocation" x="2919" y="2356.5"/>
         </scene>
         <!--Settings-->
         <scene sceneID="eNO-tz-iJV">
@@ -1737,4 +1751,7 @@
         <image name="user" width="46" height="46"/>
         <image name="user-selected" width="46" height="46"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Kdf-Qe-Or0"/>
+    </inferredMetricsTieBreakers>
 </document>

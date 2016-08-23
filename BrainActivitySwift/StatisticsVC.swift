@@ -8,14 +8,20 @@
 
 import Foundation
 import Charts
-class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITableViewDataSource{
+class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITableViewDataSource ,CPTPlotDataSource{
     
+    class SessionVM {
+        var Time : String!
+        var Id : String!
+    }
     
     @IBOutlet weak var TableView: UITableView!
     var options : NSArray!
     var parties : [String]!
     var arrayForBool : [Bool]! = []
     var activityCellCount = 3
+    var plotToFileNameDict = [CPTPlot:String]()
+    var sessionId : String!
     override func viewDidLoad() {
         super.viewDidLoad()
         options = [
@@ -123,11 +129,13 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
             return UITableViewCell()
         }
         let cell = UITableViewCell()
-        let innerView = UIView()
+        let innerView = CPTGraphHostingView()
         
         innerView.backgroundColor = UIColor.blueColor()
         cell.addSubview(innerView)
         cell.Constraints(forTarget: innerView).AspectFill()
+        let filename = sessionId.fileNameForSessionFile(.Data, postfix: "0")
+        createCorePlot(innerView, color: UIColor.whiteColor(),fileName: filename)
         return cell
     }
     @objc func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -240,5 +248,95 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         }
     }
     
+    // MARK: =CorePlot=
+    func createCorePlot( view2addGraph : UIView, color : UIColor ,fileName : String) { // Create graph from theme
+        let newGraph = CPTXYGraph(frame: CGRectZero)
+        let theme = CPTTheme(named: kCPTPlainWhiteTheme)
+        newGraph.applyTheme(theme)
+
+        let hostingView = view2addGraph as! CPTGraphHostingView
+        let bg = CPTColor(CGColor: Colors.dgray.CGColor)
+        hostingView.collapsesLayers = false // Setting to true reduces GPU memory usage,but can slow drawing/scrolling hostingView.hostedGraph = newGraph
+        hostingView.hostedGraph = newGraph
+        // Setup plot space
+        let plotSpace = newGraph.defaultPlotSpace as! CPTXYPlotSpace
+        plotSpace.allowsUserInteraction = false
+        plotSpace.xRange = CPTPlotRange(location:  0.0,length: 1000 )
+        plotSpace.yRange = CPTPlotRange(location: 0,length : 150000)
+        // Axes
+        let axisSet = newGraph.axisSet as! CPTXYAxisSet
+        let x = axisSet.xAxis!
+        //x.alternatingBandFills = [CPTFill(color: CPTColor(CGColor: Colors.lblue.CGColor)),CPTFill(color: CPTColor(CGColor:Colors.lgreen.CGColor))]
+        //axisSet.yAxis!.hidden = true
+        //x.majorIntervalLength = CPTDecimalFromDouble(125);
+        //x.orthogonalCoordinateDecimal = CPTDecimalFromDouble(10.0);
+        //x.minorTicksPerInterval = 0;
+        x.labelingPolicy = CPTAxisLabelingPolicy.None
+        //[[newGraph plotAreaFrame] setPaddingLeft:30.0f];
+        let y = axisSet.yAxis!
+        y.majorIntervalLength = 10000
+        y.minorTicksPerInterval = 0
+        y.delegate = self
+        
+        // Create a blue plot area
+        let boundLinePlot = CPTScatterPlot()
+        let lineStyle = CPTMutableLineStyle()
+        lineStyle.miterLimit = 1.0
+        lineStyle.lineWidth = 1.0
+        lineStyle.lineColor = CPTColor(CGColor: color.CGColor)
+        boundLinePlot.dataLineStyle = lineStyle
+        boundLinePlot.identifier = "plotID"
+        boundLinePlot.dataSource = self
+        plotToFileNameDict[boundLinePlot] = fileName
+        newGraph.plotAreaFrame!.borderLineStyle = nil
+        newGraph.addPlot(boundLinePlot)
+        newGraph.paddingLeft = 0.0
+        newGraph.paddingTop = 0.0
+        newGraph.paddingRight = 0.0
+        newGraph.paddingBottom = 0.0
+        newGraph.plotAreaFrame?.fill = CPTFill(color: bg)
+        
+        let areaColor = CPTColor(CGColor: Colors.orange.CGColor)
+        let areaGradient = CPTGradient(beginningColor:CPTColor.clearColor() ,endingColor: areaColor)
+        areaGradient.angle = -90
+        
+        let areaGradientFill = CPTFill(gradient:areaGradient)
+        boundLinePlot.areaFill = areaGradientFill
+        boundLinePlot.areaBaseValue = 0
+        
+        // red
+        let bandRange = CPTPlotRange(location: 500, length: 400)
+        let bandFill = CPTFill(color: CPTColor(CGColor: Colors.gray.CGColor))
+        x.addBackgroundLimitBand(CPTLimitBand(range: bandRange,fill: bandFill))
+       
+    }
     
+    // MARK: Plot Data Source Methods
+    
+    func numberOfRecordsForPlot(plot : CPTPlot) -> UInt{
+        return UInt(1000)
+    }
+    func numbersForPlot(plot: CPTPlot, field fieldEnum: UInt, recordIndexRange indexRange: NSRange) -> [AnyObject]? {
+        print(plotToFileNameDict)
+        let fileName = plotToFileNameDict[plot ]
+       
+        let isIndex = fieldEnum == UInt(CPTScatterPlotField.X.rawValue)
+        var res = [NSNumber](count:1000,repeatedValue : NSNumber())
+        if isIndex {
+            for i in indexRange.toRange()! {
+                res [i] = NSNumber(int: Int32(i))
+            }
+        }else{
+            let arr = binaryFileHelper.readArrayFromPlist(fileName!)!
+            for i in 0 ..< 1000 {
+                res[i] = NSNumber(float: arr[i])
+            }
+        }
+        //print("data for: \(indexRange) - index: \(plotIndex) - key:\(key)")
+        return res
+    }
+    // MARK: Axis Delegate Methods
+    func axis(axis: CPTAxis, shouldUpdateAxisLabelsAtLocations locations: Set<NSNumber>) -> Bool {
+        return false
+    }
 }

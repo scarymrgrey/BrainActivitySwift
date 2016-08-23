@@ -13,16 +13,16 @@ class ActivityVC: BatteryBarVC ,ProfilePages ,UICollectionViewDataSource,UIColle
     // MARK: - Variables
     var pageIndex : Int! = 0
     var selectedCell: Int!
-    var activities = ["activity-biking",
-                      "activity-cooking",
-                      "activity-dating",
-                      "activity-driving",
-                      "activity-gaming",
-                      "activity-meditation",
-                      "activity-movies",
-                      "activity-reading",
-                      "activity-working",
-                      "activity-other"
+    var activitiesList = [ActivityTypeEnum.Biking,
+                      .Cooking,
+                      .Dating,
+                      .Driving,
+                      .Gaming,
+                      .Meditation,
+                      .Movies,
+                      .Reading,
+                      .Working,
+                      .Other
     ]
     
     // MARK: - VC Life Cycle
@@ -49,14 +49,14 @@ class ActivityVC: BatteryBarVC ,ProfilePages ,UICollectionViewDataSource,UIColle
         cell.img.tintColor = UIColor.whiteColor()
         cell.imgCircle.image = UIImage(named: "circle-selected")
         let tabbar = self.tabBarController as! TabBarController
-        tabbar.selectedActivityIndex = indexPath.row
+        tabbar.selectedActivity = activitiesList[indexPath.row]
     }
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return activities.count
+        return activitiesList.count
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("activityCellId", forIndexPath: indexPath) as! ActivityCell
-        cell.img.image = UIImage(named: activities[indexPath.row])!.imageWithRenderingMode(.AlwaysTemplate)
+        cell.img.image = UIImage(named: activitiesList[indexPath.row].rawValue)!.imageWithRenderingMode(.AlwaysTemplate)
         cell.imgCircle.image = UIImage(named: "circle")
         cell.img.tintColor = UIColor.blackColor()
         return cell

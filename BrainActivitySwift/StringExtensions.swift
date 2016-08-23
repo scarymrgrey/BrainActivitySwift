@@ -7,6 +7,7 @@
 //
 enum SessionFileType : String {
     case Data = "_data"
+    case StressLevel = "_stress"
 }
 extension String {
     func fileNameForSessionFile(type : SessionFileType,postfix : String) -> String {

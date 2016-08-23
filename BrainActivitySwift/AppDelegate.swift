@@ -16,7 +16,7 @@ class UserDefaultsKeys {
     static let accessToken = "accessToken"
     static let idToken = "idToken"
     static let currentTab = "currentTab"
-    static let sessionInfoId = "sessionInfoId"
+    static let currentSessionId = "currentSessionId"
     static let sessionInfoCategory = "sessionInfoCategory"
 }
 @UIApplicationMain
@@ -29,6 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let pageControl = UIPageControl.appearance()
         pageControl.hidden = true
+        userDefaults.removeObjectForKey(UserDefaultsKeys.currentSessionId)
         //Fabric.with([Crashlytics.self()])
         //pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
         //pageControl.currentPageIndicatorTintColor = UIColor.blackColor()
