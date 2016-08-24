@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '6A984663393A20C1267723BC'
+               BlueprintIdentifier = 'E54BA0CFD2559AB5FBAE5D61'
                BlueprintName = 'CorePlot'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'CorePlot.framework'>

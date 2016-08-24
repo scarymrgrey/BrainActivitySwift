@@ -85,6 +85,7 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
                                         let entity = SessionFileEntity()
                                         entity.Session = newSession
                                         entity.FileName = resp.fileNameForSessionFile(.Data, postfix: String(i))
+                                        entity.Postfix = i
                                         realm.add(entity)
                                     }
                                 }
