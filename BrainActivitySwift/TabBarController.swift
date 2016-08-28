@@ -91,10 +91,6 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
                                 }
                             }catch {}
                             
-                            
-                            //userDefaults.setObject(activity, forKey: UserDefaultsKeys.sessionInfoCategory)
-                            //userDefaults.synchronize()
-                            
                             NSNotificationCenter.defaultCenter().postNotificationName(Notifications.show_start_current_session,object : nil, userInfo: nil)
                             
                             self.tabBar.items![2].selectedImage = UIImage(named: "stop-session-selected")?.imageWithRenderingMode(.AlwaysOriginal)

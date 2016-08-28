@@ -8,6 +8,9 @@
 
 import Foundation
 import Charts
+enum StatisticType {
+    
+}
 class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITableViewDataSource ,CPTPlotDataSource{
     
     class SessionVM {

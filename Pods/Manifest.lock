@@ -1,4 +1,5 @@
 PODS:
+  - Advance (0.9.1)
   - AFNetworking (3.1.0):
     - AFNetworking/NSURLSession (= 3.1.0)
     - AFNetworking/Reachability (= 3.1.0)
@@ -63,6 +64,7 @@ PODS:
   - SDiPhoneVersion (1.1.2)
 
 DEPENDENCIES:
+  - Advance (~> 0.9)
   - AFNetworking
   - Alamofire (~> 3.4)
   - AlamofireObjectMapper (~> 3.0)
@@ -76,6 +78,7 @@ DEPENDENCIES:
   - SDiPhoneVersion
 
 SPEC CHECKSUMS:
+  Advance: 58f115c484cded634ffe529fcf6d39e741de1a44
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   AlamofireObjectMapper: 70f97cbf45c01c48d26aa07a1a7059a60ed7411d

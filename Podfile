@@ -15,6 +15,7 @@ pod 'EVReflection'
 pod 'Charts/Realm'
 pod 'RealmSwift'
 pod 'AlamofireObjectMapper', '~> 3.0'
+pod 'Advance', '~> 0.9'
 end
 
 

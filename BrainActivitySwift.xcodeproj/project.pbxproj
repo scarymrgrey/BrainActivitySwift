@@ -44,6 +44,7 @@
 		A3B520301D46763F000E762A /* CreateSessionCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B5202F1D46763F000E762A /* CreateSessionCommand.swift */; };
 		A3B520341D467C33000E762A /* StatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B520331D467C33000E762A /* StatisticsVC.swift */; };
 		A3BE74531D6DFF6B00F5B6E5 /* AnimatedSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BE74521D6DFF6B00F5B6E5 /* AnimatedSessionView.swift */; };
+		A3BE74A81D6F38AE00F5B6E5 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BE74A71D6F38AE00F5B6E5 /* AnimationView.swift */; };
 		A3E05A301D04A33100ADC6F5 /* SessionCellContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E05A2F1D04A33100ADC6F5 /* SessionCellContainer.swift */; };
 		A3E05A321D04B8BA00ADC6F5 /* SessionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E05A311D04B8BA00ADC6F5 /* SessionHeaderView.swift */; };
 		A3EB94731D427C5500C1426A /* RequestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EB94721D427C5500C1426A /* RequestBase.swift */; };
@@ -113,6 +114,7 @@
 		A3B5202F1D46763F000E762A /* CreateSessionCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSessionCommand.swift; sourceTree = "<group>"; };
 		A3B520331D467C33000E762A /* StatisticsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsVC.swift; sourceTree = "<group>"; };
 		A3BE74521D6DFF6B00F5B6E5 /* AnimatedSessionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSessionView.swift; sourceTree = "<group>"; };
+		A3BE74A71D6F38AE00F5B6E5 /* AnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
 		A3E05A2F1D04A33100ADC6F5 /* SessionCellContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionCellContainer.swift; path = ../SessionCellContainer.swift; sourceTree = "<group>"; };
 		A3E05A311D04B8BA00ADC6F5 /* SessionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionHeaderView.swift; path = ../SessionHeaderView.swift; sourceTree = "<group>"; };
 		A3EB94721D427C5500C1426A /* RequestBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBase.swift; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 			children = (
 				A3150FA41D4530A50023DD9F /* BatteryBarVC.swift */,
 				A3BE74521D6DFF6B00F5B6E5 /* AnimatedSessionView.swift */,
+				A3BE74A71D6F38AE00F5B6E5 /* AnimationView.swift */,
 			);
 			name = UIComponents;
 			path = ..;
@@ -523,6 +526,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A3150FA51D4530A50023DD9F /* BatteryBarVC.swift in Sources */,
+				A3BE74A81D6F38AE00F5B6E5 /* AnimationView.swift in Sources */,
 				A3EF5C9B1CFE3057009E296D /* ProfileVC.swift in Sources */,
 				A3FCB05B1D538BA500F42463 /* SessionHeadCell.swift in Sources */,
 				A3273B131D02D02400F1F4A6 /* CurrentSessionVC.swift in Sources */,

@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Advance.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Alamofire.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -92,7 +97,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>3392AFDFBB82C7720736E70CAE422A2E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>79C040AFDDCE1BCBF6D8B5EB0B85887F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7D316D8944E49598B911BAAE87E1E029</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -112,22 +127,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8F2934F90890FFA5209B9809616CA95A</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>AD5DB500BEE2B353EC0F86888D976DBB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>C3C2090211A29BD5E3D9489627F6F807</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>C5CBCAA97E951CC882334464FBDF983D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C95809573988C6E066A1D11F0A282993</key>
 		<dict>
 			<key>primary</key>
 			<true/>

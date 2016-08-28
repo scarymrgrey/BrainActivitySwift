@@ -85,6 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-BrainActivitySwift/AFNetworking.framework"
+  install_framework "Pods-BrainActivitySwift/Advance.framework"
   install_framework "Pods-BrainActivitySwift/Alamofire.framework"
   install_framework "Pods-BrainActivitySwift/AlamofireObjectMapper.framework"
   install_framework "Pods-BrainActivitySwift/Charts.framework"
@@ -100,6 +101,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-BrainActivitySwift/AFNetworking.framework"
+  install_framework "Pods-BrainActivitySwift/Advance.framework"
   install_framework "Pods-BrainActivitySwift/Alamofire.framework"
   install_framework "Pods-BrainActivitySwift/AlamofireObjectMapper.framework"
   install_framework "Pods-BrainActivitySwift/Charts.framework"
