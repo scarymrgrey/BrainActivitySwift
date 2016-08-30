@@ -153,10 +153,10 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         cell.addSubview(innerView)
         cell.Constraints(forTarget: innerView).AspectFill()
         let plot = createCorePlot(innerView, color: UIColor.whiteColor())
-        preparePlot(plot,indexPath: indexPath)
+        preparePlot(plot,row: indexPath.row)
         return cell
     }
-    func preparePlot(plot : CPTPlot,indexPath : NSIndexPath){
+    func preparePlot(plot : CPTPlot,row : Int){
         preconditionFailure("This method must be overridden")
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{

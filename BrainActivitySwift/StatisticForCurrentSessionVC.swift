@@ -17,7 +17,7 @@ class StatisticForCurrentSessionVC : StatisticsVC{
             return self.Table
         }
         set {
-            self.TableView = newValue
+            //self.TableView = newValue
         }
     }
     var dataForIndexKeyWasRead = [Bool](count : 4,repeatedValue : false)
@@ -29,7 +29,7 @@ class StatisticForCurrentSessionVC : StatisticsVC{
     var data  = [[Dictionary<String,AnyObject>]](count: 4, repeatedValue: [Dictionary<String,AnyObject>]())
     var limit : Int = 16
     var lastIndexUpdated  = 0
-    var plotToIndexPathDict = [NSIndexPath:CPTPlot]()
+    var plotToIndexPathDict = [Int:CPTPlot]()
     // MARK: Helpers
     func setDefaultValues(){
         scopeRaw = 200000
@@ -39,6 +39,7 @@ class StatisticForCurrentSessionVC : StatisticsVC{
     // MARK: VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        setDefaultValues()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(dataReceived), name: Notifications.data_received, object: nil)
     }
     
@@ -64,13 +65,13 @@ class StatisticForCurrentSessionVC : StatisticsVC{
         }
     }
     
-    override func preparePlot(plot : CPTPlot,indexPath : NSIndexPath) {
-        plotToIndexPathDict[indexPath] = plot
+    override func preparePlot(plot : CPTPlot,row : Int) {
+        plotToIndexPathDict[row] = plot
     }
     override func sectionHeaderTapped(recognizer: UITapGestureRecognizer) {
         super.sectionHeaderTapped(recognizer)
         let indexPath  = NSIndexPath(forRow: 0, inSection:(recognizer.view?.tag as Int!)!)
-        currentlySelectedPlot = plotToIndexPathDict[indexPath]!
+        currentlySelectedPlot = plotToIndexPathDict[indexPath.row]!
         currentlySelectedPlot.insertDataAtIndex(UInt(lastIndexUpdated), numberOfRecords: UInt(limit))
     }
     

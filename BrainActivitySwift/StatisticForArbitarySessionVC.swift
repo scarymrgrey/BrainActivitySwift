@@ -52,7 +52,7 @@ class StatisticForArbitarySessionVC : StatisticsVC{
         return res
     }
     
-    override func preparePlot(plot : CPTPlot, indexPath : NSIndexPath) {
+    override func preparePlot(plot : CPTPlot, row : Int) {
         plotToFileNameDict[plot] = sessionId.fileNameForSessionFile(.Data, postfix: "0")
     }
 }
