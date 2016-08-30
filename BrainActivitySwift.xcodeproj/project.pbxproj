@@ -31,6 +31,8 @@
 		A32A5C2D1D6C6F6A003B304F /* SessionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A5C2C1D6C6F6A003B304F /* SessionEntity.swift */; };
 		A32A5C2F1D6C7DE5003B304F /* ActivityEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A5C2E1D6C7DE5003B304F /* ActivityEntity.swift */; };
 		A32A5C311D6C86AC003B304F /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A5C301D6C86AC003B304F /* Entity.swift */; };
+		A3636BAF1D75EF1300899B9D /* StatisticForCurrentSessionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3636BAE1D75EF1300899B9D /* StatisticForCurrentSessionVC.swift */; };
+		A3636BB11D7601A900899B9D /* StatisticForArbitarySessionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3636BB01D7601A900899B9D /* StatisticForArbitarySessionVC.swift */; };
 		A36699D21D561D2600A160E9 /* BinaryFileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36699D11D561D2600A160E9 /* BinaryFileHelper.swift */; };
 		A36699D81D5B5D2F00A160E9 /* GetSessionsQueryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36699D71D5B5D2F00A160E9 /* GetSessionsQueryResponse.swift */; };
 		A36814DC1CF7872E00CEC6A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814DB1CF7872E00CEC6A2 /* AppDelegate.swift */; };
@@ -42,9 +44,10 @@
 		A36814FA1CF78DFA00CEC6A2 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814F91CF78DFA00CEC6A2 /* MainVC.swift */; };
 		A3ACA6FD1D20723B003F040F /* BrainActivitySwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3ACA6FC1D20723B003F040F /* BrainActivitySwiftTests.swift */; };
 		A3B520301D46763F000E762A /* CreateSessionCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B5202F1D46763F000E762A /* CreateSessionCommand.swift */; };
-		A3B520341D467C33000E762A /* StatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B520331D467C33000E762A /* StatisticsVC.swift */; };
+		A3B520341D467C33000E762A /* BaseStatisticsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3B520331D467C33000E762A /* BaseStatisticsVC.swift */; };
 		A3BE74531D6DFF6B00F5B6E5 /* AnimatedSessionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BE74521D6DFF6B00F5B6E5 /* AnimatedSessionView.swift */; };
 		A3BE74A81D6F38AE00F5B6E5 /* AnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3BE74A71D6F38AE00F5B6E5 /* AnimationView.swift */; };
+		A3BE74AC1D743B9800F5B6E5 /* AnimatedSessionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A3BE74AB1D743B9800F5B6E5 /* AnimatedSessionView.xib */; };
 		A3E05A301D04A33100ADC6F5 /* SessionCellContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E05A2F1D04A33100ADC6F5 /* SessionCellContainer.swift */; };
 		A3E05A321D04B8BA00ADC6F5 /* SessionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3E05A311D04B8BA00ADC6F5 /* SessionHeaderView.swift */; };
 		A3EB94731D427C5500C1426A /* RequestBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EB94721D427C5500C1426A /* RequestBase.swift */; };
@@ -94,6 +97,8 @@
 		A32A5C2C1D6C6F6A003B304F /* SessionEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionEntity.swift; sourceTree = "<group>"; };
 		A32A5C2E1D6C7DE5003B304F /* ActivityEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityEntity.swift; sourceTree = "<group>"; };
 		A32A5C301D6C86AC003B304F /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		A3636BAE1D75EF1300899B9D /* StatisticForCurrentSessionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticForCurrentSessionVC.swift; sourceTree = "<group>"; };
+		A3636BB01D7601A900899B9D /* StatisticForArbitarySessionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticForArbitarySessionVC.swift; sourceTree = "<group>"; };
 		A36699D11D561D2600A160E9 /* BinaryFileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryFileHelper.swift; sourceTree = "<group>"; };
 		A36699D71D5B5D2F00A160E9 /* GetSessionsQueryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetSessionsQueryResponse.swift; sourceTree = "<group>"; };
 		A36814D81CF7872E00CEC6A2 /* BrainActivitySwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BrainActivitySwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,9 +117,10 @@
 		A3ACA6FC1D20723B003F040F /* BrainActivitySwiftTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrainActivitySwiftTests.swift; sourceTree = "<group>"; };
 		A3ACA6FE1D20723B003F040F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A3B5202F1D46763F000E762A /* CreateSessionCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateSessionCommand.swift; sourceTree = "<group>"; };
-		A3B520331D467C33000E762A /* StatisticsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticsVC.swift; sourceTree = "<group>"; };
+		A3B520331D467C33000E762A /* BaseStatisticsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseStatisticsVC.swift; sourceTree = "<group>"; };
 		A3BE74521D6DFF6B00F5B6E5 /* AnimatedSessionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSessionView.swift; sourceTree = "<group>"; };
 		A3BE74A71D6F38AE00F5B6E5 /* AnimationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationView.swift; sourceTree = "<group>"; };
+		A3BE74AB1D743B9800F5B6E5 /* AnimatedSessionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AnimatedSessionView.xib; path = BrainActivitySwift/AnimatedSessionView.xib; sourceTree = "<group>"; };
 		A3E05A2F1D04A33100ADC6F5 /* SessionCellContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionCellContainer.swift; path = ../SessionCellContainer.swift; sourceTree = "<group>"; };
 		A3E05A311D04B8BA00ADC6F5 /* SessionHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SessionHeaderView.swift; path = ../SessionHeaderView.swift; sourceTree = "<group>"; };
 		A3EB94721D427C5500C1426A /* RequestBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestBase.swift; sourceTree = "<group>"; };
@@ -163,8 +169,10 @@
 		A3166AE31D4A9A46004934EE /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
-				A3B520331D467C33000E762A /* StatisticsVC.swift */,
+				A3B520331D467C33000E762A /* BaseStatisticsVC.swift */,
+				A3636BAE1D75EF1300899B9D /* StatisticForCurrentSessionVC.swift */,
 				A3F281401D4CEFE800D9AC79 /* StatTableViewCell.swift */,
+				A3636BB01D7601A900899B9D /* StatisticForArbitarySessionVC.swift */,
 			);
 			name = Statistics;
 			sourceTree = "<group>";
@@ -322,6 +330,7 @@
 			isa = PBXGroup;
 			children = (
 				A3150FA41D4530A50023DD9F /* BatteryBarVC.swift */,
+				A3BE74AB1D743B9800F5B6E5 /* AnimatedSessionView.xib */,
 				A3BE74521D6DFF6B00F5B6E5 /* AnimatedSessionView.swift */,
 				A3BE74A71D6F38AE00F5B6E5 /* AnimationView.swift */,
 			);
@@ -446,6 +455,7 @@
 			files = (
 				A30B2DAD1D19BD800048CBDC /* Main.storyboard in Resources */,
 				A36814E61CF7872E00CEC6A2 /* LaunchScreen.storyboard in Resources */,
+				A3BE74AC1D743B9800F5B6E5 /* AnimatedSessionView.xib in Resources */,
 				A36814E31CF7872E00CEC6A2 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -527,6 +537,7 @@
 			files = (
 				A3150FA51D4530A50023DD9F /* BatteryBarVC.swift in Sources */,
 				A3BE74A81D6F38AE00F5B6E5 /* AnimationView.swift in Sources */,
+				A3636BB11D7601A900899B9D /* StatisticForArbitarySessionVC.swift in Sources */,
 				A3EF5C9B1CFE3057009E296D /* ProfileVC.swift in Sources */,
 				A3FCB05B1D538BA500F42463 /* SessionHeadCell.swift in Sources */,
 				A3273B131D02D02400F1F4A6 /* CurrentSessionVC.swift in Sources */,
@@ -554,6 +565,7 @@
 				A3F281411D4CEFE800D9AC79 /* StatTableViewCell.swift in Sources */,
 				A3E05A301D04A33100ADC6F5 /* SessionCellContainer.swift in Sources */,
 				A3273B151D02D2AE00F1F4A6 /* SessionsVC.swift in Sources */,
+				A3636BAF1D75EF1300899B9D /* StatisticForCurrentSessionVC.swift in Sources */,
 				A3EF5C9D1D008435009E296D /* ActivityVC.swift in Sources */,
 				A36699D21D561D2600A160E9 /* BinaryFileHelper.swift in Sources */,
 				A3166AE81D4AA089004934EE /* Colors.swift in Sources */,
@@ -562,7 +574,7 @@
 				A3EB94751D427CDB00C1426A /* Context.swift in Sources */,
 				A3EB94781D427D5E00C1426A /* GetSessionsQuery.swift in Sources */,
 				A3B520301D46763F000E762A /* CreateSessionCommand.swift in Sources */,
-				A3B520341D467C33000E762A /* StatisticsVC.swift in Sources */,
+				A3B520341D467C33000E762A /* BaseStatisticsVC.swift in Sources */,
 				A36814DC1CF7872E00CEC6A2 /* AppDelegate.swift in Sources */,
 				A3273B0F1D02039000F1F4A6 /* MoodVC.swift in Sources */,
 			);

@@ -9,7 +9,9 @@
 import Foundation
 import Charts
 enum StatisticType {
-    
+    case CurrentSessionStat
+    case CustomSessionStat
+    case OverallSessionsStat
 }
 class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITableViewDataSource ,CPTPlotDataSource{
     
@@ -18,13 +20,15 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         var Id : String!
     }
     
-    @IBOutlet weak var TableView: UITableView!
+   var TableView: UITableView!
     var options : NSArray!
     var parties : [String]!
     var arrayForBool : [Bool]! = []
     var activityCellCount = 3
-    var plotToFileNameDict = [CPTPlot:String]()
+
     var sessionId : String!
+    var CurrentStatisticType : StatisticType!
+    var aniView : AnimatedSessionView!
     override func viewDidLoad() {
         super.viewDidLoad()
         options = [
@@ -57,6 +61,17 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         // setupPieChartView()
         //chartView.delegate = self
         //setDataForChart()
+    }
+    override func viewDidAppear(animated: Bool) {
+        switch CurrentStatisticType! {
+        case .CurrentSessionStat:
+            aniView.drawCounter()
+            aniView.redrawOutline(with: 0.0)
+            aniView.startAnimation()
+            break;
+        default:
+            break;
+        }
     }
     //MARK: Chart helpers
     func setupPieChartView(chartView: PieChartView)  {
@@ -137,97 +152,31 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         innerView.backgroundColor = UIColor.blueColor()
         cell.addSubview(innerView)
         cell.Constraints(forTarget: innerView).AspectFill()
-        let filename = sessionId.fileNameForSessionFile(.Data, postfix: "0")
-        createCorePlot(innerView, color: UIColor.whiteColor(),fileName: filename)
+        let plot = createCorePlot(innerView, color: UIColor.whiteColor())
+        preparePlot(plot,indexPath: indexPath)
         return cell
     }
-    @objc func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+    func preparePlot(plot : CPTPlot,indexPath : NSIndexPath){
+        preconditionFailure("This method must be overridden")
+    }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return 1
     }
-    @objc func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        switch section {
-        case 0:
-            let chartViewContainer = UIView()
-            let chartView = PieChartView(frame: CGRectMake(0, 0, tableView.frame.size.width-40, tableView.frame.size.height-5))
-            
-            setupPieChartView(chartView)
-            chartView.delegate = self
-            setDataForChart(chartView)
-            
-            chartViewContainer.addSubview(chartView)
-            chartView.translatesAutoresizingMaskIntoConstraints = false
-            chartViewContainer.Constraints(forTarget: chartView).CenterX(0).CenterY(0).Top(10)
-            chartViewContainer.addConstraint(NSLayoutConstraint(item: chartView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: chartView, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 0.0))
-            chartViewContainer.backgroundColor = Colors.gray
-            return chartViewContainer
-        case 1...activityCellCount:
-            let overallCellView = UIView()
-            let colorView = UIView()
-            let imageView = UIImageView()
-            let timeLabel = UILabel()
-            // add left border to UILabel
-            let leftLine = CALayer()
-            leftLine.frame = CGRectMake(0, 0, 2,40)
-            leftLine.backgroundColor = Colors.gray.CGColor
-            timeLabel.layer.addSublayer(leftLine)
-            timeLabel.text = "302:20:20"
-            timeLabel.textAlignment = .Center
-            timeLabel.textColor = UIColor.whiteColor()
-            imageView.image = UIImage(named: "activity-working")?.imageWithRenderingMode(.AlwaysTemplate)
-            imageView.tintColor = UIColor.whiteColor()
-            let label = UILabel()
-            label.text = "Working"
-            label.textColor = UIColor.whiteColor()
-            overallCellView.addSubViews([colorView,label,imageView,timeLabel])
-            colorView.backgroundColor = Colors.violet
-            colorView.translatesAutoresizingMaskIntoConstraints = false
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            timeLabel.translatesAutoresizingMaskIntoConstraints = false
-            label.translatesAutoresizingMaskIntoConstraints = false
-            overallCellView.Constraints(forTarget: colorView).Top(0).Bottom(0).Leading(0).Width(10)
-            overallCellView.Constraints(forTarget: label).CenterY(0)
-            overallCellView.Constraints(forTarget: imageView).CenterY(0).Top(5).Bottom(-5)
-            overallCellView.Constraints(forTarget: timeLabel).Top(0).Bottom(0).Trailing(0)
-            overallCellView.addConstraint(NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: imageView, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 0.0))
-            overallCellView.addConstraint(NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: label, attribute: NSLayoutAttribute.Leading, multiplier: 1.0, constant: -5.0))
-            overallCellView.addConstraint(NSLayoutConstraint(item: colorView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: imageView, attribute: NSLayoutAttribute.Leading, multiplier: 1.0, constant: -5.0))
-            overallCellView.addConstraint(NSLayoutConstraint(item: timeLabel, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: overallCellView, attribute: NSLayoutAttribute.Width, multiplier: 2.0/5.0, constant: 0.0))
-            overallCellView.layer.borderWidth = 1
-            overallCellView.layer.borderColor = Colors.gray.CGColor
-            overallCellView.backgroundColor = Colors.dgray
-            return overallCellView
-        default:
-            let headerView = UIView()
-            let label = UILabel(frame: CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height))
-            label.text = "Concentration/Attention"
-            label.textAlignment = .Center
-            label.textColor = Colors.gray
-            //print(tableView.frame.size.width)
-            label.tag = section
-            label.layer.borderWidth = 1
-            label.layer.borderColor = Colors.gray.CGColor
-            headerView.addSubview(label)
-            label.translatesAutoresizingMaskIntoConstraints = false
-            headerView.Constraints(forTarget: label).Top(0).Bottom(0).Trailing(0).Leading(0)
-            let headerTapped = UITapGestureRecognizer (target: self, action:#selector(StatisticsVC.sectionHeaderTapped(_:)))
-            headerView.addGestureRecognizer(headerTapped)
-            
-            return headerView
-        }
-        
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        preconditionFailure("This method must be overridden")
     }
-    @objc func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 240
         }
         return 40
     }
     
-    @objc func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0
     }
     
-    @objc func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section <= activityCellCount {
             return 0
         }
@@ -247,16 +196,16 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
             //reload specific section animated
             let range = NSMakeRange(indexPath.section, 1)
             let sectionToReload = NSIndexSet(indexesInRange: range)
-            TableView.reloadSections(sectionToReload, withRowAnimation:UITableViewRowAnimation.Fade)
+            TableView.reloadSections(sectionToReload, withRowAnimation: .Fade)
         }
     }
     
     // MARK: =CorePlot=
-    func createCorePlot( view2addGraph : UIView, color : UIColor ,fileName : String) { // Create graph from theme
+    func createCorePlot( view2addGraph : UIView, color : UIColor) -> CPTPlot { // Create graph from theme
         let newGraph = CPTXYGraph(frame: CGRectZero)
         let theme = CPTTheme(named: kCPTPlainWhiteTheme)
         newGraph.applyTheme(theme)
-
+        
         let hostingView = view2addGraph as! CPTGraphHostingView
         let bg = CPTColor(CGColor: Colors.dgray.CGColor)
         hostingView.collapsesLayers = false // Setting to true reduces GPU memory usage,but can slow drawing/scrolling hostingView.hostedGraph = newGraph
@@ -269,13 +218,8 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         // Axes
         let axisSet = newGraph.axisSet as! CPTXYAxisSet
         let x = axisSet.xAxis!
-        //x.alternatingBandFills = [CPTFill(color: CPTColor(CGColor: Colors.lblue.CGColor)),CPTFill(color: CPTColor(CGColor:Colors.lgreen.CGColor))]
-        //axisSet.yAxis!.hidden = true
-        //x.majorIntervalLength = CPTDecimalFromDouble(125);
-        //x.orthogonalCoordinateDecimal = CPTDecimalFromDouble(10.0);
-        //x.minorTicksPerInterval = 0;
         x.labelingPolicy = CPTAxisLabelingPolicy.None
-        //[[newGraph plotAreaFrame] setPaddingLeft:30.0f];
+
         let y = axisSet.yAxis!
         y.majorIntervalLength = 10000
         y.minorTicksPerInterval = 0
@@ -290,7 +234,7 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         boundLinePlot.dataLineStyle = lineStyle
         boundLinePlot.identifier = "plotID"
         boundLinePlot.dataSource = self
-        plotToFileNameDict[boundLinePlot] = fileName
+        
         newGraph.plotAreaFrame!.borderLineStyle = nil
         newGraph.addPlot(boundLinePlot)
         newGraph.paddingLeft = 0.0
@@ -311,35 +255,85 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         let bandRange = CPTPlotRange(location: 500, length: 400)
         let bandFill = CPTFill(color: CPTColor(CGColor: Colors.gray.CGColor))
         x.addBackgroundLimitBand(CPTLimitBand(range: bandRange,fill: bandFill))
-       
+        return boundLinePlot
     }
     
     // MARK: Plot Data Source Methods
-    
     func numberOfRecordsForPlot(plot : CPTPlot) -> UInt{
-        return UInt(1000)
+        preconditionFailure("This method must be overridden")
     }
     func numbersForPlot(plot: CPTPlot, field fieldEnum: UInt, recordIndexRange indexRange: NSRange) -> [AnyObject]? {
-        print(plotToFileNameDict)
-        let fileName = plotToFileNameDict[plot ]
-       
-        let isIndex = fieldEnum == UInt(CPTScatterPlotField.X.rawValue)
-        var res = [NSNumber](count:1000,repeatedValue : NSNumber())
-        if isIndex {
-            for i in indexRange.toRange()! {
-                res [i] = NSNumber(int: Int32(i))
-            }
-        }else{
-            let arr = binaryFileHelper.readArrayFromPlist(fileName!)!
-            for i in 0 ..< 1000 {
-                res[i] = NSNumber(float: arr[i])
-            }
-        }
-        //print("data for: \(indexRange) - index: \(plotIndex) - key:\(key)")
-        return res
+        preconditionFailure("This method must be overridden")
     }
-    // MARK: Axis Delegate Methods
-    func axis(axis: CPTAxis, shouldUpdateAxisLabelsAtLocations locations: Set<NSNumber>) -> Bool {
-        return false
+
+    // MARK - Create Cell Helpers
+    internal func createViewForActivityStat() -> UIView{
+        let overallCellView = UIView()
+        let colorView = UIView()
+        let imageView = UIImageView()
+        let timeLabel = UILabel()
+        // add left border to UILabel
+        let leftLine = CALayer()
+        leftLine.frame = CGRectMake(0, 0, 2,40)
+        leftLine.backgroundColor = Colors.gray.CGColor
+        timeLabel.layer.addSublayer(leftLine)
+        timeLabel.text = "302:20:20"
+        timeLabel.textAlignment = .Center
+        timeLabel.textColor = UIColor.whiteColor()
+        imageView.image = UIImage(named: "activity-working")?.imageWithRenderingMode(.AlwaysTemplate)
+        imageView.tintColor = UIColor.whiteColor()
+        let label = UILabel()
+        label.text = "Working"
+        label.textColor = UIColor.whiteColor()
+        overallCellView.addSubViews([colorView,label,imageView,timeLabel])
+        colorView.backgroundColor = Colors.violet
+        colorView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        timeLabel.translatesAutoresizingMaskIntoConstraints = false
+        label.translatesAutoresizingMaskIntoConstraints = false
+        overallCellView.Constraints(forTarget: colorView).Top(0).Bottom(0).Leading(0).Width(10)
+        overallCellView.Constraints(forTarget: label).CenterY(0)
+        overallCellView.Constraints(forTarget: imageView).CenterY(0).Top(5).Bottom(-5)
+        overallCellView.Constraints(forTarget: timeLabel).Top(0).Bottom(0).Trailing(0)
+        overallCellView.addConstraint(NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: imageView, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 0.0))
+        overallCellView.addConstraint(NSLayoutConstraint(item: imageView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: label, attribute: NSLayoutAttribute.Leading, multiplier: 1.0, constant: -5.0))
+        overallCellView.addConstraint(NSLayoutConstraint(item: colorView, attribute: NSLayoutAttribute.Trailing, relatedBy: NSLayoutRelation.Equal, toItem: imageView, attribute: NSLayoutAttribute.Leading, multiplier: 1.0, constant: -5.0))
+        overallCellView.addConstraint(NSLayoutConstraint(item: timeLabel, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: overallCellView, attribute: NSLayoutAttribute.Width, multiplier: 2.0/5.0, constant: 0.0))
+        overallCellView.layer.borderWidth = 1
+        overallCellView.layer.borderColor = Colors.gray.CGColor
+        overallCellView.backgroundColor = Colors.dgray
+        return overallCellView
+    }
+    internal func createTouchableViewForParameter(tableView : UITableView,section : Int) -> UIView{
+        let headerView = UIView()
+        let label = UILabel(frame: CGRectMake(0, 0, tableView.frame.size.width, tableView.frame.size.height))
+        label.text = "Concentration/Attention"
+        label.textAlignment = .Center
+        label.textColor = Colors.gray
+        //print(tableView.frame.size.width)
+        label.tag = section
+        label.layer.borderWidth = 1
+        label.layer.borderColor = Colors.gray.CGColor
+        headerView.addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        headerView.Constraints(forTarget: label).Top(0).Bottom(0).Trailing(0).Leading(0)
+        let headerTapped = UITapGestureRecognizer (target: self, action:#selector(StatisticsVC.sectionHeaderTapped(_:)))
+        headerView.addGestureRecognizer(headerTapped)
+        return headerView
+    }
+    internal func createPieChart(tableView : UITableView) -> UIView{
+        let chartViewContainer = UIView()
+        let chartView = PieChartView(frame: CGRectMake(0, 0, tableView.frame.size.width-40, tableView.frame.size.height-5))
+        
+        setupPieChartView(chartView)
+        chartView.delegate = self
+        setDataForChart(chartView)
+        
+        chartViewContainer.addSubview(chartView)
+        chartView.translatesAutoresizingMaskIntoConstraints = false
+        chartViewContainer.Constraints(forTarget: chartView).CenterX(0).CenterY(0).Top(10)
+        chartViewContainer.addConstraint(NSLayoutConstraint(item: chartView, attribute: NSLayoutAttribute.Width, relatedBy: NSLayoutRelation.Equal, toItem: chartView, attribute: NSLayoutAttribute.Height, multiplier: 1.0, constant: 0.0))
+        chartViewContainer.backgroundColor = Colors.gray
+        return chartViewContainer
     }
 }

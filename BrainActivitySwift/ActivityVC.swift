@@ -11,6 +11,7 @@ import UIKit
 
 class ActivityVC: BatteryBarVC ,ProfilePages ,UICollectionViewDataSource,UICollectionViewDelegate{
     // MARK: - Variables
+    static var SelectedActivity : ActivityTypeEnum!
     var pageIndex : Int! = 0
     var selectedCell: Int!
     var activitiesList = [ActivityTypeEnum.Biking,
@@ -50,6 +51,7 @@ class ActivityVC: BatteryBarVC ,ProfilePages ,UICollectionViewDataSource,UIColle
         cell.imgCircle.image = UIImage(named: "circle-selected")
         let tabbar = self.tabBarController as! TabBarController
         tabbar.selectedActivity = activitiesList[indexPath.row]
+        ActivityVC.SelectedActivity = activitiesList[indexPath.row]
     }
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return activitiesList.count

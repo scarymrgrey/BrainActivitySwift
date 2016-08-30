@@ -4,15 +4,15 @@ import UIKit
     @IBOutlet weak var CenterTextLabel: UILabel!
     
     let pi = CGFloat(M_PI)
-    @IBInspectable var outlineColor: UIColor!
-    @IBInspectable var counterColor: UIColor!
+    @IBInspectable var outlineColor: UIColor! = UIColor.whiteColor()
+    @IBInspectable var counterColor: UIColor! = Colors.dorange
     var cnt : CGFloat = 0.0 {
         didSet {
             redrawOutline(with: cnt)
         }
     }
-     var outlineLayer : CAShapeLayer!
-     var counterLayer : CAShapeLayer!
+    var outlineLayer : CAShapeLayer!
+    var counterLayer : CAShapeLayer!
     func drawCounter(){
         let center = CGPoint(x:bounds.width/2, y: bounds.height/2)
         let radius: CGFloat = max(bounds.width/2, bounds.height/2)
@@ -24,15 +24,11 @@ import UIKit
                                 startAngle: startAngle,
                                 endAngle: endAngle,
                                 clockwise: true)
-        
-        //path.lineWidth = arcWidth
-        //counterColor.setStroke()
         counterLayer = CAShapeLayer()
         counterLayer.frame = self.bounds
         counterLayer.path = path.CGPath
         counterLayer.lineWidth = arcWidth
         counterLayer.fillColor = UIColor.clearColor().CGColor
-        //shape.lineCap = kCALineCapRound
         counterLayer.strokeColor = counterColor.CGColor
         layer.insertSublayer(counterLayer, atIndex: 0)
     }
@@ -45,7 +41,7 @@ import UIKit
                                        endAngle: 2 * pi * (value / 100.0) + (3 * pi/2),
                                        clockwise: true)
         
-        if value == 0.0 {
+        if outlineLayer == nil {
             outlineLayer = CAShapeLayer()
             self.layer.insertSublayer(outlineLayer, atIndex: 1)
         }

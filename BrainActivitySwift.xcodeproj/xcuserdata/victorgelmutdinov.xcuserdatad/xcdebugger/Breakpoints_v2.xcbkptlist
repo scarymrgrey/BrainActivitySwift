@@ -162,11 +162,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BrainActivitySwift/CurrentSessionVC.swift"
-            timestampString = "486725257.126972"
+            timestampString = "494112035.421199"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
+            startingLineNumber = "41"
+            endingLineNumber = "41"
             landmarkName = "CurrentSessioVC"
             landmarkType = "3">
          </BreakpointContent>

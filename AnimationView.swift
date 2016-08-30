@@ -11,6 +11,7 @@ import Advance
 
 
 public class AnimationView: UIView {
+    
     var visibleAnimation = false {
         didSet {
             for sl in self.segmentLayers {

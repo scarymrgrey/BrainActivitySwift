@@ -45,7 +45,7 @@ class MainVC : UIViewController, CBManagerDelegate {
         cBManager.delegate = self
         UIApplication.sharedApplication().idleTimerDisabled = true
         //cBManager.start()
-        
+        mainView.visibleAnimation = false
         self.navigationItem.hidesBackButton = true
        
     }
@@ -73,13 +73,13 @@ class MainVC : UIViewController, CBManagerDelegate {
     
     // MARK: Actions
     
-    @IBAction func startTestAction(sender: UIButton) {
+     func startTestAction() {
         if cBManager.hasStarted {
             if battTimer != nil {
                 battTimer.invalidate()
                 battTimer = nil
             }
-            plotsVC?.SetDefaults()
+            //plotsVC?.SetDefaults()
             cBManager.stop()
             cBManager = CBManager()
             cBManager.delegate = self
@@ -91,14 +91,13 @@ class MainVC : UIViewController, CBManagerDelegate {
     
     // MARK: = NAvigation =
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "ShowPlotSegue"{
-            plotsVC = (segue.destinationViewController as! PlotsVC)
-            plotsVC!.cBManager = cBManager
-        }
+//        if segue.identifier == "ShowPlotSegue"{
+//            plotsVC = (segue.destinationViewController as! PlotsVC)
+//            plotsVC!.cBManager = cBManager
+//        }
         if segue.identifier == "showCurrentSessionStat"{
-            let vc = (segue.destinationViewController as! StatisticsVC)
-            vc.sessionId = userDefaults.stringForKey(UserDefaultsKeys.currentSessionId)
-            print( vc.sessionId)
+            let vc = (segue.destinationViewController as! CurrentSessioVC)
+            vc.ActivityType = ActivityVC.SelectedActivity
         }
     }
     // MARK: = methods
@@ -128,7 +127,7 @@ class MainVC : UIViewController, CBManagerDelegate {
     
     func scene1Start(){
         currentScene = .Scene1
-        mainView.startAnimation()
+        mainView.visibleAnimation = false
         let img = UIImage(named: "headOutline")?.imageWithRenderingMode(.AlwaysOriginal)
         headOutlineImageView = UIImageView()
         headOutlineImageView.image = img
@@ -138,11 +137,12 @@ class MainVC : UIViewController, CBManagerDelegate {
         view.addSubview(headOutlineImageView)
         headOutlineImageView.translatesAutoresizingMaskIntoConstraints = false
         view.Constraints(forTarget: headOutlineImageView).CenterX(0).CenterY(0)
-        mainView.visibleAnimation = false
+        
         NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: #selector(self.scene2Start), userInfo: nil, repeats: false)
     }
     func scene2Start(){
         currentScene = .Scene2
+        mainView.startAnimation()
         mainView.visibleAnimation = true
         headOutlineImageView.hidden = true
         mainView.drawCounter()
@@ -155,6 +155,7 @@ class MainVC : UIViewController, CBManagerDelegate {
         mainView.counterLayer.removeFromSuperlayer()
         mainView.outlineLayer.removeFromSuperlayer()
         mainView.CenterTextLabel.text = "WE BEGIN!"
+        startTestAction()
         NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(self.scene4Start), userInfo: nil, repeats: false)
     }
     func scene4Start(){
