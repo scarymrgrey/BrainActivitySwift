@@ -7,7 +7,31 @@
 //
 
 import Foundation
-
+var saveDict = [String:[NSNumber]]()
+var limit : Int = 16
+extension RangeReplaceableCollectionType where Generator.Element == NSNumber  {
+    mutating func appendAndSaveIfNeeded(element: NSNumber, filename : String)
+    {
+        self.append(element)
+        saveDict[filename]!.append(element)
+        if saveDict[filename]!.count == limit {
+            saveBuffer(filename)
+            
+        }
+    }
+    func saveBuffer(filename : String){
+        
+        let arrayToSave =  saveDict[filename]?.map{ number -> Float in
+            Float(number)
+        }
+        if let arr = arrayToSave {
+            dispatch_async(dispatch_get_main_queue()){
+                binaryFileHelper.writeArrayToPlist(filename, array: arr )
+            }
+            saveDict[filename]!.removeAll()
+        }
+    }
+}
 class StatisticForCurrentSessionVC : StatisticsVC{
     
     @IBOutlet weak var Table : UITableView!
@@ -20,14 +44,13 @@ class StatisticForCurrentSessionVC : StatisticsVC{
             //self.TableView = newValue
         }
     }
-    var dataForIndexKeyWasRead = [Bool](count : 4,repeatedValue : false)
-    var dataForDataKeyWasRead = [Bool](count : 4,repeatedValue : false)
+    var dataForIndexKeyWasRead = [CPTPlot : Bool]()
+    var dataForDataKeyWasRead = [CPTPlot:Bool]()
     var currentlySelectedPlot : CPTPlot!
-    var currentRange : Int!
-    var scopeRaw : Int!
-    var currentIndex  = 0
-    var data  = [[Dictionary<String,AnyObject>]](count: 4, repeatedValue: [Dictionary<String,AnyObject>]())
-    var limit : Int = 16
+
+
+
+    
     var lastIndexUpdated  = 0
     var plotToIndexPathDict = [Int:CPTPlot]()
     // MARK: Helpers
@@ -40,6 +63,9 @@ class StatisticForCurrentSessionVC : StatisticsVC{
     override func viewDidLoad() {
         super.viewDidLoad()
         setDefaultValues()
+        aniView.drawCounter()
+        aniView.redrawOutline(with: 0.0)
+        aniView.startAnimation()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(dataReceived), name: Notifications.data_received, object: nil)
     }
     
@@ -47,8 +73,9 @@ class StatisticForCurrentSessionVC : StatisticsVC{
     func dataReceived(notification : NSNotification){
         
         let notificationData = notification.userInfo
-        for i in 0...3 {
-            data[i].append([ "index" : currentIndex , "data" : notificationData!["ch\(i+1)"] as! NSNumber])
+        for (i,plot) in plotToIndexPathDict.values.enumerate() {
+            let filename = sessionId.fileNameForSessionFile(.Data, postfix: String(i))
+            data[plot]!.appendAndSaveIfNeeded(notificationData!["ch\(i+1)"] as! NSNumber,filename: filename)
         }
         if !(self.isViewLoaded() && self.view.window != nil){
             return
@@ -56,12 +83,12 @@ class StatisticForCurrentSessionVC : StatisticsVC{
         currentIndex = currentIndex + 1
         if (currentIndex % limit == 0) && currentlySelectedPlot != nil {
             let r = currentIndex > currentRange
-                if r {
-                    let plotSpace = currentlySelectedPlot.graph!.defaultPlotSpace as! CPTXYPlotSpace
-                    plotSpace.xRange = CPTPlotRange(location : currentIndex-currentRange, length:currentRange)
-                    plotSpace.yRange = CPTPlotRange(location : -(scopeRaw/2), length: scopeRaw)
-                }
-                currentlySelectedPlot.insertDataAtIndex(UInt(lastIndexUpdated), numberOfRecords: UInt(limit))
+            if r {
+                let plotSpace = currentlySelectedPlot.graph!.defaultPlotSpace as! CPTXYPlotSpace
+                plotSpace.xRange = CPTPlotRange(location : currentIndex-currentRange, length:currentRange)
+                plotSpace.yRange = CPTPlotRange(location : -(scopeRaw/2), length: scopeRaw)
+            }
+            currentlySelectedPlot.insertDataAtIndex(UInt(lastIndexUpdated), numberOfRecords: UInt(limit))
         }
     }
     
@@ -89,50 +116,26 @@ class StatisticForCurrentSessionVC : StatisticsVC{
         }
     }
     
-    // MARK: Coreplot datasource 
+    // MARK: Coreplot datasource
     override func numberOfRecordsForPlot(plot : CPTPlot) -> UInt{
         return UInt(currentIndex)
     }
-    override func numbersForPlot(plot: CPTPlot, field fieldEnum: UInt, recordIndexRange indexRange: NSRange) -> [AnyObject]? {
-        if currentIndex == 0{
-            return nil
-        }
 
+    override func manipulateWithData(plot : CPTPlot,field fieldEnum: UInt, recordIndexRange indexRange: NSRange) {
         let isIndex = fieldEnum == UInt(CPTScatterPlotField.X.rawValue)
-        let key = isIndex ? "index" : "data"
-        //print("data for: \(indexRange) - index: \(plotIndex) - key:\(key)")
-        var res = [NSNumber](count:limit,repeatedValue : NSNumber())
-        for i in 0..<limit {
-            
-            let num = data[0][i][key]!.copy() as! NSNumber
-            res[i] = (num)
-            
-        }
         if isIndex {
-            dataForIndexKeyWasRead[0] = true
+            dataForIndexKeyWasRead[plot] = true
         }else {
-            dataForDataKeyWasRead[0] = true
+            dataForDataKeyWasRead[plot] = true
         }
-        if dataForIndexKeyWasRead[0]
-            && dataForDataKeyWasRead[0] {
-            var dataToWrite = [Float]()
-            for i in 0..<limit {
-                dataToWrite.append(data[0][i]["data"] as! Float)
-            }
-            dispatch_async(dispatch_get_main_queue()){
-                let fileNameToWrite = self.sessionId.fileNameForSessionFile(.Data, postfix: String(0))
-                let fileNameToWriteStress = self.sessionId.fileNameForSessionFile(.StressLevel, postfix: "")
-                binaryFileHelper.writeArrayToPlist(fileNameToWrite,array: dataToWrite)
-                binaryFileHelper.writeArrayToPlist(fileNameToWriteStress, array: [5.0])
-                //print(binaryFileHelper.readArrayFromPlist(fileNameToWrite))
-            }
-            data[0].removeFirst(limit)
+        if dataForIndexKeyWasRead[plot]!
+            && dataForDataKeyWasRead[plot]! {
+            data[plot]!.removeFirst(indexRange.length)
             
             //print("Data for plot \(plotIndex) was DELETED at currentIndex = \(currentIndex).")
-            dataForIndexKeyWasRead[0] = false
-            dataForDataKeyWasRead[0] = false
+            dataForIndexKeyWasRead[plot] = false
+            dataForDataKeyWasRead[plot] = false
             lastIndexUpdated = indexRange.location + indexRange.length
         }
-        return res
     }
 }

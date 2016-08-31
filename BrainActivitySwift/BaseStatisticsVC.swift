@@ -25,10 +25,13 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
     var parties : [String]!
     var arrayForBool : [Bool]! = []
     var activityCellCount = 3
-
+    var currentIndex  = 0
+    var data  = [CPTPlot:[NSNumber]]()
     var sessionId : String!
     var CurrentStatisticType : StatisticType!
     var aniView : AnimatedSessionView!
+    var currentRange : Int!
+    var scopeRaw : Int!
     override func viewDidLoad() {
         super.viewDidLoad()
         options = [
@@ -61,17 +64,6 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         // setupPieChartView()
         //chartView.delegate = self
         //setDataForChart()
-    }
-    override func viewDidAppear(animated: Bool) {
-        switch CurrentStatisticType! {
-        case .CurrentSessionStat:
-            aniView.drawCounter()
-            aniView.redrawOutline(with: 0.0)
-            aniView.startAnimation()
-            break;
-        default:
-            break;
-        }
     }
     //MARK: Chart helpers
     func setupPieChartView(chartView: PieChartView)  {
@@ -213,7 +205,7 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         // Setup plot space
         let plotSpace = newGraph.defaultPlotSpace as! CPTXYPlotSpace
         plotSpace.allowsUserInteraction = false
-        plotSpace.xRange = CPTPlotRange(location:  0.0,length: 1000 )
+        plotSpace.xRange = CPTPlotRange(location:  0.0,length: currentRange )
         plotSpace.yRange = CPTPlotRange(location: 0,length : 150000)
         // Axes
         let axisSet = newGraph.axisSet as! CPTXYAxisSet
@@ -263,10 +255,28 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         preconditionFailure("This method must be overridden")
     }
     func numbersForPlot(plot: CPTPlot, field fieldEnum: UInt, recordIndexRange indexRange: NSRange) -> [AnyObject]? {
-        preconditionFailure("This method must be overridden")
+        if currentIndex == 0{
+            return nil
+        }
+        let isIndex = fieldEnum == UInt(CPTScatterPlotField.X.rawValue)
+        var res = [NSNumber]()
+        if isIndex {
+            for i in indexRange.toRange()! {
+                res.append(NSNumber(int: Int32(i)))
+            }
+        }else{
+            for i in 0..<indexRange.length {
+                let num = data[plot]![i].copy() as! NSNumber
+                res[i] = (num)
+            }
+        }
+        //print("data for: \(indexRange) - index: \(plotIndex) - key:\(key)")
+        manipulateWithData(plot,field: fieldEnum,recordIndexRange: indexRange)
+        return res
     }
-
-    // MARK - Create Cell Helpers
+    func manipulateWithData(plot : CPTPlot,field fieldEnum: UInt,recordIndexRange indexRange: NSRange){
+    }
+    // MARK: - Create Cell Helpers
     internal func createViewForActivityStat() -> UIView{
         let overallCellView = UIView()
         let colorView = UIView()
