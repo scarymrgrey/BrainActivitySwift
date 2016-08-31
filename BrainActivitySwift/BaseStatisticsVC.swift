@@ -60,7 +60,7 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         TableView.delegate = self
         TableView.dataSource = self
         TableView.contentInset = UIEdgeInsetsZero
-        arrayForBool = [Bool](count:3,repeatedValue : false)
+        arrayForBool = [Bool](count:4,repeatedValue : false)
         // setupPieChartView()
         //chartView.delegate = self
         //setDataForChart()

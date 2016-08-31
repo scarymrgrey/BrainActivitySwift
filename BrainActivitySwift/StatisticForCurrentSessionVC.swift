@@ -63,6 +63,10 @@ class StatisticForCurrentSessionVC : StatisticsVC{
     override func viewDidLoad() {
         super.viewDidLoad()
         setDefaultValues()
+
+    }
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         aniView.drawCounter()
         aniView.redrawOutline(with: 0.0)
         aniView.startAnimation()
