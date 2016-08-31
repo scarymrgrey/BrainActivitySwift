@@ -26,7 +26,7 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
     var arrayForBool : [Bool]! = []
     var activityCellCount = 3
     var currentIndex  = 0
-    var data  = [CPTPlot:[NSNumber]]()
+    var data  = Dictionary<CPTPlot,[NSNumber]>()
     var sessionId : String!
     var CurrentStatisticType : StatisticType!
     var aniView : AnimatedSessionView!
@@ -267,7 +267,7 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         }else{
             for i in 0..<indexRange.length {
                 let num = data[plot]![i].copy() as! NSNumber
-                res[i] = (num)
+                res.append(num)
             }
         }
         //print("data for: \(indexRange) - index: \(plotIndex) - key:\(key)")

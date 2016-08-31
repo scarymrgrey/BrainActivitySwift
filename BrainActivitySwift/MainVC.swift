@@ -25,7 +25,7 @@ class MainVC : UIViewController, CBManagerDelegate {
     var selectedFreq : Float = 3
     var mainView : AnimatedSessionView!
     var currentTime = NSDate.timeIntervalSinceReferenceDate()
-    let aniView = AnimationView()
+    let aniView = AnimatedSessionView()
     var headOutlineImageView : UIImageView!
     var scene2Timers = NSTimer()
     var currentScene : MainVCScene!
@@ -155,6 +155,7 @@ class MainVC : UIViewController, CBManagerDelegate {
         mainView.counterLayer.removeFromSuperlayer()
         mainView.outlineLayer.removeFromSuperlayer()
         mainView.CenterTextLabel.text = "WE BEGIN!"
+        aniView.outlineLayer = nil
         startTestAction()
         NSTimer.scheduledTimerWithTimeInterval(2, target: self, selector: #selector(self.scene4Start), userInfo: nil, repeats: false)
     }

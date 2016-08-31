@@ -41,7 +41,7 @@ import UIKit
                                        endAngle: 2 * pi * (value / 100.0) + (3 * pi/2),
                                        clockwise: true)
         
-        if outlineLayer == nil {
+        if outlineLayer == nil  {
             outlineLayer = CAShapeLayer()
             self.layer.insertSublayer(outlineLayer, atIndex: 1)
         }

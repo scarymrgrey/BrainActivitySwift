@@ -13,6 +13,9 @@ extension RangeReplaceableCollectionType where Generator.Element == NSNumber  {
     mutating func appendAndSaveIfNeeded(element: NSNumber, filename : String)
     {
         self.append(element)
+        if saveDict[filename] == nil {
+            saveDict[filename] = [NSNumber]()
+        }
         saveDict[filename]!.append(element)
         if saveDict[filename]!.count == limit {
             saveBuffer(filename)
@@ -70,6 +73,7 @@ class StatisticForCurrentSessionVC : StatisticsVC{
         aniView.drawCounter()
         aniView.redrawOutline(with: 0.0)
         aniView.startAnimation()
+
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(dataReceived), name: Notifications.data_received, object: nil)
     }
     
@@ -79,6 +83,9 @@ class StatisticForCurrentSessionVC : StatisticsVC{
         let notificationData = notification.userInfo
         for (i,plot) in plotToIndexPathDict.values.enumerate() {
             let filename = sessionId.fileNameForSessionFile(.Data, postfix: String(i))
+            if data[plot] == nil {
+                data[plot] = [NSNumber]()
+            }
             data[plot]!.appendAndSaveIfNeeded(notificationData!["ch\(i+1)"] as! NSNumber,filename: filename)
         }
         if !(self.isViewLoaded() && self.view.window != nil){
@@ -132,8 +139,7 @@ class StatisticForCurrentSessionVC : StatisticsVC{
         }else {
             dataForDataKeyWasRead[plot] = true
         }
-        if dataForIndexKeyWasRead[plot]!
-            && dataForDataKeyWasRead[plot]! {
+        if (dataForIndexKeyWasRead[plot] != nil && dataForDataKeyWasRead[plot] != nil) && (dataForDataKeyWasRead[plot]! && dataForIndexKeyWasRead[plot]!) {
             data[plot]!.removeFirst(indexRange.length)
             
             //print("Data for plot \(plotIndex) was DELETED at currentIndex = \(currentIndex).")
