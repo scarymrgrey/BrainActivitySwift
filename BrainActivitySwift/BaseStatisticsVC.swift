@@ -20,11 +20,13 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         var Id : String!
     }
     
-   var TableView: UITableView!
+    var TableView: UITableView!
     var options : NSArray!
     var parties : [String]!
-    var arrayForBool : [Bool]! = []
-    var activityCellCount = 3
+    
+    var arrayForBool = [Int:Bool]()
+    var lastUpdatedIndexFor = [CPTPlot : Int]()
+    var numberOfSectionsWithoutInnerContent = 3
     var currentIndex  = 0
     var data  = Dictionary<CPTPlot,[NSNumber]>()
     var sessionId : String!
@@ -32,6 +34,7 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
     var aniView : AnimatedSessionView!
     var currentRange : Int!
     var scopeRaw : Int!
+    var viewForSection = [Int:UITableViewCell]()
     override func viewDidLoad() {
         super.viewDidLoad()
         options = [
@@ -60,7 +63,6 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         TableView.delegate = self
         TableView.dataSource = self
         TableView.contentInset = UIEdgeInsetsZero
-        arrayForBool = [Bool](count:4,repeatedValue : false)
         // setupPieChartView()
         //chartView.delegate = self
         //setDataForChart()
@@ -128,27 +130,32 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         chartView.animate(xAxisDuration : 1.4 ,easingOption:ChartEasingOption.EaseOutBack)
         //chartView.highlightValues(nil)
     }
-    
+  
     // MARK : TableView
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 7
+        preconditionFailure("This method must be overridden")
     }
     @objc func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if indexPath.section <= activityCellCount {
+        if indexPath.section < numberOfSectionsWithoutInnerContent  {
             return UITableViewCell()
         }
-        let cell = UITableViewCell()
-        let innerView = CPTGraphHostingView()
+        if viewForSection[indexPath.section] == nil {
+            let cell = tableView.dequeueReusableCellWithIdentifier("cellForStatisticPlot") as! PlotStatCell
+            
+           
+            
+            //cell.addSubview(innerView)
+           // cell.Constraints(forTarget: innerView).AspectFill()
+            let plot = createCorePlot(cell.innerView, color: UIColor.whiteColor())
+            
+            preparePlot(plot,section: indexPath.section)
+            viewForSection[indexPath.section] = cell
+        }
+        return viewForSection[indexPath.section]!
         
-        innerView.backgroundColor = UIColor.blueColor()
-        cell.addSubview(innerView)
-        cell.Constraints(forTarget: innerView).AspectFill()
-        let plot = createCorePlot(innerView, color: UIColor.whiteColor())
-        preparePlot(plot,row: indexPath.row)
-        return cell
     }
-    func preparePlot(plot : CPTPlot,row : Int){
+    func preparePlot(plot : CPTPlot,section : Int){
         preconditionFailure("This method must be overridden")
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
@@ -169,10 +176,17 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if indexPath.section <= activityCellCount {
+        if let _ = arrayForBool[indexPath.section] {
+            
+        }else {
+            arrayForBool[indexPath.section] = false
+        }
+        
+        if indexPath.section < numberOfSectionsWithoutInnerContent {
             return 0
         }
-        if arrayForBool[indexPath.section-activityCellCount - 1]{
+        
+        if arrayForBool[indexPath.section]!{
             return 100
         }
         return 0
@@ -180,16 +194,13 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
     // MARK : gesture Recognizers
     
     func sectionHeaderTapped(recognizer: UITapGestureRecognizer) {
-        let indexPath  = NSIndexPath(forRow: 0, inSection:(recognizer.view?.tag as Int!)!)
-        if (indexPath.row == 0) {
-            var collapsed = arrayForBool[indexPath.section]
-            collapsed       = !collapsed
-            arrayForBool[indexPath.section] = collapsed
-            //reload specific section animated
-            let range = NSMakeRange(indexPath.section, 1)
-            let sectionToReload = NSIndexSet(indexesInRange: range)
-            TableView.reloadSections(sectionToReload, withRowAnimation: .Fade)
-        }
+        let section  = recognizer.view?.tag as Int!
+        
+        arrayForBool[section] = !(arrayForBool[section]!)
+        //reload specific section animated
+        let range = NSMakeRange(section, 1)
+        let sectionToReload = NSIndexSet(indexesInRange: range)
+        TableView.reloadSections(sectionToReload, withRowAnimation: .Fade)
     }
     
     // MARK: =CorePlot=
@@ -200,7 +211,7 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         
         let hostingView = view2addGraph as! CPTGraphHostingView
         let bg = CPTColor(CGColor: Colors.dgray.CGColor)
-        hostingView.collapsesLayers = false // Setting to true reduces GPU memory usage,but can slow drawing/scrolling hostingView.hostedGraph = newGraph
+        hostingView.collapsesLayers = false // Setting to true reduces GPU memory usage,but can slow drawing/scrolling hostingView
         hostingView.hostedGraph = newGraph
         // Setup plot space
         let plotSpace = newGraph.defaultPlotSpace as! CPTXYPlotSpace
@@ -211,7 +222,7 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         let axisSet = newGraph.axisSet as! CPTXYAxisSet
         let x = axisSet.xAxis!
         x.labelingPolicy = CPTAxisLabelingPolicy.None
-
+        
         let y = axisSet.yAxis!
         y.majorIntervalLength = 10000
         y.minorTicksPerInterval = 0
@@ -247,6 +258,7 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         let bandRange = CPTPlotRange(location: 500, length: 400)
         let bandFill = CPTFill(color: CPTColor(CGColor: Colors.gray.CGColor))
         x.addBackgroundLimitBand(CPTLimitBand(range: bandRange,fill: bandFill))
+        lastUpdatedIndexFor[boundLinePlot] = 0
         return boundLinePlot
     }
     
@@ -265,10 +277,13 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
                 res.append(NSNumber(int: Int32(i)))
             }
         }else{
+            print(indexRange.length)
+            print(data[plot]?.count)
             for i in 0..<indexRange.length {
                 let num = data[plot]![i].copy() as! NSNumber
                 res.append(num)
             }
+            
         }
         //print("data for: \(indexRange) - index: \(plotIndex) - key:\(key)")
         manipulateWithData(plot,field: fieldEnum,recordIndexRange: indexRange)
@@ -329,6 +344,7 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         headerView.Constraints(forTarget: label).Top(0).Bottom(0).Trailing(0).Leading(0)
         let headerTapped = UITapGestureRecognizer (target: self, action:#selector(StatisticsVC.sectionHeaderTapped(_:)))
         headerView.addGestureRecognizer(headerTapped)
+        headerView.tag = section
         return headerView
     }
     internal func createPieChart(tableView : UITableView) -> UIView{

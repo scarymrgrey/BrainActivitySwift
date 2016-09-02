@@ -35,7 +35,7 @@ extension RangeReplaceableCollectionType where Generator.Element == NSNumber  {
         }
     }
 }
-class StatisticForCurrentSessionVC : StatisticsVC{
+class StatisticForCurrentSessionVC : StatisticsVC {
     
     @IBOutlet weak var Table : UITableView!
     
@@ -47,14 +47,16 @@ class StatisticForCurrentSessionVC : StatisticsVC{
             //self.TableView = newValue
         }
     }
+    override var numberOfSectionsWithoutInnerContent: Int {
+        get {
+            return 1
+        }
+        set {}
+    }
     var dataForIndexKeyWasRead = [CPTPlot : Bool]()
     var dataForDataKeyWasRead = [CPTPlot:Bool]()
     var currentlySelectedPlot : CPTPlot!
-
-
-
     
-    var lastIndexUpdated  = 0
     var plotToIndexPathDict = [Int:CPTPlot]()
     // MARK: Helpers
     func setDefaultValues(){
@@ -66,7 +68,6 @@ class StatisticForCurrentSessionVC : StatisticsVC{
     override func viewDidLoad() {
         super.viewDidLoad()
         setDefaultValues()
-
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
@@ -76,7 +77,15 @@ class StatisticForCurrentSessionVC : StatisticsVC{
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(dataReceived), name: Notifications.data_received, object: nil)
     }
-    
+    func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if currentlySelectedPlot != nil {
+            let lastIndex = lastUpdatedIndexFor[currentlySelectedPlot]!
+            let range = NSMakeRange(lastIndex,data[currentlySelectedPlot]!.count)
+            currentlySelectedPlot.reloadDataInIndexRange(range)
+            currentlySelectedPlot = nil
+            cell.setNeedsDisplay()
+        }
+    }
     // MARK: Notifications
     func dataReceived(notification : NSNotification){
         
@@ -99,18 +108,25 @@ class StatisticForCurrentSessionVC : StatisticsVC{
                 plotSpace.xRange = CPTPlotRange(location : currentIndex-currentRange, length:currentRange)
                 plotSpace.yRange = CPTPlotRange(location : -(scopeRaw/2), length: scopeRaw)
             }
-            currentlySelectedPlot.insertDataAtIndex(UInt(lastIndexUpdated), numberOfRecords: UInt(limit))
+            let range = NSMakeRange(lastUpdatedIndexFor[currentlySelectedPlot]!,data[currentlySelectedPlot]!.count)
+            //currentlySelectedPlot.reloadDataInIndexRange(range)
+            //currentlySelectedPlot.insertDataAtIndex(UInt(lastIndexUpdated), numberOfRecords: UInt(data[currentlySelectedPlot]!.count))
         }
     }
+     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 5
+    }
     
-    override func preparePlot(plot : CPTPlot,row : Int) {
-        plotToIndexPathDict[row] = plot
+    override func preparePlot(plot : CPTPlot,section : Int) {
+        print(section)
+        plotToIndexPathDict[section] = plot
     }
     override func sectionHeaderTapped(recognizer: UITapGestureRecognizer) {
         super.sectionHeaderTapped(recognizer)
-        let indexPath  = NSIndexPath(forRow: 0, inSection:(recognizer.view?.tag as Int!)!)
-        currentlySelectedPlot = plotToIndexPathDict[indexPath.row]!
-        currentlySelectedPlot.insertDataAtIndex(UInt(lastIndexUpdated), numberOfRecords: UInt(limit))
+        let section  = recognizer.view?.tag as Int!
+        if arrayForBool[section]! {
+            currentlySelectedPlot = plotToIndexPathDict[section]!
+        }
     }
     
     // MARK:  TableView Delegates
@@ -129,7 +145,8 @@ class StatisticForCurrentSessionVC : StatisticsVC{
     
     // MARK: Coreplot datasource
     override func numberOfRecordsForPlot(plot : CPTPlot) -> UInt{
-        return UInt(currentIndex)
+        let res = (data[plot]?.count) ?? 0
+        return UInt(res)
     }
 
     override func manipulateWithData(plot : CPTPlot,field fieldEnum: UInt, recordIndexRange indexRange: NSRange) {
@@ -141,11 +158,9 @@ class StatisticForCurrentSessionVC : StatisticsVC{
         }
         if (dataForIndexKeyWasRead[plot] != nil && dataForDataKeyWasRead[plot] != nil) && (dataForDataKeyWasRead[plot]! && dataForIndexKeyWasRead[plot]!) {
             data[plot]!.removeFirst(indexRange.length)
-            
-            //print("Data for plot \(plotIndex) was DELETED at currentIndex = \(currentIndex).")
             dataForIndexKeyWasRead[plot] = false
             dataForDataKeyWasRead[plot] = false
-            lastIndexUpdated = indexRange.location + indexRange.length
+            lastUpdatedIndexFor[plot] = indexRange.location + indexRange.length
         }
     }
 }

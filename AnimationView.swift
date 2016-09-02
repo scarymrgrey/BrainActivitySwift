@@ -90,7 +90,7 @@ public class AnimationView: UIView {
     
     private var flashTimer: NSTimer? = nil
     //public var color = UIColor(red: 0.0, green: 196.0/255.0, blue: 1.0, alpha: 1.0) {
-    public var color = Colors.gray {
+    public var color = UIColor.whiteColor() {
         didSet {
             for sl in segmentLayers {
                 sl.strokeColor = strokeColor.CGColor

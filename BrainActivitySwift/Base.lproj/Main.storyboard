@@ -641,7 +641,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yv6-g2-vAC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5463" y="1120.5"/>
+            <point key="canvasLocation" x="5428.5" y="1092.75"/>
         </scene>
         <!--Statistic For Arbitary SessionVC-->
         <scene sceneID="fLf-g7-JnQ">
@@ -1997,12 +1997,49 @@
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellForCurrentSessionStatId" id="P2R-Wg-pf0">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellForStatisticPlot" id="P2R-Wg-pf0" customClass="PlotStatCell" customModule="BrainActivitySwift" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="P2R-Wg-pf0" id="XNA-eA-OWh">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ar1-Dp-9Yh" customClass="CPTGraphHostingView">
+                                                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="ar1-Dp-9Yh" secondAttribute="trailing" id="CRi-Dr-JHt"/>
+                                                <constraint firstItem="ar1-Dp-9Yh" firstAttribute="top" secondItem="XNA-eA-OWh" secondAttribute="top" id="D46-Ki-ARK"/>
+                                                <constraint firstAttribute="bottom" secondItem="ar1-Dp-9Yh" secondAttribute="bottom" id="XfQ-Ni-Xua"/>
+                                                <constraint firstItem="ar1-Dp-9Yh" firstAttribute="leading" secondItem="XNA-eA-OWh" secondAttribute="leading" id="cKU-fB-7sW"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="subviews">
+                                                    <exclude reference="ar1-Dp-9Yh"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <exclude reference="CRi-Dr-JHt"/>
+                                                    <exclude reference="D46-Ki-ARK"/>
+                                                    <exclude reference="XfQ-Ni-Xua"/>
+                                                    <exclude reference="cKU-fB-7sW"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="subviews">
+                                                    <include reference="ar1-Dp-9Yh"/>
+                                                </mask>
+                                                <mask key="constraints">
+                                                    <include reference="CRi-Dr-JHt"/>
+                                                    <include reference="D46-Ki-ARK"/>
+                                                    <include reference="XfQ-Ni-Xua"/>
+                                                    <include reference="cKU-fB-7sW"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="innerView" destination="ar1-Dp-9Yh" id="bdF-Sb-CzZ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -2024,8 +2061,8 @@
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="3Ff-W2-358"/>
-                                <exclude reference="L80-9K-ve0"/>
                                 <exclude reference="4SP-np-H6Y"/>
+                                <exclude reference="L80-9K-ve0"/>
                                 <exclude reference="Yks-9X-EXr"/>
                             </mask>
                         </variation>
@@ -2035,8 +2072,8 @@
                             </mask>
                             <mask key="constraints">
                                 <include reference="3Ff-W2-358"/>
-                                <include reference="L80-9K-ve0"/>
                                 <include reference="4SP-np-H6Y"/>
+                                <include reference="L80-9K-ve0"/>
                                 <include reference="Yks-9X-EXr"/>
                             </mask>
                         </variation>

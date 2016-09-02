@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:PlotStatCell.swift">
+   </FileRef>
+   <FileRef
       location = "group:BrainActivitySwift.xcodeproj">
    </FileRef>
    <FileRef

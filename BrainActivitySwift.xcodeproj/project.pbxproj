@@ -31,6 +31,7 @@
 		A32A5C2D1D6C6F6A003B304F /* SessionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A5C2C1D6C6F6A003B304F /* SessionEntity.swift */; };
 		A32A5C2F1D6C7DE5003B304F /* ActivityEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A5C2E1D6C7DE5003B304F /* ActivityEntity.swift */; };
 		A32A5C311D6C86AC003B304F /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A5C301D6C86AC003B304F /* Entity.swift */; };
+		A3484E8E1D78F19C001A0535 /* PlotStatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3484E8D1D78F19C001A0535 /* PlotStatCell.swift */; };
 		A3636BAF1D75EF1300899B9D /* StatisticForCurrentSessionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3636BAE1D75EF1300899B9D /* StatisticForCurrentSessionVC.swift */; };
 		A3636BB11D7601A900899B9D /* StatisticForArbitarySessionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3636BB01D7601A900899B9D /* StatisticForArbitarySessionVC.swift */; };
 		A36699D21D561D2600A160E9 /* BinaryFileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36699D11D561D2600A160E9 /* BinaryFileHelper.swift */; };
@@ -97,6 +98,7 @@
 		A32A5C2C1D6C6F6A003B304F /* SessionEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionEntity.swift; sourceTree = "<group>"; };
 		A32A5C2E1D6C7DE5003B304F /* ActivityEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityEntity.swift; sourceTree = "<group>"; };
 		A32A5C301D6C86AC003B304F /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		A3484E8D1D78F19C001A0535 /* PlotStatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotStatCell.swift; sourceTree = "<group>"; };
 		A3636BAE1D75EF1300899B9D /* StatisticForCurrentSessionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticForCurrentSessionVC.swift; sourceTree = "<group>"; };
 		A3636BB01D7601A900899B9D /* StatisticForArbitarySessionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticForArbitarySessionVC.swift; sourceTree = "<group>"; };
 		A36699D11D561D2600A160E9 /* BinaryFileHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BinaryFileHelper.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 				A3636BAE1D75EF1300899B9D /* StatisticForCurrentSessionVC.swift */,
 				A3F281401D4CEFE800D9AC79 /* StatTableViewCell.swift */,
 				A3636BB01D7601A900899B9D /* StatisticForArbitarySessionVC.swift */,
+				A3484E8D1D78F19C001A0535 /* PlotStatCell.swift */,
 			);
 			name = Statistics;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				A36814F21CF788F500CEC6A2 /* CBManager.m in Sources */,
 				A31BFC0C1D05E85B0025D878 /* EZConstraint.swift in Sources */,
 				A3273B0B1D01F43900F1F4A6 /* ActivityCell.swift in Sources */,
+				A3484E8E1D78F19C001A0535 /* PlotStatCell.swift in Sources */,
 				A3EF5CA11D009C98009E296D /* MetricsVC.swift in Sources */,
 				A32A5C2D1D6C6F6A003B304F /* SessionEntity.swift in Sources */,
 				A328A45A1D2315F900921D75 /* StopWatch.swift in Sources */,
