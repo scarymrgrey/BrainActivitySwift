@@ -143,7 +143,7 @@ public class AnimationView: UIView {
             layer.insertSublayer(sl, atIndex: 2)
             print(layer.sublayers?.count)
         }
-      
+        
     }
     override public func layoutSubviews() {
         super.layoutSubviews()
@@ -152,7 +152,13 @@ public class AnimationView: UIView {
             let s = segments[i]
             let sl = segmentLayers[i]
             let visibility = visibilitySprings[i].value
-            let bnds = CGRectMake(bounds.width * 0.27 , bounds.height * 0.27 , bounds.width * 0.47, bounds.height * 0.47)
+            
+            let minHW = min(bounds.height, bounds.width)
+            let aniH = minHW * 0.6
+            let aniW = aniH / 2.0
+            let centerX = CGFloat(self.bounds.width / 2.0)
+            let centerY = CGFloat(self.bounds.height / 2.0)
+            let bnds = CGRectMake( centerX - (aniW / 2.0) , centerY - (aniH / 2.0) ,aniW,aniH)
             sl.frame = bnds
             sl.path = s.path(bnds.size, visibility: visibility).CGPath
             sl.opacity = Float(visibility)
@@ -160,7 +166,8 @@ public class AnimationView: UIView {
         
     }
     public func startAnimation(){
-          NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(self.disassemblyAnimation), userInfo: nil, repeats: true)
+        flashing = true
+        NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(self.disassemblyAnimation), userInfo: nil, repeats: true)
     }
     override public func sizeThatFits(size: CGSize) -> CGSize {
         return CGSize(width: 40.0, height: 40.0)

@@ -10,15 +10,30 @@ import Foundation
 
 class StatisticForArbitarySessionVC : StatisticsVC{
     @IBOutlet weak var Table : UITableView!
-    
+    var sessionId: String!
     var plotToFileNameDict = [CPTPlot:String]()
     override  var TableView : UITableView! {
         get {
             return self.Table
         }
         set {
-            self.TableView = newValue
+            //self.TableView = newValue
         }
+    }
+    override var numberOfSectionsWithoutInnerContent: Int {
+        get {
+            return 3
+        }
+        set {}
+    }
+    // MARK: VC Lifecycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        for (i , plot) in plotBySection.values.enumerate() {
+            let fileName = sessionId.fileNameForSessionFile(.Data, postfix: String(i))
+            data[plot] = binaryFileHelper.readArrayFromPlist(fileName)
+        }
+    
     }
     // MARK: TableView delegates
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -32,7 +47,10 @@ class StatisticForArbitarySessionVC : StatisticsVC{
             return createTouchableViewForParameter(tableView,section: section)
         }
     }
-    override func preparePlot(plot : CPTPlot, section : Int) {
-        plotToFileNameDict[plot] = sessionId.fileNameForSessionFile(.Data, postfix: "0")
+    // MARK: Coreplot datasource
+    override func numberOfRecordsForPlot(plot : CPTPlot) -> UInt{
+        //let res = (data[plot]?.count) ?? 0
+        return UInt(currentIndex)
     }
+
 }

@@ -73,7 +73,7 @@ class SessionsVC : BatteryBarVC ,UITableViewDataSource,UITableViewDelegate {
     // MARK: Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if(segue.identifier == "showSessionStat"){
-            let vc = segue.destinationViewController as! StatisticsVC
+            let vc = segue.destinationViewController as! StatisticForArbitarySessionVC
             vc.sessionId = selectedSession
         }
     }

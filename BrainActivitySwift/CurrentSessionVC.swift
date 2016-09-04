@@ -8,19 +8,32 @@
 
 import UIKit
 
-class CurrentSessioVC : UIViewController {
+class CurrentSessioVC : StatisticForCurrentSessionVC {
     @IBOutlet weak var ActivityTextLabel: UILabel!
     @IBOutlet weak var ActivityImageView: UIImageView!
+    @IBOutlet weak var Table : UITableView!
+    
+    override  var TableView : UITableView! {
+        get {
+            return self.Table
+        }
+        set {
+            //self.TableView = newValue
+        }
+    }
+    override var numberOfSectionsWithoutInnerContent: Int {
+        get {
+            return 1
+        }
+        set {}
+    }
     var ActivityType : ActivityTypeEnum!
     var ActivityText : String!
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        let IV = UIImageView()
-        IV.image = UIImage(named: ActivityType.rawValue)
-        ActivityImageView = IV
+        ActivityImageView.image = UIImage(named: ActivityType.rawValue)
         ActivityTextLabel.text = ActivityText
-
+        sessionId = userDefaults.stringForKey(UserDefaultsKeys.currentSessionId)
     }
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
@@ -30,12 +43,5 @@ class CurrentSessioVC : UIViewController {
         super.viewDidAppear(animated)
         //print(ActivityImageView.image!.imageAsset)
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "EmbedStatForCurrentSession"{
-            let vc = (segue.destinationViewController as! StatisticsVC)
-            vc.sessionId = userDefaults.stringForKey(UserDefaultsKeys.currentSessionId)
-            vc.CurrentStatisticType = .CurrentSessionStat
-            print( vc.sessionId)
-        }
-    }
+ 
 }

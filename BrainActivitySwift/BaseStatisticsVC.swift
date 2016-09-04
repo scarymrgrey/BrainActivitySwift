@@ -23,18 +23,19 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
     var TableView: UITableView!
     var options : NSArray!
     var parties : [String]!
-    
     var arrayForBool = [Int:Bool]()
-    var lastUpdatedIndexFor = [CPTPlot : Int]()
-    var numberOfSectionsWithoutInnerContent = 3
+    var numberOfSectionsWithoutInnerContent = 0
     var currentIndex  = 0
     var data  = Dictionary<CPTPlot,[NSNumber]>()
-    var sessionId : String!
+
     var CurrentStatisticType : StatisticType!
-    var aniView : AnimatedSessionView!
+    var currentlyOpenedPlots = [CPTPlot]()
     var currentRange : Int!
     var scopeRaw : Int!
     var viewForSection = [Int:UITableViewCell]()
+    var plotBySection = [Int:CPTPlot]()
+    var plotNeedToBeUpdated = [CPTPlot:Bool]()
+    var lastUpdatedIndexFor = [CPTPlot : Int]()
     override func viewDidLoad() {
         super.viewDidLoad()
         options = [
@@ -142,21 +143,15 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         }
         if viewForSection[indexPath.section] == nil {
             let cell = tableView.dequeueReusableCellWithIdentifier("cellForStatisticPlot") as! PlotStatCell
-            
-           
-            
-            //cell.addSubview(innerView)
-           // cell.Constraints(forTarget: innerView).AspectFill()
             let plot = createCorePlot(cell.innerView, color: UIColor.whiteColor())
-            
             preparePlot(plot,section: indexPath.section)
             viewForSection[indexPath.section] = cell
         }
         return viewForSection[indexPath.section]!
-        
     }
     func preparePlot(plot : CPTPlot,section : Int){
-        preconditionFailure("This method must be overridden")
+        plotBySection[section] = plot
+        plotNeedToBeUpdated[plot] = true
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return 1
@@ -176,31 +171,44 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        if let _ = arrayForBool[indexPath.section] {
-            
-        }else {
-            arrayForBool[indexPath.section] = false
-        }
-        
         if indexPath.section < numberOfSectionsWithoutInnerContent {
             return 0
         }
         
-        if arrayForBool[indexPath.section]!{
-            return 100
+        if let isSectionOpened = arrayForBool[indexPath.section] {
+            if isSectionOpened{
+                return 150
+            }
+        }else {
+            arrayForBool[indexPath.section] = false
         }
         return 0
+    }
+    func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        if let plot = plotBySection[indexPath.section] {
+            if currentlyOpenedPlots.contains(plot) && plotNeedToBeUpdated[plot]! {
+                let lastIndex = lastUpdatedIndexFor[plot]!
+                let range = NSMakeRange(lastIndex,data[plot]!.count)
+                plot.reloadDataInIndexRange(range)
+                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            }
+        }
     }
     // MARK : gesture Recognizers
     
     func sectionHeaderTapped(recognizer: UITapGestureRecognizer) {
         let section  = recognizer.view?.tag as Int!
-        
         arrayForBool[section] = !(arrayForBool[section]!)
         //reload specific section animated
         let range = NSMakeRange(section, 1)
         let sectionToReload = NSIndexSet(indexesInRange: range)
         TableView.reloadSections(sectionToReload, withRowAnimation: .Fade)
+        if arrayForBool[section]! {
+            currentlyOpenedPlots.append(plotBySection[section]!)
+        }else{
+            let closedPlotIndex = currentlyOpenedPlots.indexOf(plotBySection[section]!)
+            currentlyOpenedPlots.removeAtIndex(closedPlotIndex!)
+        }
     }
     
     // MARK: =CorePlot=
