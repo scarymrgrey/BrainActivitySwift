@@ -33,9 +33,9 @@ class SpectrumVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (SDiPhoneVersion.deviceVersion() == .iPhone6 || SDiPhoneVersion.deviceVersion() == .iPhone6Plus){
-            limit = 8;
-        }
+//        if (SDiPhoneVersion.deviceVersion() == .iPhone6 || SDiPhoneVersion.deviceVersion() == .iPhone6Plus){
+//            limit = 8;
+//        }
         setDefaultValues()
         viewIndexes = [View1:0 , View2:1 , View3:2,View4:3]
         

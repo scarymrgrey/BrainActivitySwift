@@ -40,9 +40,7 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (SDiPhoneVersion.deviceVersion() == .iPhone6 || SDiPhoneVersion.deviceVersion() == .iPhone6Plus){
-            limit = 4;
-        }
+       
         setDefaultValues()
         viewIndexes = [View1:0 , View2:1 , View3:2,View4:3]
         data = [[Dictionary<String,AnyObject>]](count: 4, repeatedValue: [Dictionary<String,AnyObject>]())

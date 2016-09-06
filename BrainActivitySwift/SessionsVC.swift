@@ -28,15 +28,19 @@ class SessionsVC : BatteryBarVC ,UITableViewDataSource,UITableViewDelegate {
         tableView.delegate = self
         tableView.dataSource = self
         context = Context(idToken: userDefaults.valueForKey(UserDefaultsKeys.idToken)! as! String, accessToken: userDefaults.valueForKey(UserDefaultsKeys.accessToken)! as!  String,URL : "http://cloudin.incoding.biz/Dispatcher/Query")
+        
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         let req = GetSessionsQuery(context: context)
+
         req.On(success: { (resp : [GetSessionsQueryResponse]) in
+            self.sessionList.removeAll()
             for r in resp {
                 self.sessionList.append(r)
             }
             self.arrayForBool = [Bool](count :resp.count,repeatedValue : false)
+            
             self.tableView.reloadData()
             }, error: {})
     }
@@ -47,7 +51,8 @@ class SessionsVC : BatteryBarVC ,UITableViewDataSource,UITableViewDelegate {
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return sessionList.count
+        let res = sessionList.count
+        return res
     }
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -72,22 +77,17 @@ class SessionsVC : BatteryBarVC ,UITableViewDataSource,UITableViewDelegate {
     }
     // MARK: Segue
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "showSessionStat"){
+        if(segue.identifier == "ShowSessionStat"){
             let vc = segue.destinationViewController as! StatisticForArbitarySessionVC
             vc.sessionId = selectedSession
         }
     }
     
     func sectionHeaderTapped(recognizer: UITapGestureRecognizer) {
-        let indexPath  = NSIndexPath(forRow: 0, inSection:(recognizer.view?.tag as Int!)!)
-        selectedSession = sessionList[indexPath.row].Id
-        if (indexPath.row == 0) {
-            var collapsed = arrayForBool[indexPath.section]
-            collapsed     = !collapsed
-            arrayForBool[indexPath.section] = collapsed
+        let section  = recognizer.view?.tag as Int!
+        arrayForBool[section] = !(arrayForBool[section])
             //reload specific section animated
-            self.tableView.reloadSections(NSIndexSet(index: indexPath.section), withRowAnimation:UITableViewRowAnimation.Fade)
-        }
+        self.tableView.reloadSections(NSIndexSet(index: section), withRowAnimation:UITableViewRowAnimation.Fade)
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{

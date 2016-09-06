@@ -42,7 +42,7 @@ class StatisticForCurrentSessionVC : StatisticsVC {
     var dataForDataKeyWasRead = [CPTPlot:Bool]()
     var sessionId : String!
     var aniView : AnimatedSessionView!
-    override var numberOfSectionsWithoutInnerContent: Int {
+    override var numberOfSectionsWithoutInnerContent: Int! {
         get {
            return 1
         }

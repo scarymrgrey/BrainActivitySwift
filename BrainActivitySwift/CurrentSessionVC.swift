@@ -18,10 +18,10 @@ class CurrentSessioVC : StatisticForCurrentSessionVC {
             return self.Table
         }
         set {
-            //self.TableView = newValue
+            self.Table = newValue
         }
     }
-    override var numberOfSectionsWithoutInnerContent: Int {
+    override var numberOfSectionsWithoutInnerContent: Int! {
         get {
             return 1
         }

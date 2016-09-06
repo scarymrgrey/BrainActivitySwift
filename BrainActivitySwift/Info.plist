@@ -2,6 +2,11 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+    <key>Fabric</key>
+    <dict>
+        <key>APIKey</key>
+        <string>044c36da6af7e984357d9cd7f0d73c8b859704e7</string>
+    </dict>
 	<key>Auth0ClientId</key>
 	<string>URawUVqpFlrOfvyVOCbapuY41jyrjv5r</string>
 	<key>Auth0ClientSecret</key>

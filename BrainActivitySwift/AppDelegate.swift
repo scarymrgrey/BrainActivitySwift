@@ -9,6 +9,8 @@
 import UIKit
 import RealmSwift
 import ObjectMapper
+import Fabric
+import Crashlytics
 let color_range_selected = UIColor(red: 242.0/255.0, green: 101.0/255.0 , blue: 34.0/255.0, alpha: 1)
 let userDefaults = NSUserDefaults.standardUserDefaults()
 let realm = try! Realm()
@@ -23,14 +25,12 @@ class UserDefaultsKeys {
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
- 
-
-
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         let pageControl = UIPageControl.appearance()
         pageControl.hidden = true
         userDefaults.removeObjectForKey(UserDefaultsKeys.currentSessionId)
-        //Fabric.with([Crashlytics.self()])
+        Fabric.with([Crashlytics.self()])
         //pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
         //pageControl.currentPageIndicatorTintColor = UIColor.blackColor()
         //pageControl.backgroundColor = UIColor.whiteColor()

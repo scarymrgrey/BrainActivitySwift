@@ -24,16 +24,17 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
     var options : NSArray!
     var parties : [String]!
     var arrayForBool = [Int:Bool]()
-    var numberOfSectionsWithoutInnerContent = 0
+    var numberOfSectionsWithoutInnerContent : Int!
     var currentIndex  = 0
     var data  = Dictionary<CPTPlot,[NSNumber]>()
-
+    
     var CurrentStatisticType : StatisticType!
     var currentlyOpenedPlots = [CPTPlot]()
     var currentRange : Int!
     var scopeRaw : Int!
     var viewForSection = [Int:UITableViewCell]()
     var plotBySection = [Int:CPTPlot]()
+    var sectionByPlot = [CPTPlot : Int]()
     var plotNeedToBeUpdated = [CPTPlot:Bool]()
     var lastUpdatedIndexFor = [CPTPlot : Int]()
     override func viewDidLoad() {
@@ -131,35 +132,44 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         chartView.animate(xAxisDuration : 1.4 ,easingOption:ChartEasingOption.EaseOutBack)
         //chartView.highlightValues(nil)
     }
-  
+    
     // MARK : TableView
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         preconditionFailure("This method must be overridden")
     }
     @objc func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        print("cellForRowAtIndexPath() \(indexPath)" )
         if indexPath.section < numberOfSectionsWithoutInnerContent  {
             return UITableViewCell()
         }
-        if viewForSection[indexPath.section] == nil {
-            let cell = tableView.dequeueReusableCellWithIdentifier("cellForStatisticPlot") as! PlotStatCell
-            let plot = createCorePlot(cell.innerView, color: UIColor.whiteColor())
-            preparePlot(plot,section: indexPath.section)
-            viewForSection[indexPath.section] = cell
+        if arrayForBool[indexPath.section]! {
+            
+            if viewForSection[indexPath.section] == nil {
+                let cell = tableView.dequeueReusableCellWithIdentifier("cellForStatisticPlot") as! PlotStatCell
+                let plot = createCorePlot(cell.innerView)
+                preparePlot(plot,section: indexPath.section)
+                viewForSection[indexPath.section] = cell
+            }
+            return viewForSection[indexPath.section]!
         }
-        return viewForSection[indexPath.section]!
+        return UITableViewCell()
     }
     func preparePlot(plot : CPTPlot,section : Int){
+        print("preparePlot()" )
         plotBySection[section] = plot
+        sectionByPlot[plot] = section
         plotNeedToBeUpdated[plot] = true
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        print("numberOfRowsInSection()" )
         return 1
     }
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         preconditionFailure("This method must be overridden")
     }
     func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        print("heightForHeaderInSection()" )
         if section == 0 {
             return 240
         }
@@ -171,10 +181,10 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        print("heightForHeaderInSection() \(indexPath)" )
         if indexPath.section < numberOfSectionsWithoutInnerContent {
             return 0
         }
-        
         if let isSectionOpened = arrayForBool[indexPath.section] {
             if isSectionOpened{
                 return 150
@@ -184,35 +194,29 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         }
         return 0
     }
-    func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if let plot = plotBySection[indexPath.section] {
-            if currentlyOpenedPlots.contains(plot) && plotNeedToBeUpdated[plot]! {
-                let lastIndex = lastUpdatedIndexFor[plot]!
-                let range = NSMakeRange(lastIndex,data[plot]!.count)
-                plot.reloadDataInIndexRange(range)
-                tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-            }
-        }
-    }
     // MARK : gesture Recognizers
     
     func sectionHeaderTapped(recognizer: UITapGestureRecognizer) {
+        print("sectionHeaderTapped()" )
         let section  = recognizer.view?.tag as Int!
         arrayForBool[section] = !(arrayForBool[section]!)
+        
+//        if arrayForBool[section]! {
+//            currentlyOpenedPlots.append(plotBySection[section]!)
+//        }else{
+//            let closedPlotIndex = currentlyOpenedPlots.indexOf(plotBySection[section]!)
+//            currentlyOpenedPlots.removeAtIndex(closedPlotIndex!)
+//        }
         //reload specific section animated
-        let range = NSMakeRange(section, 1)
+        let range = NSMakeRange(section, 2)
         let sectionToReload = NSIndexSet(indexesInRange: range)
         TableView.reloadSections(sectionToReload, withRowAnimation: .Fade)
-        if arrayForBool[section]! {
-            currentlyOpenedPlots.append(plotBySection[section]!)
-        }else{
-            let closedPlotIndex = currentlyOpenedPlots.indexOf(plotBySection[section]!)
-            currentlyOpenedPlots.removeAtIndex(closedPlotIndex!)
-        }
+        
     }
     
     // MARK: =CorePlot=
-    func createCorePlot( view2addGraph : UIView, color : UIColor) -> CPTPlot { // Create graph from theme
+    func createCorePlot( view2addGraph : UIView) -> CPTPlot { // Create graph from theme
+        print("createCorePlot()")
         let newGraph = CPTXYGraph(frame: CGRectZero)
         let theme = CPTTheme(named: kCPTPlainWhiteTheme)
         newGraph.applyTheme(theme)
@@ -241,7 +245,7 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         let lineStyle = CPTMutableLineStyle()
         lineStyle.miterLimit = 1.0
         lineStyle.lineWidth = 1.0
-        lineStyle.lineColor = CPTColor(CGColor: color.CGColor)
+        lineStyle.lineColor = CPTColor(CGColor: UIColor.whiteColor().CGColor)
         boundLinePlot.dataLineStyle = lineStyle
         boundLinePlot.identifier = "plotID"
         boundLinePlot.dataSource = self
@@ -275,7 +279,8 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         preconditionFailure("This method must be overridden")
     }
     func numbersForPlot(plot: CPTPlot, field fieldEnum: UInt, recordIndexRange indexRange: NSRange) -> [AnyObject]? {
-        if currentIndex == 0{
+        print("numbersForPlot()")
+        if data[plot] == nil{
             return nil
         }
         let isIndex = fieldEnum == UInt(CPTScatterPlotField.X.rawValue)
