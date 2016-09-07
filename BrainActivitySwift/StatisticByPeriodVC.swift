@@ -1,17 +1,15 @@
 //
-//  StatisticForArbitarySessionVC.swift
+//  File.swift
 //  BrainActivitySwift
 //
-//  Created by Victor Gelmutdinov on 30/08/16.
+//  Created by Victor Gelmutdinov on 07/09/16.
 //  Copyright © 2016 Kirill Polunin. All rights reserved.
 //
 
 import Foundation
-
-class StatisticForArbitarySessionVC : StatisticsVC{
+class StatisticByPeriodVC: StatisticsVC {
     @IBOutlet weak var Table : UITableView!
-    var sessionId: String!
-    var plotToFileNameDict = [CPTPlot:String]()
+  
     var plotNumber = 0
     override  var TableView : UITableView! {
         get {
@@ -56,7 +54,8 @@ class StatisticForArbitarySessionVC : StatisticsVC{
     }
     override func preparePlot(plot: CPTPlot, section: Int) {
         super.preparePlot(plot, section: section)
-        let fileName = sessionId.fileNameForSessionFile(.Data, postfix: String(plotNumber))
+        let session = realm.objects(SessionEntity)[0]
+        let fileName = session.Id.fileNameForSessionFile(.Data, postfix: String(plotNumber))
         data[plot] = binaryFileHelper.readArrayFromPlist(fileName)
         plotNumber += 1
     }
@@ -64,5 +63,6 @@ class StatisticForArbitarySessionVC : StatisticsVC{
     override func numberOfRecordsForPlot(plot : CPTPlot) -> UInt{
         let res = (data[plot]?.count) ?? 0
         return UInt(res)
+        
     }
 }

@@ -34,7 +34,7 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
         A0Theme.sharedInstance().registerTheme(customTheme)
         A0Controller = A0Lock.sharedLock().newLockViewController()
         A0Controller.closable = false
-        //userDefaults.setValue(nil, forKey: UserDefaultsKeys.idToken)
+        self.IDToken = userDefaults.stringForKey(UserDefaultsKeys.idToken)! as String
         A0Controller.onAuthenticationBlock = { profile, token in
             userDefaults.setValue(token?.accessToken, forKey: UserDefaultsKeys.accessToken)
             userDefaults.setValue(token?.idToken, forKey: UserDefaultsKeys.idToken)
@@ -57,7 +57,7 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if IDToken == nil {
+        if IDToken == nil || IDToken == "" {
             A0Lock.sharedLock().presentLockController(A0Controller, fromController: self)
         }
         

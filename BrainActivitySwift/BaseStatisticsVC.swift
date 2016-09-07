@@ -97,7 +97,6 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         //chartView.backgroundColor = Colors.gray
         chartView.holeColor = Colors.gray
         chartView.legend.enabled = false
-        
     }
     func setDataForChart(chartView: PieChartView){
         let mult = 10.0
