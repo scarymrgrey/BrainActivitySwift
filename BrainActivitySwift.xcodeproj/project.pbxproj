@@ -385,7 +385,7 @@
 				A36814D61CF7872E00CEC6A2 /* Resources */,
 				77FD2AB275A5AA63F021CB75 /* Embed Pods Frameworks */,
 				ABEDCD3258854F95A0460673 /* Copy Pods Resources */,
-				A3FD47751D1EF09600BCE3D6 /* ShellScript */,
+				A3F592A21D819FC600329237 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -506,7 +506,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BrainActivitySwift/Pods-BrainActivitySwift-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A3FD47751D1EF09600BCE3D6 /* ShellScript */ = {
+		A3F592A21D819FC600329237 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -667,6 +667,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -705,6 +706,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

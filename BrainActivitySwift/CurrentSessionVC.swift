@@ -13,6 +13,7 @@ class CurrentSessioVC : StatisticForCurrentSessionVC {
     @IBOutlet weak var ActivityImageView: UIImageView!
     @IBOutlet weak var Table : UITableView!
     
+    
     override  var TableView : UITableView! {
         get {
             return self.Table

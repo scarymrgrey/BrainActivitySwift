@@ -39,6 +39,7 @@ class ActivityVC: BatteryBarVC ,ProfilePages ,UICollectionViewDataSource,UIColle
     
         self.navigationController?.performSegueWithIdentifier("showCurrentSession", sender: nil)
     }
+   
     // MARK: - Collection View
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let cell = collectionView.cellForItemAtIndexPath(indexPath) as! ActivityCell

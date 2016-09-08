@@ -10,4 +10,5 @@ class Notifications {
     static let indicators_data_received = "indicators_data_received"
     static let data_received = "data_received"
     static let show_start_current_session = "show_start_current_session"
+    static let stop_session = "stop_session"
 }

@@ -96,11 +96,13 @@ class StatisticForCurrentSessionVC : StatisticsVC {
             }
         }
     }
-     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 5
-    }
+    
+    
     
     // MARK:  TableView Delegates
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 5
+    }
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         switch section {
         case 0:

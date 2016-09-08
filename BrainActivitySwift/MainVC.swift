@@ -46,11 +46,13 @@ class MainVC : UIViewController, CBManagerDelegate {
         //cBManager.start()
         mainView.visibleAnimation = false
         self.navigationItem.hidesBackButton = true
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(stopSession), name: Notifications.stop_session, object: nil)
        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.tabBarController!.tabBar.items![2].enabled = true
         scene1Start()
     }
     override func didReceiveMemoryWarning() {
@@ -68,6 +70,11 @@ class MainVC : UIViewController, CBManagerDelegate {
     }
     func CB_changedStatus(status: CBManagerMessage, message statusMessage: String!) {
         
+    }
+    // MARK: Notifications 
+    func stopSession(){
+        cBManager.stop()
+        self.performSegueWithIdentifier("showNewCreatedSession", sender: nil)
     }
     
     // MARK: Actions
@@ -97,6 +104,9 @@ class MainVC : UIViewController, CBManagerDelegate {
         if segue.identifier == "showCurrentSessionStat"{
             let vc = (segue.destinationViewController as! CurrentSessioVC)
             vc.ActivityType = ActivityVC.SelectedActivity
+        }else if segue.identifier == "showNewCreatedSession"{
+            let vc = (segue.destinationViewController as! StatisticForArbitarySessionVC)
+            vc.sessionId = userDefaults.stringForKey(UserDefaultsKeys.currentSessionId)
         }
     }
     // MARK: = methods

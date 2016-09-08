@@ -35,7 +35,7 @@ PODS:
   - Crashlytics (3.8.0):
     - Fabric (~> 1.6.3)
   - EVReflection (2.40.0)
-  - Fabric (1.6.7)
+  - Fabric (1.6.8)
   - Lock (1.26.1):
     - CocoaLumberjack (~> 2.0)
     - Lock/Core (= 1.26.1)
@@ -87,7 +87,7 @@ SPEC CHECKSUMS:
   CorePlot: ab9898c79b94999018e9634ab0aa4c21480c8552
   Crashlytics: 8601d9c74a4c4d28f3e7f408bf4c0e490c70e8b4
   EVReflection: 0e8ec81c1f92646aac670b64b3199c02c5c0ae2d
-  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
+  Fabric: 5755268d0171435ab167e3d0878a28a777deaf10
   Lock: d981a23c9ea7d2a77d7637ea83826b751df4e2f2
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   ObjectMapper: a07ad0462c5adf014adc0f89ef04c29b626e855e
