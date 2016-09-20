@@ -32,7 +32,7 @@ class RequestBase {
         return [:]
     }
     
-
+    
     func makeRequest(mapper : Request -> Void ){
         Alamofire.upload(
             .POST,
@@ -62,6 +62,7 @@ class RequestBase {
         })
 
     }
+
     func On(success success : String -> Void,error :Void -> Void){
         makeRequest{ (upload) in
                     upload.responseJSON(completionHandler: { (response) in

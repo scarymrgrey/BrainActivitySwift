@@ -12,4 +12,6 @@ import RealmSwift
 class SessionEntity : Entity {
     var Files = List<SessionFileEntity>()
     var Activities = List<ActivityEntity>()
+    dynamic var CreateDate = NSDate(timeIntervalSince1970: 1)
+    dynamic var Duration = Int(0)
 }

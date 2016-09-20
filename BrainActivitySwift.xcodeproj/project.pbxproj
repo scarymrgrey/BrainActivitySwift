@@ -31,6 +31,8 @@
 		A32A5C2D1D6C6F6A003B304F /* SessionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A5C2C1D6C6F6A003B304F /* SessionEntity.swift */; };
 		A32A5C2F1D6C7DE5003B304F /* ActivityEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A5C2E1D6C7DE5003B304F /* ActivityEntity.swift */; };
 		A32A5C311D6C86AC003B304F /* Entity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A32A5C301D6C86AC003B304F /* Entity.swift */; };
+		A338E3881D919CDA00DB892B /* StopSessionCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E3871D919CDA00DB892B /* StopSessionCommand.swift */; };
+		A338E38A1D919DB700DB892B /* CommandBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = A338E3891D919DB700DB892B /* CommandBase.swift */; };
 		A3484E8E1D78F19C001A0535 /* PlotStatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3484E8D1D78F19C001A0535 /* PlotStatCell.swift */; };
 		A354431E1D80851E00308DF7 /* StatisticByPeriodVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A354431D1D80851E00308DF7 /* StatisticByPeriodVC.swift */; };
 		A3636BAF1D75EF1300899B9D /* StatisticForCurrentSessionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3636BAE1D75EF1300899B9D /* StatisticForCurrentSessionVC.swift */; };
@@ -99,6 +101,8 @@
 		A32A5C2C1D6C6F6A003B304F /* SessionEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionEntity.swift; sourceTree = "<group>"; };
 		A32A5C2E1D6C7DE5003B304F /* ActivityEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityEntity.swift; sourceTree = "<group>"; };
 		A32A5C301D6C86AC003B304F /* Entity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Entity.swift; sourceTree = "<group>"; };
+		A338E3871D919CDA00DB892B /* StopSessionCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StopSessionCommand.swift; sourceTree = "<group>"; };
+		A338E3891D919DB700DB892B /* CommandBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandBase.swift; sourceTree = "<group>"; };
 		A3484E8D1D78F19C001A0535 /* PlotStatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotStatCell.swift; sourceTree = "<group>"; };
 		A354431D1D80851E00308DF7 /* StatisticByPeriodVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticByPeriodVC.swift; sourceTree = "<group>"; };
 		A3636BAE1D75EF1300899B9D /* StatisticForCurrentSessionVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatisticForCurrentSessionVC.swift; sourceTree = "<group>"; };
@@ -328,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				A3B5202F1D46763F000E762A /* CreateSessionCommand.swift */,
+				A338E3871D919CDA00DB892B /* StopSessionCommand.swift */,
 			);
 			name = Command;
 			sourceTree = "<group>";
@@ -349,6 +354,7 @@
 			children = (
 				A3EB94721D427C5500C1426A /* RequestBase.swift */,
 				A3EB94741D427CDB00C1426A /* Context.swift */,
+				A338E3891D919DB700DB892B /* CommandBase.swift */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -549,6 +555,7 @@
 				A3273B131D02D02400F1F4A6 /* CurrentSessionVC.swift in Sources */,
 				A36814F21CF788F500CEC6A2 /* CBManager.m in Sources */,
 				A31BFC0C1D05E85B0025D878 /* EZConstraint.swift in Sources */,
+				A338E38A1D919DB700DB892B /* CommandBase.swift in Sources */,
 				A3273B0B1D01F43900F1F4A6 /* ActivityCell.swift in Sources */,
 				A354431E1D80851E00308DF7 /* StatisticByPeriodVC.swift in Sources */,
 				A3484E8E1D78F19C001A0535 /* PlotStatCell.swift in Sources */,
@@ -571,6 +578,7 @@
 				A315A8961D5D1F4100396767 /* SessionFileEntity.swift in Sources */,
 				A30B2DB41D19D9CD0048CBDC /* SpectrumVC.swift in Sources */,
 				A3F281411D4CEFE800D9AC79 /* StatTableViewCell.swift in Sources */,
+				A338E3881D919CDA00DB892B /* StopSessionCommand.swift in Sources */,
 				A3E05A301D04A33100ADC6F5 /* SessionCellContainer.swift in Sources */,
 				A3273B151D02D2AE00F1F4A6 /* SessionsVC.swift in Sources */,
 				A3636BAF1D75EF1300899B9D /* StatisticForCurrentSessionVC.swift in Sources */,

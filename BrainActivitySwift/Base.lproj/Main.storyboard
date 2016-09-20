@@ -308,7 +308,7 @@
                         <viewControllerLayoutGuide type="bottom" id="cCs-Is-HfY"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="g4c-GK-Bqa">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="951"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2016" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kZc-kO-seN">
@@ -407,6 +407,9 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vcY-U2-9ej" customClass="CPTGraphHostingView">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
+                                                    </variation>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -649,6 +652,9 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ar1-Dp-9Yh" customClass="CPTGraphHostingView">
                                                     <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="0.0" y="0.0" width="240" height="43"/>
+                                                    </variation>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -1745,7 +1751,7 @@
                         <viewControllerLayoutGuide type="bottom" id="hUm-He-2ud"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="iqd-Cg-yjG">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qCB-gK-TQx">
@@ -2137,6 +2143,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="tIN-x4-Qmh"/>
-        <segue reference="gIe-lx-a8r"/>
+        <segue reference="4fo-kV-yyZ"/>
     </inferredMetricsTieBreakers>
 </document>

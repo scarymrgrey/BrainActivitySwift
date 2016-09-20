@@ -9,7 +9,10 @@
 import Foundation
 class StatisticByPeriodVC: StatisticsVC {
     @IBOutlet weak var Table : UITableView!
-  
+    var year = 0
+    var month = 0
+    var day = 0
+    var ActivityStat = [ActivityTypeEnum : Int]()
     var plotNumber = 0
     override  var TableView : UITableView! {
         get {
@@ -36,6 +39,23 @@ class StatisticByPeriodVC: StatisticsVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         setDefaultValues()
+        let sessions = realm.objects(SessionEntity)
+        for session in sessions {
+            
+            for (index , activity) in session.Activities.enumerate() {
+                if index == session.Activities.count - 1 {
+                    
+                }else{
+                    if let _ =  ActivityStat[activity.ActivityEnum]{
+                        ActivityStat[activity.ActivityEnum]! += activity.StartsFrom
+                    }else {
+                        ActivityStat[activity.ActivityEnum] = activity.StartsFrom
+                    }
+                }
+                
+                print(ActivityStat[activity.ActivityEnum])
+            }
+        }
     }
     // MARK: TableView delegates
     override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

@@ -13,6 +13,7 @@ class StatisticForArbitarySessionVC : StatisticsVC{
     var sessionId: String!
     var plotToFileNameDict = [CPTPlot:String]()
     var plotNumber = 0
+    
     override  var TableView : UITableView! {
         get {
             return self.Table

@@ -36,7 +36,6 @@ extension RangeReplaceableCollectionType where Generator.Element == NSNumber  {
     }
 }
 class StatisticForCurrentSessionVC : StatisticsVC {
-    
    
     var dataForIndexKeyWasRead = [CPTPlot : Bool]()
     var dataForDataKeyWasRead = [CPTPlot:Bool]()
