@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import CorePlot
 class StatisticForArbitarySessionVC : StatisticsVC{
     @IBOutlet weak var Table : UITableView!
     var sessionId: String!

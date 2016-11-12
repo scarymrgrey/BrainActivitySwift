@@ -8,6 +8,7 @@
 
 import Foundation
 import Charts
+import CorePlot
 enum StatisticType {
     case CurrentSessionStat
     case CustomSessionStat
@@ -234,10 +235,10 @@ class StatisticsVC: BatteryBarVC , ChartViewDelegate ,UITableViewDelegate , UITa
         let x = axisSet.xAxis!
         x.labelingPolicy = CPTAxisLabelingPolicy.None
         
-        let y = axisSet.yAxis!
-        y.majorIntervalLength = 10000
-        y.minorTicksPerInterval = 0
-        y.delegate = self
+//        let y = axisSet.yAxis!
+//        y.majorIntervalLength = 10000
+//        y.minorTicksPerInterval = 0
+//        y.delegate = self
         
         // Create a blue plot area
         let boundLinePlot = CPTScatterPlot()

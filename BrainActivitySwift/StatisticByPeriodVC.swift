@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CorePlot
 class StatisticByPeriodVC: StatisticsVC {
     @IBOutlet weak var Table : UITableView!
     var year = 0

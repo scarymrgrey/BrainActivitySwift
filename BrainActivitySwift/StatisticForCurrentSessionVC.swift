@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CorePlot
 var saveDict = [String:[NSNumber]]()
 var limit : Int = 16
 extension RangeReplaceableCollectionType where Generator.Element == NSNumber  {

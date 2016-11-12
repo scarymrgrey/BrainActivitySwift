@@ -6,6 +6,7 @@
 //  Copyright © 2016 Kirill Polunin. All rights reserved.
 //
 import UIKit
+import CorePlot
 class SpectrumVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     
     // MARK: Outlets

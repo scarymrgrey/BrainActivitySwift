@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import CorePlot
 class PlotStatCell: UITableViewCell {
 
     @IBOutlet weak var innerView: CPTGraphHostingView!

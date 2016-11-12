@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CorePlot
 class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
     
     // MARK: Outlets
