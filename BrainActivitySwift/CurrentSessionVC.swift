@@ -21,6 +21,7 @@ class CurrentSessioVC : StatisticForCurrentSessionVC {
         set {
             self.Table = newValue
         }
+        
     }
     override var numberOfSectionsWithoutInnerContent: Int! {
         get {
@@ -32,6 +33,7 @@ class CurrentSessioVC : StatisticForCurrentSessionVC {
     var ActivityText : String!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         ActivityImageView.image = UIImage(named: ActivityType.rawValue)
         ActivityTextLabel.text = ActivityText
         sessionId = userDefaults.stringForKey(UserDefaultsKeys.currentSessionId)

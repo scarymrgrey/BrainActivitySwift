@@ -18,19 +18,16 @@ class CommandBase {
         }
         set {}
     }
-    final func Execute(){
+    final func Execute(_onSuccess : Void -> Void){
         do {
             try Realm.write{
                 OnExecute()
+                _onSuccess()
             }
         }catch let error{
             OnError(error)
         }
     }
-    func OnExecute(){
-        
-    }
-    func OnError(error : ErrorType){
-        
-    }
+    func OnExecute(){}
+    func OnError(error : ErrorType){}
 }

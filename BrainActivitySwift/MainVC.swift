@@ -14,12 +14,12 @@ enum MainVCScene {
     case Scene3
     case Scene4
 }
-class MainVC : UIViewController, CBManagerDelegate {
+class MainVC : UIViewController {
     //@IBOutlet weak var ViewForAnimation: AnimationView!
     
     //  MARK: = Local Variables =
     let notificationCenter = NSNotificationCenter.defaultCenter()
-    var cBManager : CBManager!
+    //var cBManager : CBManager!
     var battTimer : NSTimer!
     var plotsVC : PlotsVC?
     var selectedFreq : Float = 3
@@ -40,8 +40,8 @@ class MainVC : UIViewController, CBManagerDelegate {
         mainView = self.view as! AnimatedSessionView
         mainView.flashing = true
         
-        cBManager = CBManager()
-        cBManager.delegate = self
+        //cBManager = CBManager()
+        //cBManager.delegate = self
         UIApplication.sharedApplication().idleTimerDisabled = true
         //cBManager.start()
         mainView.visibleAnimation = false
@@ -59,39 +59,39 @@ class MainVC : UIViewController, CBManagerDelegate {
         super.didReceiveMemoryWarning()
     }
     // MARK: = CB Manager Delegate
-    func CB_fftDataUpdatedWithDictionary(data: [NSObject : AnyObject]!) {
-        notificationCenter.postNotificationName(Notifications.fft_data_received,object : nil, userInfo: data)
-    }
-    func CB_indicatorsStateWithDictionary(data: [NSObject : AnyObject]!) {
-        notificationCenter.postNotificationName(Notifications.indicators_data_received,object : nil, userInfo: data)
-    }
-    func CB_dataUpdatedWithDictionary(data: [NSObject : AnyObject]!) {
-        notificationCenter.postNotificationName(Notifications.data_received,object : nil, userInfo: data)
-    }
-    func CB_changedStatus(status: CBManagerMessage, message statusMessage: String!) {
-        
-    }
-    // MARK: Notifications 
+//    func CB_fftDataUpdatedWithDictionary(data: [NSObject : AnyObject]!) {
+//        notificationCenter.postNotificationName(Notifications.fft_data_received,object : nil, userInfo: data)
+//    }
+//    func CB_indicatorsStateWithDictionary(data: [NSObject : AnyObject]!) {
+//        notificationCenter.postNotificationName(Notifications.indicators_data_received,object : nil, userInfo: data)
+//    }
+//    func CB_dataUpdatedWithDictionary(data: [NSObject : AnyObject]!) {
+//        notificationCenter.postNotificationName(Notifications.data_received,object : nil, userInfo: data)
+//    }
+//    func CB_changedStatus(status: CBManagerMessage, message statusMessage: String!) {
+//        
+//    }
+    // MARK: Notifications
     func stopSession(){
-        cBManager.stop()
+        //cBManager.stop()
         self.performSegueWithIdentifier("showNewCreatedSession", sender: nil)
     }
     
     // MARK: Actions
     
      func startTestAction() {
-        if cBManager.hasStarted {
-            if battTimer != nil {
-                battTimer.invalidate()
-                battTimer = nil
-            }
-            //plotsVC?.SetDefaults()
-            cBManager.stop()
-            cBManager = CBManager()
-            cBManager.delegate = self
-        }else {
-            cBManager.startTestSequenceWithDominantFrequence(selectedFreq)
-        }
+//        if cBManager.hasStarted {
+//            if battTimer != nil {
+//                battTimer.invalidate()
+//                battTimer = nil
+//            }
+//            //plotsVC?.SetDefaults()
+//            cBManager.stop()
+//            cBManager = CBManager()
+//            cBManager.delegate = self
+//        }else {
+//            cBManager.startTestSequenceWithDominantFrequence(selectedFreq)
+//        }
     }
     
     

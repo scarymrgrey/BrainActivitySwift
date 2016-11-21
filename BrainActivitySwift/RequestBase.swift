@@ -11,7 +11,6 @@ import Alamofire
 import EVReflection
 import AlamofireObjectMapper
 import ObjectMapper
-
 class RequestBase {
     // MARK: Locals
 
@@ -31,7 +30,6 @@ class RequestBase {
     func GetParameters() -> [String:AnyObject?]{
         return [:]
     }
-    
     
     func makeRequest(mapper : Request -> Void ){
         Alamofire.upload(

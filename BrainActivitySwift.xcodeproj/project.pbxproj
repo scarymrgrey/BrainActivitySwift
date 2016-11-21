@@ -14,7 +14,6 @@
 		A30B2DB21D19D9C10048CBDC /* RawVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30B2DB11D19D9C10048CBDC /* RawVC.swift */; };
 		A30B2DB41D19D9CD0048CBDC /* SpectrumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30B2DB31D19D9CD0048CBDC /* SpectrumVC.swift */; };
 		A30B2DB61D19D9D90048CBDC /* IndicatorsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A30B2DB51D19D9D90048CBDC /* IndicatorsVC.swift */; };
-		A3150FA51D4530A50023DD9F /* BatteryBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3150FA41D4530A50023DD9F /* BatteryBarVC.swift */; };
 		A315A8961D5D1F4100396767 /* SessionFileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = A315A8951D5D1F4100396767 /* SessionFileEntity.swift */; };
 		A315A8981D5F78C100396767 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A315A8971D5F78C100396767 /* StringExtensions.swift */; };
 		A3166AE81D4AA089004934EE /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3166AE71D4AA089004934EE /* Colors.swift */; };
@@ -41,7 +40,6 @@
 		A36814DC1CF7872E00CEC6A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814DB1CF7872E00CEC6A2 /* AppDelegate.swift */; };
 		A36814E31CF7872E00CEC6A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A36814E21CF7872E00CEC6A2 /* Assets.xcassets */; };
 		A36814E61CF7872E00CEC6A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A36814E41CF7872E00CEC6A2 /* LaunchScreen.storyboard */; };
-		A36814F21CF788F500CEC6A2 /* CBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A36814F01CF788F500CEC6A2 /* CBManager.m */; };
 		A36814F61CF78C0600CEC6A2 /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36814F51CF78C0600CEC6A2 /* CoreBluetooth.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		A36814F81CF78C1300CEC6A2 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A36814F71CF78C1300CEC6A2 /* Accelerate.framework */; };
 		A36814FA1CF78DFA00CEC6A2 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A36814F91CF78DFA00CEC6A2 /* MainVC.swift */; };
@@ -62,6 +60,21 @@
 		A3F281411D4CEFE800D9AC79 /* StatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F281401D4CEFE800D9AC79 /* StatTableViewCell.swift */; };
 		A3FCB05B1D538BA500F42463 /* SessionHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FCB05A1D538BA500F42463 /* SessionHeadCell.swift */; };
 		AC76D15BECCCBC423DB82727 /* Pods_BrainActivitySwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD126690F4EB53F6DE3CE479 /* Pods_BrainActivitySwift.framework */; };
+		CE9ED09D1DDAF501005CDD2D /* BatteryBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3150FA41D4530A50023DD9F /* BatteryBarVC.swift */; };
+		CE9ED0B71DDAF534005CDD2D /* algorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED09F1DDAF534005CDD2D /* algorithm.cpp */; };
+		CE9ED0B81DDAF534005CDD2D /* brainbit_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0A11DDAF534005CDD2D /* brainbit_reader.cpp */; };
+		CE9ED0B91DDAF534005CDD2D /* brainbit_source.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0A21DDAF534005CDD2D /* brainbit_source.cpp */; };
+		CE9ED0BA1DDAF534005CDD2D /* channel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0A41DDAF534005CDD2D /* channel.cpp */; };
+		CE9ED0BB1DDAF534005CDD2D /* CMakeLists.txt in Resources */ = {isa = PBXBuildFile; fileRef = CE9ED0A61DDAF534005CDD2D /* CMakeLists.txt */; };
+		CE9ED0BC1DDAF534005CDD2D /* colibri_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0A71DDAF534005CDD2D /* colibri_reader.cpp */; };
+		CE9ED0BD1DDAF535005CDD2D /* colibri_source.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0A81DDAF534005CDD2D /* colibri_source.cpp */; };
+		CE9ED0BE1DDAF535005CDD2D /* data_source.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0AA1DDAF534005CDD2D /* data_source.cpp */; };
+		CE9ED0BF1DDAF535005CDD2D /* eeg_state_calculator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0AC1DDAF534005CDD2D /* eeg_state_calculator.cpp */; };
+		CE9ED0C01DDAF535005CDD2D /* neuro_sys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0AD1DDAF534005CDD2D /* neuro_sys.cpp */; };
+		CE9ED0C11DDAF535005CDD2D /* screen_buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0AF1DDAF534005CDD2D /* screen_buffer.cpp */; };
+		CE9ED0C21DDAF535005CDD2D /* SDKWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0B11DDAF534005CDD2D /* SDKWrapper.mm */; };
+		CE9ED0C31DDAF535005CDD2D /* signal_buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0B21DDAF534005CDD2D /* signal_buffer.cpp */; };
+		CE9ED0C41DDAF535005CDD2D /* signal_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0B41DDAF534005CDD2D /* signal_reader.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +86,19 @@
 			remoteInfo = BrainActivitySwift;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CE68C4F31DDA63D90042A474 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2A447E51F61C61E68D9E21AE /* Pods-BrainActivitySwift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainActivitySwift.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BrainActivitySwift/Pods-BrainActivitySwift.debug.xcconfig"; sourceTree = "<group>"; };
@@ -113,9 +139,6 @@
 		A36814E51CF7872E00CEC6A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A36814E71CF7872E00CEC6A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A36814EE1CF788F400CEC6A2 /* BrainActivitySwift-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BrainActivitySwift-Bridging-Header.h"; sourceTree = "<group>"; };
-		A36814EF1CF788F500CEC6A2 /* CBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBManager.h; sourceTree = "<group>"; };
-		A36814F01CF788F500CEC6A2 /* CBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBManager.m; sourceTree = "<group>"; };
-		A36814F11CF788F500CEC6A2 /* SERVICES.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SERVICES.h; sourceTree = "<group>"; };
 		A36814F51CF78C0600CEC6A2 /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		A36814F71CF78C1300CEC6A2 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		A36814F91CF78DFA00CEC6A2 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -137,6 +160,31 @@
 		A3EF5CA01D009C98009E296D /* MetricsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricsVC.swift; sourceTree = "<group>"; };
 		A3F281401D4CEFE800D9AC79 /* StatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatTableViewCell.swift; sourceTree = "<group>"; };
 		A3FCB05A1D538BA500F42463 /* SessionHeadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionHeadCell.swift; sourceTree = "<group>"; };
+		CE9ED09F1DDAF534005CDD2D /* algorithm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = algorithm.cpp; sourceTree = "<group>"; };
+		CE9ED0A01DDAF534005CDD2D /* algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = algorithm.h; sourceTree = "<group>"; };
+		CE9ED0A11DDAF534005CDD2D /* brainbit_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = brainbit_reader.cpp; sourceTree = "<group>"; };
+		CE9ED0A21DDAF534005CDD2D /* brainbit_source.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = brainbit_source.cpp; sourceTree = "<group>"; };
+		CE9ED0A31DDAF534005CDD2D /* brainbit_source.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = brainbit_source.h; sourceTree = "<group>"; };
+		CE9ED0A41DDAF534005CDD2D /* channel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = channel.cpp; sourceTree = "<group>"; };
+		CE9ED0A51DDAF534005CDD2D /* channel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = channel.h; sourceTree = "<group>"; };
+		CE9ED0A61DDAF534005CDD2D /* CMakeLists.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CMakeLists.txt; sourceTree = "<group>"; };
+		CE9ED0A71DDAF534005CDD2D /* colibri_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = colibri_reader.cpp; sourceTree = "<group>"; };
+		CE9ED0A81DDAF534005CDD2D /* colibri_source.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = colibri_source.cpp; sourceTree = "<group>"; };
+		CE9ED0A91DDAF534005CDD2D /* colibri_source.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = colibri_source.h; sourceTree = "<group>"; };
+		CE9ED0AA1DDAF534005CDD2D /* data_source.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = data_source.cpp; sourceTree = "<group>"; };
+		CE9ED0AB1DDAF534005CDD2D /* data_source.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = data_source.h; sourceTree = "<group>"; };
+		CE9ED0AC1DDAF534005CDD2D /* eeg_state_calculator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = eeg_state_calculator.cpp; sourceTree = "<group>"; };
+		CE9ED0AD1DDAF534005CDD2D /* neuro_sys.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = neuro_sys.cpp; sourceTree = "<group>"; };
+		CE9ED0AE1DDAF534005CDD2D /* neuro_sys.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = neuro_sys.h; sourceTree = "<group>"; };
+		CE9ED0AF1DDAF534005CDD2D /* screen_buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = screen_buffer.cpp; sourceTree = "<group>"; };
+		CE9ED0B01DDAF534005CDD2D /* screen_buffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = screen_buffer.h; sourceTree = "<group>"; };
+		CE9ED0B11DDAF534005CDD2D /* SDKWrapper.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = SDKWrapper.mm; sourceTree = "<group>"; };
+		CE9ED0B21DDAF534005CDD2D /* signal_buffer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = signal_buffer.cpp; sourceTree = "<group>"; };
+		CE9ED0B31DDAF534005CDD2D /* signal_buffer.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; path = signal_buffer.h; sourceTree = "<group>"; };
+		CE9ED0B41DDAF534005CDD2D /* signal_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = signal_reader.cpp; sourceTree = "<group>"; };
+		CE9ED0B51DDAF534005CDD2D /* signal_reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = signal_reader.h; sourceTree = "<group>"; };
+		CE9ED0B61DDAF534005CDD2D /* source_factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = source_factory.h; sourceTree = "<group>"; };
+		CE9ED0C51DDAFDC4005CDD2D /* SDKWrapper.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = SDKWrapper.h; sourceTree = "<group>"; };
 		D7213EE7BF2458481045C60E /* Pods-BrainActivitySwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainActivitySwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-BrainActivitySwift/Pods-BrainActivitySwift.release.xcconfig"; sourceTree = "<group>"; };
 		FD126690F4EB53F6DE3CE479 /* Pods_BrainActivitySwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BrainActivitySwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -249,6 +297,8 @@
 		A36814CF1CF7872E00CEC6A2 = {
 			isa = PBXGroup;
 			children = (
+				CE2084F21DE233EF007A58DB /* SDKWrapper */,
+				CE9ED09E1DDAF51E005CDD2D /* BrainSDK */,
 				A36814DA1CF7872E00CEC6A2 /* BrainActivitySwift */,
 				A36814D91CF7872E00CEC6A2 /* Products */,
 				A36814F41CF78BE200CEC6A2 /* Frameworks */,
@@ -281,19 +331,8 @@
 				A31BFC0A1D05E8300025D878 /* HelpersAndExtensions */,
 				A36814F31CF78A6D00CEC6A2 /* ViewControllers */,
 				A3E05A2E1D042DF300ADC6F5 /* UIComponents */,
-				A36814ED1CF788CD00CEC6A2 /* CBManager */,
 			);
 			path = BrainActivitySwift;
-			sourceTree = "<group>";
-		};
-		A36814ED1CF788CD00CEC6A2 /* CBManager */ = {
-			isa = PBXGroup;
-			children = (
-				A36814EF1CF788F500CEC6A2 /* CBManager.h */,
-				A36814F01CF788F500CEC6A2 /* CBManager.m */,
-				A36814F11CF788F500CEC6A2 /* SERVICES.h */,
-			);
-			name = CBManager;
 			sourceTree = "<group>";
 		};
 		A36814F31CF78A6D00CEC6A2 /* ViewControllers */ = {
@@ -378,6 +417,45 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		CE2084F21DE233EF007A58DB /* SDKWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				CE9ED0B11DDAF534005CDD2D /* SDKWrapper.mm */,
+				CE9ED0C51DDAFDC4005CDD2D /* SDKWrapper.h */,
+			);
+			name = SDKWrapper;
+			sourceTree = "<group>";
+		};
+		CE9ED09E1DDAF51E005CDD2D /* BrainSDK */ = {
+			isa = PBXGroup;
+			children = (
+				CE9ED09F1DDAF534005CDD2D /* algorithm.cpp */,
+				CE9ED0A01DDAF534005CDD2D /* algorithm.h */,
+				CE9ED0A11DDAF534005CDD2D /* brainbit_reader.cpp */,
+				CE9ED0A21DDAF534005CDD2D /* brainbit_source.cpp */,
+				CE9ED0A31DDAF534005CDD2D /* brainbit_source.h */,
+				CE9ED0A41DDAF534005CDD2D /* channel.cpp */,
+				CE9ED0A51DDAF534005CDD2D /* channel.h */,
+				CE9ED0A61DDAF534005CDD2D /* CMakeLists.txt */,
+				CE9ED0A71DDAF534005CDD2D /* colibri_reader.cpp */,
+				CE9ED0A81DDAF534005CDD2D /* colibri_source.cpp */,
+				CE9ED0A91DDAF534005CDD2D /* colibri_source.h */,
+				CE9ED0AA1DDAF534005CDD2D /* data_source.cpp */,
+				CE9ED0AB1DDAF534005CDD2D /* data_source.h */,
+				CE9ED0AC1DDAF534005CDD2D /* eeg_state_calculator.cpp */,
+				CE9ED0AD1DDAF534005CDD2D /* neuro_sys.cpp */,
+				CE9ED0AE1DDAF534005CDD2D /* neuro_sys.h */,
+				CE9ED0AF1DDAF534005CDD2D /* screen_buffer.cpp */,
+				CE9ED0B01DDAF534005CDD2D /* screen_buffer.h */,
+				CE9ED0B21DDAF534005CDD2D /* signal_buffer.cpp */,
+				CE9ED0B31DDAF534005CDD2D /* signal_buffer.h */,
+				CE9ED0B41DDAF534005CDD2D /* signal_reader.cpp */,
+				CE9ED0B51DDAF534005CDD2D /* signal_reader.h */,
+				CE9ED0B61DDAF534005CDD2D /* source_factory.h */,
+			);
+			name = BrainSDK;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -392,6 +470,7 @@
 				A3F592A21D819FC600329237 /* ShellScript */,
 				8644256EDCF0160E66CE408C /* [CP] Embed Pods Frameworks */,
 				DDFECEBB40A4BD57261337DB /* [CP] Copy Pods Resources */,
+				CE68C4F31DDA63D90042A474 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -469,6 +548,7 @@
 			files = (
 				A30B2DAD1D19BD800048CBDC /* Main.storyboard in Resources */,
 				A36814E61CF7872E00CEC6A2 /* LaunchScreen.storyboard in Resources */,
+				CE9ED0BB1DDAF534005CDD2D /* CMakeLists.txt in Resources */,
 				A3BE74AC1D743B9800F5B6E5 /* AnimatedSessionView.xib in Resources */,
 				A36814E31CF7872E00CEC6A2 /* Assets.xcassets in Resources */,
 			);
@@ -549,22 +629,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3150FA51D4530A50023DD9F /* BatteryBarVC.swift in Sources */,
+				CE9ED0C21DDAF535005CDD2D /* SDKWrapper.mm in Sources */,
+				CE9ED09D1DDAF501005CDD2D /* BatteryBarVC.swift in Sources */,
+				CE9ED0C01DDAF535005CDD2D /* neuro_sys.cpp in Sources */,
 				A3BE74A81D6F38AE00F5B6E5 /* AnimationView.swift in Sources */,
 				A3636BB11D7601A900899B9D /* StatisticForArbitarySessionVC.swift in Sources */,
 				A3EF5C9B1CFE3057009E296D /* ProfileVC.swift in Sources */,
 				A3FCB05B1D538BA500F42463 /* SessionHeadCell.swift in Sources */,
 				A3273B131D02D02400F1F4A6 /* CurrentSessionVC.swift in Sources */,
-				A36814F21CF788F500CEC6A2 /* CBManager.m in Sources */,
 				A31BFC0C1D05E85B0025D878 /* EZConstraint.swift in Sources */,
 				A338E38A1D919DB700DB892B /* CommandBase.swift in Sources */,
 				A3273B0B1D01F43900F1F4A6 /* ActivityCell.swift in Sources */,
 				A354431E1D80851E00308DF7 /* StatisticByPeriodVC.swift in Sources */,
 				A3484E8E1D78F19C001A0535 /* PlotStatCell.swift in Sources */,
+				CE9ED0BA1DDAF534005CDD2D /* channel.cpp in Sources */,
 				A3EF5CA11D009C98009E296D /* MetricsVC.swift in Sources */,
 				A32A5C2D1D6C6F6A003B304F /* SessionEntity.swift in Sources */,
+				CE9ED0BD1DDAF535005CDD2D /* colibri_source.cpp in Sources */,
 				A328A45A1D2315F900921D75 /* StopWatch.swift in Sources */,
 				A3273B081D00BF3300F1F4A6 /* TabBarController.swift in Sources */,
+				CE9ED0B91DDAF534005CDD2D /* brainbit_source.cpp in Sources */,
 				A3273B061D00B4FD00F1F4A6 /* BaseContentVC.swift in Sources */,
 				A3BE74531D6DFF6B00F5B6E5 /* AnimatedSessionView.swift in Sources */,
 				A30B2DB61D19D9D90048CBDC /* IndicatorsVC.swift in Sources */,
@@ -573,23 +657,31 @@
 				A30B2DB21D19D9C10048CBDC /* RawVC.swift in Sources */,
 				A32A5C311D6C86AC003B304F /* Entity.swift in Sources */,
 				A3E05A321D04B8BA00ADC6F5 /* SessionHeaderView.swift in Sources */,
+				CE9ED0C31DDAF535005CDD2D /* signal_buffer.cpp in Sources */,
 				A30B2DA81D1946110048CBDC /* Notifications.swift in Sources */,
 				A315A8981D5F78C100396767 /* StringExtensions.swift in Sources */,
+				CE9ED0BC1DDAF534005CDD2D /* colibri_reader.cpp in Sources */,
 				A32A5C2F1D6C7DE5003B304F /* ActivityEntity.swift in Sources */,
 				A36699D81D5B5D2F00A160E9 /* GetSessionsQueryResponse.swift in Sources */,
+				CE9ED0BF1DDAF535005CDD2D /* eeg_state_calculator.cpp in Sources */,
 				A315A8961D5D1F4100396767 /* SessionFileEntity.swift in Sources */,
 				A30B2DB41D19D9CD0048CBDC /* SpectrumVC.swift in Sources */,
 				A3F281411D4CEFE800D9AC79 /* StatTableViewCell.swift in Sources */,
 				A338E3881D919CDA00DB892B /* StopSessionCommand.swift in Sources */,
 				A3E05A301D04A33100ADC6F5 /* SessionCellContainer.swift in Sources */,
+				CE9ED0C41DDAF535005CDD2D /* signal_reader.cpp in Sources */,
 				A3273B151D02D2AE00F1F4A6 /* SessionsVC.swift in Sources */,
 				A3636BAF1D75EF1300899B9D /* StatisticForCurrentSessionVC.swift in Sources */,
+				CE9ED0BE1DDAF535005CDD2D /* data_source.cpp in Sources */,
 				A3EF5C9D1D008435009E296D /* ActivityVC.swift in Sources */,
+				CE9ED0B71DDAF534005CDD2D /* algorithm.cpp in Sources */,
 				A36699D21D561D2600A160E9 /* BinaryFileHelper.swift in Sources */,
 				A3166AE81D4AA089004934EE /* Colors.swift in Sources */,
 				A30B2DAA1D19516D0048CBDC /* PlotsVC.swift in Sources */,
 				A30B2DAF1D19C4890048CBDC /* NewSessionContentVC.swift in Sources */,
+				CE9ED0C11DDAF535005CDD2D /* screen_buffer.cpp in Sources */,
 				A3EB94751D427CDB00C1426A /* Context.swift in Sources */,
+				CE9ED0B81DDAF534005CDD2D /* brainbit_reader.cpp in Sources */,
 				A3EB94781D427D5E00C1426A /* GetSessionsQuery.swift in Sources */,
 				A3B520301D46763F000E762A /* CreateSessionCommand.swift in Sources */,
 				A3B520341D467C33000E762A /* BaseStatisticsVC.swift in Sources */,
@@ -660,6 +752,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -708,6 +801,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -731,12 +825,33 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2A447E51F61C61E68D9E21AE /* Pods-BrainActivitySwift.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AFNetworking\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Advance\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AlamofireObjectMapper\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Charts\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/CocoaLumberjack\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/CorePlot\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/EVReflection\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Lock\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Masonry\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/ObjectMapper\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Realm\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/RealmSwift\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SDiPhoneVersion\"",
+					"\"${PODS_ROOT}/Crashlytics/iOS\"",
+					"\"${PODS_ROOT}/Fabric/iOS\"",
+					"\"$(SRCROOT)\"/**",
+				);
 				INFOPLIST_FILE = BrainActivitySwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = imbamrgrey;
@@ -746,6 +861,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -753,12 +869,33 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D7213EE7BF2458481045C60E /* Pods-BrainActivitySwift.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
+				EMBED_ASSET_PACKS_IN_PRODUCT_BUNDLE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AFNetworking\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Advance\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/AlamofireObjectMapper\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Charts\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/CocoaLumberjack\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/CorePlot\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/EVReflection\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Lock\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Masonry\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/ObjectMapper\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Realm\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/RealmSwift\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SDiPhoneVersion\"",
+					"\"${PODS_ROOT}/Crashlytics/iOS\"",
+					"\"${PODS_ROOT}/Fabric/iOS\"",
+					"\"$(SRCROOT)\"/**",
+				);
 				INFOPLIST_FILE = BrainActivitySwift/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = imbamrgrey;
@@ -767,6 +904,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "BrainActivitySwift/BrainActivitySwift-Bridging-Header.h";
 				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 1;
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
