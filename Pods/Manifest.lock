@@ -32,7 +32,7 @@ PODS:
   - CocoaLumberjack/Extensions (2.3.0):
     - CocoaLumberjack/Default
   - CorePlot (2.2)
-  - Crashlytics (3.8.0):
+  - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
   - EVReflection (2.40.0)
   - Fabric (1.6.8)
@@ -95,7 +95,7 @@ SPEC CHECKSUMS:
   Charts: 98f277b8f7ba890b43b2f2a6ecde1f78e7cfb3fa
   CocoaLumberjack: 97fab7ee5f507fe54445cca7ea80f926729cfd15
   CorePlot: cbe0c6e14220705e32e06a89c7d6a5a908b7d7d8
-  Crashlytics: 8601d9c74a4c4d28f3e7f408bf4c0e490c70e8b4
+  Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   EVReflection: 0e8ec81c1f92646aac670b64b3199c02c5c0ae2d
   Fabric: 5755268d0171435ab167e3d0878a28a777deaf10
   Lock: d981a23c9ea7d2a77d7637ea83826b751df4e2f2

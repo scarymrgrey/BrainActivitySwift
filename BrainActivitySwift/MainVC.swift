@@ -80,27 +80,26 @@ class MainVC : UIViewController ,CBManagerDelegate {
     // MARK: Actions
     
      func startTestAction() {
-//        if cBManager.hasStarted {
-//            if battTimer != nil {
-//                battTimer.invalidate()
-//                battTimer = nil
-//            }
-//            //plotsVC?.SetDefaults()
-//            cBManager.stop()
-//            cBManager = CBManager()
-//            cBManager.delegate = self
-//        }else {
-//            cBManager.startTestSequenceWithDominantFrequence(selectedFreq)
-//        }
+        if cBManager.hasStarted {
+            if battTimer != nil {
+                battTimer.invalidate()
+                battTimer = nil
+            }
+            cBManager.stop()
+            cBManager = BrainCBManager()
+            cBManager.delegate = self
+        }else {
+            cBManager.startTestSequenceWithDominantFrequence(selectedFreq)
+        }
     }
     
     
     // MARK: = NAvigation =
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if segue.identifier == "ShowPlotSegue"{
-//            plotsVC = (segue.destinationViewController as! PlotsVC)
-//            plotsVC!.cBManager = cBManager
-//        }
+        if segue.identifier == "ShowPlotSegue"{
+            plotsVC = (segue.destinationViewController as! PlotsVC)
+            plotsVC!.cBManager = cBManager
+       }
         if segue.identifier == "showCurrentSessionStat"{
             let vc = (segue.destinationViewController as! CurrentSessioVC)
             vc.ActivityType = ActivityVC.SelectedActivity
