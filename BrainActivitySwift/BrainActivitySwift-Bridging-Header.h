@@ -7,4 +7,5 @@
 #import "Fabric/Fabric.h"
 #import "Crashlytics/Crashlytics.h"
 #import "SDKWrapper.h"
+#import "BrainCBManager.h"
 

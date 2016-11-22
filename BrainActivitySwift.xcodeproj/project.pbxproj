@@ -60,6 +60,8 @@
 		A3F281411D4CEFE800D9AC79 /* StatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F281401D4CEFE800D9AC79 /* StatTableViewCell.swift */; };
 		A3FCB05B1D538BA500F42463 /* SessionHeadCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FCB05A1D538BA500F42463 /* SessionHeadCell.swift */; };
 		AC76D15BECCCBC423DB82727 /* Pods_BrainActivitySwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD126690F4EB53F6DE3CE479 /* Pods_BrainActivitySwift.framework */; };
+		CE345D1C1DE46DFF00AD5CF7 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE345D1B1DE46DFF00AD5CF7 /* UserDefaultsKeys.swift */; };
+		CE345D1F1DE4771B00AD5CF7 /* BrainCBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE345D1E1DE4771B00AD5CF7 /* BrainCBManager.m */; };
 		CE9ED09D1DDAF501005CDD2D /* BatteryBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3150FA41D4530A50023DD9F /* BatteryBarVC.swift */; };
 		CE9ED0B71DDAF534005CDD2D /* algorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED09F1DDAF534005CDD2D /* algorithm.cpp */; };
 		CE9ED0B81DDAF534005CDD2D /* brainbit_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0A11DDAF534005CDD2D /* brainbit_reader.cpp */; };
@@ -72,7 +74,6 @@
 		CE9ED0BF1DDAF535005CDD2D /* eeg_state_calculator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0AC1DDAF534005CDD2D /* eeg_state_calculator.cpp */; };
 		CE9ED0C01DDAF535005CDD2D /* neuro_sys.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0AD1DDAF534005CDD2D /* neuro_sys.cpp */; };
 		CE9ED0C11DDAF535005CDD2D /* screen_buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0AF1DDAF534005CDD2D /* screen_buffer.cpp */; };
-		CE9ED0C21DDAF535005CDD2D /* SDKWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0B11DDAF534005CDD2D /* SDKWrapper.mm */; };
 		CE9ED0C31DDAF535005CDD2D /* signal_buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0B21DDAF534005CDD2D /* signal_buffer.cpp */; };
 		CE9ED0C41DDAF535005CDD2D /* signal_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0B41DDAF534005CDD2D /* signal_reader.cpp */; };
 /* End PBXBuildFile section */
@@ -160,6 +161,10 @@
 		A3EF5CA01D009C98009E296D /* MetricsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetricsVC.swift; sourceTree = "<group>"; };
 		A3F281401D4CEFE800D9AC79 /* StatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatTableViewCell.swift; sourceTree = "<group>"; };
 		A3FCB05A1D538BA500F42463 /* SessionHeadCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionHeadCell.swift; sourceTree = "<group>"; };
+		CE345D1B1DE46DFF00AD5CF7 /* UserDefaultsKeys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeys.swift; sourceTree = "<group>"; };
+		CE345D1D1DE4771B00AD5CF7 /* BrainCBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrainCBManager.h; sourceTree = "<group>"; };
+		CE345D1E1DE4771B00AD5CF7 /* BrainCBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrainCBManager.m; sourceTree = "<group>"; };
+		CE345D201DE4774700AD5CF7 /* SERVICES.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SERVICES.h; sourceTree = "<group>"; };
 		CE9ED09F1DDAF534005CDD2D /* algorithm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = algorithm.cpp; sourceTree = "<group>"; };
 		CE9ED0A01DDAF534005CDD2D /* algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = algorithm.h; sourceTree = "<group>"; };
 		CE9ED0A11DDAF534005CDD2D /* brainbit_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = brainbit_reader.cpp; sourceTree = "<group>"; };
@@ -253,6 +258,7 @@
 				A3166AE71D4AA089004934EE /* Colors.swift */,
 				A36699D11D561D2600A160E9 /* BinaryFileHelper.swift */,
 				A315A8971D5F78C100396767 /* StringExtensions.swift */,
+				CE345D1B1DE46DFF00AD5CF7 /* UserDefaultsKeys.swift */,
 			);
 			name = HelpersAndExtensions;
 			sourceTree = "<group>";
@@ -297,6 +303,7 @@
 		A36814CF1CF7872E00CEC6A2 = {
 			isa = PBXGroup;
 			children = (
+				CE345D161DE46A2400AD5CF7 /* BrainCBManager */,
 				CE2084F21DE233EF007A58DB /* SDKWrapper */,
 				CE9ED09E1DDAF51E005CDD2D /* BrainSDK */,
 				A36814DA1CF7872E00CEC6A2 /* BrainActivitySwift */,
@@ -424,6 +431,16 @@
 				CE9ED0C51DDAFDC4005CDD2D /* SDKWrapper.h */,
 			);
 			name = SDKWrapper;
+			sourceTree = "<group>";
+		};
+		CE345D161DE46A2400AD5CF7 /* BrainCBManager */ = {
+			isa = PBXGroup;
+			children = (
+				CE345D201DE4774700AD5CF7 /* SERVICES.h */,
+				CE345D1D1DE4771B00AD5CF7 /* BrainCBManager.h */,
+				CE345D1E1DE4771B00AD5CF7 /* BrainCBManager.m */,
+			);
+			name = BrainCBManager;
 			sourceTree = "<group>";
 		};
 		CE9ED09E1DDAF51E005CDD2D /* BrainSDK */ = {
@@ -629,7 +646,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE9ED0C21DDAF535005CDD2D /* SDKWrapper.mm in Sources */,
 				CE9ED09D1DDAF501005CDD2D /* BatteryBarVC.swift in Sources */,
 				CE9ED0C01DDAF535005CDD2D /* neuro_sys.cpp in Sources */,
 				A3BE74A81D6F38AE00F5B6E5 /* AnimationView.swift in Sources */,
@@ -650,12 +666,14 @@
 				A3273B081D00BF3300F1F4A6 /* TabBarController.swift in Sources */,
 				CE9ED0B91DDAF534005CDD2D /* brainbit_source.cpp in Sources */,
 				A3273B061D00B4FD00F1F4A6 /* BaseContentVC.swift in Sources */,
+				CE345D1F1DE4771B00AD5CF7 /* BrainCBManager.m in Sources */,
 				A3BE74531D6DFF6B00F5B6E5 /* AnimatedSessionView.swift in Sources */,
 				A30B2DB61D19D9D90048CBDC /* IndicatorsVC.swift in Sources */,
 				A3EB94731D427C5500C1426A /* RequestBase.swift in Sources */,
 				A36814FA1CF78DFA00CEC6A2 /* MainVC.swift in Sources */,
 				A30B2DB21D19D9C10048CBDC /* RawVC.swift in Sources */,
 				A32A5C311D6C86AC003B304F /* Entity.swift in Sources */,
+				CE345D1C1DE46DFF00AD5CF7 /* UserDefaultsKeys.swift in Sources */,
 				A3E05A321D04B8BA00ADC6F5 /* SessionHeaderView.swift in Sources */,
 				CE9ED0C31DDAF535005CDD2D /* signal_buffer.cpp in Sources */,
 				A30B2DA81D1946110048CBDC /* Notifications.swift in Sources */,

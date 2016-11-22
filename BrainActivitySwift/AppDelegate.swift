@@ -14,13 +14,7 @@ import Crashlytics
 let color_range_selected = UIColor(red: 242.0/255.0, green: 101.0/255.0 , blue: 34.0/255.0, alpha: 1)
 let userDefaults = NSUserDefaults.standardUserDefaults()
 let realm = try! Realm()
-class UserDefaultsKeys {
-    static let accessToken = "accessToken"
-    static let idToken = "idToken"
-    static let currentTab = "currentTab"
-    static let currentSessionId = "currentSessionId"
-    static let sessionInfoCategory = "sessionInfoCategory"
-}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -32,9 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         userDefaults.removeObjectForKey(UserDefaultsKeys.currentSessionId)
         Fabric.with([Crashlytics.self()])
         logUser()
-        //pageControl.pageIndicatorTintColor = UIColor.lightGrayColor()
-        //pageControl.currentPageIndicatorTintColor = UIColor.blackColor()
-        //pageControl.backgroundColor = UIColor.whiteColor()
         return true
     }
     func logUser(){
