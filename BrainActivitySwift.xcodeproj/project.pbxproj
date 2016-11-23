@@ -76,6 +76,7 @@
 		CE9ED0C11DDAF535005CDD2D /* screen_buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0AF1DDAF534005CDD2D /* screen_buffer.cpp */; };
 		CE9ED0C31DDAF535005CDD2D /* signal_buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0B21DDAF534005CDD2D /* signal_buffer.cpp */; };
 		CE9ED0C41DDAF535005CDD2D /* signal_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0B41DDAF534005CDD2D /* signal_reader.cpp */; };
+		CECBF41C1DE6130C0087BBDB /* WrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBF41B1DE6130C0087BBDB /* WrapperTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,6 +191,7 @@
 		CE9ED0B51DDAF534005CDD2D /* signal_reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = signal_reader.h; sourceTree = "<group>"; };
 		CE9ED0B61DDAF534005CDD2D /* source_factory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = source_factory.h; sourceTree = "<group>"; };
 		CE9ED0C51DDAFDC4005CDD2D /* SDKWrapper.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; path = SDKWrapper.h; sourceTree = "<group>"; };
+		CECBF41B1DE6130C0087BBDB /* WrapperTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrapperTests.swift; sourceTree = "<group>"; };
 		D7213EE7BF2458481045C60E /* Pods-BrainActivitySwift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BrainActivitySwift.release.xcconfig"; path = "Pods/Target Support Files/Pods-BrainActivitySwift/Pods-BrainActivitySwift.release.xcconfig"; sourceTree = "<group>"; };
 		FD126690F4EB53F6DE3CE479 /* Pods_BrainActivitySwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BrainActivitySwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -371,6 +373,7 @@
 				A3ACA6FC1D20723B003F040F /* BrainActivitySwiftTests.swift */,
 				A3ACA6FE1D20723B003F040F /* Info.plist */,
 				A328A4571D21DDE500921D75 /* SpectrumVCPerfomanceTest.swift */,
+				CECBF41B1DE6130C0087BBDB /* WrapperTests.swift */,
 			);
 			path = BrainActivitySwiftTests;
 			sourceTree = "<group>";
@@ -714,6 +717,7 @@
 			files = (
 				A3ACA6FD1D20723B003F040F /* BrainActivitySwiftTests.swift in Sources */,
 				A328A4581D21DDE500921D75 /* SpectrumVCPerfomanceTest.swift in Sources */,
+				CECBF41C1DE6130C0087BBDB /* WrapperTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

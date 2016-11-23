@@ -26,6 +26,7 @@
     delete eegSystem;eegSystem = NULL;
 }
 -(uint16_t) attachDSWith:(sendCommandType)command{
+    assert(eegSystem != nil);
     DataSourceInfo info;
     info.type = DS_BRAINBIT;
     info.internal_type_id = 0;
