@@ -32,11 +32,19 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A3ACA6F91D20723A003F040F"
+               BlueprintIdentifier = "CECBF4361DE61AF60087BBDB"
                BuildableName = "BrainActivitySwiftTests.xctest"
                BlueprintName = "BrainActivitySwiftTests"
                ReferencedContainer = "container:BrainActivitySwift.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "BrainActivitySwiftTests">
+               </Test>
+               <Test
+                  Identifier = "SpectrumVCPerfomanceTest">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>

@@ -7,7 +7,7 @@
 
 import UIKit
 import Lock
-let binaryFileHelper = BinaryFileHelper()
+var binaryFileHelper = BinaryFileHelper()
 
 class TabBarController:  UITabBarController, UITabBarControllerDelegate {
     enum Scenes {

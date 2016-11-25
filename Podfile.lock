@@ -35,7 +35,7 @@ PODS:
   - Crashlytics (3.8.3):
     - Fabric (~> 1.6.3)
   - EVReflection (2.40.0)
-  - Fabric (1.6.8)
+  - Fabric (1.6.11)
   - Lock (1.26.1):
     - CocoaLumberjack (~> 2.0)
     - Lock/Core (= 1.26.1)
@@ -97,7 +97,7 @@ SPEC CHECKSUMS:
   CorePlot: cbe0c6e14220705e32e06a89c7d6a5a908b7d7d8
   Crashlytics: 2b6dbe138a42395577cfa73dfa1aa7248cadf39e
   EVReflection: 0e8ec81c1f92646aac670b64b3199c02c5c0ae2d
-  Fabric: 5755268d0171435ab167e3d0878a28a777deaf10
+  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   Lock: d981a23c9ea7d2a77d7637ea83826b751df4e2f2
   Masonry: 281802d04d787ea2973179ee8bcb50500579ede2
   ObjectMapper: a07ad0462c5adf014adc0f89ef04c29b626e855e
@@ -105,6 +105,6 @@ SPEC CHECKSUMS:
   RealmSwift: 838058b2db95b12cb86bd0cf209df642c33fb60a
   SDiPhoneVersion: c52245ccaab8142701e2e7fb8f0391ba3f255b76
 
-PODFILE CHECKSUM: ac9835b21a27fdfdfccd1383c84aff70d7467f08
+PODFILE CHECKSUM: 8c839bc729fde0130500add994b9d19f1d2ed2b5
 
 COCOAPODS: 1.2.0.beta.1

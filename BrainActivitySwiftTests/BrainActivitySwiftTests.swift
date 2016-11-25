@@ -9,7 +9,9 @@
 import XCTest
 import UIKit
 @testable import BrainActivitySwift
+@testable import CorePlot
 class BrainActivitySwiftTests: XCTestCase {
+    //MARK: = MOCKS =
     class FakeRawVC: RawVC {
         internal override func isViewLoaded() -> Bool{
             return true
@@ -30,11 +32,25 @@ class BrainActivitySwiftTests: XCTestCase {
             }
         }
     }
-    
+    class MockUserDefaults : NSUserDefaults {
+        override func objectForKey(defaultName: String) -> AnyObject? {
+            if defaultName == UserDefaultsKeys.currentSessionId {
+                return "testID"
+            }
+            return nil
+        }
+    }
+    class MockFileWriter : BinaryFileHelper {
+        override func writeArrayToPlist(filename : String,array: [Float]) {
+        }
+    }
+    //MARK: == MOCKS END ==
     var rawVC : FakeRawVC!
     var not : NSNotification!
     override func setUp() {
         super.setUp()
+        userDefaults = MockUserDefaults(suiteName: "testing")!
+        binaryFileHelper = MockFileWriter()
         rawVC = FakeRawVC()
         let fv1 = CPTGraphHostingView(frame: UIView().frame)
         let fv2 = CPTGraphHostingView(frame: UIView().frame)
@@ -50,7 +66,6 @@ class BrainActivitySwiftTests: XCTestCase {
             "ch2" :NSNumber(float: -123.40),
             "ch3" : NSNumber(float: -123.40),
             "ch4" : NSNumber(float: -123.40)])
-        //let _ = rawVC.view
     }
     
     override func tearDown() {
@@ -60,7 +75,7 @@ class BrainActivitySwiftTests: XCTestCase {
     
     func testPerformance_dataReceived() {
         self.measureBlock {
-            for i in 0..<self.rawVC.limit*100 {
+            for _ in 0..<self.rawVC.limit*100 {
                 self.rawVC.dataReceived(self.not)
                // StopWatch.getInfo("rawVC \(i)")
             }

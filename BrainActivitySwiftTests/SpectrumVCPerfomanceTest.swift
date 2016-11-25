@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import BrainActivitySwift
+@testable import CorePlot
 class SpectrumVCPerfomanceTest: XCTestCase {
     class FakeSpectrumVC: SpectrumVC {
         internal override func isViewLoaded() -> Bool{

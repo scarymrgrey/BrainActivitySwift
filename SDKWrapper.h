@@ -16,5 +16,6 @@ typedef void (*sendCommandType) (uint8_t device_type, char* command, size_t size
 @interface SDKWrapper : NSObject
 -(void) startSystem;
 -(void) destroySystem;
--(uint16_t) attachDSWith:(sendCommandType)command;
+-(NSNumber*) attachDS:(sendCommandType)command error:(__autoreleasing NSError **)error;
+
 @end

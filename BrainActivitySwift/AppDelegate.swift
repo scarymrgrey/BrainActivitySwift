@@ -12,7 +12,7 @@ import ObjectMapper
 import Fabric
 import Crashlytics
 let color_range_selected = UIColor(red: 242.0/255.0, green: 101.0/255.0 , blue: 34.0/255.0, alpha: 1)
-let userDefaults = NSUserDefaults.standardUserDefaults()
+var userDefaults = NSUserDefaults.standardUserDefaults()
 let realm = try! Realm()
 
 @UIApplicationMain

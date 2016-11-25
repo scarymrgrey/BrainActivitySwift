@@ -140,12 +140,10 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
                     plotSpace.xRange = CPTPlotRange(location : currentIndex-currentRange, length:currentRange)
                     plotSpace.yRange = CPTPlotRange(location : -(scopeRaw/2), length: scopeRaw)
                 }
-                //let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH,0)
-                //dispatch_sync(queue){
+                //print("call for :(\(currentIndex-limit):\(limit))")
                 let plot = graph.plotWithIdentifier("Blue Plot")!
                     plot.insertDataAtIndex(UInt(currentIndex-limit), numberOfRecords: UInt(limit))
-               // }
-                //print("call for :(\(currentIndex-limit):\(limit))")
+                
             }
         }
     }
@@ -168,10 +166,12 @@ class RawVC: UIViewController , CPTPlotDataSource, CPTAxisDelegate {
         //print("data for: \(indexRange) - index: \(plotIndex) - key:\(key)")
         var res = [NSNumber](count:limit,repeatedValue : NSNumber())
         for i in 0..<limit {
-            
-            let num = data[plotIndex][i][key]!.copy() as! NSNumber
-            res[i] = (num)
-            
+            if data[plotIndex].count > i {
+                let num = data[plotIndex][i][key]
+                res[i] = (num!.copy() as! NSNumber)
+            }else {
+                return nil
+            }
         }
         if isIndex {
             dataForIndexKeyWasRead[plotIndex] = true

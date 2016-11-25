@@ -16,4 +16,7 @@ pod 'Charts/Realm',:git => 'https://github.com/danielgindi/Charts.git', :tag => 
 pod 'RealmSwift'
 pod 'AlamofireObjectMapper', '~> 3.0'
 pod 'Advance', '~> 0.9'
+    target 'BrainActivitySwiftTests' do
+        inherit! :search_paths
+    end
 end

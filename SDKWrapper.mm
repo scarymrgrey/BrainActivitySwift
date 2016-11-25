@@ -8,6 +8,10 @@
 
 #import "SDKWrapper.h"
 #import "neuro_sys.h"
+#define testAsset(condition) if(!(condition)){ *error = [[NSError alloc] initWithDomain:@"#condition" code:0 userInfo:nil]; return nil; }
+
+
+
 
 //struct BImpl {
 //    NeuroSystem* system;
@@ -16,22 +20,31 @@
 //    ~BImpl() {delete system;system=NULL;}
 //};
 
-@implementation SDKWrapper {
+@interface SDKWrapper()
+
+@end
+
+@implementation SDKWrapper
     NeuroSystem* eegSystem;
-}
+
+
+
 -(void)startSystem {
     eegSystem = new NeuroSystem();
 }
+
 -(void) destroySystem {
     delete eegSystem;eegSystem = NULL;
 }
--(uint16_t) attachDSWith:(sendCommandType)command{
-    assert(eegSystem != nil);
+
+-(NSNumber*) attachDS:(sendCommandType)command error:(__autoreleasing NSError**)error;{
+    testAsset(eegSystem != nil)
+    
     DataSourceInfo info;
     info.type = DS_BRAINBIT;
     info.internal_type_id = 0;
     info.sendCommand = command;
     DS_ID dsid = eegSystem->attachDataSource(info);
-    return dsid;
+    return [[NSNumber alloc] initWithUnsignedShort: dsid];
 }
 @end
