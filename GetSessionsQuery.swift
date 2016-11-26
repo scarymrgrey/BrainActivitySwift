@@ -23,6 +23,6 @@ class GetSessionsQuery  :  RequestBase {
         super.init(context: context)
     }
     override func GetParameters() -> [String:AnyObject?]{
-        return ["incTypes":"GetSessionsQuery"]
+        return ["incType":"GetSessionsQuery"]
     }
 }

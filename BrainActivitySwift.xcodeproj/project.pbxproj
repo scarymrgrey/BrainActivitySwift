@@ -60,6 +60,7 @@
 		AC76D15BECCCBC423DB82727 /* Pods_BrainActivitySwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD126690F4EB53F6DE3CE479 /* Pods_BrainActivitySwift.framework */; };
 		CE345D1C1DE46DFF00AD5CF7 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE345D1B1DE46DFF00AD5CF7 /* UserDefaultsKeys.swift */; };
 		CE345D1F1DE4771B00AD5CF7 /* BrainCBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE345D1E1DE4771B00AD5CF7 /* BrainCBManager.m */; };
+		CE69B6541DE9BFFD00EC1DD3 /* CQRSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69B6531DE9BFFD00EC1DD3 /* CQRSTests.swift */; };
 		CE9ED09D1DDAF501005CDD2D /* BatteryBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3150FA41D4530A50023DD9F /* BatteryBarVC.swift */; };
 		CE9ED0B71DDAF534005CDD2D /* algorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED09F1DDAF534005CDD2D /* algorithm.cpp */; };
 		CE9ED0B81DDAF534005CDD2D /* brainbit_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0A11DDAF534005CDD2D /* brainbit_reader.cpp */; };
@@ -166,6 +167,7 @@
 		CE345D1D1DE4771B00AD5CF7 /* BrainCBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrainCBManager.h; sourceTree = "<group>"; };
 		CE345D1E1DE4771B00AD5CF7 /* BrainCBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrainCBManager.m; sourceTree = "<group>"; };
 		CE345D201DE4774700AD5CF7 /* SERVICES.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SERVICES.h; sourceTree = "<group>"; };
+		CE69B6531DE9BFFD00EC1DD3 /* CQRSTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CQRSTests.swift; sourceTree = "<group>"; };
 		CE9ED09F1DDAF534005CDD2D /* algorithm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = algorithm.cpp; sourceTree = "<group>"; };
 		CE9ED0A01DDAF534005CDD2D /* algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = algorithm.h; sourceTree = "<group>"; };
 		CE9ED0A11DDAF534005CDD2D /* brainbit_reader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = brainbit_reader.cpp; sourceTree = "<group>"; };
@@ -286,7 +288,7 @@
 			name = NewSession;
 			sourceTree = "<group>";
 		};
-		A3273B111D02CFE000F1F4A6 /* CurrentSession */ = {
+		A3273B111D02CFE000F1F4A6 /* Sessions */ = {
 			isa = PBXGroup;
 			children = (
 				A3273B121D02D02400F1F4A6 /* CurrentSessionVC.swift */,
@@ -295,7 +297,7 @@
 				A3E05A2F1D04A33100ADC6F5 /* SessionCellContainer.swift */,
 				A3E05A311D04B8BA00ADC6F5 /* SessionHeaderView.swift */,
 			);
-			name = CurrentSession;
+			name = Sessions;
 			sourceTree = "<group>";
 		};
 		A36699D61D5B5CF100A160E9 /* ModelsAndEntities */ = {
@@ -356,7 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				A3166AE31D4A9A46004934EE /* Statistics */,
-				A3273B111D02CFE000F1F4A6 /* CurrentSession */,
+				A3273B111D02CFE000F1F4A6 /* Sessions */,
 				A3273B091D00C04F00F1F4A6 /* NewSession */,
 				A30B2DB01D19D9970048CBDC /* Plots */,
 				A3EF5C9A1CFE3057009E296D /* ProfileVC.swift */,
@@ -481,6 +483,7 @@
 				CECBF4411DE61B2C0087BBDB /* BrainActivitySwiftTests.swift */,
 				CECBF4421DE61B2C0087BBDB /* SpectrumVCPerfomanceTest.swift */,
 				CECBF4431DE61B2C0087BBDB /* WrapperTests.swift */,
+				CE69B6531DE9BFFD00EC1DD3 /* CQRSTests.swift */,
 			);
 			path = BrainActivitySwiftTests;
 			sourceTree = "<group>";
@@ -774,6 +777,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE69B6541DE9BFFD00EC1DD3 /* CQRSTests.swift in Sources */,
 				CEDB50101DE734F5009716D9 /* SDKWrapper.mm in Sources */,
 				CECBF4441DE61B2C0087BBDB /* BrainActivitySwiftTests.swift in Sources */,
 				CECBF4451DE61B2C0087BBDB /* SpectrumVCPerfomanceTest.swift in Sources */,

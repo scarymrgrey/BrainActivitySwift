@@ -19,28 +19,23 @@ class SessionsVC : BatteryBarVC ,UITableViewDataSource,UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
         arrayForBool = [Bool](count :4,repeatedValue : false)
-        
-        //self.tableView.registerClass(SessionCellContainer.self, forCellReuseIdentifier: "Cell")
-        //self.tableView.registerClass(SessionHeadCell.self, forCellReuseIdentifier: "Session")
         tableView.delegate = self
         tableView.dataSource = self
-        context = Context(idToken: userDefaults.valueForKey(UserDefaultsKeys.idToken)! as! String, accessToken: userDefaults.valueForKey(UserDefaultsKeys.accessToken)! as!  String,URL : "http://cloudin.incoding.biz/Dispatcher/Query")
+        
+        context = Context(idToken: userDefaults.valueForKey(UserDefaultsKeys.idToken)! as! String, accessToken: userDefaults.valueForKey(UserDefaultsKeys.accessToken)! as!  String)
         
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         let req = GetSessionsQuery(context: context)
-
+        
         req.On(success: { (resp : [GetSessionsQueryResponse]) in
             self.sessionList.removeAll()
             for r in resp {
                 self.sessionList.append(r)
             }
             self.arrayForBool = [Bool](count :resp.count,repeatedValue : false)
-            
             self.tableView.reloadData()
             }, error: {})
     }
@@ -66,7 +61,6 @@ class SessionsVC : BatteryBarVC ,UITableViewDataSource,UITableViewDelegate {
             headerView.image.image = UIImage(named: "plus")
             headerView.moodLabel.textColor = Colors.gray
         }
-        //print(tableView.frame.size.width)
         headerView.tag = section
         headerView.layer.borderWidth = 1
         headerView.layer.borderColor = Colors.gray.CGColor
@@ -86,7 +80,7 @@ class SessionsVC : BatteryBarVC ,UITableViewDataSource,UITableViewDelegate {
     func sectionHeaderTapped(recognizer: UITapGestureRecognizer) {
         let section  = recognizer.view?.tag as Int!
         arrayForBool[section] = !(arrayForBool[section])
-            //reload specific section animated
+        //reload specific section animated
         self.tableView.reloadSections(NSIndexSet(index: section), withRowAnimation:UITableViewRowAnimation.Fade)
     }
     
@@ -94,7 +88,7 @@ class SessionsVC : BatteryBarVC ,UITableViewDataSource,UITableViewDelegate {
         let Cell : UITableViewCell
         
         if indexPath.row == 0 {
-             Cell = self.tableView.dequeueReusableCellWithIdentifier("SessionCellHeadId")!
+            Cell = self.tableView.dequeueReusableCellWithIdentifier("SessionCellHeadId")!
             let cell : SessionHeadCell = Cell as! SessionHeadCell
             cell.TimeLabel.text = "04:44:13"
         }else {
@@ -107,15 +101,12 @@ class SessionsVC : BatteryBarVC ,UITableViewDataSource,UITableViewDelegate {
             cell.ActivityImage.tintColor = UIColor.whiteColor()
         }
         
-        //        view.activityImageView.image = UIImage(named: "activity-working")?.imageWithRenderingMode(.AlwaysTemplate)
-        //let view = UIView()
-        
         if indexPath.row % 2 == 0 {
             Cell.contentView.backgroundColor = Colors.orange
         }else {
             Cell.contentView.backgroundColor = Colors.dorange
         }
-
+        
         Cell.layer.borderColor = Colors.orange.CGColor
         Cell.layer.borderWidth = 1
         

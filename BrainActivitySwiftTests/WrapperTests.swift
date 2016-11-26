@@ -48,5 +48,4 @@ class WrapperTests: XCTestCase {
         self.measureBlock {
         }
     }
-    
 }

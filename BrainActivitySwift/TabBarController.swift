@@ -8,7 +8,6 @@
 import UIKit
 import Lock
 var binaryFileHelper = BinaryFileHelper()
-
 class TabBarController:  UITabBarController, UITabBarControllerDelegate {
     enum Scenes {
         case Profile
@@ -42,7 +41,6 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
             self.A0Controller.dismissViewControllerAnimated(true, completion: nil)
             self.IDToken = token?.idToken
             self.AccessToken = token?.accessToken
-            //self.context = Context(idToken: userDefaults.valueForKey(UserDefaultsKeys.idToken)! as! String, accessToken: userDefaults.valueForKey(UserDefaultsKeys.accessToken)! as!  String,URL : "http://cloudin.incoding.biz/Dispatcher/Push")
         }
         self.delegate = self
         for item in self.tabBar.items! {
@@ -53,8 +51,6 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
             
             item.setTitleTextAttributes([NSForegroundColorAttributeName: color_range_selected], forState: .Selected)
         }
-        //self.tabBar.items![2].image = UIImage(named: "create-session")
-        //self.tabBar.items![2].selectedImage = UIImage(named: "playbutton")
     }
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)

@@ -31,7 +31,7 @@ class RequestBase {
         return [:]
     }
     
-    func makeRequest(mapper : Request -> Void ){
+    func makeRequest(onerror : Void -> Void,onsuccess : Request -> Void ){
         Alamofire.upload(
             .POST,
             _context.URL,
@@ -51,8 +51,16 @@ class RequestBase {
             },
             encodingCompletion: { encodingResult in
                 switch encodingResult {
-                case .Success(let upload , _ ,_):
-                    mapper(upload)
+                case .Success(let upload , _,_):
+                    upload.responseJSON{ (resp) in
+                        let json = resp.result.value!
+                        print(json["success"])
+                        if (json["success"] as! String  == "1"){
+                            onsuccess(upload)
+                        }else {
+                            onerror()
+                        }
+                    }
                     break
                 case .Failure(let error):
                     print(error)
@@ -62,7 +70,7 @@ class RequestBase {
     }
 
     func On(success success : String -> Void,error :Void -> Void){
-        makeRequest{ (upload) in
+        makeRequest(error){ (upload) in
                     upload.responseJSON(completionHandler: { (response) in
                         switch response.result{
                         case .Success(let rawData):
@@ -80,7 +88,7 @@ class RequestBase {
         }
     }
     func On<T : Mappable>(success success : T -> Void,error :Void -> Void){
-        makeRequest{ (upload) in
+        makeRequest(error){ (upload) in
             upload.responseObject(keyPath: "data",completionHandler: { (response : Response<T, NSError>) in
                 switch response.result{
                 case .Success(let rawData):
@@ -96,8 +104,9 @@ class RequestBase {
    
 
     func On<T : SequenceType where T.Generator.Element : Mappable>(success success : T -> Void,error :Void -> Void){
-        makeRequest{ (upload) in
+        makeRequest(error){ (upload) in
             upload.responseArray(keyPath: "data",completionHandler: { (response : Response<[T.Generator.Element], NSError>) in
+                
                 switch response.result{
                 case .Success(let rawData):
                     print(rawData as! T)
