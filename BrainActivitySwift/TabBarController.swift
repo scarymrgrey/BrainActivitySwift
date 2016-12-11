@@ -34,7 +34,7 @@ class TabBarController:  UITabBarController, UITabBarControllerDelegate {
         A0Theme.sharedInstance().registerTheme(customTheme)
         A0Controller = A0Lock.sharedLock().newLockViewController()
         A0Controller.closable = false
-        self.IDToken = userDefaults.stringForKey(UserDefaultsKeys.idToken)
+        //self.IDToken = userDefaults.stringForKey(UserDefaultsKeys.idToken)
         A0Controller.onAuthenticationBlock = { profile, token in
             userDefaults.setValue(token?.accessToken, forKey: UserDefaultsKeys.accessToken)
             userDefaults.setValue(token?.idToken, forKey: UserDefaultsKeys.idToken)

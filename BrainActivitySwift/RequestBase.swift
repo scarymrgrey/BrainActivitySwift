@@ -13,7 +13,7 @@ import AlamofireObjectMapper
 import ObjectMapper
 class RequestBase {
     // MARK: Locals
-
+    
     private var _context : Context
     private var headers = [String:String]()
     init(context : Context){
@@ -23,6 +23,7 @@ class RequestBase {
                    "Host": "cloudin.incoding.biz",
                    "X-Requested-With": "XMLHttpRequest"
         ]
+        print(headers)
     }
     
     // MARK: Public Methods
@@ -30,8 +31,7 @@ class RequestBase {
     func GetParameters() -> [String:AnyObject?]{
         return [:]
     }
-    
-    func makeRequest(onerror : Void -> Void,onsuccess : Request -> Void ){
+    func makeRequest(onerror : Void -> Void,onsuccess : (Request,IncResult) -> Void ){
         Alamofire.upload(
             .POST,
             _context.URL,
@@ -51,14 +51,26 @@ class RequestBase {
             },
             encodingCompletion: { encodingResult in
                 switch encodingResult {
-                case .Success(let upload , _,_):
-                    upload.responseJSON{ (resp) in
-                        let json = resp.result.value!
-                        print(json["success"])
-                        if (json["success"] as! String  == "1"){
-                            onsuccess(upload)
-                        }else {
-                            onerror()
+                case .Success(let request , _,_):
+                    request.responseJSON{response in
+                        switch response.result{
+                        case .Success(let json):
+                            print(json)
+                            let result = IncResult(_data: json["data"] as! NSObject, _redirectTo: json["redirectTo"] as! String, _statusCode: json["statusCode"] as! Int, _success: json["success"] as! Bool)
+                            if (result.success){
+                                if(result.statusCode == 200){
+                                    onsuccess(request,result)
+                                }
+                            }else {
+                                if(result.data is String){
+                                    print(result.data) // here is error
+                                }
+                                onerror()
+                            }
+                            break
+                        case .Failure(let error):
+                            print(error)
+                            break
                         }
                     }
                     break
@@ -66,58 +78,65 @@ class RequestBase {
                     print(error)
                 }
         })
-
     }
-
+    
     func On(success success : String -> Void,error :Void -> Void){
-        makeRequest(error){ (upload) in
-                    upload.responseJSON(completionHandler: { (response) in
-                        switch response.result{
-                        case .Success(let rawData):
-                            if (rawData["success"] as! Bool){
-                                    success(rawData["data"]! as! String)
-                            }else {
-                                print(rawData)
-                            }
-                            break
-                        case .Failure(let error):
-                            print(error)
-                            break
-                        }
-                    })
+        makeRequest(error){ (request,incRes) in
+            success(incRes.data as! String)
         }
     }
+    
     func On<T : Mappable>(success success : T -> Void,error :Void -> Void){
-        makeRequest(error){ (upload) in
-            upload.responseObject(keyPath: "data",completionHandler: { (response : Response<T, NSError>) in
-                switch response.result{
-                case .Success(let rawData):
-                        success(rawData)
-                    break
-                case .Failure(let error):
-                    print(error)
-                    break
-                }
-            })
+        makeRequest(error){ (request ,incRes) in
+            let result = T(JSONString : incRes.data as! String)
+            success(result!)
+            //self.responseObject(upload, success: success)
         }
     }
-   
-
+    
     func On<T : SequenceType where T.Generator.Element : Mappable>(success success : T -> Void,error :Void -> Void){
-        makeRequest(error){ (upload) in
-            upload.responseArray(keyPath: "data",completionHandler: { (response : Response<[T.Generator.Element], NSError>) in
-                
-                switch response.result{
-                case .Success(let rawData):
-                    print(rawData as! T)
-                    success(rawData as! T)
-                    break
-                case .Failure(let error):
-                    print(error)
-                    break
-                }
-            })
+        makeRequest(error){ (request ,incRes) in
+            self.responseArray(request, success: success)
         }
     }
-
+    
+    //    func responseJSON(request : Request,success : IncResult -> Void) {
+    //        request.responseJSON{ (response) in
+    //            switch response.result{
+    //            case .Success(let json):
+    //                let result = IncResult(_data: json["data"] as! String, _redirectTo: json["redirectTo"] as! String, _statusCode: json["statusCode"] as! Int, _success: json["success"] as! Bool)
+    //                success(result)
+    //                break
+    //            case .Failure(let error):
+    //                print(error)
+    //                break
+    //            }
+    //        }
+    //    }
+    
+    //    func responseObject<T : Mappable>(request : Request,success : T -> Void) {
+    //        request.responseObject(keyPath: "data",completionHandler: { (response : Response<T, NSError>) in
+    //                switch response.result{
+    //                case .Success(let rawData):
+    //                    success(rawData)
+    //                    break
+    //                case .Failure(let error):
+    //                    print(error)
+    //                    break
+    //                }
+    //            })
+    //    }
+    
+    func responseArray<T : SequenceType where T.Generator.Element : Mappable>(request : Request,success : T -> Void){
+        request.responseArray(keyPath: "data",completionHandler: { (response : Response<[T.Generator.Element], NSError>) in
+            switch response.result{
+            case .Success(let rawData):
+                success(rawData as! T)
+                break
+            case .Failure(let error):
+                print(error)
+                break
+            }
+        })
+    }
 }

@@ -60,6 +60,7 @@
 		AC76D15BECCCBC423DB82727 /* Pods_BrainActivitySwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD126690F4EB53F6DE3CE479 /* Pods_BrainActivitySwift.framework */; };
 		CE345D1C1DE46DFF00AD5CF7 /* UserDefaultsKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE345D1B1DE46DFF00AD5CF7 /* UserDefaultsKeys.swift */; };
 		CE345D1F1DE4771B00AD5CF7 /* BrainCBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CE345D1E1DE4771B00AD5CF7 /* BrainCBManager.m */; };
+		CE4EE0FA1DEB2B5700E16634 /* IncResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4EE0F91DEB2B5700E16634 /* IncResult.swift */; };
 		CE69B6541DE9BFFD00EC1DD3 /* CQRSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69B6531DE9BFFD00EC1DD3 /* CQRSTests.swift */; };
 		CE9ED09D1DDAF501005CDD2D /* BatteryBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3150FA41D4530A50023DD9F /* BatteryBarVC.swift */; };
 		CE9ED0B71DDAF534005CDD2D /* algorithm.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED09F1DDAF534005CDD2D /* algorithm.cpp */; };
@@ -167,6 +168,7 @@
 		CE345D1D1DE4771B00AD5CF7 /* BrainCBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BrainCBManager.h; sourceTree = "<group>"; };
 		CE345D1E1DE4771B00AD5CF7 /* BrainCBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BrainCBManager.m; sourceTree = "<group>"; };
 		CE345D201DE4774700AD5CF7 /* SERVICES.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SERVICES.h; sourceTree = "<group>"; };
+		CE4EE0F91DEB2B5700E16634 /* IncResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IncResult.swift; sourceTree = "<group>"; };
 		CE69B6531DE9BFFD00EC1DD3 /* CQRSTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CQRSTests.swift; sourceTree = "<group>"; };
 		CE9ED09F1DDAF534005CDD2D /* algorithm.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = algorithm.cpp; sourceTree = "<group>"; };
 		CE9ED0A01DDAF534005CDD2D /* algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = algorithm.h; sourceTree = "<group>"; };
@@ -308,6 +310,7 @@
 				A32A5C2C1D6C6F6A003B304F /* SessionEntity.swift */,
 				A32A5C2E1D6C7DE5003B304F /* ActivityEntity.swift */,
 				A32A5C301D6C86AC003B304F /* Entity.swift */,
+				CE4EE0F91DEB2B5700E16634 /* IncResult.swift */,
 			);
 			name = ModelsAndEntities;
 			sourceTree = "<group>";
@@ -738,6 +741,7 @@
 				A36814FA1CF78DFA00CEC6A2 /* MainVC.swift in Sources */,
 				A30B2DB21D19D9C10048CBDC /* RawVC.swift in Sources */,
 				A32A5C311D6C86AC003B304F /* Entity.swift in Sources */,
+				CE4EE0FA1DEB2B5700E16634 /* IncResult.swift in Sources */,
 				CE345D1C1DE46DFF00AD5CF7 /* UserDefaultsKeys.swift in Sources */,
 				A3E05A321D04B8BA00ADC6F5 /* SessionHeaderView.swift in Sources */,
 				CE9ED0C31DDAF535005CDD2D /* signal_buffer.cpp in Sources */,

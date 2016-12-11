@@ -21,8 +21,8 @@ class CQRSTests: XCTestCase {
     }
     
     func testGetSessionsQuery() {
-         let expectation = expectationWithDescription("Alamofire")
-        let context = Context(idToken: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2luY29kaW5nLmF1dGgwLmNvbS8iLCJzdWIiOiJnb29nbGUtb2F1dGgyfDExMzE4MTI2Mjg1OTg3NTA0MTIxMCIsImF1ZCI6IlVSYXdVVnFwRmxyT2Z2eVZPQ2JhcHVZNDFqeXJqdjVyIiwiZXhwIjoxNDgwMjAzMTc1LCJpYXQiOjE0ODAxNjcxNzV9.7W_1WL-hWDVnlijdEEGYNOArB4iorfYhNTV2VOEVwV4", accessToken: "xPcZ6BzPBkaLWHdj")
+        let expectation = expectationWithDescription("Alamofire")
+        let context = Context(idToken: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL2luY29kaW5nLmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ODNjODk5ZTgzNDEyYTYyNzZmYTc4MjQiLCJhdWQiOiJVUmF3VVZxcEZsck9mdnlWT0NiYXB1WTQxanlyanY1ciIsImV4cCI6MTQ4MTUyMDU4OSwiaWF0IjoxNDgxNDg0NTg5fQ.Qhl_FmjZQg6fkyWSZfaDUzxGw_cuMZiGiJrF_pkjCMI", accessToken: "5S5PEFaqpEqkJIHU")
         let query = GetSessionsQuery(context: context)
         
         query.On(success: { (sessionResp : [GetSessionsQueryResponse]) in
