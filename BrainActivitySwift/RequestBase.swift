@@ -55,7 +55,6 @@ class RequestBase {
                     request.responseJSON{response in
                         switch response.result{
                         case .Success(let json):
-                            print(json)
                             let result = IncResult(_data: json["data"] as! NSObject, _redirectTo: json["redirectTo"] as! String, _statusCode: json["statusCode"] as! Int, _success: json["success"] as! Bool)
                             if (result.success){
                                 if(result.statusCode == 200){

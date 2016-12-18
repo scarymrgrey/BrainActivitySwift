@@ -9,14 +9,6 @@
 import XCTest
 @testable import BrainActivitySwift
 class WrapperTests: XCTestCase {
-    func XCTAssertNoThrowValidateValue<T>(@autoclosure expression: () throws -> T, _ message: String = "", _ validator: (T) -> Bool) {
-        do {
-            let result = try expression()
-            XCTAssert(validator(result), "Value validation failed - \(message)")
-        } catch let error {
-            XCTFail("Caught error: \(error) - \(message)")
-        }
-    }
     
     
     override func setUp() {

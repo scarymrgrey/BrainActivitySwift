@@ -76,6 +76,7 @@
 		CE9ED0C11DDAF535005CDD2D /* screen_buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0AF1DDAF534005CDD2D /* screen_buffer.cpp */; };
 		CE9ED0C31DDAF535005CDD2D /* signal_buffer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0B21DDAF534005CDD2D /* signal_buffer.cpp */; };
 		CE9ED0C41DDAF535005CDD2D /* signal_reader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0B41DDAF534005CDD2D /* signal_reader.cpp */; };
+		CEA034A91E070E7E00037B33 /* SDKWrapper.mm in Sources */ = {isa = PBXBuildFile; fileRef = CE9ED0B11DDAF534005CDD2D /* SDKWrapper.mm */; };
 		CECBF4441DE61B2C0087BBDB /* BrainActivitySwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBF4411DE61B2C0087BBDB /* BrainActivitySwiftTests.swift */; };
 		CECBF4451DE61B2C0087BBDB /* SpectrumVCPerfomanceTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBF4421DE61B2C0087BBDB /* SpectrumVCPerfomanceTest.swift */; };
 		CECBF4461DE61B2C0087BBDB /* WrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CECBF4431DE61B2C0087BBDB /* WrapperTests.swift */; };
@@ -714,8 +715,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE9ED09D1DDAF501005CDD2D /* BatteryBarVC.swift in Sources */,
+				CEA034A91E070E7E00037B33 /* SDKWrapper.mm in Sources */,
 				CE9ED0C01DDAF535005CDD2D /* neuro_sys.cpp in Sources */,
+				CE9ED09D1DDAF501005CDD2D /* BatteryBarVC.swift in Sources */,
 				A3BE74A81D6F38AE00F5B6E5 /* AnimationView.swift in Sources */,
 				A3636BB11D7601A900899B9D /* StatisticForArbitarySessionVC.swift in Sources */,
 				A3EF5C9B1CFE3057009E296D /* ProfileVC.swift in Sources */,

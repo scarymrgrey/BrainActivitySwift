@@ -8,6 +8,7 @@
 
 import UIKit
 import Advance
+
 enum MainVCScene {
     case Scene1
     case Scene2
@@ -28,6 +29,7 @@ class MainVC : UIViewController ,CBManagerDelegate {
     var headOutlineImageView : UIImageView!
     var scene2Timers = NSTimer()
     var currentScene : MainVCScene!
+    var sdkWrapper : SDKWrapper!
     //  MARK: VC LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +48,8 @@ class MainVC : UIViewController ,CBManagerDelegate {
         self.navigationItem.hidesBackButton = true
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(stopSession), name: Notifications.stop_session, object: nil)
        
+        sdkWrapper = SDKWrapper()
+        sdkWrapper.startSystem()
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -89,12 +93,20 @@ class MainVC : UIViewController ,CBManagerDelegate {
             cBManager = BrainCBManager()
             cBManager.delegate = self
         }else {
-            cBManager.startTestSequenceWithDominantFrequence(selectedFreq)
+            do{
+                try sdkWrapper.attachDS({ (type_id, cmd, length) in
+                    
+                })
+                cBManager.startTestSequenceWithDominantFrequence(selectedFreq)
+            }catch let ex{
+                print(ex)
+            }
+            
         }
     }
     
+    // MARK: = Navigation =
     
-    // MARK: = NAvigation =
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "ShowPlotSegue"{
             plotsVC = (segue.destinationViewController as! PlotsVC)
@@ -108,7 +120,9 @@ class MainVC : UIViewController ,CBManagerDelegate {
             vc.sessionId = userDefaults.stringForKey(UserDefaultsKeys.currentSessionId)
         }
     }
+    
     // MARK: = methods
+    
     func increaseCounter(){
         mainView.cnt += 0.5
         if currentScene == .Scene2 {
@@ -131,6 +145,7 @@ class MainVC : UIViewController ,CBManagerDelegate {
             }
         }
     }
+    
     // MARK - VC SCENES
     
     func scene1Start(){

@@ -16,6 +16,4 @@ class CreateSessionCommand: RequestBase {
     override func GetParameters() -> [String : AnyObject?] {
         return ["PatienId":PatientId,"StartDate" : StartDate,"Description": Description,"DeviceId":DeviceId,"incTypes":"StartSessionCommand"]
     }
-    
-    
 }
